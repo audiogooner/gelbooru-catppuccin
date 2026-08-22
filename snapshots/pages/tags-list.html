@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<!--
+snapshot: tags-list
+url: https://gelbooru.com/index.php?page=tags&s=list
+title: Tag Listing | Gelbooru - Anime Art & Hentai Gallery - Free to Explore
+captured: 2026-08-19T19:07:57.507Z
+source: fetch
+stylesheets: gridStyle.css, jquery-ui.css
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tag Listing | Gelbooru - Anime Art &amp; Hentai Gallery - Free to Explore</title>
+    <meta name="rating" content="adult">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="gridStyle.css?16h">
+    <script data-snapshot-src="ad-provider.js" async="" type="application/javascript"></script>
+  </head>
+  <body>
+    <style>
+	 .mn-container-adsby_position_bottom-right {
+		 display: none;
+	 }
+	</style>
+    <div id="container">
+      <div id="long-notice"></div>
+      <div id="notice" style="display: none;"></div>
+      <header>
+        <div class="topnav" id="myTopnav">
+          <a href="https://gelbooru.com/index.php" class="homeIcon">
+            <img data-snapshot-src="gelbooru-logo.svg" style="height: 46px; width: 46px; margin: 0px; padding-bottom: 2px;">
+          </a>
+          <a href="index.php?page=account&amp;s=home">Settings</a>
+          <a href="index.php?page=post&amp;s=list&amp;tags=all">Posts</a>
+          <a href="index.php?page=comment&amp;s=list">Comments</a>
+          <a href="index.php?page=wiki&amp;s=list">Wiki</a>
+          <a href="index.php?page=tags&amp;s=list" class="active">Tags</a>
+          <a href="index.php?page=pool&amp;s=list">Pools</a>
+          <a href="index.php?page=extras&amp;s=artists">Featured</a>
+          <a href="index.php?page=forum&amp;s=list">Forum</a>
+          <a href="index.php?page=tracker&amp;s=list">Trac</a>
+          <a href="index.php?page=conversation&amp;s=list">Live Chat</a>
+          <a href="javascript:;">
+            <img data-snapshot-src="lightbulb-fill.svg" style="filter: invert(62%) sepia(93%) saturate(1352%) hue-rotate(18deg) brightness(119%) contrast(119%); width: 14px; padding: 0px; margin: 0px;">
+          </a>
+          <a href="javascript:;" class="icon">
+            <img data-snapshot-src="list.svg" style="filter: invert(100); height: 16px;">
+          </a>
+        </div>
+        <div style="background: #a43535; color: #fff; padding: 10px; font-size: 11px;" id="motd">
+          <i>
+            <b>Notice</b>
+          </i>
+          : We will show one popunder ad per half day. This can be disabled in your account options. The popunder will spawn as soon as you click on the page. You have be…
+          <a href="javascript:;" style="color: #fff; text-decoration: underline;">(Dismiss)</a>
+        </div>
+      </header>
+      <div class="navSubmenu">
+        <a href="index.php?page=tags&amp;s=list">List</a>
+        <a href="index.php?page=alias&amp;s=list">Aliases</a>
+        <a href="index.php?page=tags&amp;s=implications">Implications</a>
+        <a href="index.php?page=tags&amp;s=saved_search">Saved Searches</a>
+      </div>
+      <div class="searchArea">
+        <div>
+          <form action="index.php?page=search" method="post">
+            <a href="javascript:;">
+              <img data-snapshot-src="heart-fill.svg" class="" style="vertical-align: top; margin: 4px 10px 0px 10px; height: 24px; width: 24px; border: 0px !important; opacity: .6;" title="Save this search. Check your account page.">
+            </a>
+            <input id="tags-search" name="tags" autocomplete="on" style="padding: 7px; width: calc(100% - 180px); border: 1px solid #e0e0e0;" data-autocomplete="tag-query" type="text" value="" placeholder="Search Example: video black_hair rating:sensitive">
+            <input name="commit" type="submit" value="Search" class="searchList">
+          </form>
+        </div>
+      </div>
+      <section class="aside"></section>
+      <main>
+        <div class="mainBodyPadding">
+          <h2>Tag Listing</h2>
+          <br>
+          <form action="index.php?page=tags&amp;s=list" method="get">
+            <input type="hidden" name="page" value="tags">
+            <input type="hidden" name="s" value="list">
+            <table class="form" width="100%">
+              <tbody>
+                <tr>
+                  <th width="15%">
+                    <label for="name">Name</label>
+                    <p>Use * as a wildcard.</p>
+                  </th>
+                  <td width="85%">
+                    <input id="name" name="tags" size="40" type="text" data-autocomplete="tag-query" class="tag-list-search" value="">
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label for="type">Order</label>
+                  </th>
+                  <td>
+                    <select id="type" name="sort">
+                      <option value="asc" selected="selected">Ascending</option>
+                      <option value="desc">Descending</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label for="order">Sort</label>
+                  </th>
+                  <td>
+                    <select id="order" name="order_by">
+                      <option value="tag">Name</option>
+                      <option value="updated" selected="selected">Updated</option>
+                      <option value="type">Type</option>
+                      <option value="index_count">Total Count</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+              <tr>
+                <td></td>
+                <td>
+                  <input type="submit" value="Search" class="searchList">
+                </td>
+              </tr>
+            </table>
+          </form>
+          <br>
+          <br>
+          <table class="highlightable" width="100%">
+            <tr>
+              <th width="45%">Name</th>
+              <th width="47%">Type</th>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=cum_in_mouth">cum in mouth</a>
+                </span>
+                <span class="tag-count">85383</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=cum_in_mouth">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=penis">penis</a>
+                </span>
+                <span class="tag-count">1093886</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=penis">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=breasts_apart">breasts apart</a>
+                </span>
+                <span class="tag-count">80892</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=breasts_apart">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=unaligned_breasts">unaligned breasts</a>
+                </span>
+                <span class="tag-count">8403</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=unaligned_breasts">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=bouncing_breasts">bouncing breasts</a>
+                </span>
+                <span class="tag-count">91570</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=bouncing_breasts">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=glands_of_montgomery">glands of montgomery</a>
+                </span>
+                <span class="tag-count">1046</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=glands_of_montgomery">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=alternate_breast_size_%28smaller%29">alternate breast size (smaller)</a>
+                </span>
+                <span class="tag-count">3258</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=alternate_breast_size_%28smaller%29">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=rabbit_tail">rabbit tail</a>
+                </span>
+                <span class="tag-count">94088</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=rabbit_tail">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=official_alternate_costume">official alternate costume</a>
+                </span>
+                <span class="tag-count">412464</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=official_alternate_costume">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-deprecated">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=bad_tag">bad tag</a>
+                </span>
+                <span class="tag-count">0</span>
+              </td>
+              <td>
+                deprecated (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=bad_tag">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=blue_leotard">blue leotard</a>
+                </span>
+                <span class="tag-count">28873</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=blue_leotard">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=hand_on_own_hip">hand on own hip</a>
+                </span>
+                <span class="tag-count">244881</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=hand_on_own_hip">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=blue_bowtie">blue bowtie</a>
+                </span>
+                <span class="tag-count">46404</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=blue_bowtie">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=rabbit_ears">rabbit ears</a>
+                </span>
+                <span class="tag-count">332489</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=rabbit_ears">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=hand_on_own_knee">hand on own knee</a>
+                </span>
+                <span class="tag-count">18063</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=hand_on_own_knee">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=fake_tail">fake tail</a>
+                </span>
+                <span class="tag-count">57571</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=fake_tail">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=toe_cleavage">toe cleavage</a>
+                </span>
+                <span class="tag-count">570</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=toe_cleavage">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=white_background">white background</a>
+                </span>
+                <span class="tag-count">2451582</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=white_background">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=fake_animal_ears">fake animal ears</a>
+                </span>
+                <span class="tag-count">252992</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=fake_animal_ears">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=blue_bow">blue bow</a>
+                </span>
+                <span class="tag-count">165126</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=blue_bow">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=full_body">full body</a>
+                </span>
+                <span class="tag-count">1304730</span>
+              </td>
+              <td>
+                general, ambiguous (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=full_body">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=very_long_hair">very long hair</a>
+                </span>
+                <span class="tag-count">1384708</span>
+              </td>
+              <td>
+                general, ambiguous (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=very_long_hair">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=simple_background">simple background</a>
+                </span>
+                <span class="tag-count">2932039</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=simple_background">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=wrist_cuffs">wrist cuffs</a>
+                </span>
+                <span class="tag-count">213994</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=wrist_cuffs">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=solo">solo</a>
+                </span>
+                <span class="tag-count">7455613</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=solo">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=small_breasts">small breasts</a>
+                </span>
+                <span class="tag-count">849087</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=small_breasts">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=bowtie">bowtie</a>
+                </span>
+                <span class="tag-count">451910</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=bowtie">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=bent_over">bent over</a>
+                </span>
+                <span class="tag-count">134276</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=bent_over">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=bare_shoulders">bare shoulders</a>
+                </span>
+                <span class="tag-count">1432689</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=bare_shoulders">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=high_heels">high heels</a>
+                </span>
+                <span class="tag-count">327584</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=high_heels">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=legs">legs</a>
+                </span>
+                <span class="tag-count">294712</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=legs">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=leotard">leotard</a>
+                </span>
+                <span class="tag-count">333557</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=leotard">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=bow">bow</a>
+                </span>
+                <span class="tag-count">1633877</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=bow">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=cleavage">cleavage</a>
+                </span>
+                <span class="tag-count">1590565</span>
+              </td>
+              <td>
+                general, ambiguous (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=cleavage">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=tail">tail</a>
+                </span>
+                <span class="tag-count">1230539</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=tail">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=animal_ears">animal ears</a>
+                </span>
+                <span class="tag-count">1758963</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=animal_ears">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=blue_eyes">blue eyes</a>
+                </span>
+                <span class="tag-count">2782262</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=blue_eyes">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-artist">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=vkid">vkid</a>
+                </span>
+                <span class="tag-count">139</span>
+              </td>
+              <td>
+                artist (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=vkid">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=oral">oral</a>
+                </span>
+                <span class="tag-count">247322</span>
+              </td>
+              <td>
+                general, ambiguous (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=oral">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=bikini_top_pull">bikini top pull</a>
+                </span>
+                <span class="tag-count">1950</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=bikini_top_pull">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=clothes_pull">clothes pull</a>
+                </span>
+                <span class="tag-count">134268</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=clothes_pull">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=underboob">underboob</a>
+                </span>
+                <span class="tag-count">146705</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=underboob">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-copyright">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=nintendo">nintendo</a>
+                </span>
+                <span class="tag-count">899495</span>
+              </td>
+              <td>
+                copyright (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=nintendo">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=white_bra">white bra</a>
+                </span>
+                <span class="tag-count">47506</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=white_bra">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=white_panties">white panties</a>
+                </span>
+                <span class="tag-count">272278</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=white_panties">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=lingerie">lingerie</a>
+                </span>
+                <span class="tag-count">91478</span>
+              </td>
+              <td>
+                general, ambiguous (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=lingerie">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=bra">bra</a>
+                </span>
+                <span class="tag-count">331754</span>
+              </td>
+              <td>
+                general (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=bra">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=panties">panties</a>
+                </span>
+                <span class="tag-count">1041141</span>
+              </td>
+              <td>
+                general, ambiguous (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=panties">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-artist">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=izu">izu</a>
+                </span>
+                <span class="tag-count">7</span>
+              </td>
+              <td>
+                artist (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=izu">edit</a>
+                )
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag-type-general">
+                  <a href="index.php?page=post&amp;s=list&amp;tags=insect">insect</a>
+                </span>
+                <span class="tag-count">127706</span>
+              </td>
+              <td>
+                general, ambiguous (
+                <a href="index.php?page=tags&amp;s=edit&amp;tag=insect">edit</a>
+                )
+              </td>
+            </tr>
+          </table>
+          <div id="paginator">
+            <div class="pagination">
+              <b>1</b>
+              <a href="?page=tags&amp;s=list&amp;pid=50">2</a>
+              <a href="?page=tags&amp;s=list&amp;pid=100">3</a>
+              <a href="?page=tags&amp;s=list&amp;pid=150">4</a>
+              <a href="?page=tags&amp;s=list&amp;pid=200">5</a>
+              <a href="?page=tags&amp;s=list&amp;pid=250">6</a>
+              <a href="?page=tags&amp;s=list&amp;pid=300">7</a>
+              <a href="?page=tags&amp;s=list&amp;pid=350">8</a>
+              <a href="?page=tags&amp;s=list&amp;pid=400">9</a>
+              <a href="?page=tags&amp;s=list&amp;pid=50" alt="next">›</a>
+              <a href="?page=tags&amp;s=list&amp;pid=19950" alt="last page">»</a>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <a href="index.php?page=dmca&amp;s=index">
+          <h2 style="display: inline-block;">DMCA</h2>
+        </a>
+        <a href="tos.php">
+          <h2 style="display: inline-block;">TOS</h2>
+        </a>
+        <br>
+        <br>
+        <a href="index.php?page=wiki&amp;s=list&amp;search=howto">
+          <b>Help</b>
+        </a>
+        <a href="https://twitter.com/gelbooru" target="_blank">Twitter</a>
+        <a href="https://discord.gg/Zxs9tPE">
+          <b>Discord</b>
+        </a>
+        <a href="index.php?page=extras&amp;s=patreon">Project Supporters</a>
+      </footer>
+    </div>
+    <script></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui.css?2" title="default">
+    <script data-snapshot-src="jquery.min.js"></script>
+    <script data-snapshot-src="jquery.cookie.js"></script>
+    <script data-snapshot-src="application.grid.js"></script>
+    <script data-snapshot-src="jquery-hotkeys.js"></script>
+    <script data-snapshot-src="autocomplete3.js"></script>
+    <script type="text/javascript"></script>
+  </body>
+</html>

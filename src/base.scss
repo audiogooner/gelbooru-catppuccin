@@ -1,0 +1,351 @@
+@use "palette";
+@use "content-blocking";
+
+/* ----------------------------------------------------
+   COLOR PALETTE - Catppuccin Mocha
+   ---------------------------------------------------- */
+:root {
+  @include palette.palette;
+}
+
+/* ----------------------------------------------------
+   GLOBAL STYLES
+   ---------------------------------------------------- */
+html,
+body {
+  background-color: var(--base) !important;
+  color: var(--text) !important;
+}
+
+a {
+  color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   FORM ELEMENTS
+   ---------------------------------------------------- */
+textarea,
+input {
+  background-color: var(--surface0);
+  border: solid 1px var(--surface1) !important;
+  outline: none;
+  border-radius: 7px;
+  color: var(--text);
+
+  &::placeholder {
+    color: var(--text) !important;
+  }
+}
+
+input {
+  padding: 2px 5px;
+}
+
+textarea {
+  padding-left: 7px;
+}
+
+.secondary_search,
+.searchList {
+  border-radius: 7px !important;
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  transition: 0.1s;
+
+  &:hover {
+    background: var(--surface1) !important;
+  }
+}
+
+/* ----------------------------------------------------
+   NAVIGATION
+   ---------------------------------------------------- */
+.topnav,
+#navbar {
+  background-color: var(--surface0);
+}
+
+.topnav *,
+#navbar * {
+  color: var(--text) !important;
+}
+
+.homeIcon > img:nth-child(1),
+.navbar-brand {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(53%) saturate(3396%)
+    hue-rotate(192deg) brightness(109%) contrast(96%);
+}
+
+.navSubmenu,
+#navbar2,
+#submenu {
+  background-color: var(--surface1);
+}
+
+.navSubmenu {
+  * {
+    color: var(--text) !important;
+  }
+
+  > a:nth-child(6) * {
+    color: var(--green) !important;
+  }
+}
+
+.active,
+.active2 a,
+.active a {
+  background-color: var(--surface2) !important;
+  color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   SEARCH AREA
+   ---------------------------------------------------- */
+.searchArea {
+  background-color: var(--base);
+
+  > div:nth-child(1) > form:nth-child(1) > a:nth-child(1) > img:nth-child(1) {
+    filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg)
+      brightness(100%) contrast(92%);
+  }
+}
+
+.sm-hidden {
+  color: var(--text);
+}
+
+#ui-id-1 {
+  background-color: var(--surface0);
+  border: none;
+  border-radius: 7px;
+}
+
+/* ----------------------------------------------------
+   HOMEPAGE SPECIFIC
+   ---------------------------------------------------- */
+#static-index {
+  background-color: var(--base);
+
+  > h1:nth-child(1) > a:nth-child(1) {
+    color: var(--blue) !important;
+    transition: 0.5s;
+  }
+
+  > div:nth-child(8) > a:nth-child(1),
+  > small:nth-child(19) a {
+    color: var(--blue) !important;
+  }
+
+  > div:nth-child(8),
+  > small:nth-child(18) {
+    color: var(--subtext2) !important;
+  }
+
+  > small:nth-child(19) {
+    color: var(--subtext2) !important;
+
+    &::before {
+      content: "\a";
+      white-space: pre;
+    }
+  }
+}
+
+#links {
+  cursor: default;
+
+  > a:nth-child(n) {
+    color: var(--subtext1) !important;
+    transition: 140ms;
+
+    &:hover {
+      color: var(--text) !important;
+    }
+  }
+}
+
+/* ----------------------------------------------------
+   TAG STYLING
+   ---------------------------------------------------- */
+.tag-type-artist,
+.tag-type-character,
+.tag-type-copyright,
+.tag-type-metadata,
+.tag-type-general {
+  .sm-hidden a {
+    transition: 0.1s;
+  }
+
+  &:hover .sm-hidden a {
+    text-shadow: 0 0 10px var(--red);
+  }
+
+  > span {
+    color: var(--subtext0) !important;
+    transition: 0.1s;
+  }
+
+  &:hover > span {
+    text-shadow: 0 0 10px var(--subtext0) !important;
+  }
+}
+
+@each $type,
+  $color
+    in (
+      artist: red,
+      character: green,
+      copyright: pink,
+      metadata: yellow,
+      general: blue
+    )
+{
+  .tag-type-#{$type} {
+    > a {
+      color: var(--#{$color}) !important;
+      transition: 0.1s;
+    }
+
+    &:hover > a {
+      text-shadow: 0 0 10px var(--#{$color});
+    }
+  }
+}
+
+/* ----------------------------------------------------
+   IMAGES AND MEDIA
+   ---------------------------------------------------- */
+#image {
+  border-radius: 10px;
+  box-shadow: 0 0 20px var(--crust);
+  margin-top: 0 !important;
+}
+
+.mainBodyPadding > div:nth-child(n) img,
+article img {
+  border-radius: 7px;
+  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+  box-shadow: 0 0 10px var(--crust);
+
+  &:hover {
+    scale: 110%;
+    border-radius: 0;
+    box-shadow: 0 0 30px var(--surface0);
+  }
+}
+
+.fluid_controls_currentprogress {
+  background-color: var(--blue) !important;
+}
+
+img.webm {
+  border: solid 3px;
+}
+
+/* ----------------------------------------------------
+   COMMENTS AND USER CONTENT
+   ---------------------------------------------------- */
+.commentBody {
+  color: var(--text) !important;
+}
+
+div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
+  border-radius: 10px;
+}
+
+.voteUpComment,
+.reportComment {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.reportComment {
+  filter: brightness(0) saturate(100%) invert(59%) sepia(71%) saturate(330%)
+    hue-rotate(297deg) brightness(98%) contrast(94%);
+}
+
+.voteUpComment {
+  filter: brightness(0) saturate(100%) invert(61%) sepia(35%) saturate(584%)
+    hue-rotate(183deg) brightness(107%) contrast(96%);
+}
+
+.profileAvatar {
+  border: 2px solid var(--surface2);
+  box-shadow: 0 0 30px rgba(88, 91, 112, 0.27);
+}
+
+/* ----------------------------------------------------
+   PAGINATION AND TABLES
+   ---------------------------------------------------- */
+#paginator {
+  a {
+    border-radius: 10px;
+    background-color: var(--surface1);
+    border: none !important;
+    transition: 0.1s;
+
+    &:hover {
+      background-color: var(--blue) !important;
+      color: var(--text) !important;
+    }
+  }
+
+  b {
+    background-color: transparent;
+  }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--blue) !important;
+  color: var(--base) !important;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.mainBodyPadding > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) {
+  background: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   MISC ELEMENTS
+   ---------------------------------------------------- */
+.aside {
+  border-right: solid 1px var(--overlay1);
+}
+
+footer {
+  background: var(--surface0) !important;
+
+  * {
+    color: var(--text) !important;
+  }
+}
+
+.alert-info,
+.alert-info * {
+  background-color: var(--surface2);
+  color: var(--text) !important;
+  border: none;
+  border-radius: 10px;
+}
+
+#notice {
+  background-color: var(--red) !important;
+  border: none !important;
+  color: var(--crust);
+  box-shadow: 0 0 20px var(--red);
+}
+
+.mainBodyPadding
+  > div:nth-child(n + 18)
+  > div:nth-child(2)
+  > span:nth-child(6)
+  > span:nth-child(2)
+  > a:nth-child(1) {
+  color: var(--red) !important;
+}

@@ -1,0 +1,44 @@
+{
+  "id": "tags-list",
+  "url": "https://gelbooru.com/index.php?page=tags&s=list",
+  "title": "Tag Listing | Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-08-19T19:07:57.507Z",
+  "source": "fetch",
+  "classes": [
+    "active",
+    "aside",
+    "form",
+    "highlightable",
+    "homeIcon",
+    "icon",
+    "mainBodyPadding",
+    "navSubmenu",
+    "pagination",
+    "searchArea",
+    "searchList",
+    "tag-count",
+    "tag-list-search",
+    "tag-type-artist",
+    "tag-type-copyright",
+    "tag-type-deprecated",
+    "tag-type-general",
+    "topnav"
+  ],
+  "ids": [
+    "container",
+    "long-notice",
+    "motd",
+    "myTopnav",
+    "name",
+    "notice",
+    "order",
+    "paginator",
+    "tags-search",
+    "type"
+  ],
+  "stylesheets": [
+    "gridStyle.css",
+    "jquery-ui.css"
+  ],
+  "notes": []
+}

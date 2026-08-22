@@ -1,0 +1,247 @@
+:root {
+ --note-body-background:#ffe;
+ --note-body-text-color:var(--text-color);
+ --note-body-border:1px solid #000;
+ --note-box-border:1px solid #000;
+ --note-box-shadow:0 0 0 1px #fff;
+ --unsaved-note-box-border:1px solid red;
+ --movable-note-box-border:1px solid green;
+ --note-preview-border:1px solid red;
+ --note-preview-background:#fff;
+ --note-highlight-color:#00f;
+ --note-tn-color:var(--muted-text-color);
+}
+body.mode-translation .note-container {
+  cursor: crosshair;
+}
+
+.note-container {
+ display:inline-block;
+ position:relative
+}
+.note-container.hide-notes .note-box {
+ visibility:hidden
+}
+.note-container div.note-body {
+ display:none;
+ position:absolute;
+ font-size:14px;
+ border:1px solid #000;
+ border:var(--note-body-border);
+ background:#ffe;
+ background:var(--note-body-background);
+ color:#262626;
+ color:var(--note-body-text-color);
+ min-width:140px;
+ width:-webkit-min-content;
+ width:-moz-min-content;
+ width:min-content;
+ min-height:1em;
+ line-height:1.25;
+ cursor:pointer;
+ padding:4px;
+ z-index:150;
+ overflow-wrap:break-word;
+ overflow-y:hidden
+}
+.note-container div.note-body a,
+.note-container div.note-body b,
+.note-container div.note-body big,
+.note-container div.note-body blockquote,
+.note-container div.note-body center,
+.note-container div.note-body code,
+.note-container div.note-body div,
+.note-container div.note-body em,
+.note-container div.note-body font,
+.note-container div.note-body h1,
+.note-container div.note-body h2,
+.note-container div.note-body h3,
+.note-container div.note-body h4,
+.note-container div.note-body h5,
+.note-container div.note-body h6,
+.note-container div.note-body i,
+.note-container div.note-body li,
+.note-container div.note-body ol,
+.note-container div.note-body p,
+.note-container div.note-body s,
+.note-container div.note-body small,
+.note-container div.note-body span,
+.note-container div.note-body strong,
+.note-container div.note-body u,
+.note-container div.note-body ul,
+.note-container div.note-box.embedded div.note-box-inner-border a,
+.note-container div.note-box.embedded div.note-box-inner-border b,
+.note-container div.note-box.embedded div.note-box-inner-border big,
+.note-container div.note-box.embedded div.note-box-inner-border blockquote,
+.note-container div.note-box.embedded div.note-box-inner-border center,
+.note-container div.note-box.embedded div.note-box-inner-border code,
+.note-container div.note-box.embedded div.note-box-inner-border div,
+.note-container div.note-box.embedded div.note-box-inner-border em,
+.note-container div.note-box.embedded div.note-box-inner-border font,
+.note-container div.note-box.embedded div.note-box-inner-border h1,
+.note-container div.note-box.embedded div.note-box-inner-border h2,
+.note-container div.note-box.embedded div.note-box-inner-border h3,
+.note-container div.note-box.embedded div.note-box-inner-border h4,
+.note-container div.note-box.embedded div.note-box-inner-border h5,
+.note-container div.note-box.embedded div.note-box-inner-border h6,
+.note-container div.note-box.embedded div.note-box-inner-border i,
+.note-container div.note-box.embedded div.note-box-inner-border li,
+.note-container div.note-box.embedded div.note-box-inner-border ol,
+.note-container div.note-box.embedded div.note-box-inner-border p,
+.note-container div.note-box.embedded div.note-box-inner-border s,
+.note-container div.note-box.embedded div.note-box-inner-border small,
+.note-container div.note-box.embedded div.note-box-inner-border span,
+.note-container div.note-box.embedded div.note-box-inner-border strong,
+.note-container div.note-box.embedded div.note-box-inner-border u,
+.note-container div.note-box.embedded div.note-box-inner-border ul {
+ line-height:1.25
+}
+.note-container div.note-body>:last-child,
+.note-container div.note-box.embedded div.note-box-inner-border>:last-child {
+ margin-bottom:0
+}
+.note-container div.note-body b,
+.note-container div.note-body strong,
+.note-container div.note-box.embedded div.note-box-inner-border b,
+.note-container div.note-box.embedded div.note-box-inner-border strong {
+ font-weight:700
+}
+.note-container div.note-body em,
+.note-container div.note-body i,
+.note-container div.note-box.embedded div.note-box-inner-border em,
+.note-container div.note-box.embedded div.note-box-inner-border i {
+ font-style:italic
+}
+.note-container div.note-body small,
+.note-container div.note-box.embedded div.note-box-inner-border small {
+ font-size:.8em
+}
+.note-container div.note-body code,
+.note-container div.note-box.embedded div.note-box-inner-border code {
+ font:var(--monospace-font)
+}
+.note-container div.note-body a[rel*=external],
+.note-container div.note-box.embedded div.note-box-inner-border a[rel*=external] {
+ word-break:normal
+}
+.note-container div.note-body .tn,
+.note-container div.note-box.embedded div.note-box-inner-border .tn {
+ font-size:.8em;
+ color:#8c8c8c;
+ color:var(--note-tn-color)
+}
+.note-container div.note-body ruby rt,
+.note-container div.note-box.embedded div.note-box-inner-border ruby rt {
+ font-size:.8em
+}
+.note-container div.note-body ul,
+.note-container div.note-box.embedded div.note-box-inner-border ul {
+ margin-left:1em;
+ margin-bottom:1em
+}
+.note-container div.note-body ul ul,
+.note-container div.note-box.embedded div.note-box-inner-border ul ul {
+ margin-bottom:0
+}
+.note-container div.note-body ul li,
+.note-container div.note-box.embedded div.note-box-inner-border ul li {
+ list-style-type:disc
+}
+.note-container div.note-body ul li+br,
+.note-container div.note-box.embedded div.note-box-inner-border ul li+br {
+ display:none
+}
+.note-container div.note-box {
+ display:-webkit-flex;
+ display:-moz-box;
+ display:-ms-flexbox;
+ display:flex;
+ -webkit-justify-content:center;
+ -moz-box-pack:center;
+ -ms-flex-pack:center;
+ justify-content:center;
+ -webkit-align-items:center;
+ -moz-box-align:center;
+ -ms-flex-align:center;
+ align-items:center;
+ text-align:center;
+ position:absolute!important;
+ border:1px solid #000;
+ border:var(--note-box-border);
+ min-width:5px;
+ min-height:5px;
+ width:100px;
+ height:100px;
+ cursor:move;
+ background:#ffe;
+ background:var(--note-body-background);
+ line-height:1.25;
+ opacity:.5;
+ z-index:100
+}
+.note-container div.note-box:hover {
+ z-index:200
+}
+.note-container div.note-box.unsaved {
+ border:1px solid red;
+ border:var(--unsaved-note-box-border)
+}
+.note-container div.note-box.movable {
+ border:1px solid green;
+ border:var(--movable-note-box-border)
+}
+.note-container div.note-box.embedded {
+ color:#262626;
+ color:var(--note-body-text-color);
+ border:1px solid transparent;
+ opacity:1
+}
+.note-container div.note-box.embedded:hover {
+ border:1px solid #000;
+ border:var(--note-box-border);
+ -webkit-box-shadow:0 0 0 1px #fff;
+ box-shadow:0 0 0 1px #fff;
+ -webkit-box-shadow:var(--note-box-shadow);
+ box-shadow:var(--note-box-shadow)
+}
+.note-container div.note-box.embedded:hover.editing,
+.note-container div.note-box.embedded:hover.movable {
+ opacity:1
+}
+.note-container div.note-box.embedded.editing,
+.note-container div.note-box.embedded.movable {
+ opacity:.4
+}
+.note-container div.note-box.embedded.out-of-bounds,
+.note-container div.note-box.embedded.unsaved {
+ border:1px solid red;
+ border:var(--unsaved-note-box-border)
+}
+.note-container div.note-box.embedded.movable {
+ border:1px solid green;
+ border:var(--movable-note-box-border)
+}
+.note-container div.note-box.embedded:not(:hover) div.ui-resizable-handle {
+ display:none!important
+}
+.note-container div.note-box.note-box-highlighted {
+ outline:2px solid #00f;
+ outline:2px solid var(--note-highlight-color)
+}
+.note-container div.note-box div.ui-resizable-handle,
+div#note-preview {
+ position:absolute
+}
+div#note-preview {
+ cursor:crosshair;
+ border:1px solid red;
+ border:var(--note-preview-border);
+ opacity:.6;
+ display:none;
+ background:#fff;
+ background:var(--note-preview-background);
+ z-index:250
+}
+div.note-edit-dialog {
+ font-size:.8em
+}

@@ -1,0 +1,14 @@
+{
+  "name": "gelbooru-selector-preview",
+  "displayName": "Gelbooru selector preview",
+  "description": "Hover SCSS selectors to see captured Gelbooru element screenshots",
+  "version": "0.1.1",
+  "publisher": "gelbooru-userstyle",
+  "private": true,
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onLanguage:scss", "onLanguage:css"],
+  "main": "./extension.js"
+}

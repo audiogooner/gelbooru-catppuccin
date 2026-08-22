@@ -1,0 +1,30 @@
+{
+  "id": "help",
+  "url": "https://gelbooru.com/index.php?page=help",
+  "title": "| Gelbooru",
+  "capturedAt": "2026-08-19T19:08:01.596Z",
+  "source": "fetch",
+  "classes": [
+    "center",
+    "current-page",
+    "flat-list",
+    "flat-list2",
+    "header",
+    "noticeError",
+    "siteName",
+    "submenu",
+    "success-notice"
+  ],
+  "ids": [
+    "content",
+    "long-notice",
+    "notice",
+    "static-more",
+    "subnavbar"
+  ],
+  "stylesheets": [
+    "default.css",
+    "jquery-ui.css"
+  ],
+  "notes": []
+}

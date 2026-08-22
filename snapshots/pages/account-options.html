@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!--
+snapshot: account-options
+url: https://gelbooru.com/index.php?page=account&s=options
+title: | Gelbooru - Anime Art & Hentai Gallery - Free to Explore
+captured: 2026-08-19T19:08:01.228Z
+source: fetch
+stylesheets: gridStyle.css, jquery-ui.css
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>| Gelbooru - Anime Art &amp; Hentai Gallery - Free to Explore</title>
+    <meta name="rating" content="adult">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="gridStyle.css?16h">
+    <script data-snapshot-src="ad-provider.js" async="" type="application/javascript"></script>
+  </head>
+  <body>
+    <style>
+	 .mn-container-adsby_position_bottom-right {
+		 display: none;
+	 }
+	</style>
+    <div id="container">
+      <div id="long-notice"></div>
+      <div id="notice" style="display: none;"></div>
+      <header>
+        <div class="topnav" id="myTopnav">
+          <a href="https://gelbooru.com/index.php" class="homeIcon">
+            <img data-snapshot-src="gelbooru-logo.svg" style="height: 46px; width: 46px; margin: 0px; padding-bottom: 2px;">
+          </a>
+          <a href="index.php?page=account&amp;s=home" class="active">Settings</a>
+          <a href="index.php?page=post&amp;s=list&amp;tags=all">Posts</a>
+          <a href="index.php?page=comment&amp;s=list">Comments</a>
+          <a href="index.php?page=wiki&amp;s=list">Wiki</a>
+          <a href="index.php?page=tags&amp;s=list">Tags</a>
+          <a href="index.php?page=pool&amp;s=list">Pools</a>
+          <a href="index.php?page=extras&amp;s=artists">Featured</a>
+          <a href="index.php?page=forum&amp;s=list">Forum</a>
+          <a href="index.php?page=tracker&amp;s=list">Trac</a>
+          <a href="index.php?page=conversation&amp;s=list">Live Chat</a>
+          <a href="javascript:;">
+            <img data-snapshot-src="lightbulb-fill.svg" style="filter: invert(62%) sepia(93%) saturate(1352%) hue-rotate(18deg) brightness(119%) contrast(119%); width: 14px; padding: 0px; margin: 0px;">
+          </a>
+          <a href="javascript:;" class="icon">
+            <img data-snapshot-src="list.svg" style="filter: invert(100); height: 16px;">
+          </a>
+        </div>
+        <div style="background: #a43535; color: #fff; padding: 10px; font-size: 11px;" id="motd">
+          <i>
+            <b>Notice</b>
+          </i>
+          : We will show one popunder ad per half day. This can be disabled in your account options. The popunder will spawn as soon as you click on the page. You have be…
+          <a href="javascript:;" style="color: #fff; text-decoration: underline;">(Dismiss)</a>
+        </div>
+      </header>
+      <div class="navSubmenu">
+        <a href="index.php?page=account&amp;s=home">Home</a>
+        <a href="index.php?page=account&amp;s=login&amp;code=00">Login</a>
+        <a href="index.php?page=account&amp;s=reg">Signup</a>
+        <a href="index.php?page=account&amp;s=options">Options</a>
+      </div>
+      <div class="searchArea">
+        <div>
+          <form action="index.php?page=search" method="post">
+            <a href="javascript:;">
+              <img data-snapshot-src="heart-fill.svg" class="" style="vertical-align: top; margin: 4px 10px 0px 10px; height: 24px; width: 24px; border: 0px !important; opacity: .6;" title="Save this search. Check your account page.">
+            </a>
+            <input id="tags-search" name="tags" autocomplete="on" style="padding: 7px; width: calc(100% - 180px); border: 1px solid #e0e0e0;" data-autocomplete="tag-query" type="text" value="" placeholder="Search Example: video black_hair rating:sensitive">
+            <input name="commit" type="submit" value="Search" class="searchList">
+          </form>
+        </div>
+      </div>
+      <style>
+th {
+	width: 10%;
+	font-weight: normal;
+	text-align: center;
+}
+
+
+.block {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 12px;
+}
+	@media only screen and (min-width: 851px) {
+
+		aside {
+			display: none;
+		}
+
+		#container {
+			grid-template-columns: 40px auto !important;
+		}
+	}
+</style>
+      <aside></aside>
+      <main>
+        <div class="mainBodyPadding">
+          <h2>Account Options</h2>
+          <p>
+            <b>Separate individual tags, ratings and users with spaces.</b>
+            You must have cookies and JavaScript enabled in order for filtering to work.
+          </p>
+          <br>
+          <form action="index.php?page=account&amp;s=options" method="post">
+            <table class="form" style="width: 100%; text-align: left;">
+              <tr class="accountOptions">
+                <th width="15%">
+                  <label class="block">Tag Blacklist</label>
+                  <p>
+                    Any post containing a blacklisted tag will be ignored. Note that you can also blacklist ratings and users.
+                  </p>
+                </th>
+                <td width="65%">
+                  <textarea data-autocomplete="tag-edit" cols="50" id="tags" name="tags" rows="6" style="width: 100%;"></textarea>
+                  <br>
+                  <a href="?page=account&amp;s=options&amp;reset_blacklist=1">Having issues with your blacklist saving? Click here</a>
+                  <br>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block" style="background-color: #aa0000; padding: 5px 0px; width: 100%; color: #fff; border: 4px solid #fff;">Display all site content</label>
+                  <p>This will enable access to more fringe results. Account not required.</p>
+                </th>
+                <td>
+                  <input type="checkbox" name="fringeBenefits">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Comment Threshold</label>
+                  <p>Any comment with a score below this will be ignored.</p>
+                </th>
+                <td>
+                  <input type="text" name="cthreshold" value="0">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Post Threshold</label>
+                  <p>Any post with a score below this will be ignored.</p>
+                </th>
+                <td>
+                  <input type="text" name="pthreshold" value="0">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">My Tags</label>
+                  <p>These will be accessible when you add or edit a post.</p>
+                </th>
+                <td>
+                  <textarea data-autocomplete="tag-edit" cols="50" name="my_tags" rows="4" tabindex="10" style="width: 100%;"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Disable Mobile Navigation</label>
+                  <p>Disable Quick navigational menu on mobile devices</p>
+                </th>
+                <td>
+                  <input type="checkbox" name="disableMobileMenu">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Dark Mode</label>
+                  <p>
+                    Turns on Dark Mode for the responsive layout.
+                    <b>Beta! Will not be updated often at all.</b>
+                  </p>
+                </th>
+                <td>
+                  <input type="checkbox" name="darkMode">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block" style="background-color: #007700; color: #fff; padding: 5px 0px;width: 100%; border: 2px solid #fff;">General Only Listing</label>
+                  <p>
+                    You will only see images that are marked as general audience on the main index listing. Because Cabbage is a baby, this will show Sensitive as well for a few we…
+                  </p>
+                </th>
+                <td>
+                  <input type="checkbox" name="safe_only">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Ad Type</label>
+                  <p>
+                    You will be presented with one of the following ad types.
+                    <b>(You must select two!)</b>
+                  </p>
+                </th>
+                <td>
+                  <input type="checkbox" name="ad_type[]" value="1" checked="">
+                  Popunder
+                  <input type="checkbox" name="ad_type[]" value="2" checked="">
+                  Video Slider
+                  <input type="checkbox" name="ad_type[]" value="3" checked="">
+                  Banner Ad
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Show Comments</label>
+                </th>
+                <td>
+                  <input type="checkbox" name="show_comments" checked="">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Post View Search</label>
+                  <p>
+                    When on the post view page, if you had a search made before this image, you will be able to navigate easily prev/next using arrow keys or clicking the links abo…
+                  </p>
+                </th>
+                <td>
+                  <input type="checkbox" name="searchPostView" checked="">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Always Show Original</label>
+                  <p>Original sized images will always be shown as a default.</p>
+                </th>
+                <td>
+                  <input type="checkbox" name="show_sample" value="0">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Disable Image Constraint</label>
+                  <p>
+                    Image will break outside of your viewport if this is enabled. This will make looking at large images difficult.
+                  </p>
+                </th>
+                <td>
+                  <input type="checkbox" name="fitWidth" value="0">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">Message Notifications</label>
+                  <p>Disable message notifications.</p>
+                </th>
+                <td>
+                  <input type="checkbox" name="messageNotification">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <th>
+                  <label class="block">API Access Credentials</label>
+                  <p>
+                    You need to add this to your queries.You can increase your limit to your account by requesting so on our Discord with a valid reason for needing an increase.
+                    <br>
+                    <br>
+                    You currently have a limit of
+                    <b></b>
+                    requests every
+                    <b></b>
+                    second(s).
+                  </p>
+                </th>
+                <td>
+                  <textarea cols="50" rows="4" tabindex="10" style="width: 100%;">&api_key=&user_id=9455</textarea>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr class="accountOptions">
+                <td></td>
+                <td>
+                  <input type="hidden" name="csrf-token" value="dee8d4ed5c9a420f642e6798ed595cb2bc103505590c783da4e843bb4be9de65">
+                  <input type="submit" name="submit" value="Save" class="searchList">
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </main>
+      <footer>
+        <a href="index.php?page=dmca&amp;s=index">
+          <h2 style="display: inline-block;">DMCA</h2>
+        </a>
+        <a href="tos.php">
+          <h2 style="display: inline-block;">TOS</h2>
+        </a>
+        <br>
+        <br>
+        <a href="index.php?page=wiki&amp;s=list&amp;search=howto">
+          <b>Help</b>
+        </a>
+        <a href="https://twitter.com/gelbooru" target="_blank">Twitter</a>
+        <a href="https://discord.gg/Zxs9tPE">
+          <b>Discord</b>
+        </a>
+        <a href="index.php?page=extras&amp;s=patreon">Project Supporters</a>
+      </footer>
+    </div>
+    <script></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui.css?2" title="default">
+    <script data-snapshot-src="jquery.min.js"></script>
+    <script data-snapshot-src="jquery.cookie.js"></script>
+    <script data-snapshot-src="application.grid.js"></script>
+    <script data-snapshot-src="jquery-hotkeys.js"></script>
+    <script data-snapshot-src="autocomplete3.js"></script>
+    <script type="text/javascript"></script>
+  </body>
+</html>

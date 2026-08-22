@@ -1,0 +1,48 @@
+{
+  "id": "tos",
+  "url": "https://gelbooru.com/tos.php",
+  "title": "| Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-08-19T19:08:02.072Z",
+  "source": "fetch",
+  "classes": [
+    "active",
+    "alert",
+    "alert-success",
+    "alert-warning",
+    "collapse",
+    "collapsed",
+    "container",
+    "container-fluid",
+    "icon-bar",
+    "nav",
+    "navbar",
+    "navbar-brand",
+    "navbar-collapse",
+    "navbar-default",
+    "navbar-header",
+    "navbar-nav",
+    "navbar-toggle",
+    "padding15",
+    "small",
+    "sr-only",
+    "strong",
+    "ui-icon",
+    "ui-icon-lightbulb"
+  ],
+  "ids": [
+    "long-notice",
+    "motd",
+    "motdspacer",
+    "navbar",
+    "navbar2",
+    "notice",
+    "submenu"
+  ],
+  "stylesheets": [
+    "bootstrap.css",
+    "responsive.css",
+    "jquery-ui.css",
+    "jquery-ui.icon-font.min.css"
+  ],
+  "notes": []
+}

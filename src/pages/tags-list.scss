@@ -1,0 +1,16 @@
+/* ----------------------------------------------------
+   TAGS LIST PAGE
+   ---------------------------------------------------- */
+th {
+  border-radius: 0;
+}
+
+#name {
+  width: calc(100% - 30px);
+  margin: 6px;
+}
+
+td,
+th {
+  border: 2px solid var(--surface1) !important;
+}

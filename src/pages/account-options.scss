@@ -1,0 +1,23 @@
+/* ----------------------------------------------------
+   ACCOUNT OPTIONS PAGE
+   ---------------------------------------------------- */
+th,
+td {
+  border-color: transparent !important;
+  background-color: transparent !important;
+  color: var(--text) !important;
+  text-align: left;
+}
+
+tr.accountOptions:nth-child(3) > th:nth-child(1) > label:nth-child(1),
+tr.accountOptions:nth-child(15) > th:nth-child(1) > label:nth-child(1) {
+  background-color: var(--red) !important;
+  border: none !important;
+  color: #fff !important;
+  text-align: center;
+  border-radius: 10px;
+}
+
+tr.accountOptions:nth-child(15) > th:nth-child(1) > label:nth-child(1) {
+  background-color: var(--green) !important;
+}

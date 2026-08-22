@@ -1,0 +1,37 @@
+{
+  "id": "wiki-view",
+  "url": "https://gelbooru.com/index.php?page=wiki&s=list&search=howto",
+  "title": "Wiki | Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-08-19T19:07:58.401Z",
+  "source": "fetch",
+  "classes": [
+    "active",
+    "aside",
+    "highlightable",
+    "homeIcon",
+    "icon",
+    "mainBodyPadding",
+    "navSubmenu",
+    "pagination",
+    "rotate_list",
+    "searchArea",
+    "searchList",
+    "sm-hidden",
+    "tag-list",
+    "topnav"
+  ],
+  "ids": [
+    "container",
+    "long-notice",
+    "motd",
+    "myTopnav",
+    "notice",
+    "paginator",
+    "tags-search"
+  ],
+  "stylesheets": [
+    "gridStyle.css",
+    "jquery-ui.css"
+  ],
+  "notes": []
+}

@@ -1,0 +1,17 @@
+{
+  "name": "gelbooru-userstyle",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "export": "node scripts/export.mjs",
+    "snapshot:fetch": "node scripts/fetch-snapshots.mjs",
+    "preview:install": "node scripts/install-selector-preview.mjs"
+  },
+  "devDependencies": {
+    "html2canvas": "^1.4.1",
+    "linkedom": "^0.18.12",
+    "sass": "^1.90.0",
+    "source-map-js": "^1.2.1"
+  }
+}

@@ -1,0 +1,19 @@
+/* ----------------------------------------------------
+   HOMEPAGE
+   ---------------------------------------------------- */
+body {
+  background-image: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  > br {
+    display: none;
+  }
+}
+
+[href="index.php?page=help"] {
+  display: none;
+}

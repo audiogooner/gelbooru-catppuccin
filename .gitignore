@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.css.map
+snapshots/previews/*
+!snapshots/previews/README.md

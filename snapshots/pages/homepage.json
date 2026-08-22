@@ -1,0 +1,23 @@
+{
+  "id": "homepage",
+  "url": "https://gelbooru.com/",
+  "title": "Gelbooru | Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-08-19T19:07:54.474Z",
+  "source": "fetch",
+  "classes": [
+    "search_list-frontpage",
+    "secondary_search",
+    "space"
+  ],
+  "ids": [
+    "links",
+    "static-index",
+    "tags-search"
+  ],
+  "stylesheets": [
+    "responsive.css",
+    "jquery-ui.css",
+    "bootstrap.css"
+  ],
+  "notes": []
+}

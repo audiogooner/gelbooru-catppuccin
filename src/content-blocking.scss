@@ -1,0 +1,43 @@
+/* ----------------------------------------------------
+   CONTENT BLOCKING
+   ---------------------------------------------------- */
+#myTopnav > a:nth-child(13),
+#motd,
+.root--ujvuu {
+  display: none !important;
+}
+
+/* frontpage Nyudachi promo */
+#static-index > div:has(> a[href*="nyudachi"]),
+body > center:has(a[href*="nyudachi"]) {
+  display: none !important;
+}
+
+/* frontpage AdBlock indicator */
+#static-index > div:has(> a[href="#"]) {
+  display: none !important;
+}
+
+body[style*="nyudachi"] {
+  background-image: none !important;
+}
+
+.headerAd,
+.footerAd,
+.footerAd2,
+/* affiliate text link (after .headerAd on list, inside .mainBodyPadding on view) */
+div:not([id], [class])[style*="font-size: 1.2em"]:has(> a[rel="nofollow"][target="_blank"]),
+/* Pixiv image banner after comments on post view */
+.mainBodyPadding > a[href*="pixiv.net"][target="_blank"]:has(> img),
+/* 728x90 video banner on posts page */
+main > center:has(video),
+/* Clickadu 300x250 banner row (data-cl-spot before inject, __clb-spot after) */
+center:has([data-cl-spot], [id^="__clb-spot"]),
+[data-cl-spot],
+[id^="__clb-spot"],
+/* ExoClick sticky video slider*/
+div:has(> .exo-video-slider-container-wrapper),
+.exo-video-slider-container-wrapper,
+[id$="-exo-video-slider-content"] {
+  display: none !important;
+}

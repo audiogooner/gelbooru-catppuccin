@@ -1,0 +1,184 @@
+/* ----------------------------------------------------
+   SAVED SEARCHES PAGE
+   ---------------------------------------------------- */
+
+/* Empty glyphs for "|" and "-" so the date text node can keep the timestamp. */
+@font-face {
+  font-family: "HideSeps";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("data:font/woff;base64,d09GRgABAAAAAAKMAAoAAAAAA0wAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABWAAAADEAAABgRQ1CGGNtYXAAAAGUAAAAMAAAADwA3gA6Z2x5ZgAAAcwAAAABAAAAAQAAAABoZWFkAAAA9AAAADYAAAA2LG3rlGhoZWEAAAEsAAAAFwAAACQDIf86aG10eAAAAYwAAAAIAAAACAAAAABsb2NhAAABxAAAAAgAAAAIAAAAAG1heHAAAAFEAAAAFAAAACAABAACbmFtZQAAAdAAAACnAAABSuUbnVtwb3N0AAACeAAAABMAAAAoAGQAEAABAAAAAQAA75sGBF8PPPUAAwPoAAAAAOar1VoAAAAA5qvVWgAAAAAAAAAAAAAAAwACAAAAAAAAeJxjYGRgYFb4b8GAAIwMqIARACjTAV4AeJxjYGRgYGBmgAEmBjQAAACyAAd4nGNgZmBgnMDAysDCQBgwInPs7e3tGRgYdBlqmBX+WzAwMCswnEBTr8DAAACk7gSpAAAAAAAAAAAAAAB4nCXKuxEAEBQAsPicCQyhsaHWiOZ57qjSBBkFXZGe1UBTJdm0IvjGif0WLpRRCRIAAAAAAAAAAAAAAAB4nIXKOwqDUBCF4d9XYiAP6zS5G9BonwVYpFKwSCd4kQuiothkISmy2qBMGlNkBobvcAbY88JiHgt/ufPYbPHFDgEnsUvARexx4CreLD8OlrvDIuAmtjlyFzsoHmIXxVPsceYt3sw/qal0rvsx0/XUlMM3hqusJBd6GE3XqiSK45gUQ4UmR9MzkqGpmWgoGX7a8E+vVn2BZmDE0NGiSIiI5/0A4p8wzwB4nGNgYsAPmBkYGOIZBAABuAB1AA==")
+    format("woff");
+  unicode-range: U+007C, U+002D;
+}
+
+.aside {
+  display: none !important;
+}
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navSubmenu > a[href*="s=saved_search"] {
+  color: var(--blue) !important;
+}
+
+main > br,
+.thumbnail-container > br {
+  display: none;
+}
+
+.mainBodyPadding {
+  padding-bottom: 0.25rem;
+
+  h1 {
+    margin-bottom: 0.35em;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    max-width: 42em;
+    color: var(--subtext0);
+    line-height: 1.55;
+  }
+
+  b {
+    color: var(--text);
+  }
+}
+
+main > span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 1.25rem 0;
+  padding: 0.8rem 1rem 0.7rem;
+  color: var(--subtext0);
+  font-family: HideSeps, verdana, sans-serif, helvetica;
+  font-size: 0.95em !important;
+  background-color: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+
+  > a {
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  > a:nth-child(2) {
+    padding: 0.15em 0.7em;
+    color: var(--blue) !important;
+    font-size: 1.05em;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    word-break: break-word;
+    background-color: var(--surface0);
+    border-radius: 4px 10px 10px 4px;
+
+    &:hover {
+      background-color: var(--surface1);
+    }
+  }
+
+  > a:last-child {
+    display: none;
+  }
+}
+
+a[href*="remove_save_tag_search"] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  font-size: 1.05em;
+  line-height: 1.4;
+  width: 1.7em;
+  height: 1.7em;
+  padding: 0;
+  overflow: hidden;
+  color: transparent !important;
+  margin: 0 !important;
+  margin-right: 0.3em !important;
+  text-decoration: none;
+  user-select: none;
+  background-color: var(--surface0);
+  border-radius: 10px 4px 4px 10px;
+  transition:
+    background-color 0.1s,
+    border-color 0.1s;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.95em;
+    height: 0.18em;
+    background-color: var(--red);
+    border-radius: 1px;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    background-color: var(--surface1);
+    border-color: var(--red);
+
+    &::before,
+    &::after {
+      background-color: var(--maroon);
+    }
+  }
+}
+
+.thumbnail-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 195px));
+  justify-content: start;
+  gap: 0.6rem;
+  margin: 0 1.25rem 0.85rem;
+  padding: 0.35rem 1rem 1rem;
+  min-width: 0;
+  background-color: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+.thumbnail-preview {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0;
+  margin-top: 0 !important;
+  padding: 0 !important;
+}
+
+article.thumbnail-preview img {
+  width: 100%;
+  max-width: 175px;
+  max-height: 175px;
+  height: auto;
+  object-fit: contain;
+}
+
+#paginator {
+  padding: 0.5rem 1.25rem 1.5rem;
+}
