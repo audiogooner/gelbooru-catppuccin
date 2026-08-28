@@ -15,6 +15,10 @@ A **dev** chip sits in the top-right of Gelbooru pages (**Alt+Shift+D**). From t
 
 Disable any installed copy of the exported UserStyle while developing, or the two will fight.
 
+## Page styles
+
+Per-page SCSS bundles, layout families, tokens, and selector conventions: [`docs/PAGE_STYLE_GUIDE.md`](docs/PAGE_STYLE_GUIDE.md).
+
 ## Page snapshots
 
 Slimmed HTML + original Gelbooru CSS live in [`snapshots/`](snapshots/INDEX.md). They exist so selectors can be written against the real DOM without keeping megabytes of thumbnails, script bodies, and ads.

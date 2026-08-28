@@ -1,0 +1,32 @@
+{
+  "id": "favorites-view",
+  "url": "https://gelbooru.com/index.php?page=favorites&s=view&id=1231719",
+  "title": "| Gelbooru",
+  "capturedAt": "2026-08-23T12:36:19.758Z",
+  "source": "live",
+  "classes": [
+    "center",
+    "current-page",
+    "flat-list",
+    "flat-list2",
+    "header",
+    "noticeError",
+    "siteName",
+    "submenu",
+    "success-notice",
+    "thumb",
+    "vc-init"
+  ],
+  "ids": [
+    "gelbooru-dev-overlay",
+    "long-notice",
+    "notice",
+    "paginator",
+    "pi"
+  ],
+  "stylesheets": [
+    "default.css",
+    "jquery-ui.css"
+  ],
+  "notes": []
+}

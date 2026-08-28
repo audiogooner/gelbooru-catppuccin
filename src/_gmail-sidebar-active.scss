@@ -1,0 +1,17 @@
+/* Shared active-state for gmail sidebar folder links. */
+
+@mixin current($href-part) {
+  #tag-list a[href*="#{$href-part}"] {
+    color: var(--blue) !important;
+    background: var(--surface0);
+    font-weight: 600;
+  }
+}
+
+@mixin current-all {
+  #tag-list a[href*="s=home"]:not([href*="search="]):not([href*="manage"]) {
+    color: var(--blue) !important;
+    background: var(--surface0);
+    font-weight: 600;
+  }
+}

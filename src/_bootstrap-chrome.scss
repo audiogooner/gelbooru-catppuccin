@@ -1,0 +1,135 @@
+/* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
+   Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
+
+@mixin navbar {
+  .container-fluid:has(> .navbar) {
+    padding: 0;
+  }
+
+  .navbar,
+  .navbar-default {
+    min-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    background: var(--surface0) !important;
+    border: 0;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  .navbar-header {
+    height: calc(20px + 1.42857143em + 23px);
+  }
+
+  .navbar-brand {
+    float: left;
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px !important;
+    min-width: 0;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    font-size: 12px;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  #navbar.navbar-collapse {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  #navbar .navbar-nav {
+    margin: 0;
+  }
+
+  #navbar .navbar-nav > li > a {
+    padding: 20px 16px 23px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-decoration: none;
+  }
+
+  #navbar .navbar-nav > li > a:hover,
+  #navbar .navbar-nav > li > a:focus {
+    background-color: transparent !important;
+  }
+
+  #navbar .navbar-nav > .active > a,
+  #navbar .navbar-nav > .active > a:hover,
+  #navbar .navbar-nav > .active > a:focus {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+  }
+
+  #navbar a.ui-icon {
+    margin: 0 !important;
+    font-size: 14px !important;
+  }
+
+  .navbar-default .navbar-toggle {
+    border-color: var(--surface1);
+
+    .icon-bar {
+      background-color: var(--text);
+    }
+  }
+
+  .navbar-header > button:hover,
+  .navbar-header > button:focus,
+  .navbar-header > button:active {
+    background: var(--surface1) !important;
+  }
+
+  #submenu.navbar {
+    min-height: 0;
+    overflow: visible;
+    padding: 10px 15px !important;
+    background: var(--surface1) !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+
+    .navbar-nav {
+      float: none;
+      margin: 0;
+    }
+
+    .navbar-nav > li {
+      float: none;
+      display: inline-block;
+    }
+
+    .navbar-nav > li > a {
+      display: inline-block;
+      padding: 0 !important;
+      margin: 5px 15px !important;
+      color: var(--text) !important;
+      font-family: verdana, sans-serif, helvetica;
+      font-size: 12px !important;
+      font-weight: normal;
+      line-height: 1.42857143;
+      background: transparent !important;
+    }
+  }
+}
+
+@mixin mail-alert {
+  .alert-success {
+    margin: 0.75rem 0 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+
+    a {
+      color: var(--green) !important;
+      font-weight: 600;
+    }
+  }
+}

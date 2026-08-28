@@ -6,7 +6,9 @@ html
     meta
     link
     script
-  body
+    style
+    style
+  body.vc-init
     style
     div#container
       div#long-notice
@@ -43,7 +45,7 @@ html
           form
             a
               img
-            input#tags-search
+            input#tags-search.ui-autocomplete-input
             input.searchList
       section.aside
       main
@@ -60,7 +62,7 @@ html
                     label
                     p
                   td
-                    input#name.tag-list-search
+                    input#name.tag-list-search.ui-autocomplete-input
                 tr
                   th
                     label
@@ -77,325 +79,323 @@ html
                       option
                       option
                       option
-              tr
-                td
-                td
-                  input.searchList
+              tbody
+                tr
+                  td
+                  td
+                    input.searchList
           br
           br
           table.highlightable
-            tr
-              th
-              th
-            tr
-              td
-                span.tag-type-general
+            tbody
+              tr
+                th
+                th
+              tr
+                td
+                  span.tag-type-copyright
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-deprecated
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-character
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-character
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-artist
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-metadata
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-metadata
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-artist
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-character
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-copyright
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-artist
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-artist
+              tr
+                td
+                  span.tag-type-artist
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-character
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-copyright
+              tr
+                td
+                  span.tag-type-artist
+                    a
+                  span.tag-count
+                td
                   a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
-                  a
-                span.tag-count
-              td
-                a
-            tr
-              td
-                span.tag-type-general
+              tr
+                td
+                  span.tag-type-general
+                    a
+                  span.tag-count
+                td
   …

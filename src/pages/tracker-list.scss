@@ -1,0 +1,224 @@
+@use "bootstrap-chrome";
+
+/* ----------------------------------------------------
+   TRACKER LIST (bootstrap / responsive.css layout)
+   ---------------------------------------------------- */
+
+@include bootstrap-chrome.navbar;
+@include bootstrap-chrome.mail-alert;
+
+#submenu .navbar-nav > li > a[href*="page=tracker"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+#submenu .navbar-nav > li > a[href*="s=create_ticket"] {
+  color: var(--green) !important;
+}
+
+.padding15 {
+  padding: 1.5rem 1rem 2.5rem !important;
+
+  > br {
+    display: none;
+  }
+}
+
+#content {
+  max-width: none;
+  color: var(--text);
+}
+
+@media only screen and (max-width: 850px) {
+  .padding15 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .padding15 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
+
+/* ----- Search ----- */
+
+#search {
+  margin: 0 0 1rem !important;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  input[type="text"] {
+    flex: 1 1 14rem;
+    width: auto !important;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  input[type="submit"] {
+    flex: 0 0 auto;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+}
+
+#content > div:has(+ table.highlightable) {
+  margin: 0 0 0.75rem !important;
+  color: var(--text) !important;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1.25;
+}
+
+/* ----- Ticket table ----- */
+
+table.highlightable {
+  width: 100% !important;
+  table-layout: fixed;
+  color: var(--text) !important;
+  font-size: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--surface1);
+  border-radius: 10px;
+  overflow: hidden;
+
+  > tbody > tr:hover {
+    background: var(--surface0) !important;
+  }
+
+  tr.ticket-open {
+    background: color-mix(in srgb, var(--green) 16%, var(--base)) !important;
+
+    &:hover {
+      background: color-mix(in srgb, var(--green) 24%, var(--base)) !important;
+    }
+  }
+
+  td {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    padding: 0.65rem 0.85rem !important;
+    color: var(--text) !important;
+    vertical-align: middle;
+    background: transparent !important;
+
+    & + td {
+      border-left: 1px solid var(--surface1) !important;
+    }
+  }
+
+  tr:last-child > td {
+    border-bottom: none !important;
+  }
+
+  /* Title + metadata */
+  td:first-child {
+    text-align: left !important;
+
+    > a > b {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    > span,
+    > span[style*="font-size"] {
+      display: inline-block;
+      margin-top: 0.35rem;
+      color: var(--subtext0) !important;
+      font-size: 0.92em !important;
+      line-height: 1.45;
+    }
+
+    span i {
+      font-style: normal;
+
+      b {
+        color: var(--text);
+        font-weight: 600;
+      }
+    }
+  }
+
+  /* Assignee + last update */
+  td:nth-child(2) {
+    width: 8.5rem !important;
+    text-align: center !important;
+    white-space: nowrap;
+
+    > span,
+    > span[style*="font-size"] {
+      display: block;
+      color: var(--text) !important;
+      font-size: 1.05em !important;
+      font-weight: 600 !important;
+      line-height: 1.3;
+    }
+
+    small {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--subtext0);
+      font-size: 0.85em;
+      line-height: 1.35;
+    }
+  }
+
+  /* Status / ETA */
+  td:nth-child(3) {
+    width: 5.5rem !important;
+    text-align: center !important;
+    color: var(--subtext0) !important;
+    font-size: 0.85em !important;
+    line-height: 1.4;
+  }
+}
+
+#paginator {
+  padding: 0.5rem 0 1.5rem;
+
+  > br {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  table.highlightable {
+    td {
+      padding: 0.55rem 0.6rem !important;
+    }
+
+    td:nth-child(3) {
+      display: none !important;
+    }
+
+    td + td {
+      border-left: none !important;
+    }
+
+    td:nth-child(2) {
+      width: 6.75rem !important;
+      border-left: 1px solid var(--surface1) !important;
+    }
+  }
+}

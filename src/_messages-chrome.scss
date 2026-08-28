@@ -1,0 +1,127 @@
+/* Shared chrome for Gelbooru pages that use messages.css. */
+
+@mixin shell {
+  body {
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  .grid-container {
+    background-color: var(--base) !important;
+    color: var(--text);
+  }
+
+  .grid-item {
+    background-color: var(--mantle) !important;
+    color: var(--text);
+
+    a {
+      color: var(--text) !important;
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background-color: var(--base);
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--surface0);
+      border-right: 3px solid var(--base);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--surface2);
+      border-right: 3px solid var(--base);
+    }
+  }
+
+  #createMessage.messageButton {
+    margin: 0.25rem 0.5rem !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    text-align: center;
+    background: var(--blue) !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+
+  #messageWindow {
+    background: var(--surface0) !important;
+  }
+
+  @media only screen and (max-width: 850px) {
+    #header {
+      background: var(--surface0);
+    }
+
+    .menu__btn > span,
+    .menu__btn > span::before,
+    .menu__btn > span::after {
+      background-color: var(--text) !important;
+    }
+
+    .menu__box {
+      background-color: var(--mantle) !important;
+      box-shadow: 2px 2px 6px var(--crust);
+    }
+
+    .menu__item {
+      color: var(--text) !important;
+
+      &:hover {
+        background-color: var(--surface1) !important;
+      }
+    }
+  }
+}
+
+/* Conversation thread list in the left column (list + view). */
+@mixin thread-list {
+  .grid-left-menu-item {
+    a {
+      color: var(--subtext0) !important;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--text) !important;
+      }
+
+      &[style*="font-weight: bold"] {
+        color: var(--text) !important;
+      }
+    }
+
+    &:has(a[style*="font-weight: bold"]) .grid-item-user-link {
+      background: var(--surface0);
+    }
+  }
+
+  .grid-item-user-link {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    margin: 0.35rem 0 !important;
+    border-radius: 7px !important;
+
+    &:hover {
+      background: var(--surface1) !important;
+    }
+
+    > div:first-child {
+      background-color: var(--surface0) !important;
+      border-color: var(--surface2) !important;
+    }
+
+    > div:last-child {
+      display: flex;
+      align-items: center;
+      height: auto !important;
+      line-height: 1.2;
+      color: inherit;
+    }
+  }
+}

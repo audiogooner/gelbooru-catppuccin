@@ -1,0 +1,61 @@
+{
+  "id": "alias-list",
+  "url": "https://gelbooru.com/index.php?page=alias&s=list",
+  "title": "| Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-08-26T19:31:21.984Z",
+  "source": "live",
+  "classes": [
+    "active",
+    "aside",
+    "even",
+    "g-recaptcha",
+    "g-recaptcha-bubble-arrow",
+    "g-recaptcha-response",
+    "homeIcon",
+    "icon",
+    "mainBodyPadding",
+    "navSubmenu",
+    "pagination",
+    "searchArea",
+    "searchList",
+    "tag-count",
+    "tag-list-search",
+    "topnav",
+    "ui-autocomplete",
+    "ui-autocomplete-input",
+    "ui-front",
+    "ui-helper-hidden-accessible",
+    "ui-menu",
+    "ui-widget",
+    "ui-widget-content",
+    "vc-init"
+  ],
+  "ids": [
+    "add-box",
+    "aliases",
+    "container",
+    "g-recaptcha-response",
+    "gelbooru-dev-overlay",
+    "long-notice",
+    "motd",
+    "myTopnav",
+    "notice",
+    "paginator",
+    "pconf",
+    "query",
+    "tag_alias_alias",
+    "tag_alias_name",
+    "tag_alias_reason",
+    "tags-search",
+    "ui-id-1",
+    "ui-id-2",
+    "ui-id-3"
+  ],
+  "stylesheets": [
+    "gridStyle.css",
+    "jquery-ui.css"
+  ],
+  "notes": [
+    "omitted 47 more tr.even (50 total)"
+  ]
+}

@@ -2,8 +2,8 @@
   "id": "forum-list",
   "url": "https://gelbooru.com/index.php?page=forum&s=list",
   "title": "Forum | Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
-  "capturedAt": "2026-08-19T19:07:59.416Z",
-  "source": "fetch",
+  "capturedAt": "2026-08-26T20:17:49.066Z",
+  "source": "live",
   "classes": [
     "active",
     "alert",
@@ -12,7 +12,7 @@
     "current",
     "desktop-only",
     "forum-topicpin",
-    "forum-topicread",
+    "forum-topicunread",
     "homeIcon",
     "icon",
     "locked-topic",
@@ -25,11 +25,20 @@
     "sm-hidden",
     "tag-list-search",
     "threadTitle",
-    "topnav"
+    "topnav",
+    "ui-autocomplete",
+    "ui-autocomplete-input",
+    "ui-front",
+    "ui-helper-hidden-accessible",
+    "ui-menu",
+    "ui-widget",
+    "ui-widget-content",
+    "vc-init"
   ],
   "ids": [
     "conf",
     "container",
+    "gelbooru-dev-overlay",
     "long-notice",
     "motd",
     "myTopnav",
@@ -38,7 +47,8 @@
     "paginator",
     "showNewThread",
     "tags-search",
-    "topic"
+    "topic",
+    "ui-id-1"
   ],
   "stylesheets": [
     "gridStyle.css",

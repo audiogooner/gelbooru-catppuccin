@@ -1,0 +1,41 @@
+{
+  "id": "gmail-home",
+  "url": "https://gelbooru.com/index.php?page=gmail&s=home&search=outbox",
+  "title": "| Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-08-26T19:20:00.381Z",
+  "source": "live",
+  "classes": [
+    "active",
+    "alert",
+    "alert-danger",
+    "aside",
+    "headerAd",
+    "homeIcon",
+    "icon",
+    "mainBodyPadding",
+    "navSubmenu",
+    "pagination",
+    "rounded_footer",
+    "searchArea",
+    "searchList",
+    "sm-hidden",
+    "tag-list",
+    "topnav",
+    "vc-init"
+  ],
+  "ids": [
+    "container",
+    "gelbooru-dev-overlay",
+    "long-notice",
+    "motd",
+    "myTopnav",
+    "notice",
+    "paginator",
+    "tag-list",
+    "tags-search"
+  ],
+  "stylesheets": [
+    "gridStyle.css"
+  ],
+  "notes": []
+}

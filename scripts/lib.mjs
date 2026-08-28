@@ -21,7 +21,7 @@ export function compileBundles() {
 }
 
 export function parseDocument(document) {
-  const match = document.match(/^(url-prefix|url)\("([^"]+)"\)$/);
+  const match = document.match(/^(url-prefix|url|regexp)\("([^"]+)"\)$/);
   if (!match) {
     throw new Error(`Unsupported @-moz-document rule: ${document}`);
   }
@@ -37,6 +37,9 @@ export function matchesDocument(document, href) {
   const { kind, value } = parseDocument(document);
   if (kind === "url-prefix") {
     return href.startsWith(value);
+  }
+  if (kind === "regexp") {
+    return new RegExp(value).test(href);
   }
 
   return href === value;

@@ -1,0 +1,31 @@
+{
+  "id": "tracker-create-ticket",
+  "url": "https://gelbooru.com/index.php?page=tracker&s=create_ticket",
+  "title": "| Gelbooru",
+  "capturedAt": "2026-08-26T21:48:30.334Z",
+  "source": "live",
+  "classes": [
+    "center",
+    "current-page",
+    "flat-list",
+    "flat-list2",
+    "header",
+    "noticeError",
+    "siteName",
+    "submenu",
+    "success-notice",
+    "vc-init"
+  ],
+  "ids": [
+    "content",
+    "gelbooru-dev-overlay",
+    "long-notice",
+    "notice",
+    "subnavbar"
+  ],
+  "stylesheets": [
+    "default.css",
+    "jquery-ui.css"
+  ],
+  "notes": []
+}

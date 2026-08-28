@@ -1,0 +1,3 @@
+@use "gmail-sidebar-active" as nav;
+
+@include nav.current("search=outbox");

@@ -1,0 +1,91 @@
+/* ----------------------------------------------------
+   CONVERSATION LIST (messages.css layout)
+   ---------------------------------------------------- */
+
+@use "messages-chrome";
+
+@include messages-chrome.shell;
+@include messages-chrome.thread-list;
+
+/* The right column is empty on this page — drop it and let content fill the row. */
+@media only screen and (min-width: 851px) {
+  .grid-container {
+    height: 100vh;
+    grid-template-columns: 230px minmax(0, 1fr) !important;
+    grid-template-areas:
+      "leftmenu content"
+      "leftmenu footer" !important;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .grid-item:has(#createMessage) {
+    grid-area: leftmenu;
+  }
+
+  .grid-item:has(> center) {
+    grid-area: content;
+    overflow-y: auto;
+  }
+
+  #footer {
+    height: auto !important;
+  }
+}
+
+#rightMenu,
+.grid-container > div:not([id]):not([class]):empty {
+  display: none !important;
+}
+
+.grid-item:has(> center) {
+  padding: 1.25rem 1rem !important;
+
+  > center {
+    display: block;
+    text-align: left;
+  }
+
+  h1 {
+    max-width: 42em;
+    margin: 0 auto 1rem;
+    color: var(--text);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  ol {
+    max-width: 42em;
+    margin: 0 auto;
+    padding: 0.85rem 1rem 0.85rem 2.5rem !important;
+    color: var(--subtext0);
+    line-height: 1.55;
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-radius: 10px;
+
+    li + li {
+      margin-top: 0.4rem;
+    }
+
+    li::marker {
+      color: var(--overlay1);
+    }
+  }
+}
+
+#footer {
+  background: var(--mantle);
+
+  > br {
+    display: none;
+  }
+}
+
+#paginator {
+  padding: 0.5rem 1.25rem 0.75rem;
+
+  b {
+    color: var(--text);
+  }
+}

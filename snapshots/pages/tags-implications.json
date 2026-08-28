@@ -1,0 +1,50 @@
+{
+  "id": "tags-implications",
+  "url": "https://gelbooru.com/index.php?page=tags&s=implications",
+  "title": "| Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-08-26T19:26:12.598Z",
+  "source": "live",
+  "classes": [
+    "active",
+    "aside",
+    "even",
+    "form",
+    "highlightable",
+    "homeIcon",
+    "icon",
+    "mainBodyPadding",
+    "navSubmenu",
+    "pagination",
+    "searchArea",
+    "searchList",
+    "tag-list-search",
+    "topnav",
+    "ui-autocomplete",
+    "ui-autocomplete-input",
+    "ui-front",
+    "ui-helper-hidden-accessible",
+    "ui-menu",
+    "ui-widget",
+    "ui-widget-content",
+    "vc-init"
+  ],
+  "ids": [
+    "container",
+    "gelbooru-dev-overlay",
+    "long-notice",
+    "motd",
+    "myTopnav",
+    "name",
+    "notice",
+    "paginator",
+    "tags-search",
+    "ui-id-1"
+  ],
+  "stylesheets": [
+    "gridStyle.css",
+    "jquery-ui.css"
+  ],
+  "notes": [
+    "omitted 47 more tr.even (50 total)"
+  ]
+}

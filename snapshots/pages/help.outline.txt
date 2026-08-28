@@ -1,14 +1,18 @@
 html
   head
+    script
     meta
     title
     link
     link
     meta
     script
+    style
+    style
     script
     script
-  body
+  body.vc-init
+    div#gelbooru-dev-overlay
     div.header
       div.center
         h2.siteName

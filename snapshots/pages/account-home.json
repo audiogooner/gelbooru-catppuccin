@@ -2,8 +2,8 @@
   "id": "account-home",
   "url": "https://gelbooru.com/index.php?page=account&s=home",
   "title": "My Account | Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
-  "capturedAt": "2026-08-19T19:08:00.755Z",
-  "source": "fetch",
+  "capturedAt": "2026-08-23T12:15:24.441Z",
+  "source": "live",
   "classes": [
     "active",
     "footerAd",
@@ -15,16 +15,26 @@
     "pagination",
     "searchArea",
     "searchList",
-    "topnav"
+    "topnav",
+    "ui-autocomplete",
+    "ui-autocomplete-input",
+    "ui-front",
+    "ui-helper-hidden-accessible",
+    "ui-menu",
+    "ui-widget",
+    "ui-widget-content",
+    "vc-init"
   ],
   "ids": [
     "container",
+    "gelbooru-dev-overlay",
     "long-notice",
     "motd",
     "myTopnav",
     "notice",
     "paginator",
-    "tags-search"
+    "tags-search",
+    "ui-id-1"
   ],
   "stylesheets": [
     "gridStyle.css",

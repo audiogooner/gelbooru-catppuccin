@@ -1,0 +1,79 @@
+/* ----------------------------------------------------
+   CONVERSATION CREATE (messages.css layout)
+   ---------------------------------------------------- */
+
+@use "messages-chrome";
+
+@include messages-chrome.shell;
+
+@media only screen and (min-width: 851px) {
+  .grid-container {
+    grid-template-columns: 230px minmax(0, 1fr) !important;
+    grid-template-areas: "leftmenu content" !important;
+  }
+
+  .grid-item:has(#createMessage) {
+    grid-area: leftmenu;
+  }
+
+  #messageWindow {
+    height: 100vh !important;
+  }
+}
+
+#messageContainer {
+  max-width: 42em;
+  padding: 1.25rem 1rem;
+}
+
+#sendMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  color: var(--text);
+  line-height: 1.55;
+
+  br {
+    display: none;
+  }
+
+  .usernameInput,
+  #textMessageArea {
+    width: 100% !important;
+    box-sizing: border-box;
+    margin: 0.15rem 0 0.75rem;
+    padding: 0.55rem 0.75rem !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    background: var(--base) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 7px !important;
+  }
+
+  #textMessageArea {
+    min-height: 12rem;
+    height: auto !important;
+    resize: vertical !important;
+    overflow: auto !important;
+  }
+
+  .g-recaptcha {
+    margin: 0.2rem 0 0.5rem;
+  }
+
+  input[type="submit"] {
+    align-self: flex-start;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+}

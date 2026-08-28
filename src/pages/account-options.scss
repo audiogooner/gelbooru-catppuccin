@@ -1,23 +1,192 @@
 /* ----------------------------------------------------
-   ACCOUNT OPTIONS PAGE
+   ACCOUNT OPTIONS
    ---------------------------------------------------- */
-th,
-td {
-  border-color: transparent !important;
-  background-color: transparent !important;
-  color: var(--text) !important;
-  text-align: left;
+
+.navSubmenu > a[href*="s=options"] {
+  color: var(--blue) !important;
 }
 
-tr.accountOptions:nth-child(3) > th:nth-child(1) > label:nth-child(1),
-tr.accountOptions:nth-child(15) > th:nth-child(1) > label:nth-child(1) {
-  background-color: var(--red) !important;
-  border: none !important;
-  color: #fff !important;
+.mainBodyPadding > br {
+  display: none;
+}
+
+table.form {
+  width: auto;
+  max-width: 100%;
+  table-layout: auto;
+
+  th,
+  td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: normal;
+  }
+
+  th[width],
+  td[width] {
+    width: auto !important;
+  }
+
+  > tbody > tr:not(.accountOptions) {
+    display: none;
+  }
+}
+
+tr.accountOptions {
+  th {
+    min-width: 14rem;
+    padding: 0.6rem 1.25rem 0.6rem 0;
+  }
+
+  td {
+    min-width: 12rem;
+    max-width: 36rem;
+    padding: 0.6rem 0;
+  }
+
+  textarea {
+    width: 100% !important;
+    max-width: 36rem;
+    box-sizing: border-box;
+  }
+
+  label.block {
+    color: var(--text);
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    color: var(--subtext0);
+    line-height: 1.45;
+
+    b {
+      color: var(--text);
+    }
+  }
+
+  input[type="checkbox"] {
+    --toggle-pad: 2px;
+    --toggle-thumb: 16px;
+    --toggle-travel: 16px;
+    --toggle-ease: 0.15s ease;
+
+    appearance: none;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 36px;
+    height: 20px;
+    margin: 0.15rem 0.4rem 0.15rem 0;
+    padding: 0 !important;
+    vertical-align: middle;
+    background: var(--surface1) !important;
+    border: none !important;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color var(--toggle-ease);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: var(--toggle-pad);
+      width: var(--toggle-thumb);
+      height: var(--toggle-thumb);
+      background: var(--text);
+      border-radius: 50%;
+      transform: translateY(-50%);
+      transition:
+        transform var(--toggle-ease),
+        background-color var(--toggle-ease);
+    }
+
+    &:checked {
+      background: var(--blue) !important;
+
+      &::before {
+        background: color-mix(in srgb, var(--blue) 12%, var(--base));
+        transform: translate(var(--toggle-travel), -50%);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+  }
+}
+
+tr.accountOptions:has(input[name="ad_type[]"]) > td {
+  display: grid;
+  grid-template-columns: auto max-content;
+  align-items: center;
+  justify-content: start;
+  gap: 0.45rem 0.55rem;
+
+  input[type="checkbox"] {
+    margin: 0;
+  }
+}
+
+tr.accountOptions:has(input[name="fringeBenefits"]) label.block {
+  padding: 5px 0;
+  color: var(--crust) !important;
   text-align: center;
+  background: var(--red) !important;
+  border: none !important;
   border-radius: 10px;
 }
 
-tr.accountOptions:nth-child(15) > th:nth-child(1) > label:nth-child(1) {
-  background-color: var(--green) !important;
+tr.accountOptions:has(input[name="safe_only"]) label.block {
+  padding: 5px 0;
+  color: var(--crust) !important;
+  text-align: center;
+  background: var(--green) !important;
+  border: none !important;
+  border-radius: 10px;
+}
+
+tr.accountOptions:has(input[name="submit"]) {
+  > td:first-child:empty {
+    display: none;
+  }
+
+  input.searchList {
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  tr.accountOptions {
+    display: block;
+
+    > th,
+    > td {
+      display: block;
+      width: 100% !important;
+      min-width: 0;
+    }
+
+    > th {
+      padding: 0.6rem 0 0.35rem;
+    }
+
+    > td {
+      padding: 0 0 0.85rem;
+      max-width: none;
+    }
+  }
 }

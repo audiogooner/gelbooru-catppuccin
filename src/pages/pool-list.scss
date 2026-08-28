@@ -1,0 +1,143 @@
+/* ----------------------------------------------------
+   POOL LIST (grid layout)
+   ---------------------------------------------------- */
+
+.aside {
+  display: none !important;
+}
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navSubmenu {
+  > a[href*="page=pool"][href*="s=list"] {
+    color: var(--blue) !important;
+  }
+
+  > a[href*="page=pool"][href*="s=add"] {
+    color: var(--green) !important;
+  }
+
+  > a[href*="page=help"][href*="topic=pool"] {
+    color: var(--green) !important;
+  }
+}
+
+.mainBodyPadding {
+  > br {
+    display: none;
+  }
+}
+
+table.highlightable {
+  width: 100%;
+  color: var(--text) !important;
+  font-size: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--surface1);
+  border-radius: 10px;
+  overflow: hidden;
+
+  td {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    padding: 0.65rem 0.85rem !important;
+    color: var(--text) !important;
+    vertical-align: middle;
+    background: transparent !important;
+
+    & + td {
+      border-left: 1px solid var(--surface1) !important;
+    }
+  }
+
+  tr:last-child > td {
+    border-bottom: none !important;
+  }
+
+  /* Cover thumb */
+  td:first-child {
+    width: 60px !important;
+    padding: 0.5rem !important;
+    text-align: center;
+    border-left: none !important;
+
+    img {
+      display: block;
+      width: 50px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 7px;
+      box-shadow: 0 0 10px var(--crust);
+      transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+
+      &:hover {
+        scale: 110%;
+        border-radius: 0;
+        box-shadow: 0 0 30px var(--surface0);
+      }
+    }
+  }
+
+  /* Title + meta */
+  td:nth-child(2) {
+    > div:first-child > a {
+      font-size: 1.05em;
+      font-weight: 600;
+    }
+
+    > span,
+    span[style*="color"] {
+      color: var(--subtext0) !important;
+      font-size: 0.9em !important;
+      line-height: 1.45;
+    }
+  }
+
+  /* Image count / visibility */
+  td.sm-hidden {
+    text-align: center !important;
+    width: auto !important;
+    font-size: 1em !important;
+    color: var(--subtext1) !important;
+    white-space: nowrap;
+
+    b {
+      font-weight: 600;
+      color: var(--text);
+    }
+  }
+}
+
+#paginator {
+  padding: 0.5rem 0 1.5rem;
+
+  > br {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  table.highlightable {
+    td.sm-hidden {
+      display: none !important;
+    }
+
+    td + td {
+      border-left: none !important;
+    }
+
+    td:nth-child(2) {
+      border-left: 1px solid var(--surface1) !important;
+    }
+  }
+}

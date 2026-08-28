@@ -1,0 +1,167 @@
+/* ----------------------------------------------------
+   TAG IMPLICATIONS (grid layout)
+   ---------------------------------------------------- */
+
+.aside {
+  display: none !important;
+}
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navSubmenu > a[href*="s=implications"] {
+  color: var(--blue) !important;
+}
+
+.mainBodyPadding {
+  > br {
+    display: none;
+  }
+}
+
+table.form {
+  width: auto;
+  max-width: 100%;
+  margin-bottom: 1rem;
+
+  > tbody {
+    display: grid;
+    grid-template-columns: auto minmax(0, 28rem) auto;
+    align-items: start;
+    column-gap: 0.65rem;
+  }
+
+  > tbody > tr {
+    display: contents;
+  }
+
+  th,
+  td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: normal;
+  }
+
+  th {
+    padding: 0.35rem 0.6rem 0.35rem 0;
+    min-width: 0;
+
+    p {
+      margin: 0.35rem 0 0;
+      color: var(--subtext0);
+      line-height: 1.45;
+    }
+  }
+
+  td {
+    padding: 0.35rem 0;
+  }
+
+  > tbody > tr:has(> td:first-child:empty) > td:first-child:empty {
+    display: none;
+  }
+
+  #name.tag-list-search {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  td:has(input.searchList) {
+    align-self: start;
+    padding-top: 0.35rem;
+  }
+
+  input.searchList {
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+}
+
+table.highlightable {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--surface1);
+  border-radius: 10px;
+  overflow: hidden;
+
+  th {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    border-radius: 0;
+  }
+
+  td {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    padding: 0.45rem 0.75rem;
+    word-break: break-word;
+
+    b {
+      margin: 0 0.4em;
+      color: var(--sapphire);
+      font-weight: 600;
+    }
+  }
+
+  tr:last-child > td {
+    border-bottom: none !important;
+  }
+
+  tr.rejected-tag {
+    background: color-mix(in srgb, var(--red) 16%, var(--base)) !important;
+  }
+
+  tr.pending-tag {
+    background: color-mix(in srgb, var(--blue) 16%, var(--base)) !important;
+  }
+}
+
+#paginator {
+  padding: 0.5rem 0 1.5rem;
+
+  > br {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  table.form {
+    > tbody {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    th {
+      grid-column: 1 / -1;
+      padding-right: 0;
+      padding-bottom: 0.25rem;
+    }
+
+    #name.tag-list-search {
+      width: 100%;
+    }
+  }
+}

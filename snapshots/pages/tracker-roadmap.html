@@ -1,0 +1,3611 @@
+<!DOCTYPE html>
+<!--
+snapshot: tracker-roadmap
+url: https://gelbooru.com/index.php?page=tracker&s=roadmap
+title: | Gelbooru - Anime Art & Hentai Gallery - Free to Explore
+captured: 2026-08-28T16:15:43.561Z
+source: live
+stylesheets: bootstrap.css, responsive.css, jquery-ui.css, jquery-ui.icon-font.min.css
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>| Gelbooru - Anime Art &amp; Hentai Gallery - Free to Explore</title>
+    <link rel="stylesheet preload" href="https://gelbooru.com//bootstrap.css">
+    <link rel="stylesheet preload" type="text/css" media="screen" href="https://gelbooru.com//responsive.css?81g" title="default">
+    <link rel="stylesheet preload" type="text/css" media="screen" href="https://gelbooru.com//css/jquery-ui.css?81" title="default">
+    <link rel="stylesheet preload" type="text/css" href="https://gelbooru.com//css/jquery-ui.icon-font.min.css?81">
+    <meta name="adsbytrafficjunkycontext" data-invocation-type="publisher" data-spot-new="true" data-site-id="444001" data-site="Gelbooru" data-platform="desktop">
+    <meta name="rating" content="adult">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script data-snapshot-src="jquery.min.js"></script>
+    <style data-gelbooru-dev="blackout">
+    main img:not(.voteUpComment, .reportComment),
+    main video,
+    main canvas,
+    article img,
+    #image,
+    img.webm,
+    .commentThumbnail img,
+    .thumbnail-preview img,
+    .image-container img,
+    .image-container video,
+    .image-container canvas,
+    .profileAvatar {
+      filter: contrast(0) brightness(0.22) !important;
+    }
+
+    .profileAvatar {
+      background-image: none !important;
+      background-color: #313244 !important;
+    }
+  </style>
+    <style data-gelbooru-dev="base">/* ----------------------------------------------------
+   CONTENT BLOCKING
+   ---------------------------------------------------- */
+#myTopnav > a:nth-child(13),
+#motd,
+.noticeError,
+.root--ujvuu {
+  display: none !important;
+}
+
+/* frontpage Nyudachi promo */
+#static-index > div:has(> a[href*=nyudachi]),
+body > center:has(a[href*=nyudachi]) {
+  display: none !important;
+}
+
+/* Islamorag Twitch / extras/vtuber promo */
+a[href*="twitch.tv/islamorag"][target=_blank]:has(> img),
+a[target=_blank]:has(> img[src*="/extras/vtuber/islamorag/"]),
+#static-index > div:has(> a[href*=islamorag]),
+center:has(> a[href*="twitch.tv/islamorag"]) {
+  display: none !important;
+}
+
+/* frontpage AdBlock indicator */
+#static-index > div:has(> a[href="#"]) {
+  display: none !important;
+}
+
+body[style*=nyudachi] {
+  background-image: none !important;
+}
+
+.headerAd,
+.footerAd,
+.footerAd2,
+div:not([id], [class])[style*="font-size: 1.2em"]:has(> a[rel=nofollow][target=_blank]),
+.mainBodyPadding > a[href*="pixiv.net"][target=_blank]:has(> img),
+main > center:has(video),
+center:has([data-cl-spot], [id^=__clb-spot]),
+[data-cl-spot],
+[id^=__clb-spot],
+div:has(> .exo-video-slider-container-wrapper),
+.exo-video-slider-container-wrapper,
+[id$=-exo-video-slider-content] {
+  display: none !important;
+}
+
+/* ----------------------------------------------------
+   COLOR PALETTE - Catppuccin Mocha
+   ---------------------------------------------------- */
+:root {
+  /* Base colors */
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  /* Text colors */
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --subtext2: #a6adc8;
+  /* Overlay colors */
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  /* Surface colors */
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  /* Background colors */
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+}
+
+/* ----------------------------------------------------
+   GLOBAL STYLES
+   ---------------------------------------------------- */
+html,
+body {
+  background-color: var(--base) !important;
+  color: var(--text) !important;
+}
+
+a {
+  color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   FORM ELEMENTS
+   ---------------------------------------------------- */
+textarea,
+input {
+  background-color: var(--surface0);
+  border: solid 1px var(--surface1) !important;
+  outline: none;
+  border-radius: 7px;
+  color: var(--text);
+}
+textarea:focus,
+input:focus {
+  background-color: var(--surface0) !important;
+  border-color: var(--blue) !important;
+}
+textarea::placeholder,
+input::placeholder {
+  color: var(--text) !important;
+}
+
+input {
+  padding: 2px 5px;
+}
+
+textarea {
+  padding-left: 7px;
+}
+
+.secondary_search,
+.searchList {
+  border-radius: 7px !important;
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  transition: 0.1s;
+}
+.secondary_search:hover,
+.searchList:hover {
+  background: var(--surface1) !important;
+}
+
+/* ----------------------------------------------------
+   NAVIGATION
+   ---------------------------------------------------- */
+.topnav,
+#navbar {
+  background-color: var(--surface0);
+}
+
+.topnav *,
+#navbar * {
+  color: var(--text) !important;
+}
+
+.homeIcon > img:nth-child(1),
+.navbar-brand,
+h2.siteName a {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(53%) saturate(3396%) hue-rotate(192deg) brightness(109%) contrast(96%);
+}
+
+.navSubmenu,
+#navbar2,
+#submenu,
+div.submenu {
+  background-color: var(--surface1);
+}
+
+.navSubmenu * {
+  color: var(--text) !important;
+}
+.navSubmenu > a:nth-child(6) * {
+  color: var(--green) !important;
+}
+
+.active,
+.active2 a,
+.active a {
+  background-color: var(--surface2) !important;
+  color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   SEARCH AREA
+   ---------------------------------------------------- */
+.searchArea {
+  background-color: var(--base);
+}
+.searchArea > div:nth-child(1) > form:nth-child(1) > a:nth-child(1) > img:nth-child(1) {
+  filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg) brightness(100%) contrast(92%);
+}
+
+.sm-hidden {
+  color: var(--text);
+}
+
+.ui-menu.ui-autocomplete {
+  background-color: var(--surface0) !important;
+  border: none !important;
+  border-radius: 7px;
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-menu-item-wrapper {
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-state-active,
+.ui-menu.ui-autocomplete .ui-state-focus {
+  margin: 0;
+  border: none !important;
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+}
+
+/* ----------------------------------------------------
+   HOMEPAGE SPECIFIC
+   ---------------------------------------------------- */
+#static-index {
+  background-color: var(--base);
+}
+#static-index > h1:nth-child(1) > a:nth-child(1) {
+  color: var(--blue) !important;
+  transition: 0.5s;
+}
+#static-index > div:nth-child(8) > a:nth-child(1),
+#static-index > small:nth-child(19) a {
+  color: var(--blue) !important;
+}
+#static-index > div:nth-child(8),
+#static-index > small:nth-child(18) {
+  color: var(--subtext2) !important;
+}
+#static-index > small:nth-child(19) {
+  color: var(--subtext2) !important;
+}
+#static-index > small:nth-child(19)::before {
+  content: "\a";
+  white-space: pre;
+}
+
+#links {
+  cursor: default;
+}
+#links > a:nth-child(n) {
+  color: var(--subtext1) !important;
+  transition: 140ms;
+}
+#links > a:nth-child(n):hover {
+  color: var(--text) !important;
+}
+
+/* ----------------------------------------------------
+   TAG STYLING
+   ---------------------------------------------------- */
+.tag-type-artist .sm-hidden a,
+.tag-type-character .sm-hidden a,
+.tag-type-copyright .sm-hidden a,
+.tag-type-metadata .sm-hidden a,
+.tag-type-general .sm-hidden a {
+  transition: 0.1s;
+}
+.tag-type-artist:hover .sm-hidden a,
+.tag-type-character:hover .sm-hidden a,
+.tag-type-copyright:hover .sm-hidden a,
+.tag-type-metadata:hover .sm-hidden a,
+.tag-type-general:hover .sm-hidden a {
+  text-shadow: 0 0 10px var(--red);
+}
+.tag-type-artist > span,
+.tag-type-character > span,
+.tag-type-copyright > span,
+.tag-type-metadata > span,
+.tag-type-general > span {
+  color: var(--subtext0) !important;
+  transition: 0.1s;
+}
+.tag-type-artist:hover > span,
+.tag-type-character:hover > span,
+.tag-type-copyright:hover > span,
+.tag-type-metadata:hover > span,
+.tag-type-general:hover > span {
+  text-shadow: 0 0 10px var(--subtext0) !important;
+}
+
+.tag-type-artist > a {
+  color: var(--red) !important;
+  transition: 0.1s;
+}
+.tag-type-artist:hover > a {
+  text-shadow: 0 0 10px var(--red);
+}
+
+.tag-type-character > a {
+  color: var(--green) !important;
+  transition: 0.1s;
+}
+.tag-type-character:hover > a {
+  text-shadow: 0 0 10px var(--green);
+}
+
+.tag-type-copyright > a {
+  color: var(--pink) !important;
+  transition: 0.1s;
+}
+.tag-type-copyright:hover > a {
+  text-shadow: 0 0 10px var(--pink);
+}
+
+.tag-type-metadata > a {
+  color: var(--yellow) !important;
+  transition: 0.1s;
+}
+.tag-type-metadata:hover > a {
+  text-shadow: 0 0 10px var(--yellow);
+}
+
+.tag-type-general > a {
+  color: var(--blue) !important;
+  transition: 0.1s;
+}
+.tag-type-general:hover > a {
+  text-shadow: 0 0 10px var(--blue);
+}
+
+/* ----------------------------------------------------
+   IMAGES AND MEDIA
+   ---------------------------------------------------- */
+#image {
+  border-radius: 10px;
+  box-shadow: 0 0 20px var(--crust);
+  margin-top: 0 !important;
+}
+
+.mainBodyPadding > div:nth-child(n) img,
+article img {
+  border-radius: 7px;
+  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+  box-shadow: 0 0 10px var(--crust);
+}
+.mainBodyPadding > div:nth-child(n) img:hover:not(.voteUpComment):not(.reportComment),
+article img:hover:not(.voteUpComment):not(.reportComment) {
+  scale: 110%;
+  border-radius: 0;
+  box-shadow: 0 0 30px var(--surface0);
+}
+
+.fluid_controls_currentprogress {
+  background-color: var(--blue) !important;
+}
+
+img.webm {
+  border: 3px solid var(--blue);
+}
+
+/* ----------------------------------------------------
+   COMMENTS AND USER CONTENT
+   ---------------------------------------------------- */
+.commentBody {
+  color: var(--text) !important;
+}
+
+div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
+  border-radius: 10px;
+}
+
+.voteUpComment,
+.reportComment {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.reportComment {
+  filter: brightness(0) saturate(100%) invert(59%) sepia(71%) saturate(330%) hue-rotate(297deg) brightness(98%) contrast(94%);
+}
+
+.voteUpComment {
+  filter: brightness(0) saturate(100%) invert(61%) sepia(35%) saturate(584%) hue-rotate(183deg) brightness(107%) contrast(96%);
+}
+
+.profileAvatar {
+  border: 2px solid var(--surface2);
+  box-shadow: 0 0 30px rgba(88, 91, 112, 0.27);
+}
+
+/* ----------------------------------------------------
+   PAGINATION AND TABLES
+   ---------------------------------------------------- */
+#paginator a {
+  display: inline-block;
+  margin: 3px !important;
+  padding: 12px 16px !important;
+  border-radius: 10px;
+  background-color: var(--surface1);
+  border: none !important;
+  transition: 0.1s;
+}
+#paginator a:hover {
+  background-color: var(--blue) !important;
+  color: var(--text) !important;
+}
+#paginator b {
+  background-color: transparent;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--blue) !important;
+  color: var(--base) !important;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.mainBodyPadding > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) {
+  background: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   MISC ELEMENTS
+   ---------------------------------------------------- */
+.aside {
+  border-right: solid 1px var(--overlay1);
+}
+
+footer {
+  background: var(--surface0) !important;
+}
+footer * {
+  color: var(--text) !important;
+}
+
+.alert-info,
+.alert-info * {
+  background-color: var(--surface2);
+  color: var(--text) !important;
+  border: none;
+  border-radius: 10px;
+}
+
+#notice {
+  background-color: var(--red) !important;
+  border: none !important;
+  color: var(--crust);
+  box-shadow: 0 0 20px var(--red);
+}
+
+.mainBodyPadding > div:nth-child(n+18) > div:nth-child(2) > span:nth-child(6) > span:nth-child(2) > a:nth-child(1) {
+  color: var(--red) !important;
+}</style>
+    <script data-snapshot-src="miscJs.js"></script>
+    <script data-snapshot-src="jquery-hotkeys.js"></script>
+    <script data-snapshot-src="tryt.js"></script>
+    <script data-snapshot-src="autoDebug.js"></script>
+    <style>
+	 .mn-container-adsby_position_bottom-right {
+		 display: none;
+	 }
+	</style>
+  </head>
+  <body class="vc-init">
+    <div id="gelbooru-dev-overlay" data-gelbooru-dev="overlay" style="border-block-style: initial !important; border-inline: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-block-width: initial !important; border-block-color: initial !important; overflow-block: initial !important; overflow-inline: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !importan…"></div>
+    <div class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://gelbooru.com/"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="https://gelbooru.com/index.php?page=account&amp;s=home">Settings</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=post&amp;s=list&amp;tags=all">Posts</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=comment&amp;s=list">Comments</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=wiki&amp;s=list">Wiki</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=tags&amp;s=list">Tags</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=pool&amp;s=list">Pools</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=forum&amp;s=list">Forum</a>
+            </li>
+            <li class="active strong">
+              <a href="https://gelbooru.com/index.php?page=tracker&amp;s=list">Trac</a>
+            </li>
+            <li>
+              <a class="ui-icon ui-icon-lightbulb" href="javascript:;" style="color: #ffff00; font-size: 20px; margin: 7px 5px 7px 15px;"></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <nav class="navbar navbar-default" id="submenu">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div id="navbar2" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="index.php?page=tracker&amp;s=list">Ticket Listing</a>
+            </li>
+            <li>
+              <a href="index.php?page=tracker&amp;s=create_ticket">
+                <b>Create Ticket</b>
+              </a>
+            </li>
+            <li>
+              <a href="index.php?page=tracker&amp;s=changelog">Changelog</a>
+            </li>
+            <li>
+              <a href="index.php?page=tracker&amp;s=roadmap">Roadmap</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="alert alert-warning small" style="padding: 10px 15px 10px 15px; font-size: 11px;" id="motd">
+      <i>
+        <b>Notice</b>
+      </i>
+      :
+      <a href="https://twitter.com/gelbooru/status/1577845556273102848" style="color: #ffff00; font-weight: bold;" target="_blank">
+        My personal stance on AI generated artwork. Retweet and share if you agree. Let us discuss, and not immediately scream bloody murder.
+      </a>
+    </div>
+    <div style="display: none; padding: 0px 15px 0px 15px;" id="motdspacer"></div>
+    <div class="padding15">
+      <div id="long-notice"></div>
+      <div id="notice" style="display: none;"></div>
+      <div class="alert alert-success" role="alert" style="display: none;">
+        <center>
+          <a href="index.php?page=gmail">You have mail</a>
+        </center>
+      </div>
+      <script type="text/javascript"></script>
+      <script data-snapshot-src="application3.js"></script>
+      <script data-snapshot-src="license.30.js"></script>
+      <div id="content">
+        <h3>Gelbooru Roadmap</h3>
+        <br>
+        <div style="padding-left: 5px; font-size: 12px;">
+          Gelbooru - 0.2.0
+          <br>
+          =====================
+          <br>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=1">0000001</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Forum topic edits do not work. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=4">0000004</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              ~tag1 ~tag2 not working - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=5">0000005</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Addition of tag list/cloud? - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=6">0000006</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              My favorites link on post view - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=262">0000262</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              New artist becomes alias for all other artists - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=263">0000263</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Be able to delete Messages in outbox - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=264">0000264</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              print underscore in tag names - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=9">0000009</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Forum topic edits do not work - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=265">0000265</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Post list Bug, the sort by the time the image was last edited does not work. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=10">0000010</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Comment Threshold option does not work - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=11">0000011</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Safe only feature - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=267">0000267</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Atom/RSS Feed for tags - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=12">0000012</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Wallpaper auto tag sizes - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=13">0000013</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Image ratings should block only image - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=269">0000269</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              API requests for tags returns results in random order (and more) - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=14">0000014</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Javascript bug with flag for deletion. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=270">0000270</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Numbering comments on the frontend - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=271">0000271</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Force users to enter at least X number of tags - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=272">0000272</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Child posts don't appear in browse list? - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=17">0000017</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Thumbnails don't generate correctly. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=274">0000274</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Note history not showing up - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=19">0000019</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Blacklist not working correctly again. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=275">0000275</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              > breaks feeds if in username - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=20">0000020</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Tag types not working correctly. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=276">0000276</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Search box for forums does not work - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=21">0000021</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Deleting comments count not working - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=22">0000022</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              tag_history types command out of sync - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=278">0000278</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Hide/unhide notes - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=23">0000023</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Show user comments link - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=279">0000279</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Last Reply by, column in Forum - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=24">0000024</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Forum posts don't increase? - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=280">0000280</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Can't upload image, checked "multi-service image service" &amp; image doesn't exist - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=26">0000026</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              session_start should be moved to files that require it. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=27">0000027</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Saving blacklist with different tags does not store in db. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=28">0000028</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Comment Spam report not showing as flagged untill refreshed - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=284">0000284</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              JSON mode for api - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=29">0000029</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Parent tagging not working - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=30">0000030</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Notes with carriage return don't display correctly. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=286">0000286</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              big_breasts -> large_breasts - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=31">0000031</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              more intuitive tag history page like danbooru - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=287">0000287</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              tags column overlapping left most thumbnails and original image - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=32">0000032</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              color frames around thumbnails to indicate parent-child relationship - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=288">0000288</a>
+            :
+            <s>
+              <b>[Browser Problems]</b>
+              posted images fail to display for Firefox 3.0.x browser - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=33">0000033</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              MD5 Search - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=34">0000034</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Atom listing using fulltext? - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=36">0000036</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              displaying searched tags in browser title bar - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=292">0000292</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Favorites count are out of sync again? - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=38">0000038</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Title of forum topic in browser title - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=294">0000294</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Image content duplication check - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=39">0000039</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Revert does not update search. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=295">0000295</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Add to Pool function - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=40">0000040</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Approving aliases - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=296">0000296</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Sync error? - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=297">0000297</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Thumb and Images don't show up since 639258 - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=298">0000298</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Make favoriting counts as a positive vote. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=43">0000043</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Let Them Sort By Score - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=300">0000300</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              'My Tags' in Upload screen that have apostrophes lead to a tag search - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=45">0000045</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Comments on the post view page do not link to users profile. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=301">0000301</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              GIF thumbnail generation fails badly - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=302">0000302</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Blacklisting broken - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=305">0000305</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Link failure? - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=51">0000051</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              tagme is automatically added to posts - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=52">0000052</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Single View of Post - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=308">0000308</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Support for formatting in notes/translation notes - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=53">0000053</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Searching characters - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=309">0000309</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Unable to only sort images? - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=54">0000054</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Give CoolIris feed ability to use tags - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=55">0000055</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Bug with negating search terms. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=311">0000311</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Blacklisting broken again - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=56">0000056</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Add group permission to limit note adding. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=57">0000057</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Score filtering not correctly working. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=58">0000058</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Moderation Queue for Anonymous posts - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=315">0000315</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Skip posts containing tags on your blacklist - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=316">0000316</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              On comments: Clicking "report as spam", then cancel, changes the link to "reported" - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=62">0000062</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Pool Tags - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=318">0000318</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Can't upload, FastCGI Error - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=319">0000319</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              source request - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=320">0000320</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Break off-site image file hotlinking with directory reshuffle/renaming - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=65">0000065</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Tag List - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=321">0000321</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              How long will it take for the site to come back normal? - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=66">0000066</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Images do not always resize correctly - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=322">0000322</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Blacklisting - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=323">0000323</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              new mail notice also appeared on comments page - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=68">0000068</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              \m/ doesn't work correctly during search/edits - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=324">0000324</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Tag History "Revert" Function Buggy - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=70">0000070</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              GelTrak tickets eat line breaks - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=71">0000071</a>
+            :
+            <s>
+              <b>[Browser Problems]</b>
+              Move show/hide to top in comment page - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=72">0000072</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Add searching on Source field - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=73">0000073</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Show total votes for images - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=74">0000074</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Make blacklist autoomit from search. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=75">0000075</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Post Score not working - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=77">0000077</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              ' is not working in search. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=78">0000078</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Alias in blacklist cause 404 - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=334">0000334</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Add and remove tags automatically based on existing tags - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=79">0000079</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Alias with - in it 404 - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=336">0000336</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Link Spam? - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=81">0000081</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              images disappearing - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=338">0000338</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Default sorting in "Tags" section - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=83">0000083</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Remove Character: from grave - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=339">0000339</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Artist profile post page error. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=84">0000084</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              "generic:" tag type - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=85">0000085</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Update image score threshold - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=341">0000341</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Display only safe/questionable/explicit - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=342">0000342</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Artist name issues with ampersand (&amp;) in Artists tab - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=87">0000087</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Bump valid pictures to the top for score treshold - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=343">0000343</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Unable to find image - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=344">0000344</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Can't edit translation notes - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=345">0000345</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Unable to sort Tags - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=91">0000091</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              3 word minimum for comments. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=92">0000092</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Blacklist Revamp - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=93">0000093</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Score: part of tag blacklist - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=350">0000350</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Tag history version is incorrect on initial upload. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=95">0000095</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Use blocked image - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=97">0000097</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Safe only searching. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=353">0000353</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Links to the Doujin - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=98">0000098</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Easier temporary banning system. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=354">0000354</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              unable to delete my account - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=101">0000101</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Folders in favorite list - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=357">0000357</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Deleted post count stays the same. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=359">0000359</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Possibility to have blacklisted search terms be hidden in main "Posts" list? - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=104">0000104</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Transfer tag types - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=105">0000105</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Image resizing bug - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=361">0000361</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              cant delete sent emails - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=362">0000362</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Allow comments on tags themselves - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=364">0000364</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Mail notification doesn't clear until second click - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=109">0000109</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Translations on resized images - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=110">0000110</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Safe only mode automatically turned on - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=111">0000111</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Images should not be able to become a parent and child. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=368">0000368</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              A way to subscribe - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=113">0000113</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              New tags on upload cause issues. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=114">0000114</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Sort by - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=117">0000117</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Bold font for new/bumped threads in forum - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=118">0000118</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              \m/ does not edit correctly as a tag. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=375">0000375</a>
+            :
+            <s>
+              <b>[Browser Problems]</b>
+              keywords - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=121">0000121</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Indicator for mail - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=379">0000379</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Moderator seach comments from user's profile - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=124">0000124</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Just Wonder'n - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=380">0000380</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              img2 server just seems to have died. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=125">0000125</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Danbooru's Features - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=381">0000381</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Pics not showing up - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=382">0000382</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Fit to screen - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=127">0000127</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Hyperlink Feature for Gelb Forum. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=383">0000383</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              comment deletion problem - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=128">0000128</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Cooliris Support - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=384">0000384</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Way to rss to a certain tag - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=130">0000130</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Tag updates Should Override Initial upload updates - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=131">0000131</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Reverting post tags doesn't work - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=388">0000388</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              touhou tag - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=133">0000133</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Blocked image doesn't work on searched images. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=134">0000134</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Images blocked by post rating do not appear even in your own favorites - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=391">0000391</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              "Similar" button problem. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=136">0000136</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              search system improvment - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=138">0000138</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Preview post feature for Mail - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=394">0000394</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Problem with rosario+vampire search - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=139">0000139</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Organizing favorites - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=140">0000140</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Search for items in blacklist - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=396">0000396</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Can't vote up or down - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=397">0000397</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Save "show full size" option status - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=142">0000142</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              New line in preview for Inbox - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=398">0000398</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Images not loading. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=144">0000144</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Unable to add tag "ikenami_ryūnosuke" - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=403">0000403</a>
+            :
+            <s>
+              <b>[Browser Problems]</b>
+              Add TinEye search into gelbooru - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=148">0000148</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Preview for Mail Doesn't process tags(Public view ticket, clicked the wrong button) - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=149">0000149</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Translations on resized images - 2 - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=150">0000150</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Unable to add alias with "ū" - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=411">0000411</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Tag Edit - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=412">0000412</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Images will not load - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=157">0000157</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Random button leads to a dead end error - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=158">0000158</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Error Creating User Account - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=159">0000159</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Authentication Required Dialogs - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=163">0000163</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Adding "tagme" to lightly-tagged images - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=165">0000165</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Highlighting Threads with New Posts in Forum - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=167">0000167</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Sent Mail Box under Mail - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=423">0000423</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              MDS search not working - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=168">0000168</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Showing Who has Favorited an Image - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=424">0000424</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              MD5 search feature is not working - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=425">0000425</a>
+            :
+            <s>
+              <b>[Browser Problems]</b>
+              Can images be deleted from Gelbooru? - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=170">0000170</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Bunch of MySQL errors - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=426">0000426</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Download all "x" tag! - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=171">0000171</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Weird background noises, audible advertisements, browser crashes, virus warnings - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=174">0000174</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Private tickets viewable by poster - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=430">0000430</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              showing when no tags in profile for blacklisting - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=431">0000431</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Unable to edit tags - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=177">0000177</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Tag listing - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=433">0000433</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Can someone delete my account? - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=181">0000181</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Pool with login prompts - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=184">0000184</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Error when creating Personal Pool - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=191">0000191</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Showing Image Source on Image Pages - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=192">0000192</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Ablilty to turn on/off Anonymous edits to Public pools - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=193">0000193</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Audio ads - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=194">0000194</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Unable to Create New Topic in Forum - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=196">0000196</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Changing "Add Translation" to "Add Note" - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=199">0000199</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Showing Last Poster For Thread In Forum - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=200">0000200</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Blacklist update error - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=201">0000201</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Create Sticky Thread to inform forum users to post feature requests in the tracker - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=207">0000207</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Parent/Child Post Link Broken - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=209">0000209</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Images are posted with one tag. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=210">0000210</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Thumbnail Images aren't appear. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=212">0000212</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Bunch of Recent Danbooru Images Missing - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=218">0000218</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Crapload of Comment Spam - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=220">0000220</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Edits do not work - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=222">0000222</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Bunch of posts missing - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=228">0000228</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Posts missing problem. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=235">0000235</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Fix Atom feed time - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=238">0000238</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Tracker search - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=241">0000241</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Occasional error message while uploading .bmp images. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=247">0000247</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Cannot Delete Artist - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=253">0000253</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              No tags of name - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=254">0000254</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Private Message Error, Rating Error - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=255">0000255</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Can't Reply On Any Forums - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=256">0000256</a>
+            :
+            <b>[Bug Reporting]</b>
+            Forum topics without title - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=260">0000260</a>
+            :
+            <b>[Bug Reporting]</b>
+            Reverted tags do not use aliases - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=337">0000337</a>
+            :
+            <b>[Bug Reporting]</b>
+            Making new forum topic? - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=376">0000376</a>
+            :
+            <b>[Bug Reporting]</b>
+            rn (tagging glitch) - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=377">0000377</a>
+            :
+            <b>[Bug Reporting]</b>
+            Was able to delete image when not logged on - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=389">0000389</a>
+            :
+            <b>[Bug Reporting]</b>
+            Tag queries in API do not properly populate type attribute - (lozertuser) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=390">0000390</a>
+            :
+            <b>[Bug Reporting]</b>
+            Aliasing broken - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=417">0000417</a>
+            :
+            <b>[Feature Request]</b>
+            Only listing width:>height or height:>width posts. - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=214">0000214</a>
+            :
+            <b>[Bug Reporting]</b>
+            dive by zero (tag number glitch) - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=236">0000236</a>
+            :
+            <b>[Feature Request]</b>
+            Revert for pools - (geltas) - Open
+          </span>
+          <br>
+          <br>
+          <div style="padding-left: 15px;">Resolved 210 of 220 issues.</div>
+          <br>
+          <br>
+          Gelbooru - 0.2.1
+          <br>
+          =====================
+          <br>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=7">0000007</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Shockwave/Flash posts? - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=285">0000285</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Search by image URL - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=290">0000290</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              FrontEnd: Improve Usability of Artist List - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=303">0000303</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Search Favorites "&lt;user>:favorites" - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=310">0000310</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Notification of deletion of favorites/uploaded posts - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=313">0000313</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Let the tags be visible when mouse cursor is over a "blacklisted" thumbnail - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=317">0000317</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Errors with artists with an ampersand in their name - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=67">0000067</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Add support for wildcard as the first character - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=347">0000347</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Dark-style theme for Gelbooru - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=358">0000358</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Feature that lets us find our own comments (like posts or favorites) - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=366">0000366</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Better visibility of deleted images - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=369">0000369</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Parent images are listed with children as parents of themselves - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=116">0000116</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Add color coding for images - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=386">0000386</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Re-vote - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=413">0000413</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Cannot resize images down. - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=162">0000162</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Query shows no title in forum - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=185">0000185</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Merge Command - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=189">0000189</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Way to Update Picture Info on Danbooru Images? - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=246">0000246</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              autofill - (geltas) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=261">0000261</a>
+            :
+            <b>[Browser Problems]</b>
+            Move/add clickable (# hidden) link on top in comments section - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=8">0000008</a>
+            :
+            <b>[Feature Request]</b>
+            Multifile upload - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=266">0000266</a>
+            :
+            <b>[Feature Request]</b>
+            Ability to Flag Forum Posts - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=268">0000268</a>
+            :
+            <b>[Bug Reporting]</b>
+            Account options not saving - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=16">0000016</a>
+            :
+            <b>[Feature Request]</b>
+            Thumbnails for massive width/height images - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=273">0000273</a>
+            :
+            <b>[Feature Request]</b>
+            Alias sorting - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=277">0000277</a>
+            :
+            <b>[Feature Request]</b>
+            Clone Some Danbooru APIs - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=299">0000299</a>
+            :
+            <b>[Feature Request]</b>
+            duplicate delete redirect - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=44">0000044</a>
+            :
+            <b>[Feature Request]</b>
+            Toplists - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=306">0000306</a>
+            :
+            <b>[Feature Request]</b>
+            Recently updated pools - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=312">0000312</a>
+            :
+            <b>[Feature Request]</b>
+            Displaying file size - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=69">0000069</a>
+            :
+            <b>[Feature Request]</b>
+            Dynamic banner for linking to gelbooru showing recent images - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=326">0000326</a>
+            :
+            <b>[Feature Request]</b>
+            Ability to import tags/notes from thatotherbooru after an image has been uploaded to gelbooru - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=327">0000327</a>
+            :
+            <b>[Feature Request]</b>
+            metatag to get only posts uploaded at a certain date ? - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=332">0000332</a>
+            :
+            <b>[Feature Request]</b>
+            Mod notices in comments - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=335">0000335</a>
+            :
+            <b>[Feature Request]</b>
+            Shorter rating query aliases - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=340">0000340</a>
+            :
+            <b>[Bug Reporting]</b>
+            Flagging for deletion and tag history - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=86">0000086</a>
+            :
+            <b>[Feature Request]</b>
+            Forum page numbers at top, and next to name - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=99">0000099</a>
+            :
+            <b>[Feature Request]</b>
+            Comment notifications - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=100">0000100</a>
+            :
+            <b>[Feature Request]</b>
+            bookmarklet feature and uploading by URL - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=356">0000356</a>
+            :
+            <b>[Feature Request]</b>
+            Show the number of results in a tag search - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=102">0000102</a>
+            :
+            <b>[Feature Request]</b>
+            List of people who favorited - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=360">0000360</a>
+            :
+            <b>[Feature Request]</b>
+            Stats listing - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=107">0000107</a>
+            :
+            <b>[Feature Request]</b>
+            Locks for images - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=365">0000365</a>
+            :
+            <b>[Feature Request]</b>
+            Duplicate image -> merge tags? - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=367">0000367</a>
+            :
+            <b>[Bug Reporting]</b>
+            Separate entries of the same tag - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=370">0000370</a>
+            :
+            <b>[Feature Request]</b>
+            Different types of pools (series, artist, theme), and an option to list pools based on type - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=371">0000371</a>
+            :
+            <b>[Feature Request]</b>
+            Show number of tags when in thumbnail list view, and search by number of tags - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=372">0000372</a>
+            :
+            <b>[Feature Request]</b>
+            Number of comments in thumbnail metadata - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=373">0000373</a>
+            :
+            <b>[Feature Request]</b>
+            Improve blackisitng by combining tags with boolean operations. - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=374">0000374</a>
+            :
+            <b>[Feature Request]</b>
+            Make a - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=378">0000378</a>
+            :
+            <b>[Feature Request]</b>
+            Search Pools - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=123">0000123</a>
+            :
+            <b>[Feature Request]</b>
+            Post pictures in forum - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=126">0000126</a>
+            :
+            <b>[Feature Request]</b>
+            Spoiler Box Feature for Gelb Forum. - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=387">0000387</a>
+            :
+            <b>[Feature Request]</b>
+            quick rating tool - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=135">0000135</a>
+            :
+            <b>[Feature Request]</b>
+            Preview post feature for Comments, Forum and Mail - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=137">0000137</a>
+            :
+            <b>[Feature Request]</b>
+            Preview post feature for Comments - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=405">0000405</a>
+            :
+            <b>[Feature Request]</b>
+            My Tags list and textarea - (lozertuser) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=161">0000161</a>
+            :
+            <b>[Feature Request]</b>
+            Gelbooru API (Maybe XML, SOAP?) - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=164">0000164</a>
+            :
+            <b>[Feature Request]</b>
+            Multiple tagging - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=166">0000166</a>
+            :
+            <b>[Feature Request]</b>
+            Formatting Tags for Translations - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=169">0000169</a>
+            :
+            <b>[Feature Request]</b>
+            Removing Favorites Using the Same Process as Adding - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=176">0000176</a>
+            :
+            <b>[Feature Request]</b>
+            Quoting A Comment - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=180">0000180</a>
+            :
+            <b>[Feature Request]</b>
+            Tag subscriptions - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=187">0000187</a>
+            :
+            <b>[Feature Request]</b>
+            Undoing Votes - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=188">0000188</a>
+            :
+            <b>[Feature Request]</b>
+            Changing Order of Comments for Each Image on Comments Page - (lozertuser) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=195">0000195</a>
+            :
+            <b>[Feature Request]</b>
+            Ability to Hide All Comments On Images - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=211">0000211</a>
+            :
+            <b>[Feature Request]</b>
+            Hide posts that are already in the favs - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=217">0000217</a>
+            :
+            <b>[Feature Request]</b>
+            Closest and related Search results - (geltas) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=240">0000240</a>
+            :
+            <b>[Feature Request]</b>
+            Comment page search - (geltas) - Open
+          </span>
+          <br>
+          <br>
+          <div style="padding-left: 15px;">Resolved 19 of 69 issues.</div>
+          <br>
+          <br>
+          Gelbooru - 0.1.11
+          <br>
+          =====================
+          <br>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=283">0000283</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              IP - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=289">0000289</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Image resizer - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=291">0000291</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Statistics - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=304">0000304</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Remove Favorites returns to page=1 - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=331">0000331</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Search window text stay - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=349">0000349</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Block/Hide Anon Users by IP from Registered Users View. - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=385">0000385</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              API - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=400">0000400</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Hash to md5 - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=429">0000429</a>
+            :
+            <s>
+              <b>[Bug Reporting]</b>
+              Lost password does not work - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=242">0000242</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              The Image Resizer. Powered with Lytebox / Highslide / Lightview / - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=243">0000243</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Source File upload - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=244">0000244</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Ajax Ratting system + favorites - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=245">0000245</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              An improved comment system - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=248">0000248</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Uploading feature based on certain usergroup - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=249">0000249</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Alias, php ban, ip, img resize - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=250">0000250</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Alias - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=251">0000251</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              IP in tag history - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=252">0000252</a>
+            :
+            <s>
+              <b>[Feature Request]</b>
+              Profile field - (lozertuser) - Resolved
+            </s>
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=328">0000328</a>
+            :
+            <b>[Feature Request]</b>
+            Editing comments after posted - (lozertuser) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=329">0000329</a>
+            :
+            <b>[Feature Request]</b>
+            account-options saving data - (lozertuser) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=330">0000330</a>
+            :
+            <b>[Feature Request]</b>
+            Alias deleting - (lozertuser) - Open
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=346">0000346</a>
+            :
+            <b>[Feature Request]</b>
+            Ban Anonymous user uploads/comments - (lozertuser) - Open
+          </span>
+          <br>
+          <br>
+          <div style="padding-left: 15px;">Resolved 18 of 22 issues.</div>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

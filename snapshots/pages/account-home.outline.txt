@@ -6,7 +6,9 @@ html
     meta
     link
     script
-  body
+    style
+    style
+  body.vc-init
     style
     div#container
       div#long-notice
@@ -38,12 +40,13 @@ html
         a
         a
         a
+        a
       div.searchArea
         div
           form
             a
               img
-            input#tags-search
+            input#tags-search.ui-autocomplete-input
             input.searchList
       style
       aside
@@ -51,6 +54,26 @@ html
         div.mainBodyPadding
           div
             h2
+            br
+            a
+            br
+            p
+            br
+            a
+            br
+            p
+            br
+            a
+            br
+            p
+            br
+            a
+            br
+            p
+            br
+            a
+            br
+            p
             br
             a
             br
@@ -89,3 +112,6 @@ html
     script
     script
     script
+    ul#ui-id-1.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
+    div.ui-helper-hidden-accessible
+    div#gelbooru-dev-overlay

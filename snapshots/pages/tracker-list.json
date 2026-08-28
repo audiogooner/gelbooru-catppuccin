@@ -2,8 +2,8 @@
   "id": "tracker-list",
   "url": "https://gelbooru.com/index.php?page=tracker&s=list",
   "title": "| Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
-  "capturedAt": "2026-08-19T19:08:00.280Z",
-  "source": "fetch",
+  "capturedAt": "2026-08-26T21:18:48.885Z",
+  "source": "live",
   "classes": [
     "active",
     "alert",
@@ -29,10 +29,12 @@
     "strong",
     "ticket-open",
     "ui-icon",
-    "ui-icon-lightbulb"
+    "ui-icon-lightbulb",
+    "vc-init"
   ],
   "ids": [
     "content",
+    "gelbooru-dev-overlay",
     "long-notice",
     "motd",
     "motdspacer",

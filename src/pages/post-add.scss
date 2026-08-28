@@ -1,0 +1,217 @@
+/* ----------------------------------------------------
+   POST ADD / UPLOAD (grid layout)
+   ---------------------------------------------------- */
+
+.aside {
+  display: none !important;
+}
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navSubmenu > a[href$="s=add"] {
+  color: var(--blue) !important;
+}
+
+.mainBodyPadding {
+  padding-bottom: 1.5rem;
+
+  > br {
+    display: none;
+  }
+
+  > h2 {
+    margin: 0 0 0.6rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text);
+  }
+
+  > form > br {
+    display: none;
+  }
+}
+
+/* ----- Rules / terms notice ----- */
+
+.postAdd {
+  max-width: 800px;
+  margin: 0 0 1rem;
+  padding: 0;
+  color: var(--subtext0);
+  line-height: 1.45;
+  background: transparent;
+  border: none;
+
+  > br {
+    display: none;
+  }
+
+  h4 {
+    margin: 0 0 0.4rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  ul {
+    margin: 0 0 0.5rem;
+    padding-left: 1.15rem;
+
+    li {
+      margin: 0 0 0.15rem;
+    }
+
+    b {
+      color: var(--text);
+    }
+  }
+
+  /* Site paints the rate/source rule with inline #cc0000 */
+  li[style*="cc0000"] {
+    color: var(--red) !important;
+
+    b {
+      color: var(--red);
+    }
+  }
+
+  > b {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--text);
+  }
+}
+
+/* ----- Upload form ----- */
+
+.mainBodyPadding form > div:not(.postAdd) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 800px !important;
+  padding: 0;
+  color: var(--text);
+  line-height: 1.7;
+  background: transparent;
+  border: none;
+
+  /* Site stacks two or three <br> between fields. Block <br>s still break the
+     line but stack without adding height, so runs collapse to one gap. */
+  > br {
+    display: block;
+    height: 0;
+    margin: 0.4rem 0 0;
+    content: "";
+  }
+
+  input.tag-list-search,
+  textarea#tags {
+    display: block;
+    box-sizing: border-box;
+    width: 100% !important;
+    margin: 0.15rem 0 0.4rem;
+    padding: 0.4rem 0.6rem !important;
+    color: var(--text);
+    background: var(--surface0);
+    border: 1px solid var(--surface1) !important;
+    border-radius: 7px;
+
+    &:focus {
+      background: var(--surface0) !important;
+      border-color: var(--blue) !important;
+    }
+  }
+
+  input[type="file"] {
+    width: auto !important;
+    max-width: 100%;
+    padding: 0.3rem 0.45rem !important;
+    cursor: pointer;
+
+    &::file-selector-button {
+      margin-right: 0.6rem;
+      padding: 0.3rem 0.8rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: inherit;
+      background: var(--surface2);
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--overlay0);
+      }
+    }
+  }
+
+  textarea#tags {
+    min-height: 9rem;
+    line-height: 1.5;
+    resize: vertical;
+  }
+
+  #imgpreview {
+    max-width: 100% !important;
+    margin: 0.35rem 0 0.5rem !important;
+    border-radius: 7px;
+    box-shadow: 0 0 10px var(--crust);
+  }
+
+  /* Hidden until a file is picked — the site only sets src via JS */
+  #imgpreview:not([src]) {
+    display: none !important;
+  }
+
+  input[type="radio"] {
+    margin: 0 0.3rem 0 1rem;
+    vertical-align: middle;
+    accent-color: var(--blue);
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  a {
+    color: var(--blue) !important;
+  }
+}
+
+/* ----- Upload button ----- */
+
+.mainBodyPadding form input.searchList {
+  display: inline-block;
+  width: auto !important;
+  margin-top: 0.5rem;
+  padding: 0.55rem 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--sapphire) !important;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+
+    &:hover {
+      background: var(--blue) !important;
+    }
+  }
+}

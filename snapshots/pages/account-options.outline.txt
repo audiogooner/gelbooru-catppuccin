@@ -6,7 +6,10 @@ html
     meta
     link
     script
-  body
+    style
+    style
+    style
+  body.vc-init
     style
     div#container
       div#long-notice
@@ -38,12 +41,13 @@ html
         a
         a
         a
+        a
       div.searchArea
         div
           form
             a
               img
-            input#tags-search
+            input#tags-search.ui-autocomplete-input
             input.searchList
       style
       aside
@@ -55,142 +59,143 @@ html
           br
           form
             table.form
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  textarea#tags
-                  br
-                  a
-                  br
-                  br
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  textarea
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                    b
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                    b
-                td
-                  input
-                  input
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
-                td
-                  input
-              tr
-                td
-              tr.accountOptions
-                th
-                  label.block
-                  p
+              tbody
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    textarea#tags.ui-autocomplete-input
+                    br
+                    a
                     br
                     br
-                    b
-                    b
-                td
-                  textarea
-              tr
-                td
-              tr.accountOptions
-                td
-                td
-                  input
-                  input.searchList
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    textarea.ui-autocomplete-input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                      b
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                      b
+                  td
+                    input
+                    input
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                  td
+                    input
+                tr
+                  td
+                tr.accountOptions
+                  th
+                    label.block
+                    p
+                      br
+                      br
+                      b
+                      b
+                  td
+                    textarea
+                tr
+                  td
+                tr.accountOptions
+                  td
+                  td
+                    input
+                    input.searchList
       footer
         a
           h2
@@ -212,3 +217,10 @@ html
     script
     script
     script
+    ul#ui-id-1.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
+    div.ui-helper-hidden-accessible
+    ul#ui-id-2.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
+    div.ui-helper-hidden-accessible
+    ul#ui-id-3.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
+    div.ui-helper-hidden-accessible
+    div#gelbooru-dev-overlay

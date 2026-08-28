@@ -21,21 +21,159 @@ export const bundles = [
     document: 'url("https://gelbooru.com/index.php")',
   },
   {
+    file: "src/pages/account-home.scss",
+    document: 'url("https://gelbooru.com/index.php?page=account&s=home")',
+  },
+  {
     file: "src/pages/account-options.scss",
     document: 'url("https://gelbooru.com/index.php?page=account&s=options")',
   },
   {
+    file: "src/pages/account-change-password.scss",
+    document:
+      'url("https://gelbooru.com/index.php?page=account&s=change_password")',
+  },
+  {
+    file: "src/pages/account-change-avatar.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=account&s=change_avatar")',
+  },
+  {
+    file: "src/pages/redeemcode.scss",
+    document: 'url("https://gelbooru.com/redeemCode.php")',
+  },
+  {
+    file: "src/pages/account-profile.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=account&s=profile")',
+  },
+  {
     file: "src/pages/wiki.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=wiki&s=list")',
+  },
+  {
+    file: "src/pages/wiki-view.scss",
     document: 'url-prefix("https://gelbooru.com/index.php?page=wiki")',
   },
   {
+    file: "src/pages/wiki-history.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=wiki&s=history")',
+  },
+  {
     file: "src/pages/tags-list.scss",
-    document: 'url("https://gelbooru.com/index.php?page=tags&s=list")',
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=tags&s=list")',
+  },
+  {
+    file: "src/pages/tags-implications.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=tags&s=implications")',
+  },
+  {
+    file: "src/pages/alias-list.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=alias")',
   },
   {
     file: "src/pages/tags-saved-search.scss",
     document:
       'url-prefix("https://gelbooru.com/index.php?page=tags&s=saved_search")',
+  },
+  {
+    file: "src/pages/pool-list.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=pool&s=list")',
+  },
+  {
+    file: "src/pages/pool-show.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=pool&s=show")',
+  },
+  {
+    file: "src/pages/pool-add.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=pool&s=add")',
+  },
+  {
+    file: "src/pages/post-add.scss",
+    document: 'url("https://gelbooru.com/index.php?page=post&s=add")',
+  },
+  {
+    file: "src/pages/forum-list.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=forum&s=list")',
+  },
+  {
+    file: "src/pages/forum-view.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=forum&s=view")',
+  },
+  {
+    file: "src/pages/favorites-view.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=favorites")',
+  },
+  {
+    file: "src/pages/conversation-create.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=conversation&s=create")',
+  },
+  {
+    file: "src/pages/conversation-view.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=conversation&s=view")',
+  },
+  {
+    file: "src/pages/conversation-list.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=conversation&s=list")',
+  },
+  {
+    file: "src/pages/gmail-home.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=gmail&s=home")',
+  },
+  {
+    file: "src/pages/gmail-active-inbox.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=gmail&s=home&search=inbox")',
+  },
+  {
+    file: "src/pages/gmail-active-outbox.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=gmail&s=home&search=outbox")',
+  },
+  {
+    file: "src/pages/gmail-active-mod-notices.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=gmail&s=home&search=mod_notices")',
+  },
+  {
+    file: "src/pages/gmail-active-all.scss",
+    document: 'url("https://gelbooru.com/index.php?page=gmail&s=home")',
+  },
+  {
+    file: "src/pages/help.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=help")',
+  },
+  {
+    file: "src/pages/tracker-list.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=tracker&s=list")',
+  },
+  {
+    file: "src/pages/tracker-view.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=tracker&s=view")',
+  },
+  {
+    file: "src/pages/tracker-changelog.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=tracker&s=changelog")',
+  },
+  {
+    file: "src/pages/tracker-roadmap.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=tracker&s=roadmap")',
+  },
+  {
+    file: "src/pages/tracker-create-ticket.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=tracker&s=create_ticket")',
   },
 ];
 
@@ -48,6 +186,11 @@ export const snapshotPages = [
     url: "https://gelbooru.com/index.php?page=post&s=list&tags=all",
   },
   { id: "post-view", discover: "post-view" },
+  {
+    id: "post-add",
+    url: "https://gelbooru.com/index.php?page=post&s=add",
+    userscriptOnly: true,
+  },
   { id: "comment-list", url: "https://gelbooru.com/index.php?page=comment&s=list" },
   { id: "tags-list", url: "https://gelbooru.com/index.php?page=tags&s=list" },
   {
@@ -64,10 +207,48 @@ export const snapshotPages = [
     url: "https://gelbooru.com/index.php?page=extras&s=artists",
   },
   { id: "tracker-list", url: "https://gelbooru.com/index.php?page=tracker&s=list" },
+  {
+    id: "tracker-view",
+    url: "https://gelbooru.com/index.php?page=tracker&s=view&id=1518",
+  },
+  {
+    id: "tracker-create-ticket",
+    url: "https://gelbooru.com/index.php?page=tracker&s=create_ticket",
+  },
+  {
+    id: "favorites-view",
+    url: "https://gelbooru.com/index.php?page=favorites&s=view",
+    userscriptOnly: true,
+  },
   { id: "account-home", url: "https://gelbooru.com/index.php?page=account&s=home" },
   {
     id: "account-options",
     url: "https://gelbooru.com/index.php?page=account&s=options",
+  },
+  {
+    id: "account-profile",
+    url: "https://gelbooru.com/index.php?page=account&s=profile",
+    userscriptOnly: true,
+  },
+  {
+    id: "account-change-avatar",
+    url: "https://gelbooru.com/index.php?page=account&s=change_avatar",
+    userscriptOnly: true,
+  },
+  {
+    id: "conversation-create",
+    url: "https://gelbooru.com/index.php?page=conversation&s=create",
+    userscriptOnly: true,
+  },
+  {
+    id: "conversation-view",
+    url: "https://gelbooru.com/index.php?page=conversation&s=view",
+    userscriptOnly: true,
+  },
+  {
+    id: "conversation-list",
+    url: "https://gelbooru.com/index.php?page=conversation&s=list",
+    userscriptOnly: true,
   },
   { id: "help", url: "https://gelbooru.com/index.php?page=help" },
   { id: "tos", url: "https://gelbooru.com/tos.php" },

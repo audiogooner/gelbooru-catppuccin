@@ -1,0 +1,218 @@
+@use "bootstrap-chrome";
+
+/* ----------------------------------------------------
+   WIKI VIEW (bootstrap / responsive.css layout)
+   ---------------------------------------------------- */
+
+@include bootstrap-chrome.navbar;
+@include bootstrap-chrome.mail-alert;
+
+#submenu a[href*="s=create"] {
+  color: var(--green) !important;
+}
+
+#submenu a[href*="action=delete"] {
+  color: var(--red) !important;
+}
+
+.padding15 {
+  padding: 1.5rem 1.75rem 2.5rem !important;
+}
+
+.padding15 > br {
+  display: none !important;
+}
+
+.padding15 .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.padding15 [class*="col-"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.padding15 form .col-xs-12 {
+  display: flex !important;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.padding15 #tags-search {
+  flex: 1 1 auto;
+  width: auto !important;
+  min-width: 0;
+  padding: 0.55rem 0.9rem !important;
+}
+
+.new_secondary_search {
+  flex: 0 0 auto;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0.55rem 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  border-radius: 7px !important;
+
+  &:hover {
+    background: var(--sapphire) !important;
+  }
+}
+
+.padding15 > table {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 2rem !important;
+  width: 100% !important;
+  margin: 1.5rem 0 0 !important;
+  padding: 0 !important;
+}
+
+.padding15 > table > tbody,
+.padding15 > table > tbody > tr {
+  display: contents !important;
+}
+
+.padding15 > table > tbody > tr > td {
+  background: transparent !important;
+  border-radius: 0;
+}
+
+.padding15 > table > tbody > tr > td:first-child,
+td[style*="border-right"] {
+  min-width: 0;
+  padding: 1.35rem 1.6rem 1.5rem !important;
+  color: var(--text);
+  line-height: 1.55;
+  text-align: left !important;
+  background: var(--mantle) !important;
+  border: 1px solid var(--surface0) !important;
+  border-right: 1px solid var(--surface0) !important;
+  border-radius: 10px;
+}
+
+.padding15 > table > tbody > tr > td:last-child {
+  display: grid !important;
+  grid-template-columns: repeat(3, max-content);
+  gap: 1.5rem !important;
+  justify-content: start;
+  align-content: start;
+  width: auto;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.padding15 > table > tbody > tr > td:first-child {
+  h2 {
+    display: block !important;
+    margin: 0 0 0.5em !important;
+    color: var(--subtext1);
+    font-size: 1.15em;
+    font-weight: 600;
+  }
+
+  h1 {
+    margin: 0.4em 0 0.5em;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  > span {
+    display: block;
+    margin-bottom: 1.1rem !important;
+    color: var(--subtext0);
+  }
+
+  b {
+    color: var(--text);
+  }
+}
+
+div[style*="e9f3ff"],
+div[style*="f7fbff"],
+div[style*="cee3ff"] {
+  margin: 1.35rem 0 0 !important;
+  padding: 0.8rem 1rem !important;
+  color: var(--subtext0) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface1) !important;
+  border-radius: 10px;
+}
+
+div[style*="e9f3ff"] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0 !important;
+}
+
+div[style*="f7fbff"] {
+  border-top: none !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0 !important;
+}
+
+.padding15 .thumbnail-preview {
+  display: inline-block;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  vertical-align: top;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 7px;
+  box-shadow: 0 0 10px var(--crust);
+  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+
+  span.thumb {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    display: block;
+    border-radius: 7px;
+  }
+
+  &:hover {
+    scale: 110%;
+    border-radius: 0;
+    box-shadow: 0 0 30px var(--surface0);
+
+    img {
+      border-radius: 0;
+    }
+  }
+
+  &:has(img.webm),
+  &:has(img[alt~="animated"]),
+  &:has(img[alt~="video"]) {
+    outline: 3px solid var(--blue);
+    outline-offset: -3px;
+  }
+}
+
+.padding15 > table > tbody > tr > td:last-child > table {
+  grid-column: 1 / -1;
+  margin: 0.5rem 0 0 !important;
+
+  td {
+    width: auto !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1em;
+    text-align: right;
+  }
+}

@@ -3,6 +3,7 @@
    ---------------------------------------------------- */
 #myTopnav > a:nth-child(13),
 #motd,
+.noticeError,
 .root--ujvuu {
   display: none !important;
 }
@@ -10,6 +11,14 @@
 /* frontpage Nyudachi promo */
 #static-index > div:has(> a[href*="nyudachi"]),
 body > center:has(a[href*="nyudachi"]) {
+  display: none !important;
+}
+
+/* Islamorag Twitch / extras/vtuber promo */
+a[href*="twitch.tv/islamorag"][target="_blank"]:has(> img),
+a[target="_blank"]:has(> img[src*="/extras/vtuber/islamorag/"]),
+#static-index > div:has(> a[href*="islamorag"]),
+center:has(> a[href*="twitch.tv/islamorag"]) {
   display: none !important;
 }
 

@@ -1,0 +1,243 @@
+/* ----------------------------------------------------
+   CONVERSATION VIEW (messages.css layout)
+   ---------------------------------------------------- */
+
+@use "messages-chrome";
+
+@include messages-chrome.shell;
+@include messages-chrome.thread-list;
+
+/* Fold the 300px right column into a header bar so the thread gets full width. */
+@media only screen and (min-width: 851px) {
+  .grid-container {
+    height: 100vh;
+    grid-template-columns: 230px minmax(0, 1fr) !important;
+    grid-template-areas:
+      "leftmenu header"
+      "leftmenu content"
+      "leftmenu replybox"
+      "leftmenu footer" !important;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+  }
+
+  #rightMenu {
+    grid-area: header;
+    width: auto !important;
+  }
+
+  #messageWindow {
+    height: auto !important;
+    min-height: 0;
+  }
+
+  #replyBox,
+  #footer {
+    height: auto !important;
+  }
+}
+
+#leftMenu {
+  background: var(--mantle) !important;
+}
+
+#messageContainer {
+  padding: 0.75rem 0.5rem 1rem;
+}
+
+.messageContainer {
+  padding: 0.45rem 0.35rem;
+  border-radius: 10px;
+
+  &:hover {
+    background: var(--surface1) !important;
+  }
+}
+
+.userAvatar {
+  background-color: var(--surface0) !important;
+  border-color: var(--surface2) !important;
+}
+
+.userMessage {
+  color: var(--text);
+  line-height: 1.5;
+
+  small {
+    margin-left: 0.5rem;
+    color: var(--subtext0);
+    font-weight: normal;
+  }
+}
+
+.grid-item-user-message-link a {
+  color: var(--blue) !important;
+}
+
+#rightMenu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.85rem !important;
+  background: var(--mantle) !important;
+  border-bottom: 1px solid var(--surface0);
+
+  > br {
+    display: none;
+  }
+
+  /* Conversation banner — a random post crop, far too loud at 120px */
+  > div:first-child {
+    display: none !important;
+  }
+
+  /* Recipient name plate */
+  > div:nth-of-type(2) {
+    min-width: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: var(--text);
+    text-align: left !important;
+    background: none !important;
+
+    > div {
+      padding: 0 !important;
+      font-size: 1.15em !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  > a:has(#reportButton) {
+    margin-left: auto;
+    flex: none;
+  }
+}
+
+#reportButton.messageButton {
+  margin: 0 !important;
+  padding: 0.4rem 0.85rem !important;
+  color: var(--red) !important;
+  font-weight: 600;
+  background: var(--surface0) !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--crust) !important;
+    background: var(--red) !important;
+  }
+}
+
+#replyBox {
+  background: var(--base);
+  padding: 0.75rem 1rem;
+
+  br {
+    display: none;
+  }
+
+  #textMessageArea {
+    height: 4.5rem !important;
+    padding: 0.55rem 0.75rem !important;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 7px !important;
+    resize: vertical !important;
+    overflow: auto !important;
+  }
+}
+
+#footer {
+  background: var(--mantle);
+
+  > br {
+    display: none;
+  }
+}
+
+#paginator {
+  padding: 0.5rem 1.25rem 0.75rem;
+}
+
+.spacer {
+  background: var(--base) !important;
+}
+
+.modal {
+  background-color: color-mix(in srgb, var(--crust) 72%, transparent);
+}
+
+.modal-content {
+  max-width: 32em;
+  width: auto !important;
+  color: var(--text);
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface1) !important;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px var(--crust);
+
+  h2 {
+    margin: 0 2rem 1rem 0;
+    color: var(--text);
+    font-size: 1.15em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    br {
+      display: none;
+    }
+
+    label {
+      color: var(--text);
+      cursor: pointer;
+
+      input[type="radio"] {
+        margin-right: 0.4rem;
+        vertical-align: middle;
+        accent-color: var(--blue);
+      }
+    }
+  }
+}
+
+.close {
+  color: var(--subtext0) !important;
+
+  &:hover,
+  &:focus {
+    color: var(--red) !important;
+  }
+}
+
+#reportConfirm,
+#deleteConfirm {
+  padding: 0.55rem 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--sapphire) !important;
+  }
+}
+
+#deleteConfirm {
+  background: var(--red) !important;
+
+  &:hover {
+    background: var(--maroon) !important;
+  }
+}

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<!--
+snapshot: tracker-changelog
+url: https://gelbooru.com/index.php?page=tracker&s=changelog
+title: | Gelbooru - Anime Art & Hentai Gallery - Free to Explore
+captured: 2026-08-28T16:10:31.792Z
+source: live
+stylesheets: bootstrap.css, responsive.css, jquery-ui.css, jquery-ui.icon-font.min.css
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>| Gelbooru - Anime Art &amp; Hentai Gallery - Free to Explore</title>
+    <link rel="stylesheet preload" href="https://gelbooru.com//bootstrap.css">
+    <link rel="stylesheet preload" type="text/css" media="screen" href="https://gelbooru.com//responsive.css?81g" title="default">
+    <link rel="stylesheet preload" type="text/css" media="screen" href="https://gelbooru.com//css/jquery-ui.css?81" title="default">
+    <link rel="stylesheet preload" type="text/css" href="https://gelbooru.com//css/jquery-ui.icon-font.min.css?81">
+    <meta name="adsbytrafficjunkycontext" data-invocation-type="publisher" data-spot-new="true" data-site-id="444001" data-site="Gelbooru" data-platform="desktop">
+    <meta name="rating" content="adult">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script data-snapshot-src="jquery.min.js"></script>
+    <style data-gelbooru-dev="blackout">
+    main img:not(.voteUpComment, .reportComment),
+    main video,
+    main canvas,
+    article img,
+    #image,
+    img.webm,
+    .commentThumbnail img,
+    .thumbnail-preview img,
+    .image-container img,
+    .image-container video,
+    .image-container canvas,
+    .profileAvatar {
+      filter: contrast(0) brightness(0.22) !important;
+    }
+
+    .profileAvatar {
+      background-image: none !important;
+      background-color: #313244 !important;
+    }
+  </style>
+    <style data-gelbooru-dev="base">/* ----------------------------------------------------
+   CONTENT BLOCKING
+   ---------------------------------------------------- */
+#myTopnav > a:nth-child(13),
+#motd,
+.noticeError,
+.root--ujvuu {
+  display: none !important;
+}
+
+/* frontpage Nyudachi promo */
+#static-index > div:has(> a[href*=nyudachi]),
+body > center:has(a[href*=nyudachi]) {
+  display: none !important;
+}
+
+/* Islamorag Twitch / extras/vtuber promo */
+a[href*="twitch.tv/islamorag"][target=_blank]:has(> img),
+a[target=_blank]:has(> img[src*="/extras/vtuber/islamorag/"]),
+#static-index > div:has(> a[href*=islamorag]),
+center:has(> a[href*="twitch.tv/islamorag"]) {
+  display: none !important;
+}
+
+/* frontpage AdBlock indicator */
+#static-index > div:has(> a[href="#"]) {
+  display: none !important;
+}
+
+body[style*=nyudachi] {
+  background-image: none !important;
+}
+
+.headerAd,
+.footerAd,
+.footerAd2,
+div:not([id], [class])[style*="font-size: 1.2em"]:has(> a[rel=nofollow][target=_blank]),
+.mainBodyPadding > a[href*="pixiv.net"][target=_blank]:has(> img),
+main > center:has(video),
+center:has([data-cl-spot], [id^=__clb-spot]),
+[data-cl-spot],
+[id^=__clb-spot],
+div:has(> .exo-video-slider-container-wrapper),
+.exo-video-slider-container-wrapper,
+[id$=-exo-video-slider-content] {
+  display: none !important;
+}
+
+/* ----------------------------------------------------
+   COLOR PALETTE - Catppuccin Mocha
+   ---------------------------------------------------- */
+:root {
+  /* Base colors */
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  /* Text colors */
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --subtext2: #a6adc8;
+  /* Overlay colors */
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  /* Surface colors */
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  /* Background colors */
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+}
+
+/* ----------------------------------------------------
+   GLOBAL STYLES
+   ---------------------------------------------------- */
+html,
+body {
+  background-color: var(--base) !important;
+  color: var(--text) !important;
+}
+
+a {
+  color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   FORM ELEMENTS
+   ---------------------------------------------------- */
+textarea,
+input {
+  background-color: var(--surface0);
+  border: solid 1px var(--surface1) !important;
+  outline: none;
+  border-radius: 7px;
+  color: var(--text);
+}
+textarea:focus,
+input:focus {
+  background-color: var(--surface0) !important;
+  border-color: var(--blue) !important;
+}
+textarea::placeholder,
+input::placeholder {
+  color: var(--text) !important;
+}
+
+input {
+  padding: 2px 5px;
+}
+
+textarea {
+  padding-left: 7px;
+}
+
+.secondary_search,
+.searchList {
+  border-radius: 7px !important;
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  transition: 0.1s;
+}
+.secondary_search:hover,
+.searchList:hover {
+  background: var(--surface1) !important;
+}
+
+/* ----------------------------------------------------
+   NAVIGATION
+   ---------------------------------------------------- */
+.topnav,
+#navbar {
+  background-color: var(--surface0);
+}
+
+.topnav *,
+#navbar * {
+  color: var(--text) !important;
+}
+
+.homeIcon > img:nth-child(1),
+.navbar-brand,
+h2.siteName a {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(53%) saturate(3396%) hue-rotate(192deg) brightness(109%) contrast(96%);
+}
+
+.navSubmenu,
+#navbar2,
+#submenu,
+div.submenu {
+  background-color: var(--surface1);
+}
+
+.navSubmenu * {
+  color: var(--text) !important;
+}
+.navSubmenu > a:nth-child(6) * {
+  color: var(--green) !important;
+}
+
+.active,
+.active2 a,
+.active a {
+  background-color: var(--surface2) !important;
+  color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   SEARCH AREA
+   ---------------------------------------------------- */
+.searchArea {
+  background-color: var(--base);
+}
+.searchArea > div:nth-child(1) > form:nth-child(1) > a:nth-child(1) > img:nth-child(1) {
+  filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg) brightness(100%) contrast(92%);
+}
+
+.sm-hidden {
+  color: var(--text);
+}
+
+.ui-menu.ui-autocomplete {
+  background-color: var(--surface0) !important;
+  border: none !important;
+  border-radius: 7px;
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-menu-item-wrapper {
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-state-active,
+.ui-menu.ui-autocomplete .ui-state-focus {
+  margin: 0;
+  border: none !important;
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+}
+
+/* ----------------------------------------------------
+   HOMEPAGE SPECIFIC
+   ---------------------------------------------------- */
+#static-index {
+  background-color: var(--base);
+}
+#static-index > h1:nth-child(1) > a:nth-child(1) {
+  color: var(--blue) !important;
+  transition: 0.5s;
+}
+#static-index > div:nth-child(8) > a:nth-child(1),
+#static-index > small:nth-child(19) a {
+  color: var(--blue) !important;
+}
+#static-index > div:nth-child(8),
+#static-index > small:nth-child(18) {
+  color: var(--subtext2) !important;
+}
+#static-index > small:nth-child(19) {
+  color: var(--subtext2) !important;
+}
+#static-index > small:nth-child(19)::before {
+  content: "\a";
+  white-space: pre;
+}
+
+#links {
+  cursor: default;
+}
+#links > a:nth-child(n) {
+  color: var(--subtext1) !important;
+  transition: 140ms;
+}
+#links > a:nth-child(n):hover {
+  color: var(--text) !important;
+}
+
+/* ----------------------------------------------------
+   TAG STYLING
+   ---------------------------------------------------- */
+.tag-type-artist .sm-hidden a,
+.tag-type-character .sm-hidden a,
+.tag-type-copyright .sm-hidden a,
+.tag-type-metadata .sm-hidden a,
+.tag-type-general .sm-hidden a {
+  transition: 0.1s;
+}
+.tag-type-artist:hover .sm-hidden a,
+.tag-type-character:hover .sm-hidden a,
+.tag-type-copyright:hover .sm-hidden a,
+.tag-type-metadata:hover .sm-hidden a,
+.tag-type-general:hover .sm-hidden a {
+  text-shadow: 0 0 10px var(--red);
+}
+.tag-type-artist > span,
+.tag-type-character > span,
+.tag-type-copyright > span,
+.tag-type-metadata > span,
+.tag-type-general > span {
+  color: var(--subtext0) !important;
+  transition: 0.1s;
+}
+.tag-type-artist:hover > span,
+.tag-type-character:hover > span,
+.tag-type-copyright:hover > span,
+.tag-type-metadata:hover > span,
+.tag-type-general:hover > span {
+  text-shadow: 0 0 10px var(--subtext0) !important;
+}
+
+.tag-type-artist > a {
+  color: var(--red) !important;
+  transition: 0.1s;
+}
+.tag-type-artist:hover > a {
+  text-shadow: 0 0 10px var(--red);
+}
+
+.tag-type-character > a {
+  color: var(--green) !important;
+  transition: 0.1s;
+}
+.tag-type-character:hover > a {
+  text-shadow: 0 0 10px var(--green);
+}
+
+.tag-type-copyright > a {
+  color: var(--pink) !important;
+  transition: 0.1s;
+}
+.tag-type-copyright:hover > a {
+  text-shadow: 0 0 10px var(--pink);
+}
+
+.tag-type-metadata > a {
+  color: var(--yellow) !important;
+  transition: 0.1s;
+}
+.tag-type-metadata:hover > a {
+  text-shadow: 0 0 10px var(--yellow);
+}
+
+.tag-type-general > a {
+  color: var(--blue) !important;
+  transition: 0.1s;
+}
+.tag-type-general:hover > a {
+  text-shadow: 0 0 10px var(--blue);
+}
+
+/* ----------------------------------------------------
+   IMAGES AND MEDIA
+   ---------------------------------------------------- */
+#image {
+  border-radius: 10px;
+  box-shadow: 0 0 20px var(--crust);
+  margin-top: 0 !important;
+}
+
+.mainBodyPadding > div:nth-child(n) img,
+article img {
+  border-radius: 7px;
+  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+  box-shadow: 0 0 10px var(--crust);
+}
+.mainBodyPadding > div:nth-child(n) img:hover:not(.voteUpComment):not(.reportComment),
+article img:hover:not(.voteUpComment):not(.reportComment) {
+  scale: 110%;
+  border-radius: 0;
+  box-shadow: 0 0 30px var(--surface0);
+}
+
+.fluid_controls_currentprogress {
+  background-color: var(--blue) !important;
+}
+
+img.webm {
+  border: 3px solid var(--blue);
+}
+
+/* ----------------------------------------------------
+   COMMENTS AND USER CONTENT
+   ---------------------------------------------------- */
+.commentBody {
+  color: var(--text) !important;
+}
+
+div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
+  border-radius: 10px;
+}
+
+.voteUpComment,
+.reportComment {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.reportComment {
+  filter: brightness(0) saturate(100%) invert(59%) sepia(71%) saturate(330%) hue-rotate(297deg) brightness(98%) contrast(94%);
+}
+
+.voteUpComment {
+  filter: brightness(0) saturate(100%) invert(61%) sepia(35%) saturate(584%) hue-rotate(183deg) brightness(107%) contrast(96%);
+}
+
+.profileAvatar {
+  border: 2px solid var(--surface2);
+  box-shadow: 0 0 30px rgba(88, 91, 112, 0.27);
+}
+
+/* ----------------------------------------------------
+   PAGINATION AND TABLES
+   ---------------------------------------------------- */
+#paginator a {
+  display: inline-block;
+  margin: 3px !important;
+  padding: 12px 16px !important;
+  border-radius: 10px;
+  background-color: var(--surface1);
+  border: none !important;
+  transition: 0.1s;
+}
+#paginator a:hover {
+  background-color: var(--blue) !important;
+  color: var(--text) !important;
+}
+#paginator b {
+  background-color: transparent;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--blue) !important;
+  color: var(--base) !important;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.mainBodyPadding > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) {
+  background: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   MISC ELEMENTS
+   ---------------------------------------------------- */
+.aside {
+  border-right: solid 1px var(--overlay1);
+}
+
+footer {
+  background: var(--surface0) !important;
+}
+footer * {
+  color: var(--text) !important;
+}
+
+.alert-info,
+.alert-info * {
+  background-color: var(--surface2);
+  color: var(--text) !important;
+  border: none;
+  border-radius: 10px;
+}
+
+#notice {
+  background-color: var(--red) !important;
+  border: none !important;
+  color: var(--crust);
+  box-shadow: 0 0 20px var(--red);
+}
+
+.mainBodyPadding > div:nth-child(n+18) > div:nth-child(2) > span:nth-child(6) > span:nth-child(2) > a:nth-child(1) {
+  color: var(--red) !important;
+}</style>
+    <script data-snapshot-src="miscJs.js"></script>
+    <script data-snapshot-src="jquery-hotkeys.js"></script>
+    <script data-snapshot-src="tryt.js"></script>
+    <script data-snapshot-src="autoDebug.js"></script>
+    <style>
+	 .mn-container-adsby_position_bottom-right {
+		 display: none;
+	 }
+	</style>
+    <style data-gelbooru-dev="tracker-changelog">/* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
+   Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
+/* ----------------------------------------------------
+   TRACKER CHANGELOG (bootstrap / responsive.css layout)
+   ---------------------------------------------------- */
+.container-fluid:has(> .navbar) {
+  padding: 0;
+}
+
+.navbar,
+.navbar-default {
+  min-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  background: var(--surface0) !important;
+  border: 0;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+  line-height: 1.42857143;
+}
+
+.navbar-header {
+  height: calc(20px + 1.42857143em + 23px);
+}
+
+.navbar-brand {
+  float: left;
+  box-sizing: content-box;
+  width: 46px;
+  height: 46px !important;
+  min-width: 0;
+  padding: 7px 15px 1px 25px !important;
+  margin: 0 !important;
+  font-size: 12px;
+  background-size: 46px 46px;
+  background-position: 25px 7px;
+}
+
+#navbar.navbar-collapse {
+  padding: 0;
+  box-shadow: none;
+}
+
+#navbar .navbar-nav {
+  margin: 0;
+}
+
+#navbar .navbar-nav > li > a {
+  padding: 20px 16px 23px !important;
+  color: var(--text) !important;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-decoration: none;
+}
+
+#navbar .navbar-nav > li > a:hover,
+#navbar .navbar-nav > li > a:focus {
+  background-color: transparent !important;
+}
+
+#navbar .navbar-nav > .active > a,
+#navbar .navbar-nav > .active > a:hover,
+#navbar .navbar-nav > .active > a:focus {
+  background-color: var(--surface2) !important;
+  color: var(--blue) !important;
+  font-weight: bold;
+}
+
+#navbar a.ui-icon {
+  margin: 0 !important;
+  font-size: 14px !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: var(--surface1);
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: var(--text);
+}
+
+.navbar-header > button:hover,
+.navbar-header > button:focus,
+.navbar-header > button:active {
+  background: var(--surface1) !important;
+}
+
+#submenu.navbar {
+  min-height: 0;
+  overflow: visible;
+  padding: 10px 15px !important;
+  background: var(--surface1) !important;
+  font-size: 12px;
+  line-height: 1.42857143;
+}
+#submenu.navbar .navbar-nav {
+  float: none;
+  margin: 0;
+}
+#submenu.navbar .navbar-nav > li {
+  float: none;
+  display: inline-block;
+}
+#submenu.navbar .navbar-nav > li > a {
+  display: inline-block;
+  padding: 0 !important;
+  margin: 5px 15px !important;
+  color: var(--text) !important;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px !important;
+  font-weight: normal;
+  line-height: 1.42857143;
+  background: transparent !important;
+}
+
+.alert-success {
+  margin: 0.75rem 0 0 !important;
+  padding: 0.65rem 1rem !important;
+  color: var(--green) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--green) !important;
+  border-radius: 10px;
+}
+.alert-success a {
+  color: var(--green) !important;
+  font-weight: 600;
+}
+
+#submenu .navbar-nav > li > a[href*="s=changelog"] {
+  color: var(--blue) !important;
+}
+
+#submenu .navbar-nav > li > a[href*="s=create_ticket"] {
+  color: var(--green) !important;
+}
+
+.padding15 {
+  padding: 1.5rem 1rem 2.5rem !important;
+}
+.padding15 > br {
+  display: none;
+}
+.padding15 > .container-fluid {
+  max-width: 62rem;
+  margin: 0;
+  padding: 0;
+}
+.padding15 h3 {
+  margin: 0 0 1rem !important;
+  color: var(--text) !important;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1.25;
+}
+.padding15 > .container-fluid > br {
+  display: none;
+}
+
+/* ----- Changelog body ----- */
+.container-fluid > div[style*=padding-left] {
+  padding: 1.25rem 1.25rem 1rem !important;
+  color: var(--subtext1);
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+  line-height: 2;
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-radius: 10px;
+  /* Version headings and "=====" rules are bare text nodes between <br>s */
+}
+.container-fluid > div[style*=padding-left] > br {
+  line-height: 1.2;
+}
+.container-fluid > div[style*=padding-left] {
+  /* One <br> per entry becomes redundant once entries are block rows */
+}
+.container-fluid > div[style*=padding-left] > span + br {
+  display: none;
+}
+.container-fluid > div[style*=padding-left] > span[style*=padding-left] {
+  display: block;
+  margin: 0.3rem 0;
+  padding: 0.5rem 0.75rem !important;
+  color: var(--text);
+  line-height: 1.5;
+  background: var(--surface0);
+  border-left: 3px solid var(--surface2);
+  border-radius: 7px;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+.container-fluid > div[style*=padding-left] > span[style*=padding-left]:hover {
+  background: var(--surface1);
+  border-left-color: var(--blue);
+}
+.container-fluid > div[style*=padding-left] > span[style*=padding-left] > a {
+  color: var(--blue) !important;
+  font-family: ui-monospace, "SFMono-Regular", monospace;
+  font-weight: 600;
+}
+.container-fluid > div[style*=padding-left] > span[style*=padding-left] > a:hover {
+  color: var(--sapphire) !important;
+}
+.container-fluid > div[style*=padding-left] > span[style*=padding-left] > b {
+  display: inline-block;
+  margin: 0 0.15rem;
+  padding: 0.05rem 0.4rem;
+  color: var(--peach);
+  font-size: 0.92em;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--peach) 14%, transparent);
+  border-radius: 7px;
+}
+
+@media only screen and (max-width: 767px) {
+  .padding15 {
+    padding: 1rem 0.5rem 1.5rem !important;
+  }
+  .container-fluid > div[style*=padding-left] {
+    padding: 0.85rem 0.75rem !important;
+  }
+}</style>
+  </head>
+  <body class="vc-init">
+    <div id="gelbooru-dev-overlay" data-gelbooru-dev="overlay" style="border-block-style: initial !important; border-inline: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-block-width: initial !important; border-block-color: initial !important; overflow-block: initial !important; overflow-inline: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !importan…"></div>
+    <div class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://gelbooru.com/"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="https://gelbooru.com/index.php?page=account&amp;s=home">Settings</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=post&amp;s=list&amp;tags=all">Posts</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=comment&amp;s=list">Comments</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=wiki&amp;s=list">Wiki</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=tags&amp;s=list">Tags</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=pool&amp;s=list">Pools</a>
+            </li>
+            <li>
+              <a href="https://gelbooru.com/index.php?page=forum&amp;s=list">Forum</a>
+            </li>
+            <li class="active strong">
+              <a href="https://gelbooru.com/index.php?page=tracker&amp;s=list">Trac</a>
+            </li>
+            <li>
+              <a class="ui-icon ui-icon-lightbulb" href="javascript:;" style="color: #ffff00; font-size: 20px; margin: 7px 5px 7px 15px;"></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <nav class="navbar navbar-default" id="submenu">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div id="navbar2" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="index.php?page=tracker&amp;s=list">Ticket Listing</a>
+            </li>
+            <li>
+              <a href="index.php?page=tracker&amp;s=create_ticket">
+                <b>Create Ticket</b>
+              </a>
+            </li>
+            <li>
+              <a href="index.php?page=tracker&amp;s=changelog">Changelog</a>
+            </li>
+            <li>
+              <a href="index.php?page=tracker&amp;s=roadmap">Roadmap</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="alert alert-warning small" style="padding: 10px 15px 10px 15px; font-size: 11px;" id="motd">
+      <i>
+        <b>Notice</b>
+      </i>
+      :
+      <a href="https://twitter.com/gelbooru/status/1577845556273102848" style="color: #ffff00; font-weight: bold;" target="_blank">
+        My personal stance on AI generated artwork. Retweet and share if you agree. Let us discuss, and not immediately scream bloody murder.
+      </a>
+    </div>
+    <div style="display: none; padding: 0px 15px 0px 15px;" id="motdspacer"></div>
+    <div class="padding15">
+      <div id="long-notice"></div>
+      <div id="notice" style="display: none;"></div>
+      <div class="alert alert-success" role="alert" style="display: none;">
+        <center>
+          <a href="index.php?page=gmail">You have mail</a>
+        </center>
+      </div>
+      <script type="text/javascript"></script>
+      <script data-snapshot-src="application3.js"></script>
+      <script data-snapshot-src="license.30.js"></script>
+      <div class="container-fluid">
+        <h3>Gelbooru Changelog</h3>
+        <br>
+        <div style="padding-left: 5px;">
+          Gelbooru - 0.1.10
+          <br>
+          =====================
+          <br>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=35">0000035</a>
+            :
+            <b>[Feature Request]</b>
+            Add Statistics to "Gelbooru source 0.1.9" Post_view - (lozertuser) - Resolved
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=37">0000037</a>
+            :
+            <b>[Feature Request]</b>
+            colored tags - (lozertuser) - Resolved
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=41">0000041</a>
+            :
+            <b>[Feature Request]</b>
+            Comment Page - (lozertuser) - Resolved
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=42">0000042</a>
+            :
+            <b>[Bug Reporting]</b>
+            Remove sessions for old gelbooru - (lozertuser) - Resolved
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=46">0000046</a>
+            :
+            <b>[Bug Reporting]</b>
+            $site_url2 not defined - (lozertuser) - Resolved
+          </span>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=47">0000047</a>
+            :
+            <b>[Feature Request]</b>
+            Make 0.1.9 Installer more friendly. - (lozertuser) - Resolved
+          </span>
+          <br>
+          <br>
+          Gelbooru - 0.1.9
+          <br>
+          =====================
+          <br>
+          <br>
+          <span style="padding-left: 7px;">
+            -
+            <a href="index.php?page=tracker&amp;s=view&amp;id=15">0000015</a>
+            :
+            <b>[Bug Reporting]</b>
+            Unlink cache error - (geltas) - Resolved
+          </span>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+    <iframe class="html2canvas-container" style="visibility: hidden; position: fixed; left: -10000px; top: 0px; border: 0px;" width="1085" height="1064" scrolling="no" data-html2canvas-ignore="true"></iframe>
+    <iframe class="html2canvas-container" style="visibility: hidden; position: fixed; left: -10000px; top: 0px; border: 0px;" width="1085" height="1064" scrolling="no" data-html2canvas-ignore="true"></iframe>
+    <iframe class="html2canvas-container" style="visibility: hidden; position: fixed; left: -10000px; top: 0px; border: 0px;" width="1085" height="1064" scrolling="no" data-html2canvas-ignore="true"></iframe>
+    <iframe class="html2canvas-container" style="visibility: hidden; position: fixed; left: -10000px; top: 0px; border: 0px;" width="1085" height="1064" scrolling="no" data-html2canvas-ignore="true"></iframe>
+  </body>
+</html>

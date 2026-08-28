@@ -2,8 +2,8 @@
   "id": "help",
   "url": "https://gelbooru.com/index.php?page=help",
   "title": "| Gelbooru",
-  "capturedAt": "2026-08-19T19:08:01.596Z",
-  "source": "fetch",
+  "capturedAt": "2026-08-26T21:04:01.380Z",
+  "source": "live",
   "classes": [
     "center",
     "current-page",
@@ -13,10 +13,12 @@
     "noticeError",
     "siteName",
     "submenu",
-    "success-notice"
+    "success-notice",
+    "vc-init"
   ],
   "ids": [
     "content",
+    "gelbooru-dev-overlay",
     "long-notice",
     "notice",
     "static-more",

@@ -1,0 +1,335 @@
+@use "bootstrap-chrome";
+
+/* ----------------------------------------------------
+   ACCOUNT PROFILE (bootstrap / responsive.css layout)
+   ---------------------------------------------------- */
+
+@include bootstrap-chrome.navbar;
+@include bootstrap-chrome.mail-alert;
+
+#submenu a[href*="s=profile"] {
+  color: var(--blue) !important;
+}
+
+.padding15 > .container {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.container > br,
+.container .row > br,
+.col-xs-12:has(.profileThumbnailPadding) > br,
+.statistics > br,
+.statistics > span > br {
+  display: none;
+}
+
+.profileBackgroundSize {
+  background-color: var(--mantle) !important;
+  border-radius: 10px 10px 0 0;
+}
+
+.profileAvatar {
+  border: 3px solid var(--base) !important;
+  background-color: var(--surface0) !important;
+  box-shadow: 0 4px 18px var(--crust);
+}
+
+a[href*="s=change_avatar"] > .profileAvatar {
+  overflow: hidden;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+
+  /* Circular edit control */
+  &::before {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    background: var(--surface1);
+  }
+
+  /* Pencil icon */
+  &::after {
+    width: 1.65rem;
+    height: 1.65rem;
+    z-index: 1;
+    background-color: var(--text);
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+  }
+}
+
+a[href*="s=change_avatar"]:has(> .profileAvatar):is(:hover, :focus-visible)
+  > .profileAvatar::before {
+  opacity: 0.7;
+}
+
+a[href*="s=change_avatar"]:has(> .profileAvatar):is(:hover, :focus-visible)
+  > .profileAvatar::after {
+  opacity: 1;
+}
+
+.row:has(.profileOptionSelect) > [class*="col-"]:has(> a[href*="s=change_avatar"]) {
+  display: none !important;
+}
+
+.profileStatisticsBoxContainer {
+  top: 0.5rem;
+  right: 0.5rem;
+  /* Absolutely positioned, so it can only grow into empty space: the 230px
+     banner plus the username bar (~46px) and the gap above the button row. */
+  max-height: calc(230px + 46px + 2.5rem - 1rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--mantle) !important;
+  border: 1px solid var(--surface0);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px var(--crust);
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface1) transparent;
+}
+
+.profileStatisticsBox {
+  padding: 0.7rem 1rem 0.85rem;
+  color: var(--text) !important;
+}
+
+.profileStatisticsBoxTitle {
+  color: var(--text);
+}
+
+.profileToggleStats a {
+  color: var(--subtext0) !important;
+
+  &:hover {
+    color: var(--text) !important;
+  }
+}
+
+.profileStatSeparator {
+  border-bottom-color: var(--surface0) !important;
+  color: var(--subtext1);
+
+  .col-md-3 {
+    color: var(--text);
+    text-align: right;
+  }
+}
+
+.statistics > span {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--subtext0);
+  line-height: 1.45;
+}
+
+.row:has(> .profileUserDisplay) {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.profileUserDisplay {
+  margin-top: 0;
+  color: var(--subtext1);
+  background: var(--surface0) !important;
+  border-radius: 10px;
+
+  &:has(.profileUsernameDisplay) {
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+.profileRewardsTitle {
+  color: var(--text) !important;
+}
+
+.profileUsernameDisplay {
+  color: var(--blue) !important;
+}
+
+.row:has(.profileOptionSelect) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  /* 140px avatar at top: 65% of the 230px banner hangs ~60px; the username
+     bar covers ~40px of that. Keep the rest of the circle off the buttons. */
+  margin-top: 2.5rem;
+
+  > [class*="col-"] {
+    float: none;
+    width: auto;
+    flex: 0 0 auto;
+    padding: 0;
+  }
+}
+
+a:has(> .profileOptionSelect) {
+  display: block;
+  text-decoration: none;
+}
+
+.profileOptionSelect {
+  display: inline-block;
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.9rem;
+  color: var(--text) !important;
+  background: var(--surface1) !important;
+  border-radius: 10px;
+  transition: background-color 0.1s;
+
+  &:hover {
+    background: var(--surface2) !important;
+  }
+}
+
+a[href*="page=conversation"] .profileOptionSelect {
+  color: var(--crust) !important;
+  background: var(--sapphire) !important;
+
+  &:hover {
+    background: var(--blue) !important;
+  }
+}
+
+.profileRemoveAvatar {
+  color: var(--crust) !important;
+  background: var(--red) !important;
+}
+
+.profileBanUser {
+  color: var(--red) !important;
+  background: var(--surface0) !important;
+}
+
+.profileSectionTitle {
+  display: block;
+  margin: 1.25rem 0 0.7rem;
+  color: var(--subtext1);
+
+  b {
+    color: var(--text);
+  }
+}
+
+.col-xs-12:has(> .profileSectionTitle):not(:has(.profileThumbnailPadding)) {
+  color: var(--subtext0);
+  line-height: 1.5;
+
+  > .profileSectionTitle {
+    margin-bottom: 0.85rem;
+  }
+
+  b {
+    color: var(--text);
+  }
+}
+
+.col-xs-12:has(.profileThumbnailPadding) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+
+  > .profileSectionTitle {
+    flex: 1 0 100%;
+    margin-bottom: 0;
+  }
+}
+
+.profileThumbnailPadding {
+  display: inline-block;
+  padding: 0 !important;
+  overflow: hidden !important;
+  margin: 0;
+  vertical-align: top !important;
+  border-radius: 7px;
+  box-shadow: 0 0 10px var(--crust);
+  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+
+  img {
+    display: block;
+    border-radius: 7px;
+  }
+
+  &:hover {
+    scale: 110%;
+    border-radius: 0;
+    box-shadow: 0 0 30px var(--surface0);
+
+    img {
+      border-radius: 0;
+    }
+  }
+
+  /* Profile thumbs never get .webm from list JS; tags live in title/alt. */
+  &:has(img.webm),
+  &:has(img[title~="animated"]),
+  &:has(img[alt~="animated"]),
+  &:has(img[title~="video"]),
+  &:has(img[alt~="video"]) {
+    outline: 3px solid var(--blue);
+    outline-offset: -3px;
+  }
+}
+
+.profileTrollFriends {
+  color: var(--subtext0) !important;
+}
+
+.row:has(> .profileAchievementItem) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem 1rem;
+
+  > .profileUserDisplay {
+    flex: 1 0 100%;
+  }
+}
+
+.profileAchievementItem {
+  margin: 0;
+  color: var(--subtext0);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.profileAchievementItem img {
+  border-radius: 8px;
+}
+
+@media only screen and (max-width: 767px) {
+  .profileAvatar {
+    border-color: var(--base) !important;
+  }
+
+  .profileUsernameDisplay {
+    padding-left: 120px;
+  }
+
+  .profileStatisticsBoxContainer {
+    width: min(250px, calc(100% - 7rem));
+    max-height: calc(100px + 46px + 2.75rem - 0.5rem);
+  }
+
+  .row:has(.profileOptionSelect) {
+    /* 100px avatar hangs ~65px below the 100px banner. */
+    margin-top: 2.75rem;
+  }
+}

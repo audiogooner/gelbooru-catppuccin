@@ -1,0 +1,147 @@
+@use "bootstrap-chrome";
+
+/* ----------------------------------------------------
+   POOL SHOW (bootstrap / responsive.css layout)
+   ---------------------------------------------------- */
+
+@include bootstrap-chrome.navbar;
+@include bootstrap-chrome.mail-alert;
+
+#submenu {
+  .navbar-nav > li > a[href*="page=pool"][href*="s=add"],
+  .navbar-nav > li > a[href*="page=help"][href*="topic=pool"] {
+    color: var(--green) !important;
+  }
+
+  /* List / New / Help | Edit · Delete · Order · Import · History */
+  .navbar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    row-gap: 0.35rem;
+  }
+
+  .navbar-nav > li:has(> a[href*="s=edit"]),
+  .navbar-nav > li:has(> a[href*="s=edit"]) ~ li {
+    background: var(--surface0);
+
+    > a {
+      margin: 0.45rem 0.75rem !important;
+    }
+  }
+
+  .navbar-nav > li:has(> a[href*="s=edit"]) {
+    margin-left: auto;
+    border-radius: 7px 0 0 7px;
+  }
+
+  .navbar-nav > li:has(> a[href*="s=edit"]) ~ li:last-child {
+    border-radius: 0 7px 7px 0;
+  }
+
+  /* Delete sits between Edit and Order */
+  .navbar-nav > li:has(> a[href*="s=edit"]) + li > a {
+    color: var(--red) !important;
+  }
+}
+
+#content {
+  > br {
+    display: none;
+  }
+
+  /* Match grid-layout Tag Listing h2 (UA ~1.5em), not bootstrap’s smaller h3 */
+  > h3 {
+    margin: 1rem 0 1rem;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+    color: var(--text);
+  }
+
+  /* Delete-mode help block (inline gray) */
+  > div[style*="color"] {
+    margin: 0 0 1.25rem;
+    padding: 0.75rem 1rem !important;
+    color: var(--subtext0) !important;
+    font-size: 0.9em !important;
+    line-height: 1.55;
+    max-width: 42em;
+    background: var(--surface0);
+    border-radius: 10px;
+
+    > br {
+      display: none;
+    }
+
+    label {
+      display: inline-block;
+      margin: 0 0 0.45rem 0.35rem;
+      color: var(--text);
+      font-weight: 600;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    #del-mode {
+      margin: 0;
+      vertical-align: middle;
+      accent-color: var(--red);
+    }
+  }
+}
+
+.thumbnail-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 150px));
+  justify-content: start;
+  gap: 0.6rem;
+  margin: 0 0 0.85rem;
+  padding: 0.35rem 0 1rem;
+  min-width: 0;
+
+  > span {
+    display: block;
+    min-width: 0;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+img.thumbnail-preview {
+  display: block;
+  width: 100% !important;
+  max-width: 175px;
+  max-height: 175px;
+  height: auto !important;
+  margin: 0 !important;
+  object-fit: contain;
+  border-radius: 7px;
+  box-shadow: 0 0 10px var(--crust);
+  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+
+  &:hover {
+    scale: 110%;
+    border-radius: 0;
+    box-shadow: 0 0 30px var(--surface0);
+  }
+
+  &[title~="animated"],
+  &[alt~="animated"],
+  &[alt~="video"],
+  &.webm {
+    outline: 3px solid var(--blue);
+    outline-offset: -3px;
+  }
+}
+
+#paginator {
+  padding: 0.5rem 0 1.5rem;
+
+  > br {
+    display: none;
+  }
+}

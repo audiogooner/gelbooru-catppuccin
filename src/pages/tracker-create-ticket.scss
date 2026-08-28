@@ -1,0 +1,442 @@
+/* ----------------------------------------------------
+   TRACKER CREATE TICKET (legacy default.css layout)
+   ---------------------------------------------------- */
+
+body {
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+  line-height: 1.42857143;
+}
+
+body > br {
+  display: none;
+}
+
+.header {
+  overflow: hidden;
+  background: var(--surface0) !important;
+
+  .center {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+}
+
+h2.siteName {
+  display: block;
+  float: left;
+  height: calc(20px + 1.42857143em + 23px);
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+
+  a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+}
+
+ul.flat-list {
+  display: block;
+  font-size: 12px !important;
+  line-height: 1.42857143;
+
+  li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+
+  li a {
+    width: auto !important;
+    height: auto !important;
+  }
+
+  li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+
+  a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+
+  a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+
+    &::after {
+      content: "Settings";
+      font-size: 12px;
+      font-weight: inherit;
+      font-family: verdana, sans-serif, helvetica;
+      line-height: 1.42857143;
+    }
+  }
+}
+
+div.submenu {
+  background: var(--surface1) !important;
+  padding: 10px 15px !important;
+  font-size: 12px;
+  line-height: 1.42857143;
+
+  .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+
+  ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+
+  ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  ul.flat-list2 > li > a[href*="s=create_ticket"] {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+}
+
+.success-notice {
+  margin: 0.75rem 1.25rem 0 !important;
+  padding: 0.65rem 1rem !important;
+  color: var(--green);
+  font-size: 0.875em;
+  background: var(--surface0) !important;
+  border: 1px solid var(--green) !important;
+  border-radius: 10px;
+
+  a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+}
+
+#content {
+  padding: 1rem 1rem 2rem !important;
+  text-align: left;
+  color: var(--text);
+  max-width: none;
+
+  > br {
+    display: none;
+  }
+
+  > h3 {
+    margin: 0 0 0.85rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+    color: var(--text);
+  }
+
+  > fieldset {
+    width: 100% !important;
+    max-width: 52rem;
+    margin: 0;
+    padding: 0;
+    border: none !important;
+    background: transparent !important;
+
+    legend {
+      padding: 0;
+      margin: 0 0 0.75rem;
+      color: var(--text);
+      font-family: verdana, sans-serif, helvetica;
+      font-size: 1.05em;
+      font-weight: 700;
+    }
+  }
+}
+
+/* ----- Top fields (summary / type) ----- */
+
+#content fieldset form > table {
+  width: 100% !important;
+  border-collapse: collapse;
+  font-size: 12px !important;
+
+  td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    vertical-align: middle;
+    padding: 0.4rem 0;
+    font-size: 12px !important;
+  }
+
+  tr > td:first-child {
+    width: 10rem;
+    padding-right: 1rem;
+    color: var(--text);
+    font-size: 12px !important;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    max-width: 36rem;
+    box-sizing: border-box;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  select {
+    min-width: 10rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0.45rem 0.65rem !important;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: solid 1px var(--surface1) !important;
+    border-radius: 7px !important;
+    appearance: auto;
+  }
+}
+
+/* ----- Description / additional info ----- */
+
+#content fieldset form > div {
+  margin: 0.5rem 0 0 !important;
+  color: var(--text);
+  font-size: 12px !important;
+
+  > br {
+    display: none;
+  }
+
+  > div[style*="border-bottom"] {
+    display: none;
+  }
+
+  textarea {
+    display: block;
+    width: 100% !important;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0.35rem 0 0.85rem;
+    padding: 0.55rem 0.75rem !important;
+    resize: vertical;
+  }
+
+  textarea[name="ticket_body"] {
+    min-height: 12rem;
+  }
+
+  textarea[name="ticket_additional_information"] {
+    min-height: 6rem;
+  }
+
+  > table {
+    width: 100% !important;
+    margin: 0.25rem 0 1rem;
+    border-collapse: collapse;
+    font-size: 12px !important;
+
+    td {
+      border: none !important;
+      background: transparent !important;
+      color: var(--text) !important;
+      vertical-align: middle;
+      padding: 0.35rem 0.75rem 0.35rem 0;
+      font-size: 12px !important;
+    }
+
+    tr > td:first-child,
+    tr > td:nth-child(3) {
+      width: 5.5rem;
+      color: var(--text);
+      font-size: 12px !important;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 6rem;
+      box-sizing: border-box;
+      padding: 0.55rem 0.75rem !important;
+    }
+
+    select {
+      min-width: 8rem;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 0.45rem 0.65rem !important;
+      color: var(--text) !important;
+      background: var(--surface0) !important;
+      border: solid 1px var(--surface1) !important;
+      border-radius: 7px !important;
+      appearance: auto;
+    }
+
+    input[type="radio"] {
+      margin: 0 0.25rem 0 0.65rem;
+      vertical-align: middle;
+      accent-color: var(--blue);
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+/* ----- Actions ----- */
+
+#content fieldset form {
+  input[type="submit"] {
+    display: none !important;
+  }
+
+  > div > a[href^="javascript:"] {
+    display: inline-block !important;
+    margin: 0.75rem 0.5rem 0 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none !important;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      color: var(--crust) !important;
+      text-decoration: none !important;
+    }
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--sapphire);
+      outline-offset: 2px;
+    }
+  }
+
+  > div > a[href*="s=create_ticket"] {
+    display: inline-block;
+    margin: 0.75rem 0 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--text) !important;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--surface1) !important;
+    border: none !important;
+    border-radius: 7px !important;
+
+    &:hover {
+      background: var(--surface2) !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #content {
+    padding: 0.75rem 0.75rem 1.5rem !important;
+
+    > fieldset {
+      max-width: none;
+    }
+  }
+
+  #content fieldset form > table > tbody > tr {
+    display: block;
+
+    > td {
+      display: block;
+      width: 100% !important;
+      padding-right: 0;
+    }
+
+    > td:first-child {
+      padding-bottom: 0.25rem;
+    }
+
+    > td:last-child {
+      padding-bottom: 0.75rem;
+    }
+  }
+
+  #content fieldset form > div > table > tbody > tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.35rem 0.75rem;
+
+    > td:empty {
+      display: none;
+    }
+
+    > td:first-child,
+    > td:nth-child(3) {
+      grid-column: 1;
+    }
+
+    > td:nth-child(2),
+    > td:nth-child(4) {
+      grid-column: 2;
+    }
+  }
+}

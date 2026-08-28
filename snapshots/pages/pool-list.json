@@ -2,8 +2,8 @@
   "id": "pool-list",
   "url": "https://gelbooru.com/index.php?page=pool&s=list",
   "title": "| Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
-  "capturedAt": "2026-08-19T19:07:58.905Z",
-  "source": "fetch",
+  "capturedAt": "2026-08-26T19:53:03.863Z",
+  "source": "live",
   "classes": [
     "active",
     "aside",
@@ -16,16 +16,26 @@
     "searchArea",
     "searchList",
     "sm-hidden",
-    "topnav"
+    "topnav",
+    "ui-autocomplete",
+    "ui-autocomplete-input",
+    "ui-front",
+    "ui-helper-hidden-accessible",
+    "ui-menu",
+    "ui-widget",
+    "ui-widget-content",
+    "vc-init"
   ],
   "ids": [
     "container",
+    "gelbooru-dev-overlay",
     "long-notice",
     "motd",
     "myTopnav",
     "notice",
     "paginator",
-    "tags-search"
+    "tags-search",
+    "ui-id-1"
   ],
   "stylesheets": [
     "gridStyle.css",

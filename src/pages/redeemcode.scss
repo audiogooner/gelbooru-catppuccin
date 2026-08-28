@@ -1,0 +1,81 @@
+/* ----------------------------------------------------
+   REDEEM CODE
+   ---------------------------------------------------- */
+
+@media only screen and (min-width: 851px) {
+  .aside {
+    display: none !important;
+  }
+
+  #container {
+    grid-template-columns: 40px auto !important;
+  }
+}
+
+.navSubmenu > a[href*="redeemCode"] {
+  color: var(--green) !important;
+}
+
+.mainBodyPadding {
+  > br {
+    display: none;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.15em;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  form {
+    max-width: 42em;
+    color: var(--subtext0);
+    line-height: 1.55;
+
+    b {
+      color: var(--red);
+    }
+
+    br {
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    input[name="confirmedTerms"] {
+      margin: 0 0.4rem 0 0;
+      vertical-align: middle;
+      accent-color: var(--blue);
+    }
+
+    label[for="confirmedTerms"] {
+      color: var(--text);
+      vertical-align: middle;
+    }
+
+    input[name="redeemCode"] {
+      width: calc(100% - 8.5rem) !important;
+      box-sizing: border-box;
+      margin: 0.5rem 0.5rem 0 0;
+      padding: 0.55rem 0.75rem !important;
+      vertical-align: middle;
+    }
+
+    input[name="redeemCode"] + input.searchList {
+      width: auto !important;
+      margin-top: 0.5rem;
+      padding: 0.55rem 1.25rem !important;
+      color: var(--crust) !important;
+      font-weight: 600;
+      background: var(--blue) !important;
+      border: none !important;
+      border-radius: 7px !important;
+      cursor: pointer;
+      vertical-align: middle;
+
+      &:hover {
+        background: var(--sapphire) !important;
+      }
+    }
+  }
+}

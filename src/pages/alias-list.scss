@@ -1,0 +1,250 @@
+/* ----------------------------------------------------
+   ALIAS LIST (grid layout)
+   ---------------------------------------------------- */
+
+.aside {
+  display: none !important;
+}
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navSubmenu > a[href*="page=alias"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+.mainBodyPadding {
+  > br {
+    display: none;
+  }
+  > h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ----- Add alias form ----- */
+
+#add-box {
+  margin: 0 0 1.25rem;
+  padding: 0;
+
+  h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05em;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  p {
+    margin: 0 0 1rem;
+    max-width: 42em;
+    color: var(--subtext0);
+    line-height: 1.55;
+
+    b {
+      color: var(--text);
+    }
+  }
+
+  table {
+    width: 100% !important;
+    max-width: 36rem;
+    border-collapse: collapse;
+
+    th,
+    td {
+      border: none !important;
+      background: transparent !important;
+      color: var(--text) !important;
+      text-align: left !important;
+      vertical-align: top;
+      font-weight: normal;
+    }
+
+    th {
+      width: 6.5rem;
+      padding: 0.4rem 1rem 0.4rem 0;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.4rem 0;
+    }
+
+    > tbody > tr:has(> td:first-child:empty) > td:first-child:empty {
+      display: none;
+    }
+  }
+
+  .tag-list-search {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  textarea {
+    width: 100% !important;
+    box-sizing: border-box;
+    min-height: 6rem;
+    padding: 0.55rem 0.75rem !important;
+    resize: vertical;
+  }
+
+  input.searchList {
+    margin: 0.15rem 0 0.65rem;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+}
+
+/* ----- Search aliases ----- */
+
+.mainBodyPadding > div:has(> form > #query) {
+  margin: 0 0 1rem !important;
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05em;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  #query.tag-list-search {
+    flex: 1 1 14rem;
+    width: auto !important;
+    max-width: 28rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  input.searchList {
+    flex: 0 0 auto;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+}
+
+/* ----- Alias table ----- */
+
+#aliases {
+  margin-bottom: 0.5rem;
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--surface1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  th {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    border-radius: 0;
+  }
+
+  td {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    padding: 0.45rem 0.75rem;
+    word-break: break-word;
+
+    b {
+      margin: 0 0.4em;
+      color: var(--sapphire);
+      font-weight: 600;
+    }
+  }
+
+  tr:last-child > td {
+    border-bottom: none !important;
+  }
+
+  tr.rejected-tag {
+    background: color-mix(in srgb, var(--red) 16%, var(--base)) !important;
+  }
+
+  tr.pending-tag {
+    background: color-mix(in srgb, var(--blue) 16%, var(--base)) !important;
+  }
+
+  .tag-count {
+    margin-left: 0.25em;
+    color: var(--subtext0);
+  }
+}
+
+#paginator {
+  padding: 0.5rem 0 1.5rem;
+
+  > br {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #add-box table {
+    > tbody > tr {
+      display: block;
+
+      > th,
+      > td {
+        display: block;
+        width: 100% !important;
+        padding-right: 0;
+      }
+
+      > th {
+        padding-bottom: 0.2rem;
+      }
+
+      > td {
+        padding-bottom: 0.75rem;
+      }
+    }
+  }
+
+  .mainBodyPadding > div:has(> form > #query) {
+    #query.tag-list-search {
+      max-width: none;
+    }
+  }
+}

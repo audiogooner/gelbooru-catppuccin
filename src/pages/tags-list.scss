@@ -1,16 +1,246 @@
 /* ----------------------------------------------------
-   TAGS LIST PAGE
+   TAGS LIST (grid layout)
    ---------------------------------------------------- */
-th {
-  border-radius: 0;
+
+.aside {
+  display: none !important;
 }
 
-#name {
-  width: calc(100% - 30px);
-  margin: 6px;
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
 }
 
-td,
-th {
-  border: 2px solid var(--surface1) !important;
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navSubmenu > a[href*="page=tags"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+.mainBodyPadding {
+  > br {
+    display: none;
+  }
+}
+
+table.form {
+  width: max-content !important;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  justify-content: start;
+  justify-items: start;
+  align-items: start;
+  column-gap: 0.4rem;
+  row-gap: 0.15rem;
+
+  tbody,
+  tr {
+    display: contents;
+  }
+
+  th,
+  td {
+    width: auto !important;
+    border: none !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: normal;
+  }
+
+  th {
+    padding: 0.45rem 1rem 0.45rem 0;
+    white-space: nowrap;
+
+    p {
+      margin: 0.35rem 0 0;
+      color: var(--subtext0);
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+  }
+
+  td {
+    padding: 0.35rem 0;
+  }
+
+  tr:has(#name) > th {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  tr:has(#name) > td {
+    grid-column: 2;
+    grid-row: 1;
+    width: max-content !important;
+  }
+
+  tr:has(#type) > th {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  tr:has(#type) > td {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  tr:has(#order) > th {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  tr:has(#order) > td {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  td:first-child:empty {
+    display: none !important;
+  }
+
+  tr:has(> td > input.searchList) > td:has(input.searchList) {
+    grid-column: 3;
+    grid-row: 1;
+    width: max-content !important;
+    align-self: start;
+    padding: 0.35rem 0 0;
+  }
+
+  #name.tag-list-search {
+    width: 26rem !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  select {
+    width: auto !important;
+    min-width: 10rem;
+    max-width: 14rem;
+    box-sizing: border-box;
+    padding: 0.45rem 0.65rem !important;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: solid 1px var(--surface1) !important;
+    border-radius: 7px !important;
+  }
+
+  input.searchList {
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+}
+
+table.highlightable {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--surface1);
+  border-radius: 10px;
+  overflow: hidden;
+
+  th {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    border-radius: 0;
+
+    & + th {
+      border-left: 1px solid var(--surface1) !important;
+    }
+  }
+
+  td {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    padding: 0.45rem 0.75rem;
+    word-break: break-word;
+
+    & + td {
+      border-left: 1px solid var(--surface1) !important;
+    }
+  }
+
+  tr:last-child > td {
+    border-bottom: none !important;
+  }
+
+  tr.rejected-tag {
+    background: color-mix(in srgb, var(--red) 16%, var(--base)) !important;
+  }
+
+  tr.pending-tag {
+    background: color-mix(in srgb, var(--blue) 16%, var(--base)) !important;
+  }
+
+  .tag-count {
+    margin-left: 0.35em;
+    color: var(--subtext0);
+  }
+}
+
+#paginator {
+  padding: 0.5rem 0 1.5rem;
+
+  > br {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  table.form {
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    th {
+      grid-column: 1 / -1 !important;
+      padding-right: 0;
+      padding-bottom: 0.25rem;
+      white-space: normal;
+
+      p {
+        white-space: normal;
+      }
+    }
+
+    tr:has(#name) > td {
+      grid-column: 1;
+    }
+
+    tr:has(#type) > td,
+    tr:has(#order) > td {
+      grid-column: 1 / -1 !important;
+    }
+
+    tr:has(input.searchList) > td:has(input.searchList) {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    #name.tag-list-search {
+      width: 100% !important;
+    }
+
+    select {
+      width: 100% !important;
+      max-width: none;
+    }
+  }
 }

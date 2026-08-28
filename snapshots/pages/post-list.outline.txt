@@ -6,7 +6,9 @@ html
     meta
     link
     script
-  body
+    style
+    style
+  body.vc-init
     style
     div#container
       div#long-notice
@@ -46,10 +48,8 @@ html
           form
             a
               img
-            input#tags-search
+            input#tags-search.ui-autocomplete-input
             input.searchList
-      script
-      script
       section.aside
         span.sm-hidden
           br
@@ -57,24 +57,6 @@ html
           br
           br
         ul#tag-list.tag-list
-          li.tag-type-artist
-            a.mobile-spacing
-            a.mobile-spacing
-            a.mobile-spacing
-            a
-            span
-          li.tag-type-character
-            a.mobile-spacing
-            a.mobile-spacing
-            a.mobile-spacing
-            a
-            span
-          li.tag-type-character
-            a.mobile-spacing
-            a.mobile-spacing
-            a.mobile-spacing
-            a
-            span
           li.tag-type-character
             a.mobile-spacing
             a.mobile-spacing
@@ -88,6 +70,18 @@ html
             a
             span
           li.tag-type-copyright
+            a.mobile-spacing
+            a.mobile-spacing
+            a.mobile-spacing
+            a
+            span
+          li.tag-type-metadata
+            a.mobile-spacing
+            a.mobile-spacing
+            a.mobile-spacing
+            a
+            span
+          li.tag-type-metadata
             a.mobile-spacing
             a.mobile-spacing
             a.mobile-spacing
@@ -117,6 +111,10 @@ html
         div.headerAd
         div
           a
+        center
+          a
+            video
+              source
         div.alert.alert-success
           center
             a
@@ -129,21 +127,19 @@ html
               b
         div.thumbnail-container
           article.thumbnail-preview
-            a#p14733746
+            a#p14751390
               img
           article.thumbnail-preview
-            a#p14733745
+            a#p14751389
               img
           article.thumbnail-preview
-            a#p14733744
+            a#p14751388
               img
         div.footerAd
           br
           center
-            div
-              div
-              div
-              div
+            a
+              img
         div.pagination
           div#paginator
             b
@@ -158,9 +154,6 @@ html
             a
             a
         div.footerAd2
-      script
-      ins.easa1w3m3e331
-      script
       script
       footer
         a
@@ -183,3 +176,9 @@ html
     script
     script
     script
+    ul#ui-id-1.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
+    div.ui-helper-hidden-accessible
+    iframe.html2canvas-container
+    iframe.html2canvas-container
+    iframe.html2canvas-container
+    div#gelbooru-dev-overlay

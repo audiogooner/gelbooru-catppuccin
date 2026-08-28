@@ -1,0 +1,34 @@
+{
+  "id": "tracker-view",
+  "url": "https://gelbooru.com/index.php?page=tracker&s=view&id=1521",
+  "title": "| Gelbooru",
+  "capturedAt": "2026-08-28T16:05:59.580Z",
+  "source": "live",
+  "classes": [
+    "bg_tr",
+    "center",
+    "current-page",
+    "flat-list",
+    "flat-list2",
+    "header",
+    "noticeError",
+    "siteName",
+    "submenu",
+    "success-notice",
+    "vc-init"
+  ],
+  "ids": [
+    "add_response",
+    "content",
+    "footer",
+    "gelbooru-dev-overlay",
+    "long-notice",
+    "notice",
+    "subnavbar"
+  ],
+  "stylesheets": [
+    "default.css",
+    "jquery-ui.css"
+  ],
+  "notes": []
+}
