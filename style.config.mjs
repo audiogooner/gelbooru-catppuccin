@@ -18,7 +18,8 @@ export const bundles = [
   },
   {
     file: "src/pages/homepage.scss",
-    document: 'url("https://gelbooru.com/index.php")',
+    document:
+      'url("https://gelbooru.com/"), url("https://gelbooru.com/index.php")',
   },
   {
     file: "src/pages/account-home.scss",
@@ -39,6 +40,11 @@ export const bundles = [
       'url-prefix("https://gelbooru.com/index.php?page=account&s=change_avatar")',
   },
   {
+    file: "src/pages/account-report.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=account&s=report")',
+  },
+  {
     file: "src/pages/redeemcode.scss",
     document: 'url("https://gelbooru.com/redeemCode.php")',
   },
@@ -46,6 +52,11 @@ export const bundles = [
     file: "src/pages/account-profile.scss",
     document:
       'url-prefix("https://gelbooru.com/index.php?page=account&s=profile")',
+  },
+  {
+    file: "src/pages/account-tag-edits.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=account&s=tag_edits")',
   },
   {
     file: "src/pages/wiki.scss",
@@ -138,6 +149,11 @@ export const bundles = [
     document: 'url("https://gelbooru.com/tos.php")',
   },
   {
+    file: "src/pages/aboutus.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=aboutus")',
+  },
+  {
     file: "src/pages/extras-patreon.scss",
     document:
       'url-prefix("https://gelbooru.com/index.php?page=extras&s=patreon")',
@@ -149,6 +165,10 @@ export const bundles = [
   {
     file: "src/pages/forum-view.scss",
     document: 'url-prefix("https://gelbooru.com/index.php?page=forum&s=view")',
+  },
+  {
+    file: "src/pages/forum-add.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=forum&s=add")',
   },
   {
     file: "src/pages/favorites-view.scss",
@@ -175,6 +195,11 @@ export const bundles = [
       'url-prefix("https://gelbooru.com/index.php?page=gmail&s=home")',
   },
   {
+    file: "src/pages/gmail-manage.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=gmail&s=manage")',
+  },
+  {
     file: "src/pages/gmail-active-inbox.scss",
     document:
       'url-prefix("https://gelbooru.com/index.php?page=gmail&s=home&search=inbox")',
@@ -196,6 +221,10 @@ export const bundles = [
   {
     file: "src/pages/help.scss",
     document: 'url-prefix("https://gelbooru.com/index.php?page=help")',
+  },
+  {
+    file: "src/pages/history.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=history")',
   },
   {
     file: "src/pages/tracker-list.scss",
@@ -304,4 +333,5 @@ export const snapshotPages = [
   },
   { id: "help", url: "https://gelbooru.com/index.php?page=help" },
   { id: "tos", url: "https://gelbooru.com/tos.php" },
+  { id: "aboutus", url: "https://gelbooru.com/index.php?page=aboutus" },
 ];

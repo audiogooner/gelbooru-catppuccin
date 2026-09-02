@@ -1,0 +1,341 @@
+/* ----------------------------------------------------
+   ACCOUNT REPORT / SCORE (legacy default.css layout)
+   ---------------------------------------------------- */
+
+body {
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+  line-height: 1.42857143;
+}
+
+body > br {
+  display: none;
+}
+
+.header {
+  overflow: hidden;
+  background: var(--surface0) !important;
+
+  .center {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+}
+
+h2.siteName {
+  display: block;
+  float: left;
+  height: calc(20px + 1.42857143em + 23px);
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+
+  a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+}
+
+ul.flat-list {
+  display: block;
+  font-size: 12px !important;
+  line-height: 1.42857143;
+
+  li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+
+  li a {
+    width: auto !important;
+    height: auto !important;
+  }
+
+  li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+
+  a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+
+  a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+
+    &::after {
+      content: "Settings";
+      font-size: 12px;
+      font-weight: inherit;
+      font-family: verdana, sans-serif, helvetica;
+      line-height: 1.42857143;
+    }
+  }
+}
+
+div.submenu {
+  background: var(--surface1) !important;
+  padding: 10px 15px !important;
+  font-size: 12px;
+  line-height: 1.42857143;
+
+  .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+
+  ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+
+  ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+}
+
+.success-notice {
+  margin: 0.75rem 1.25rem 0 !important;
+  padding: 0.65rem 1rem !important;
+  color: var(--green);
+  font-size: 0.875em;
+  background: var(--surface0) !important;
+  border: 1px solid var(--green) !important;
+  border-radius: 10px;
+
+  a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+}
+
+#content {
+  padding: 1.25rem 1.25rem 2rem 30px !important;
+  text-align: left;
+  color: var(--text);
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#user-record {
+  max-width: 54rem;
+  color: var(--subtext0);
+
+  > h4 {
+    display: block;
+    margin: 0 0 0.85rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.15em;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  /* Score history table (header row only when empty) */
+  > table {
+    width: 100% !important;
+    margin: 0 0 1.5rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+
+    th,
+    td {
+      padding: 0.55rem 0.75rem !important;
+      text-align: left !important;
+      vertical-align: middle;
+      border: none !important;
+      border-right: 1px solid var(--surface1) !important;
+      border-bottom: 1px solid var(--surface1) !important;
+      border-radius: 0 !important;
+    }
+
+    th:first-child,
+    td:first-child {
+      border-left: 1px solid var(--surface1) !important;
+    }
+
+    tr:first-child > th,
+    tr:first-child > td {
+      border-top: 1px solid var(--surface1) !important;
+    }
+
+    th {
+      color: var(--crust) !important;
+      font-weight: 600;
+      background: var(--blue) !important;
+      white-space: nowrap;
+    }
+
+    tr:first-child > th:first-child {
+      border-top-left-radius: 10px !important;
+    }
+
+    tr:first-child > th:last-child {
+      border-top-right-radius: 10px !important;
+    }
+
+    /* Empty last column (actions) */
+    th:last-child:empty {
+      width: 2.5rem;
+    }
+
+    td {
+      color: var(--text);
+      background: var(--surface0) !important;
+    }
+
+    tbody > tr:nth-child(even) td {
+      background: var(--surface1) !important;
+    }
+
+    /* Header-only table (no score rows yet) */
+    tbody > tr:first-child:last-child > th:first-child {
+      border-bottom-left-radius: 10px !important;
+    }
+
+    tbody > tr:first-child:last-child > th:last-child {
+      border-bottom-right-radius: 10px !important;
+    }
+
+    tbody > tr:last-child:not(:first-child) > td:first-child {
+      border-bottom-left-radius: 10px !important;
+    }
+
+    tbody > tr:last-child:not(:first-child) > td:last-child {
+      border-bottom-right-radius: 10px !important;
+    }
+  }
+
+  #report_user {
+    max-width: 36rem;
+
+    > table {
+      width: 100% !important;
+      margin: 0;
+      border-collapse: collapse;
+
+      td {
+        border: none !important;
+        background: transparent !important;
+        color: var(--subtext0) !important;
+        padding: 0.35rem 0 0.75rem;
+        text-align: left !important;
+        vertical-align: top;
+        font-weight: 600;
+        font-size: 12px;
+
+        > br {
+          display: none;
+        }
+      }
+
+      textarea {
+        display: block;
+        width: 100% !important;
+        box-sizing: border-box;
+        margin: 0.35rem 0 0;
+        padding: 0.55rem 0.75rem !important;
+        min-height: 7.5rem;
+        resize: vertical;
+        font-weight: normal;
+        color: var(--text) !important;
+        background: var(--surface0) !important;
+        border: 1px solid var(--surface1) !important;
+        border-radius: 7px !important;
+      }
+
+      small {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem 1rem;
+        color: var(--text);
+        font-size: 12px;
+        font-weight: normal;
+      }
+
+      input[type="radio"] {
+        margin: 0 0.35rem 0 0.15rem;
+        vertical-align: middle;
+        accent-color: var(--blue);
+      }
+
+      input[type="submit"] {
+        margin-top: 0.25rem;
+        width: auto !important;
+        padding: 0.55rem 1.25rem !important;
+        color: var(--crust) !important;
+        font-weight: 600;
+        background: var(--blue) !important;
+        border: none !important;
+        border-radius: 7px !important;
+        cursor: pointer;
+
+        &:hover {
+          background: var(--sapphire) !important;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #user-record {
+    #report_user {
+      max-width: none;
+    }
+  }
+}

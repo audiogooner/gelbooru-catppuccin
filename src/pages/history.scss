@@ -1,0 +1,252 @@
+@use "bootstrap-chrome";
+@use "sticky-paginator";
+
+/* ----------------------------------------------------
+   POST HISTORY — tag / note history (bootstrap layout)
+   ---------------------------------------------------- */
+
+@include bootstrap-chrome.navbar;
+@include bootstrap-chrome.mail-alert;
+
+#submenu .navbar-nav > li > a[href*="page=post"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+.padding15 {
+  padding: 1.25rem 1rem 2rem !important;
+
+  > br {
+    display: none;
+  }
+}
+
+.padding15 > .container-fluid {
+  padding: 0;
+
+  > .padding15 {
+    padding: 0 !important;
+  }
+}
+
+/* ----- History table ----- */
+
+.padding15 table {
+  width: 100% !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--surface1);
+  border-radius: 10px;
+  overflow: hidden;
+  color: var(--text) !important;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+
+  th,
+  td {
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    padding: 0.65rem 0.85rem !important;
+    vertical-align: top;
+    background: transparent !important;
+    color: var(--text) !important;
+  }
+
+  th + th,
+  td + td {
+    border-left: 1px solid var(--surface1) !important;
+  }
+
+  /* Header row */
+  > tbody > tr:first-child {
+    background: var(--blue) !important;
+
+    th {
+      color: var(--crust) !important;
+      font-weight: 600;
+      vertical-align: middle;
+      white-space: nowrap;
+      border-bottom-color: color-mix(
+        in srgb,
+        var(--blue) 70%,
+        var(--crust)
+      ) !important;
+    }
+
+    /* Empty rating-strip header */
+    th:first-child:empty {
+      width: 0.45rem;
+      min-width: 0.45rem;
+      padding: 0 !important;
+      border-left: none !important;
+    }
+  }
+
+  tr.rotate_list {
+    background: var(--base) !important;
+
+    &:nth-child(even) {
+      background: var(--mantle) !important;
+    }
+
+    &:hover {
+      background: var(--surface0) !important;
+    }
+
+    &:last-child > td {
+      border-bottom: none !important;
+    }
+  }
+
+  /* Rating strip (inline rgb backgrounds) */
+  tr.rotate_list > td:first-child {
+    width: 0.45rem;
+    min-width: 0.45rem;
+    max-width: 0.45rem;
+    padding: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  /* general */
+  tr.rotate_list > td:first-child[style*="1, 6, 243"],
+  tr.rotate_list > td:first-child[style*="1,6,243"] {
+    background: var(--blue) !important;
+  }
+
+  /* sensitive / safe-green */
+  tr.rotate_list > td:first-child[style*="20, 143, 4"],
+  tr.rotate_list > td:first-child[style*="20,143,4"] {
+    background: var(--green) !important;
+  }
+
+  /* questionable */
+  tr.rotate_list > td:first-child[style*="137, 132, 4"],
+  tr.rotate_list > td:first-child[style*="137,132,4"] {
+    background: var(--yellow) !important;
+  }
+
+  /* explicit */
+  tr.rotate_list > td:first-child[style*="243, 6, 1"],
+  tr.rotate_list > td:first-child[style*="243,6,1"] {
+    background: var(--red) !important;
+  }
+
+  /* Post / note id, user, source, revert links */
+  a {
+    color: var(--blue) !important;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--sapphire) !important;
+      text-decoration: underline;
+    }
+  }
+
+  /* Restore category colors (table `a` would otherwise flatten them) */
+  .tag-type-artist > a {
+    color: var(--red) !important;
+  }
+
+  .tag-type-character > a {
+    color: var(--green) !important;
+  }
+
+  .tag-type-copyright > a {
+    color: var(--pink) !important;
+  }
+
+  .tag-type-metadata > a {
+    color: var(--yellow) !important;
+  }
+
+  .tag-type-general > a {
+    color: var(--blue) !important;
+  }
+
+  /* Tags cell: "(All) - …" */
+  a[title] {
+    color: var(--subtext1) !important;
+    font-weight: 600;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--text) !important;
+    }
+  }
+
+  .unchanged-tags,
+  .added-tags,
+  .removed-tags {
+    display: inline;
+    margin-right: 0.35em;
+    line-height: 1.65;
+  }
+
+  .unchanged-tags {
+    font-size: 0.85em;
+  }
+
+  .added-tags {
+    font-size: 0.9em;
+    font-weight: 600;
+
+    .tag-type-general > a,
+    .tag-type-artist > a,
+    .tag-type-character > a,
+    .tag-type-copyright > a,
+    .tag-type-metadata > a,
+    > a {
+      color: var(--green) !important;
+    }
+
+    span[style*="color"] {
+      color: var(--green) !important;
+    }
+  }
+
+  .removed-tags {
+    font-size: 0.9em;
+    font-weight: 600;
+
+    .tag-type-general > a,
+    .tag-type-artist > a,
+    .tag-type-character > a,
+    .tag-type-copyright > a,
+    .tag-type-metadata > a,
+    > a {
+      color: var(--red) !important;
+    }
+
+    span[style*="color"] {
+      color: var(--red) !important;
+    }
+  }
+}
+
+div#paginator {
+  @include sticky-paginator.bar(1rem);
+}
+
+@media only screen and (max-width: 850px) {
+  .padding15 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .padding15 table {
+    th + th,
+    td + td {
+      border-left: none !important;
+    }
+
+    th,
+    td {
+      padding: 0.5rem 0.55rem !important;
+    }
+
+    tr.rotate_list > td:first-child {
+      padding: 0 !important;
+    }
+  }
+}

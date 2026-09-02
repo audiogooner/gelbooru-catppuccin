@@ -33,13 +33,23 @@ export function compileBundles() {
   }));
 }
 
-export function parseDocument(document) {
-  const match = document.match(/^(url-prefix|url|regexp)\("([^"]+)"\)$/);
-  if (!match) {
+export function parseDocumentRules(document) {
+  const rules = [];
+  const re = /(url-prefix|url|regexp)\("([^"]+)"\)/g;
+  let match;
+  while ((match = re.exec(document)) !== null) {
+    rules.push({ kind: match[1], value: match[2] });
+  }
+
+  if (rules.length === 0) {
     throw new Error(`Unsupported @-moz-document rule: ${document}`);
   }
 
-  return { kind: match[1], value: match[2] };
+  return rules;
+}
+
+export function parseDocument(document) {
+  return parseDocumentRules(document)[0];
 }
 
 export function matchesDocument(document, href) {
@@ -47,15 +57,16 @@ export function matchesDocument(document, href) {
     return true;
   }
 
-  const { kind, value } = parseDocument(document);
-  if (kind === "url-prefix") {
-    return href.startsWith(value);
-  }
-  if (kind === "regexp") {
-    return new RegExp(value).test(href);
-  }
+  return parseDocumentRules(document).some(({ kind, value }) => {
+    if (kind === "url-prefix") {
+      return href.startsWith(value);
+    }
+    if (kind === "regexp") {
+      return new RegExp(value).test(href);
+    }
 
-  return href === value;
+    return href === value;
+  });
 }
 
 export function cssForHref(compiled, href) {

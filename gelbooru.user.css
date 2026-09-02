@@ -657,7 +657,7 @@
   }
 }
 
-@-moz-document url("https://gelbooru.com/index.php") {
+@-moz-document url("https://gelbooru.com/"), url("https://gelbooru.com/index.php") {
   /* ----------------------------------------------------
      HOMEPAGE
      ---------------------------------------------------- */
@@ -1197,6 +1197,315 @@
   }
 }
 
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=account&s=report") {
+  /* ----------------------------------------------------
+     ACCOUNT REPORT / SCORE (legacy default.css layout)
+     ---------------------------------------------------- */
+  body {
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  body > br {
+    display: none;
+  }
+
+  .header {
+    overflow: hidden;
+    background: var(--surface0) !important;
+  }
+  .header .center {
+    margin: 0;
+  }
+  .header a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  h2.siteName {
+    display: block;
+    float: left;
+    height: calc(20px + 1.42857143em + 23px);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  h2.siteName a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  ul.flat-list {
+    display: block;
+    font-size: 12px !important;
+    line-height: 1.42857143;
+  }
+  ul.flat-list li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+  ul.flat-list li a {
+    width: auto !important;
+    height: auto !important;
+  }
+  ul.flat-list li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+  ul.flat-list a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
+    content: "Settings";
+    font-size: 12px;
+    font-weight: inherit;
+    font-family: verdana, sans-serif, helvetica;
+    line-height: 1.42857143;
+  }
+
+  div.submenu {
+    background: var(--surface1) !important;
+    padding: 10px 15px !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  div.submenu .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  div.submenu ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .success-notice {
+    margin: 0.75rem 1.25rem 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green);
+    font-size: 0.875em;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .success-notice a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  #content {
+    padding: 1.25rem 1.25rem 2rem 30px !important;
+    text-align: left;
+    color: var(--text);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  #user-record {
+    max-width: 54rem;
+    color: var(--subtext0);
+  }
+  #user-record > h4 {
+    display: block;
+    margin: 0 0 0.85rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.15em;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  #user-record {
+    /* Score history table (header row only when empty) */
+  }
+  #user-record > table {
+    width: 100% !important;
+    margin: 0 0 1.5rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  #user-record > table th,
+  #user-record > table td {
+    padding: 0.55rem 0.75rem !important;
+    text-align: left !important;
+    vertical-align: middle;
+    border: none !important;
+    border-right: 1px solid var(--surface1) !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    border-radius: 0 !important;
+  }
+  #user-record > table th:first-child,
+  #user-record > table td:first-child {
+    border-left: 1px solid var(--surface1) !important;
+  }
+  #user-record > table tr:first-child > th,
+  #user-record > table tr:first-child > td {
+    border-top: 1px solid var(--surface1) !important;
+  }
+  #user-record > table th {
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    white-space: nowrap;
+  }
+  #user-record > table tr:first-child > th:first-child {
+    border-top-left-radius: 10px !important;
+  }
+  #user-record > table tr:first-child > th:last-child {
+    border-top-right-radius: 10px !important;
+  }
+  #user-record > table {
+    /* Empty last column (actions) */
+  }
+  #user-record > table th:last-child:empty {
+    width: 2.5rem;
+  }
+  #user-record > table td {
+    color: var(--text);
+    background: var(--surface0) !important;
+  }
+  #user-record > table tbody > tr:nth-child(even) td {
+    background: var(--surface1) !important;
+  }
+  #user-record > table {
+    /* Header-only table (no score rows yet) */
+  }
+  #user-record > table tbody > tr:first-child:last-child > th:first-child {
+    border-bottom-left-radius: 10px !important;
+  }
+  #user-record > table tbody > tr:first-child:last-child > th:last-child {
+    border-bottom-right-radius: 10px !important;
+  }
+  #user-record > table tbody > tr:last-child:not(:first-child) > td:first-child {
+    border-bottom-left-radius: 10px !important;
+  }
+  #user-record > table tbody > tr:last-child:not(:first-child) > td:last-child {
+    border-bottom-right-radius: 10px !important;
+  }
+  #user-record #report_user {
+    max-width: 36rem;
+  }
+  #user-record #report_user > table {
+    width: 100% !important;
+    margin: 0;
+    border-collapse: collapse;
+  }
+  #user-record #report_user > table td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--subtext0) !important;
+    padding: 0.35rem 0 0.75rem;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  #user-record #report_user > table td > br {
+    display: none;
+  }
+  #user-record #report_user > table textarea {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+    margin: 0.35rem 0 0;
+    padding: 0.55rem 0.75rem !important;
+    min-height: 7.5rem;
+    resize: vertical;
+    font-weight: normal;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 7px !important;
+  }
+  #user-record #report_user > table small {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 1rem;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: normal;
+  }
+  #user-record #report_user > table input[type=radio] {
+    margin: 0 0.35rem 0 0.15rem;
+    vertical-align: middle;
+    accent-color: var(--blue);
+  }
+  #user-record #report_user > table input[type=submit] {
+    margin-top: 0.25rem;
+    width: auto !important;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  #user-record #report_user > table input[type=submit]:hover {
+    background: var(--sapphire) !important;
+  }
+
+  @media only screen and (max-width: 600px) {
+    #user-record #report_user {
+      max-width: none;
+    }
+  }
+}
+
 @-moz-document url("https://gelbooru.com/redeemCode.php") {
   /* ----------------------------------------------------
      REDEEM CODE
@@ -1697,6 +2006,387 @@
     .row:has(.profileOptionSelect) {
       /* 100px avatar hangs ~65px below the 100px banner. */
       margin-top: 2.75rem;
+    }
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=account&s=tag_edits") {
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
+  /* ----------------------------------------------------
+     ACCOUNT TAG EDIT HISTORY (legacy default.css layout)
+     ---------------------------------------------------- */
+  body {
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  body > br {
+    display: none;
+  }
+
+  .header {
+    overflow: hidden;
+    background: var(--surface0) !important;
+  }
+  .header .center {
+    margin: 0;
+  }
+  .header a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  h2.siteName {
+    display: block;
+    float: left;
+    height: calc(20px + 1.42857143em + 23px);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  h2.siteName a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  ul.flat-list {
+    display: block;
+    font-size: 12px !important;
+    line-height: 1.42857143;
+  }
+  ul.flat-list li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+  ul.flat-list li a {
+    width: auto !important;
+    height: auto !important;
+  }
+  ul.flat-list li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+  ul.flat-list a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
+    content: "Settings";
+    font-size: 12px;
+    font-weight: inherit;
+    font-family: verdana, sans-serif, helvetica;
+    line-height: 1.42857143;
+  }
+
+  div.submenu {
+    background: var(--surface1) !important;
+    padding: 10px 15px !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  div.submenu .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  div.submenu ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  div.submenu {
+    /* Tag history is reached from the profile */
+  }
+  div.submenu ul.flat-list2 > li > a[href*="s=profile"] {
+    color: var(--blue) !important;
+  }
+
+  .success-notice {
+    margin: 0.75rem 1.25rem 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green);
+    font-size: 0.875em;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .success-notice a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  /* ----- Content ----- */
+  #content {
+    padding: 1.25rem 1.25rem 2rem !important;
+    text-align: left;
+    color: var(--text);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  #content > br {
+    display: none;
+  }
+  #content > h2 {
+    display: block;
+    margin: 0 0 0.35rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+    color: var(--text);
+  }
+  #content > h2 > span {
+    color: var(--subtext0) !important;
+    font-weight: normal;
+  }
+  #content > h2 > span a {
+    color: var(--subtext1) !important;
+  }
+  #content > h2 > span a:hover {
+    color: var(--blue) !important;
+  }
+  #content {
+    /* Inline `color: #666` on the subtitle */
+  }
+  #content > h6 {
+    display: block;
+    margin: 0 0 1.25rem;
+    color: var(--subtext0) !important;
+    font-size: 0.95em;
+    font-weight: normal;
+    line-height: 1.4;
+  }
+
+  /* ----- Tag history table ----- */
+  table.highlightable {
+    width: 100% !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--surface1);
+    border-radius: 10px;
+    overflow: hidden;
+    color: var(--text) !important;
+    font-size: 12px;
+  }
+  table.highlightable th,
+  table.highlightable td {
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    padding: 0.65rem 0.85rem !important;
+    vertical-align: top;
+    background: transparent !important;
+  }
+  table.highlightable th + th,
+  table.highlightable td + td {
+    border-left: 1px solid var(--surface1) !important;
+  }
+  table.highlightable tr:last-child > td {
+    border-bottom: none !important;
+  }
+  table.highlightable {
+    /* Header row (inline #006ffa) */
+  }
+  table.highlightable > tbody > tr:first-child,
+  table.highlightable > tbody > tr[style*="006ffa"],
+  table.highlightable > tbody > tr[style*=background] {
+    background: var(--blue) !important;
+  }
+  table.highlightable > tbody > tr:first-child th,
+  table.highlightable > tbody > tr[style*="006ffa"] th,
+  table.highlightable > tbody > tr[style*=background] th {
+    color: var(--crust) !important;
+    font-weight: 600;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-bottom-color: color-mix(in srgb, var(--blue) 70%, var(--crust)) !important;
+  }
+  table.highlightable {
+    /* Empty trailing header cell (no matching data column) */
+  }
+  table.highlightable th:last-child:empty {
+    width: 0;
+    padding: 0 !important;
+    border-left: none !important;
+  }
+  table.highlightable {
+    /* ID */
+  }
+  table.highlightable td:first-child {
+    width: 1%;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  table.highlightable td:first-child a {
+    color: var(--blue) !important;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  table.highlightable td:first-child a:hover {
+    color: var(--sapphire) !important;
+  }
+  table.highlightable {
+    /* Tags */
+  }
+  table.highlightable td:nth-child(2) {
+    width: 100%;
+    line-height: 1.65;
+    word-break: break-word;
+  }
+  table.highlightable td:nth-child(2) > span {
+    display: inline;
+    margin-right: 0.35em;
+  }
+  table.highlightable td:nth-child(2) a {
+    text-decoration: none;
+  }
+  table.highlightable td:nth-child(2) a:hover {
+    text-decoration: underline;
+  }
+  table.highlightable {
+    /* Date */
+  }
+  table.highlightable td:last-child {
+    width: 1%;
+    white-space: nowrap;
+    color: var(--subtext0) !important;
+    font-variant-numeric: tabular-nums;
+  }
+  table.highlightable td:last-child small {
+    color: var(--subtext0);
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+  table.highlightable tr:hover > td {
+    background: var(--surface0) !important;
+  }
+  table.highlightable .unchanged-tags {
+    font-size: 0.85em;
+  }
+  table.highlightable .unchanged-tags a {
+    color: var(--subtext1) !important;
+  }
+  table.highlightable .unchanged-tags a:hover {
+    color: var(--text) !important;
+  }
+  table.highlightable .added-tags {
+    color: var(--green) !important;
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  table.highlightable .added-tags a {
+    color: var(--green) !important;
+  }
+  table.highlightable .added-tags {
+    /* Inline `color: rgb(20, 143, 4)` on the + marker */
+  }
+  table.highlightable .added-tags span[style*=color] {
+    color: var(--green) !important;
+  }
+  table.highlightable .removed-tags {
+    color: var(--red) !important;
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  table.highlightable .removed-tags a {
+    color: var(--red) !important;
+  }
+  table.highlightable .removed-tags {
+    /* Inline `color: rgb(234, 1, 0)` on the - marker */
+  }
+  table.highlightable .removed-tags span[style*=color] {
+    color: var(--red) !important;
+  }
+
+  /* Match #content horizontal padding so the bar spans edge-to-edge. */
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 1.25rem) 0;
+    padding: 0.6rem 1.25rem;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
+  }
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
+    display: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    table.highlightable th,
+    table.highlightable td {
+      padding: 0.5rem 0.55rem !important;
+    }
+    table.highlightable td:first-child,
+    table.highlightable td:last-child {
+      white-space: normal;
+    }
+    table.highlightable th + th,
+    table.highlightable td + td {
+      border-left: none !important;
     }
   }
 }
@@ -6043,6 +6733,85 @@
   }
 }
 
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=aboutus") {
+  @charset "UTF-8";
+  /* About Us — posts chrome (gridStyle) with prose copy. */
+  .aside {
+    display: none !important;
+  }
+
+  #container {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 100%;
+  }
+
+  main {
+    grid-column: 1/-1;
+    min-width: 0;
+  }
+
+  .mainBodyPadding {
+    box-sizing: border-box;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 2.5rem !important;
+    color: var(--subtext0);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .mainBodyPadding center {
+    display: block;
+    text-align: left;
+  }
+  .mainBodyPadding h1 {
+    margin: 0 0 1.25rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .mainBodyPadding {
+    /* Site paints the brand link with inline `color: #006FFA !important`, which
+       beats stylesheet `color`. `-webkit-text-fill-color` is unset inline. */
+  }
+  .mainBodyPadding h1 > a {
+    -webkit-text-fill-color: var(--blue) !important;
+    color: var(--blue) !important;
+    font-size: 2.4rem !important;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .mainBodyPadding h1 > a:hover {
+    -webkit-text-fill-color: var(--sapphire) !important;
+    color: var(--sapphire) !important;
+  }
+  .mainBodyPadding {
+    /* Copy column: width via inline max-width: 800px */
+  }
+  .mainBodyPadding center > div {
+    margin: 0 auto;
+    color: var(--subtext0);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .mainBodyPadding {
+    /* Logo strip at the bottom of the copy (inline background: #006FFA) */
+  }
+  .mainBodyPadding center > div > div[style*=background] {
+    margin-top: 0.5rem;
+    padding: 1rem !important;
+    text-align: center !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 10px;
+  }
+  .mainBodyPadding center > div > div[style*=background] img {
+    width: 50px;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(72%) sepia(53%) saturate(3396%) hue-rotate(192deg) brightness(109%) contrast(96%);
+  }
+}
+
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=extras&s=patreon") {
   /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
      Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
@@ -6963,6 +7732,222 @@
       width: 100%;
       margin-left: 0;
       margin-top: 0.35rem;
+    }
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=forum&s=add") {
+  @charset "UTF-8";
+  /* ----------------------------------------------------
+     FORUM ADD — New topic (legacy default.css layout)
+     ---------------------------------------------------- */
+  body {
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  body > br {
+    display: none;
+  }
+
+  .header {
+    overflow: hidden;
+    background: var(--surface0) !important;
+  }
+  .header .center {
+    margin: 0;
+  }
+  .header a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  h2.siteName {
+    display: block;
+    float: left;
+    height: calc(20px + 1.42857143em + 23px);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  h2.siteName a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  ul.flat-list {
+    display: block;
+    font-size: 12px !important;
+    line-height: 1.42857143;
+  }
+  ul.flat-list li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+  ul.flat-list li a {
+    width: auto !important;
+    height: auto !important;
+  }
+  ul.flat-list li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+  ul.flat-list a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
+    content: "Settings";
+    font-size: 12px;
+    font-weight: inherit;
+    font-family: verdana, sans-serif, helvetica;
+    line-height: 1.42857143;
+  }
+
+  div.submenu {
+    background: var(--surface1) !important;
+    padding: 10px 15px !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  div.submenu .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  div.submenu ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  div.submenu ul.flat-list2 > li > a.showNewReply,
+  div.submenu ul.flat-list2 > li > a[href*="page=help"][href*="topic=forum"] {
+    color: var(--green) !important;
+  }
+
+  .success-notice {
+    margin: 0.75rem 1.25rem 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green);
+    font-size: 0.875em;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .success-notice a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  /* Compose form (body > form — no #content wrapper on this route) */
+  body > form {
+    display: block;
+    margin: 1.25rem 1.25rem 2rem 30px;
+    max-width: 36rem;
+    padding: 0;
+    text-align: left;
+    background: transparent;
+    border: none;
+  }
+  body > form > table {
+    width: 100% !important;
+    max-width: 36rem;
+    border-collapse: collapse;
+  }
+  body > form > table td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--subtext0) !important;
+    padding: 0.35rem 0 0.75rem;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  body > form > table td > br {
+    display: none;
+  }
+  body > form > table input[type=text],
+  body > form > table textarea {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+    margin: 0.35rem 0 0;
+    padding: 0.55rem 0.75rem !important;
+    font-weight: normal;
+  }
+  body > form > table textarea {
+    min-height: 10rem;
+    resize: vertical;
+  }
+  body > form > table input[type=submit] {
+    margin-top: 0.25rem;
+    width: auto !important;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  body > form > table input[type=submit]:hover {
+    background: var(--sapphire) !important;
+  }
+
+  @media only screen and (max-width: 600px) {
+    body > form {
+      margin: 0.75rem;
+      max-width: none;
     }
   }
 }
@@ -8239,6 +9224,428 @@
   }
 }
 
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=gmail&s=manage") {
+  @charset "UTF-8";
+  /* ----------------------------------------------------
+     GMAIL MANAGE / COMPOSE (legacy default.css layout)
+     Mail nav patterns mirror gmail-home; chrome mirrors other default.css pages.
+     ---------------------------------------------------- */
+  body {
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  body > br {
+    display: none;
+  }
+
+  .header {
+    overflow: hidden;
+    background: var(--surface0) !important;
+  }
+  .header .center {
+    margin: 0;
+  }
+  .header a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  h2.siteName {
+    display: block;
+    float: left;
+    height: calc(20px + 1.42857143em + 23px);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  h2.siteName a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  ul.flat-list {
+    display: block;
+    font-size: 12px !important;
+    line-height: 1.42857143;
+  }
+  ul.flat-list li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+  ul.flat-list li a {
+    width: auto !important;
+    height: auto !important;
+  }
+  ul.flat-list li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+  ul.flat-list a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
+    content: "Settings";
+    font-size: 12px;
+    font-weight: inherit;
+    font-family: verdana, sans-serif, helvetica;
+    line-height: 1.42857143;
+  }
+
+  div.submenu {
+    background: var(--surface1) !important;
+    padding: 10px 15px !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  div.submenu .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  div.submenu ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  div.submenu ul.flat-list2 > li > a[href*="page=gmail"] {
+    color: var(--blue) !important;
+  }
+
+  .success-notice {
+    margin: 0.75rem 1.25rem 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green);
+    font-size: 0.875em;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .success-notice a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  /* ----- Two-column shell: folder nav + compose ----- */
+  #content {
+    display: grid;
+    grid-template-columns: minmax(11rem, 14rem) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1.25rem 1.25rem 2rem !important;
+    text-align: left;
+    color: var(--text);
+  }
+  #content > #post-list {
+    float: none !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #content > #preview_pane {
+    display: none;
+  }
+  #content > .content {
+    float: none !important;
+    width: auto !important;
+    max-width: 48rem;
+    margin: 0 !important;
+    min-width: 0;
+  }
+  @media only screen and (max-width: 700px) {
+    #content {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Mail folder nav — same language as gmail-home #tag-list */
+  div.sidebar {
+    float: none !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0.75rem 0 1.25rem;
+    font-size: 12px;
+  }
+  div.sidebar > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  div.sidebar li {
+    display: block;
+    width: auto !important;
+    margin: 0.35rem 0 !important;
+    padding: 0 !important;
+    list-style: none;
+  }
+  div.sidebar li:empty {
+    display: none;
+  }
+  div.sidebar a[href*="s=manage"] {
+    display: block;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600;
+    text-align: center;
+    color: var(--crust) !important;
+    background: var(--blue) !important;
+    border-radius: 7px;
+    text-decoration: none;
+  }
+  div.sidebar a[href*="s=manage"] b {
+    color: inherit !important;
+    font-weight: 600;
+    font-size: inherit !important;
+  }
+  div.sidebar a[href*="s=manage"]:hover {
+    background: var(--sapphire) !important;
+  }
+  div.sidebar a:not([href*="s=manage"]) {
+    display: block;
+    padding: 0.45rem 0.65rem;
+    border-radius: 7px;
+    color: var(--text) !important;
+    text-decoration: none;
+  }
+  div.sidebar a:not([href*="s=manage"]):hover {
+    background: var(--surface0);
+    color: var(--blue) !important;
+  }
+
+  /* ----- Compose form ----- */
+  div.content > br {
+    display: none;
+  }
+  div.content > h3 {
+    display: block;
+    margin: 0 0 0.85rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+    color: var(--text);
+  }
+  div.content {
+    /* Inline: background #1c81ff; color #fff */
+  }
+  div.content > div[style*=background] {
+    margin: 0 0 1rem !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--crust) !important;
+    font-size: 0.875rem !important;
+    font-weight: 600;
+    text-align: center !important;
+    background: var(--blue) !important;
+    border-radius: 10px;
+  }
+
+  #compose_pm {
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  #compose_pm > table {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    font-size: 12px !important;
+  }
+  #compose_pm > table tr.bg_tr {
+    background: transparent !important;
+    color: var(--crust) !important;
+  }
+  #compose_pm > table td {
+    padding: 0.65rem 0.85rem !important;
+    color: var(--crust) !important;
+    font-size: 12px !important;
+    font-weight: 600;
+    vertical-align: middle;
+    background: var(--blue) !important;
+    border: none !important;
+  }
+  #compose_pm > table td:first-child {
+    border-top-left-radius: 10px;
+  }
+  #compose_pm > table td:last-child {
+    border-top-right-radius: 10px;
+  }
+  #compose_pm > table {
+    /* Trailing spacer cell on the Send-to row */
+  }
+  #compose_pm > table td:empty {
+    display: none;
+  }
+  #compose_pm > table td:first-child:has(+ td:empty),
+  #compose_pm > table td:only-child {
+    border-top-right-radius: 10px;
+  }
+  #compose_pm > table b {
+    color: inherit !important;
+    margin-right: 0.5rem;
+  }
+  #compose_pm > table input[type=text] {
+    box-sizing: border-box;
+    width: min(100%, 28rem);
+    max-width: 100%;
+    margin: 0;
+    padding: 0.45rem 0.65rem !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    font-weight: normal;
+    background: var(--base) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 7px !important;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) {
+    margin: 0;
+    padding: 1rem 0.85rem 1.1rem !important;
+    font-size: 12px !important;
+    color: var(--text);
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) > br {
+    display: none;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) > b {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: var(--text);
+    font-weight: 600;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) input[type=text],
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) textarea {
+    box-sizing: border-box;
+    width: 100% !important;
+    margin: 0 0 0.85rem;
+    padding: 0.55rem 0.75rem !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    background: var(--base) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 7px !important;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) textarea {
+    min-height: 14rem;
+    height: auto !important;
+    resize: vertical !important;
+    line-height: 1.55;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) input[type=checkbox] {
+    margin: 0 0.4rem 0 0;
+    vertical-align: middle;
+    accent-color: var(--blue);
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) > div[style*=text-align] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin: 0.85rem 0 0.5rem;
+    text-align: right !important;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) input[type=submit] {
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) input[type=submit]:hover {
+    background: var(--sapphire) !important;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha) .g-recaptcha {
+    margin: 0.35rem 0 0;
+  }
+  #compose_pm {
+    /* Site paints empty footers #f9f8f8 — the white bar under the form */
+  }
+  #compose_pm .rounded_footer {
+    margin: 0;
+    padding: 0.45rem 0.75rem !important;
+    background: var(--surface1) !important;
+    border: 1px solid var(--surface2);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    color: var(--subtext1);
+  }
+  #compose_pm .rounded_footer:empty, #compose_pm .rounded_footer:not(:has(*)) {
+    display: none;
+  }
+  #compose_pm {
+    /* When the footer is empty, the fields block owns the bottom radii */
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha):has(+ .rounded_footer:empty),
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha):has(+ .rounded_footer:not(:has(*))) {
+    border-radius: 0 0 10px 10px;
+  }
+  #compose_pm > div:not(.rounded_footer):not(.g-recaptcha):has(+ .rounded_footer:has(*)) {
+    border-radius: 0;
+  }
+}
+
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=gmail&s=home&search=inbox") {
   /* Shared active-state for gmail sidebar folder links. */
   #tag-list a[href*="search=inbox"] {
@@ -8620,6 +10027,381 @@
   @media only screen and (max-width: 600px) {
     div.help {
       max-width: none;
+    }
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=history") {
+  @charset "UTF-8";
+  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
+     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
+  /* ----------------------------------------------------
+     POST HISTORY — tag / note history (bootstrap layout)
+     ---------------------------------------------------- */
+  .container-fluid:has(> .navbar) {
+    padding: 0;
+  }
+
+  .navbar,
+  .navbar-default {
+    min-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    background: var(--surface0) !important;
+    border: 0;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  .navbar-header {
+    height: calc(20px + 1.42857143em + 23px);
+  }
+
+  .navbar-brand {
+    float: left;
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px !important;
+    min-width: 0;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    font-size: 12px;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  #navbar.navbar-collapse {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  #navbar .navbar-nav {
+    margin: 0;
+  }
+
+  #navbar .navbar-nav > li > a {
+    padding: 20px 16px 23px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-decoration: none;
+  }
+
+  #navbar .navbar-nav > li > a:hover,
+  #navbar .navbar-nav > li > a:focus {
+    background-color: transparent !important;
+  }
+
+  #navbar .navbar-nav > .active > a,
+  #navbar .navbar-nav > .active > a:hover,
+  #navbar .navbar-nav > .active > a:focus {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+  }
+
+  #navbar a.ui-icon {
+    margin: 0 !important;
+    font-size: 14px !important;
+  }
+
+  .navbar-default .navbar-toggle {
+    border-color: var(--surface1);
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: var(--text);
+  }
+
+  .navbar-header > button:hover,
+  .navbar-header > button:focus,
+  .navbar-header > button:active {
+    background: var(--surface1) !important;
+  }
+
+  #submenu.navbar {
+    min-height: 0;
+    overflow: visible;
+    padding: 10px 15px !important;
+    background: var(--surface1) !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  #submenu.navbar .navbar-nav {
+    float: none;
+    margin: 0;
+  }
+  #submenu.navbar .navbar-nav > li {
+    float: none;
+    display: inline-block;
+  }
+  #submenu.navbar .navbar-nav > li > a {
+    display: inline-block;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    background: transparent !important;
+  }
+
+  .alert-success {
+    margin: 0.75rem 0 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .alert-success a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  #submenu .navbar-nav > li > a[href*="page=post"][href*="s=list"] {
+    color: var(--blue) !important;
+  }
+
+  .padding15 {
+    padding: 1.25rem 1rem 2rem !important;
+  }
+  .padding15 > br {
+    display: none;
+  }
+
+  .padding15 > .container-fluid {
+    padding: 0;
+  }
+  .padding15 > .container-fluid > .padding15 {
+    padding: 0 !important;
+  }
+
+  /* ----- History table ----- */
+  .padding15 table {
+    width: 100% !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--surface1);
+    border-radius: 10px;
+    overflow: hidden;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+  }
+  .padding15 table th,
+  .padding15 table td {
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid var(--surface1) !important;
+    padding: 0.65rem 0.85rem !important;
+    vertical-align: top;
+    background: transparent !important;
+    color: var(--text) !important;
+  }
+  .padding15 table th + th,
+  .padding15 table td + td {
+    border-left: 1px solid var(--surface1) !important;
+  }
+  .padding15 table {
+    /* Header row */
+  }
+  .padding15 table > tbody > tr:first-child {
+    background: var(--blue) !important;
+  }
+  .padding15 table > tbody > tr:first-child th {
+    color: var(--crust) !important;
+    font-weight: 600;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-bottom-color: color-mix(in srgb, var(--blue) 70%, var(--crust)) !important;
+  }
+  .padding15 table > tbody > tr:first-child {
+    /* Empty rating-strip header */
+  }
+  .padding15 table > tbody > tr:first-child th:first-child:empty {
+    width: 0.45rem;
+    min-width: 0.45rem;
+    padding: 0 !important;
+    border-left: none !important;
+  }
+  .padding15 table tr.rotate_list {
+    background: var(--base) !important;
+  }
+  .padding15 table tr.rotate_list:nth-child(even) {
+    background: var(--mantle) !important;
+  }
+  .padding15 table tr.rotate_list:hover {
+    background: var(--surface0) !important;
+  }
+  .padding15 table tr.rotate_list:last-child > td {
+    border-bottom: none !important;
+  }
+  .padding15 table {
+    /* Rating strip (inline rgb backgrounds) */
+  }
+  .padding15 table tr.rotate_list > td:first-child {
+    width: 0.45rem;
+    min-width: 0.45rem;
+    max-width: 0.45rem;
+    padding: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  .padding15 table {
+    /* general */
+  }
+  .padding15 table tr.rotate_list > td:first-child[style*="1, 6, 243"],
+  .padding15 table tr.rotate_list > td:first-child[style*="1,6,243"] {
+    background: var(--blue) !important;
+  }
+  .padding15 table {
+    /* sensitive / safe-green */
+  }
+  .padding15 table tr.rotate_list > td:first-child[style*="20, 143, 4"],
+  .padding15 table tr.rotate_list > td:first-child[style*="20,143,4"] {
+    background: var(--green) !important;
+  }
+  .padding15 table {
+    /* questionable */
+  }
+  .padding15 table tr.rotate_list > td:first-child[style*="137, 132, 4"],
+  .padding15 table tr.rotate_list > td:first-child[style*="137,132,4"] {
+    background: var(--yellow) !important;
+  }
+  .padding15 table {
+    /* explicit */
+  }
+  .padding15 table tr.rotate_list > td:first-child[style*="243, 6, 1"],
+  .padding15 table tr.rotate_list > td:first-child[style*="243,6,1"] {
+    background: var(--red) !important;
+  }
+  .padding15 table {
+    /* Post / note id, user, source, revert links */
+  }
+  .padding15 table a {
+    color: var(--blue) !important;
+    text-decoration: none;
+  }
+  .padding15 table a:hover {
+    color: var(--sapphire) !important;
+    text-decoration: underline;
+  }
+  .padding15 table {
+    /* Restore category colors (table `a` would otherwise flatten them) */
+  }
+  .padding15 table .tag-type-artist > a {
+    color: var(--red) !important;
+  }
+  .padding15 table .tag-type-character > a {
+    color: var(--green) !important;
+  }
+  .padding15 table .tag-type-copyright > a {
+    color: var(--pink) !important;
+  }
+  .padding15 table .tag-type-metadata > a {
+    color: var(--yellow) !important;
+  }
+  .padding15 table .tag-type-general > a {
+    color: var(--blue) !important;
+  }
+  .padding15 table {
+    /* Tags cell: "(All) - …" */
+  }
+  .padding15 table a[title] {
+    color: var(--subtext1) !important;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .padding15 table a[title]:hover {
+    color: var(--text) !important;
+  }
+  .padding15 table .unchanged-tags,
+  .padding15 table .added-tags,
+  .padding15 table .removed-tags {
+    display: inline;
+    margin-right: 0.35em;
+    line-height: 1.65;
+  }
+  .padding15 table .unchanged-tags {
+    font-size: 0.85em;
+  }
+  .padding15 table .added-tags {
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  .padding15 table .added-tags .tag-type-general > a,
+  .padding15 table .added-tags .tag-type-artist > a,
+  .padding15 table .added-tags .tag-type-character > a,
+  .padding15 table .added-tags .tag-type-copyright > a,
+  .padding15 table .added-tags .tag-type-metadata > a,
+  .padding15 table .added-tags > a {
+    color: var(--green) !important;
+  }
+  .padding15 table .added-tags span[style*=color] {
+    color: var(--green) !important;
+  }
+  .padding15 table .removed-tags {
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  .padding15 table .removed-tags .tag-type-general > a,
+  .padding15 table .removed-tags .tag-type-artist > a,
+  .padding15 table .removed-tags .tag-type-character > a,
+  .padding15 table .removed-tags .tag-type-copyright > a,
+  .padding15 table .removed-tags .tag-type-metadata > a,
+  .padding15 table .removed-tags > a {
+    color: var(--red) !important;
+  }
+  .padding15 table .removed-tags span[style*=color] {
+    color: var(--red) !important;
+  }
+
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 1rem) 0;
+    padding: 0.6rem 1rem;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
+  }
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
+    display: none;
+  }
+
+  @media only screen and (max-width: 850px) {
+    .padding15 {
+      padding-left: 0.75rem !important;
+      padding-right: 0.75rem !important;
+    }
+    .padding15 table th + th,
+    .padding15 table td + td {
+      border-left: none !important;
+    }
+    .padding15 table th,
+    .padding15 table td {
+      padding: 0.5rem 0.55rem !important;
+    }
+    .padding15 table tr.rotate_list > td:first-child {
+      padding: 0 !important;
     }
   }
 }

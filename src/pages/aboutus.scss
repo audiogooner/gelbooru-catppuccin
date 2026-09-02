@@ -1,0 +1,78 @@
+/* About Us — posts chrome (gridStyle) with prose copy. */
+
+.aside {
+  display: none !important;
+}
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.mainBodyPadding {
+  box-sizing: border-box;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem !important;
+  color: var(--subtext0);
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 13px;
+  line-height: 1.65;
+
+  center {
+    display: block;
+    text-align: left;
+  }
+
+  h1 {
+    margin: 0 0 1.25rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  /* Site paints the brand link with inline `color: #006FFA !important`, which
+     beats stylesheet `color`. `-webkit-text-fill-color` is unset inline. */
+  h1 > a {
+    -webkit-text-fill-color: var(--blue) !important;
+    color: var(--blue) !important;
+    font-size: 2.4rem !important;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+
+    &:hover {
+      -webkit-text-fill-color: var(--sapphire) !important;
+      color: var(--sapphire) !important;
+    }
+  }
+
+  /* Copy column: width via inline max-width: 800px */
+  center > div {
+    margin: 0 auto;
+    color: var(--subtext0);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  /* Logo strip at the bottom of the copy (inline background: #006FFA) */
+  center > div > div[style*="background"] {
+    margin-top: 0.5rem;
+    padding: 1rem !important;
+    text-align: center !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 10px;
+
+    img {
+      width: 50px;
+      height: auto;
+      filter: brightness(0) saturate(100%) invert(72%) sepia(53%) saturate(3396%)
+        hue-rotate(192deg) brightness(109%) contrast(96%);
+    }
+  }
+}

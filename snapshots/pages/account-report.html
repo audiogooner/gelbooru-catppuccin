@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<!--
+snapshot: account-report
+url: https://gelbooru.com/index.php?page=account&s=report
+title: | Gelbooru
+captured: 2026-09-02T19:49:43.809Z
+source: live
+stylesheets: default.css, jquery-ui.css
+-->
+<html>
+  <head>
+    <script type="text/javascript" async="" charset="utf-8" crossorigin="anonymous" integrity="sha384-HEUFCmJokjB+CHBYlkcDt4puBwinjtTwjglts96+ZyVMTHTkeKul3/+rAljME2Le" data-snapshot-src="recaptcha__en.js"></script>
+    <meta charset="UTF-8">
+    <title>| Gelbooru</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="default.css?81" title="default">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui.css" title="default">
+    <meta name="rating" content="adult">
+    <script data-snapshot-src="api.js"></script>
+    <style data-gelbooru-dev="blackout">
+    main img:not(.voteUpComment, .reportComment),
+    main video,
+    main canvas,
+    article img,
+    #image,
+    img.webm,
+    .commentThumbnail img,
+    .thumbnail-preview img,
+    .image-container img,
+    .image-container video,
+    .image-container canvas,
+    .profileAvatar {
+      filter: contrast(0) brightness(0.22) !important;
+    }
+
+    .profileAvatar {
+      background-image: none !important;
+      background-color: #313244 !important;
+    }
+  </style>
+    <style data-gelbooru-dev="base">@charset "UTF-8";
+/* ----------------------------------------------------
+   CONTENT BLOCKING
+   ---------------------------------------------------- */
+#myTopnav > a:nth-child(13),
+#motd,
+.noticeError,
+.root--ujvuu {
+  display: none !important;
+}
+
+/* frontpage Nyudachi promo */
+#static-index > div:has(> a[href*=nyudachi]),
+body > center:has(a[href*=nyudachi]) {
+  display: none !important;
+}
+
+/* Islamorag Twitch / extras/vtuber promo */
+a[href*="twitch.tv/islamorag"][target=_blank]:has(> img),
+a[target=_blank]:has(> img[src*="/extras/vtuber/islamorag/"]),
+#static-index > div:has(> a[href*=islamorag]),
+center:has(> a[href*="twitch.tv/islamorag"]) {
+  display: none !important;
+}
+
+/* frontpage AdBlock indicator */
+#static-index > div:has(> a[href="#"]) {
+  display: none !important;
+}
+
+body[style*=nyudachi] {
+  background-image: none !important;
+}
+
+.headerAd,
+.footerAd,
+.footerAd2,
+div:not([id], [class])[style*="font-size: 1.2em"]:has(> a[rel=nofollow][target=_blank]),
+.mainBodyPadding > a[href*="pixiv.net"][target=_blank]:has(> img),
+main > center:has(video),
+center:has([data-cl-spot], [id^=__clb-spot]),
+[data-cl-spot],
+[id^=__clb-spot],
+div:has(> .exo-video-slider-container-wrapper),
+.exo-video-slider-container-wrapper,
+[id$=-exo-video-slider-content] {
+  display: none !important;
+}
+
+/* ----------------------------------------------------
+   COLOR PALETTE - Catppuccin Mocha
+   ---------------------------------------------------- */
+:root {
+  /* Base colors */
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  /* Text colors */
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --subtext2: #a6adc8;
+  /* Overlay colors */
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  /* Surface colors */
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  /* Background colors */
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+}
+
+/* ----------------------------------------------------
+   GLOBAL STYLES
+   ---------------------------------------------------- */
+html,
+body {
+  background-color: var(--base) !important;
+  color: var(--text) !important;
+}
+
+a {
+  color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   FORM ELEMENTS
+   ---------------------------------------------------- */
+textarea,
+input {
+  background-color: var(--surface0);
+  border: solid 1px var(--surface1) !important;
+  outline: none;
+  border-radius: 7px;
+  color: var(--text);
+}
+textarea:focus,
+input:focus {
+  background-color: var(--surface0) !important;
+  border-color: var(--blue) !important;
+}
+textarea::placeholder,
+input::placeholder {
+  color: var(--text) !important;
+}
+
+input {
+  padding: 2px 5px;
+}
+
+textarea {
+  padding-left: 7px;
+}
+
+.secondary_search,
+.searchList {
+  border-radius: 7px !important;
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  transition: background-color 0.1s, color 0.1s;
+}
+.secondary_search:hover,
+.searchList:hover {
+  background: var(--surface1) !important;
+}
+
+/* ----------------------------------------------------
+   NAVIGATION
+   ---------------------------------------------------- */
+.topnav,
+#navbar {
+  background-color: var(--surface0);
+}
+
+.topnav *,
+#navbar * {
+  color: var(--text) !important;
+}
+
+.homeIcon > img:nth-child(1),
+.navbar-brand,
+h2.siteName a {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(53%) saturate(3396%) hue-rotate(192deg) brightness(109%) contrast(96%);
+}
+
+.navSubmenu,
+#navbar2,
+#submenu,
+div.submenu {
+  background-color: var(--surface1);
+}
+
+.navSubmenu * {
+  color: var(--text) !important;
+}
+.navSubmenu > a:nth-child(6) * {
+  color: var(--green) !important;
+}
+
+.active,
+.active2 a,
+.active a {
+  background-color: var(--surface2) !important;
+  color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   SEARCH AREA
+   The tag search bar of the grid layout (`#container > .searchArea`). Every
+   grid page gets the same height, margins and control sizes from here; page
+   bundles should not redefine its geometry.
+   ---------------------------------------------------- */
+:root {
+  --search-area-h: 44px;
+  --search-area-pad-x: 10px;
+  --search-area-gap: 0.5rem;
+  --search-control-h: 32px;
+}
+
+.searchArea {
+  background-color: var(--base);
+}
+
+#container > .searchArea {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--search-area-h) !important;
+  margin: 0 !important;
+  padding: 0 var(--search-area-pad-x) !important;
+}
+#container > .searchArea > div {
+  width: 100%;
+}
+#container > .searchArea form {
+  display: flex;
+  gap: var(--search-area-gap);
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+#container > .searchArea {
+  /* "Save this search" heart */
+}
+#container > .searchArea form > a {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+#container > .searchArea form > a img {
+  margin: 0 !important;
+  filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg) brightness(100%) contrast(92%);
+}
+#container > .searchArea #tags-search {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  width: auto !important;
+  min-width: 0;
+  height: var(--search-control-h);
+  margin: 0;
+  padding: 0 0.75rem !important;
+  border: solid 1px var(--surface1) !important;
+}
+#container > .searchArea input.searchList {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: auto !important;
+  height: var(--search-control-h);
+  margin: 0;
+  padding: 0 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  cursor: pointer;
+}
+#container > .searchArea input.searchList:hover {
+  background: var(--sapphire) !important;
+}
+
+.sm-hidden {
+  color: var(--text);
+}
+
+.ui-menu.ui-autocomplete {
+  background-color: var(--surface0) !important;
+  border: none !important;
+  border-radius: 7px;
+  overflow: hidden;
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-menu-item-wrapper {
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-state-active,
+.ui-menu.ui-autocomplete .ui-state-focus {
+  margin: 0;
+  border: none !important;
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-menu-item:first-child .ui-menu-item-wrapper {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.ui-menu.ui-autocomplete .ui-menu-item:last-child .ui-menu-item-wrapper {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+/* jQuery UI appends the menu to <body> and toggles inline display, so the open
+   state has to be detected from the document root. */
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) .ui-menu.ui-autocomplete {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) .ui-menu.ui-autocomplete .ui-menu-item:first-child .ui-menu-item-wrapper {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) input.ui-autocomplete-input:focus,
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-autocomplete-input:focus {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ----------------------------------------------------
+   HOMEPAGE SPECIFIC
+   ---------------------------------------------------- */
+#static-index {
+  background-color: var(--base);
+}
+#static-index > h1:nth-child(1) > a:nth-child(1) {
+  color: var(--blue) !important;
+  transition: color 0.5s;
+}
+#static-index > div:nth-child(8) > a:nth-child(1),
+#static-index > small:nth-child(19) a {
+  color: var(--blue) !important;
+}
+#static-index > div:nth-child(8),
+#static-index > small:nth-child(18) {
+  color: var(--subtext2) !important;
+}
+#static-index > small:nth-child(19) {
+  color: var(--subtext2) !important;
+}
+#static-index > small:nth-child(19)::before {
+  content: "\a";
+  white-space: pre;
+}
+
+#links {
+  cursor: default;
+}
+#links > a:nth-child(n) {
+  color: var(--subtext1) !important;
+  transition: color 140ms;
+}
+#links > a:nth-child(n):hover {
+  color: var(--text) !important;
+}
+
+/* ----------------------------------------------------
+   TAG STYLING
+   ---------------------------------------------------- */
+.tag-type-artist .sm-hidden a,
+.tag-type-character .sm-hidden a,
+.tag-type-copyright .sm-hidden a,
+.tag-type-metadata .sm-hidden a,
+.tag-type-general .sm-hidden a {
+  transition: text-shadow 0.1s;
+}
+.tag-type-artist:hover .sm-hidden a,
+.tag-type-character:hover .sm-hidden a,
+.tag-type-copyright:hover .sm-hidden a,
+.tag-type-metadata:hover .sm-hidden a,
+.tag-type-general:hover .sm-hidden a {
+  text-shadow: 0 0 10px var(--red);
+}
+.tag-type-artist > span,
+.tag-type-character > span,
+.tag-type-copyright > span,
+.tag-type-metadata > span,
+.tag-type-general > span {
+  color: var(--subtext0) !important;
+  transition: text-shadow 0.1s;
+}
+.tag-type-artist:hover > span,
+.tag-type-character:hover > span,
+.tag-type-copyright:hover > span,
+.tag-type-metadata:hover > span,
+.tag-type-general:hover > span {
+  text-shadow: 0 0 10px var(--subtext0) !important;
+}
+
+.tag-type-artist > a {
+  color: var(--red) !important;
+  transition: text-shadow 0.1s;
+}
+.tag-type-artist:hover > a {
+  text-shadow: 0 0 10px var(--red);
+}
+
+.tag-type-character > a {
+  color: var(--green) !important;
+  transition: text-shadow 0.1s;
+}
+.tag-type-character:hover > a {
+  text-shadow: 0 0 10px var(--green);
+}
+
+.tag-type-copyright > a {
+  color: var(--pink) !important;
+  transition: text-shadow 0.1s;
+}
+.tag-type-copyright:hover > a {
+  text-shadow: 0 0 10px var(--pink);
+}
+
+.tag-type-metadata > a {
+  color: var(--yellow) !important;
+  transition: text-shadow 0.1s;
+}
+.tag-type-metadata:hover > a {
+  text-shadow: 0 0 10px var(--yellow);
+}
+
+.tag-type-general > a {
+  color: var(--blue) !important;
+  transition: text-shadow 0.1s;
+}
+.tag-type-general:hover > a {
+  text-shadow: 0 0 10px var(--blue);
+}
+
+/* ----------------------------------------------------
+   IMAGES AND MEDIA
+   ---------------------------------------------------- */
+#image {
+  border-radius: 10px;
+  box-shadow: 0 0 20px var(--crust);
+  margin-top: 0 !important;
+}
+
+.mainBodyPadding > div:nth-child(n) img,
+article img {
+  border-radius: 7px;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+.mainBodyPadding > div:nth-child(n) img:hover:not(.voteUpComment):not(.reportComment),
+article img:hover:not(.voteUpComment):not(.reportComment) {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent), 0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainBodyPadding > div:nth-child(n) img,
+  article img {
+    transition: none;
+  }
+}
+.fluid_controls_currentprogress {
+  background-color: var(--blue) !important;
+}
+
+img.webm {
+  border: none;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent), 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+img.webm:hover:not(.voteUpComment):not(.reportComment) {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)), 0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
+}
+
+a:has(> img.webm) {
+  position: relative;
+}
+a:has(> img.webm) > img.webm {
+  anchor-name: --thumb-media;
+}
+a:has(> img.webm)::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center/contain no-repeat;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  transition: opacity 220ms ease;
+}
+a:has(> img.webm):hover::after {
+  opacity: 1;
+}
+@supports (anchor-name: --thumb-media) {
+  a:has(> img.webm)::after {
+    right: auto;
+    bottom: auto;
+    position-anchor: --thumb-media;
+    top: anchor(bottom);
+    left: anchor(right);
+    transform: translate(calc(-100% - 3px), calc(-100% - 3px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.webm {
+    transition: none;
+  }
+  a:has(> img.webm)::after {
+    transition: none;
+  }
+}
+/* ----------------------------------------------------
+   COMMENTS AND USER CONTENT
+   ---------------------------------------------------- */
+.commentBody {
+  color: var(--text) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface2);
+  border-radius: 10px;
+}
+
+div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
+  border-radius: 10px;
+}
+
+.voteUpComment,
+.reportComment {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.reportComment {
+  filter: brightness(0) saturate(100%) invert(59%) sepia(71%) saturate(330%) hue-rotate(297deg) brightness(98%) contrast(94%);
+}
+
+.voteUpComment {
+  filter: brightness(0) saturate(100%) invert(61%) sepia(35%) saturate(584%) hue-rotate(183deg) brightness(107%) contrast(96%);
+}
+
+.profileAvatar {
+  border: 2px solid var(--surface2);
+  box-shadow: 0 0 30px rgba(88, 91, 112, 0.27);
+}
+
+/* ----------------------------------------------------
+   PAGINATION AND TABLES
+   ---------------------------------------------------- */
+/* `div#paginator`, not `#paginator`: default.css and responsive.css both set
+   `display: block` with that same specificity, which would otherwise win over
+   the flex layout on the legacy and bootstrap pages. */
+div#paginator {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+div#paginator > br {
+  display: none;
+}
+div#paginator {
+  /* Most pages wrap the links in one or two `.pagination` divs inside the
+     paginator. Flattening them lets the links become flex items here, so they
+     pick up the gap instead of relying on collapsed whitespace. */
+}
+div#paginator .pagination {
+  display: contents;
+}
+div#paginator {
+  /* The forum marks the current page with `span.current` instead of `<b>`, and
+     labels its arrows "« Previous" / "Next »", so the pills size to their text
+     from a page-number-sized floor. */
+}
+div#paginator a,
+div#paginator b,
+div#paginator span.current {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box;
+  min-width: 42px;
+  height: 40px;
+  margin: 0 !important;
+  padding: 0 0.7rem !important;
+  color: var(--subtext1) !important;
+  font-weight: 600;
+  line-height: 1 !important;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--surface1);
+  border: none !important;
+  border-radius: 10px;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+div#paginator a:hover, div#paginator a:focus-visible {
+  color: var(--blue) !important;
+  background-color: var(--surface2) !important;
+}
+div#paginator a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+div#paginator b,
+div#paginator span.current {
+  color: var(--crust) !important;
+  background-color: var(--blue) !important;
+}
+div#paginator {
+  /* Gap markers ("...") between page ranges: text only, no pill. */
+}
+div#paginator span:not(.current) {
+  margin: 0 !important;
+  padding: 0 0.2rem !important;
+  color: var(--subtext0) !important;
+  font-weight: 600;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--blue) !important;
+  color: var(--base) !important;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.mainBodyPadding > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) {
+  background: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   MISC ELEMENTS
+   ---------------------------------------------------- */
+.aside {
+  border-right: solid 1px var(--overlay1);
+}
+
+footer {
+  background: var(--surface0) !important;
+}
+footer * {
+  color: var(--text) !important;
+}
+
+.alert-info,
+.alert-info * {
+  background-color: var(--surface2);
+  color: var(--text) !important;
+  border: none;
+  border-radius: 10px;
+}
+
+#notice {
+  background-color: var(--red) !important;
+  border: none !important;
+  color: var(--crust);
+  box-shadow: 0 0 20px var(--red);
+}
+
+.mainBodyPadding > div:nth-child(n+18) > div:nth-child(2) > span:nth-child(6) > span:nth-child(2) > a:nth-child(1) {
+  color: var(--red) !important;
+}</style>
+    <script data-snapshot-src="jquery.min.js"></script>
+    <script type="text/javascript" data-snapshot-src="application3.js"></script>
+    <style data-gelbooru-dev="account-report">/* ----------------------------------------------------
+   ACCOUNT REPORT / SCORE (legacy default.css layout)
+   ---------------------------------------------------- */
+body {
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+  line-height: 1.42857143;
+}
+
+body > br {
+  display: none;
+}
+
+.header {
+  overflow: hidden;
+  background: var(--surface0) !important;
+}
+.header .center {
+  margin: 0;
+}
+.header a {
+  display: block;
+  padding: 20px 16px 23px;
+  color: var(--text) !important;
+  font-size: 12px !important;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: verdana, sans-serif, helvetica;
+}
+
+h2.siteName {
+  display: block;
+  float: left;
+  height: calc(20px + 1.42857143em + 23px);
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+h2.siteName a {
+  box-sizing: content-box;
+  width: 46px;
+  height: 46px;
+  padding: 7px 15px 1px 25px !important;
+  margin: 0 !important;
+  overflow: hidden;
+  color: transparent !important;
+  font-size: 0 !important;
+  white-space: nowrap;
+  background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+  background-size: 46px 46px;
+  background-position: 25px 7px;
+}
+
+ul.flat-list {
+  display: block;
+  font-size: 12px !important;
+  line-height: 1.42857143;
+}
+ul.flat-list li {
+  display: block;
+  float: left;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1.42857143 !important;
+}
+ul.flat-list li a {
+  width: auto !important;
+  height: auto !important;
+}
+ul.flat-list li.current-page a {
+  background-color: var(--surface2) !important;
+  color: var(--blue) !important;
+  font-weight: bold;
+  padding: 20px 16px 23px !important;
+}
+ul.flat-list a[href*="page=help"] {
+  color: var(--green) !important;
+}
+ul.flat-list a[href*="page=account"][href*="s=home"] {
+  font-size: 0 !important;
+}
+ul.flat-list a[href*="page=account"][href*="s=home"]::after {
+  content: "Settings";
+  font-size: 12px;
+  font-weight: inherit;
+  font-family: verdana, sans-serif, helvetica;
+  line-height: 1.42857143;
+}
+
+div.submenu {
+  background: var(--surface1) !important;
+  padding: 10px 15px !important;
+  font-size: 12px;
+  line-height: 1.42857143;
+}
+div.submenu .center {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+div.submenu ul.flat-list2 {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 4px;
+  row-gap: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  font-size: 12px !important;
+}
+div.submenu ul.flat-list2 > li {
+  display: block !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+}
+div.submenu ul.flat-list2 > li > a {
+  display: inline-block !important;
+  float: none !important;
+  color: var(--text) !important;
+  padding: 0 !important;
+  margin: 5px 15px !important;
+  font-size: 12px !important;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: verdana, sans-serif, helvetica;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.success-notice {
+  margin: 0.75rem 1.25rem 0 !important;
+  padding: 0.65rem 1rem !important;
+  color: var(--green);
+  font-size: 0.875em;
+  background: var(--surface0) !important;
+  border: 1px solid var(--green) !important;
+  border-radius: 10px;
+}
+.success-notice a {
+  color: var(--green) !important;
+  font-weight: 600;
+}
+
+#content {
+  padding: 1.25rem 20px 2rem !important;
+  text-align: left;
+  color: var(--text);
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 12px;
+  line-height: 1.5;
+}
+@media only screen and (min-width: 851px) {
+  #content {
+    padding-left: 60px !important;
+  }
+}
+
+#user-record {
+  max-width: 54rem;
+  color: var(--subtext0);
+}
+#user-record > h4 {
+  display: block;
+  margin: 0 0 0.85rem;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 1.15em;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+#user-record {
+  /* Score history table (header row only when empty) */
+}
+#user-record > table {
+  width: 100% !important;
+  margin: 0 0 1.5rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#user-record > table th,
+#user-record > table td {
+  padding: 0.55rem 0.75rem !important;
+  text-align: left !important;
+  vertical-align: middle;
+  border: none !important;
+  border-right: 1px solid var(--surface1) !important;
+  border-bottom: 1px solid var(--surface1) !important;
+  border-radius: 0 !important;
+}
+#user-record > table th:first-child,
+#user-record > table td:first-child {
+  border-left: 1px solid var(--surface1) !important;
+}
+#user-record > table tr:first-child > th,
+#user-record > table tr:first-child > td {
+  border-top: 1px solid var(--surface1) !important;
+}
+#user-record > table th {
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  white-space: nowrap;
+}
+#user-record > table tr:first-child > th:first-child {
+  border-top-left-radius: 10px !important;
+}
+#user-record > table tr:first-child > th:last-child {
+  border-top-right-radius: 10px !important;
+}
+#user-record > table {
+  /* Empty last column (actions) */
+}
+#user-record > table th:last-child:empty {
+  width: 2.5rem;
+}
+#user-record > table td {
+  color: var(--text);
+  background: var(--surface0) !important;
+}
+#user-record > table tbody > tr:nth-child(even) td {
+  background: var(--surface1) !important;
+}
+#user-record > table {
+  /* Header-only table (no score rows yet) */
+}
+#user-record > table tbody > tr:first-child:last-child > th:first-child {
+  border-bottom-left-radius: 10px !important;
+}
+#user-record > table tbody > tr:first-child:last-child > th:last-child {
+  border-bottom-right-radius: 10px !important;
+}
+#user-record > table tbody > tr:last-child:not(:first-child) > td:first-child {
+  border-bottom-left-radius: 10px !important;
+}
+#user-record > table tbody > tr:last-child:not(:first-child) > td:last-child {
+  border-bottom-right-radius: 10px !important;
+}
+#user-record #report_user {
+  max-width: 36rem;
+}
+#user-record #report_user > table {
+  width: 100% !important;
+  margin: 0;
+  border-collapse: collapse;
+}
+#user-record #report_user > table td {
+  border: none !important;
+  background: transparent !important;
+  color: var(--subtext0) !important;
+  padding: 0.35rem 0 0.75rem;
+  text-align: left !important;
+  vertical-align: top;
+  font-weight: 600;
+  font-size: 12px;
+}
+#user-record #report_user > table td > br {
+  display: none;
+}
+#user-record #report_user > table textarea {
+  display: block;
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 0.35rem 0 0;
+  padding: 0.55rem 0.75rem !important;
+  min-height: 7.5rem;
+  resize: vertical;
+  font-weight: normal;
+  color: var(--text) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface1) !important;
+  border-radius: 7px !important;
+}
+#user-record #report_user > table small {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: normal;
+}
+#user-record #report_user > table input[type=radio] {
+  margin: 0 0.35rem 0 0.15rem;
+  vertical-align: middle;
+  accent-color: var(--blue);
+}
+#user-record #report_user > table input[type=submit] {
+  margin-top: 0.25rem;
+  width: auto !important;
+  padding: 0.55rem 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+}
+#user-record #report_user > table input[type=submit]:hover {
+  background: var(--sapphire) !important;
+}
+
+@media only screen and (max-width: 600px) {
+  #user-record #report_user {
+    max-width: none;
+  }
+}</style>
+  </head>
+  <body class="vc-init">
+    <div id="gelbooru-dev-overlay" data-gelbooru-dev="overlay" style="border-block-style: initial !important; border-inline: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-block-width: initial !important; border-block-color: initial !important; overflow-block: initial !important; overflow-inline: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !importan…"></div>
+    <div class="header">
+      <div class="center">
+        <h2 class="siteName">
+          <a href="https://gelbooru.com/">Gelbooru</a>
+        </h2>
+        <ul class="flat-list">
+          <li class="current-page">
+            <a href="index.php?page=account&amp;s=home">My Account</a>
+          </li>
+          <li>
+            <a href="index.php?page=post&amp;s=list&amp;tags=all">Posts</a>
+          </li>
+          <li>
+            <a href="index.php?page=comment&amp;s=list">Comments</a>
+          </li>
+          <li>
+            <a href="index.php?page=wiki&amp;s=list">Wiki</a>
+          </li>
+          <li>
+            <a href="index.php?page=tags&amp;s=list">Tags</a>
+          </li>
+          <li>
+            <a href="index.php?page=pool&amp;s=list">Pools</a>
+          </li>
+          <li>
+            <a href="index.php?page=forum&amp;s=list">Forum</a>
+          </li>
+          <li>
+            <a href="index.php?page=tracker&amp;s=list">Trac</a>
+          </li>
+          <li>
+            <a href="index.php?page=help" style="color: #00ff00;">
+              <b>Help</b>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="submenu">
+      <div class="center">
+        <ul class="flat-list2">
+          <li>
+            <a href="index.php?page=account&amp;s=home">Home</a>
+          </li>
+          <li>
+            <a href="index.php?page=account&amp;s=profile&amp;id=1231719">My Profile</a>
+          </li>
+          <li>
+            <a href="index.php?page=gmail&amp;s=home">My Mail</a>
+          </li>
+          <li>
+            <a href="index.php?page=favorites&amp;s=view&amp;id=1231719">My Favorites</a>
+          </li>
+          <li>
+            <a href="index.php?page=account&amp;s=options">Options</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="noticeError" style="">
+      <div class="center">
+        <i>
+          <b>Notice</b>
+        </i>
+        : We are now selling NEW
+        <a href="https://buymyshit.moneygrubbingwhore.com/?1" style="color: #ffff00; font-weight: bold;" target="_blank">Gelbooru Merch~</a>
+        ! Domestic shipping is free on all orders! Do you have an artist tag on Gelbooru?
+        <a href="https://discord.gg/Zxs9tPE" target="_blank" rel="nofollow" style="color: #ffff00;">Let us know so we can properly credit you!</a>
+      </div>
+    </div>
+    <div id="long-notice"></div>
+    <div id="notice" style="display: none;"></div>
+    <div class="success-notice" style="display: none;">
+      <a href="index.php?page=gmail">You have mail</a>
+    </div>
+    <br>
+    <div id="content">
+      <div id="user-record">
+        <h4>Record</h4>
+        <table width="100%">
+          <tbody>
+            <tr>
+              <th width="15%">User</th>
+              <th width="15%">Reporter</th>
+              <th width="15%">When</th>
+              <th width="50%">Body</th>
+              <th width="5%"></th>
+            </tr>
+          </tbody>
+        </table>
+        <form method="post" action="index.php?page=account&amp;s=report&amp;user_id=" id="report_user">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  Reason:
+                  <br>
+                  <textarea name="reason" rows="5" cols="60"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <small>
+                    Positive:
+                    <input type="radio" value="positive" name="score">
+                    Negative
+                    <input type="radio" value="negative" name="score">
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="hidden" name="conf" id="conf" value="1">
+                  <input type="hidden" name="user_id" value="">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="submit" name="submit" value="Leave score">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+        <script type="text/javascript"></script>
+      </div>
+    </div>
+    <iframe class="html2canvas-container" style="visibility: hidden; position: fixed; left: -10000px; top: 0px; border: 0px;" width="1626" height="1034" scrolling="no" data-html2canvas-ignore="true"></iframe>
+    <iframe class="html2canvas-container" style="visibility: hidden; position: fixed; left: -10000px; top: 0px; border: 0px;" width="1626" height="1034" scrolling="no" data-html2canvas-ignore="true"></iframe>
+  </body>
+</html>

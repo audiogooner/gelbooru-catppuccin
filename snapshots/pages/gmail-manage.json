@@ -1,0 +1,41 @@
+{
+  "id": "gmail-manage",
+  "url": "https://gelbooru.com/index.php?page=gmail&s=manage",
+  "title": "| Gelbooru",
+  "capturedAt": "2026-09-02T19:38:41.137Z",
+  "source": "live",
+  "classes": [
+    "bg_tr",
+    "center",
+    "content",
+    "current-page",
+    "flat-list",
+    "flat-list2",
+    "g-recaptcha",
+    "g-recaptcha-bubble-arrow",
+    "g-recaptcha-response",
+    "header",
+    "noticeError",
+    "rounded_footer",
+    "sidebar",
+    "siteName",
+    "submenu",
+    "success-notice",
+    "vc-init"
+  ],
+  "ids": [
+    "compose_pm",
+    "content",
+    "g-recaptcha-response",
+    "gelbooru-dev-overlay",
+    "long-notice",
+    "notice",
+    "post-list",
+    "preview_pane"
+  ],
+  "stylesheets": [
+    "default.css",
+    "jquery-ui.css"
+  ],
+  "notes": []
+}

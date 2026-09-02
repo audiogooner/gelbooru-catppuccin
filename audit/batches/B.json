@@ -1,0 +1,231 @@
+{
+  "batch": "B",
+  "routes": [
+    {
+      "id": "wiki-list",
+      "url": "https://gelbooru.com/index.php?page=wiki&s=list",
+      "source": "live-nav",
+      "matchingBundles": [
+        "base",
+        "wiki",
+        "wiki-view"
+      ],
+      "expectedPageBundles": [
+        "wiki",
+        "wiki-view"
+      ],
+      "expectedBundle": "wiki",
+      "classification": "ambiguous"
+    },
+    {
+      "id": "wiki-view",
+      "url": "https://gelbooru.com/index.php?page=wiki&s=view&id=33936",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "wiki-view"
+      ],
+      "expectedPageBundles": [
+        "wiki-view"
+      ],
+      "expectedBundle": "wiki-view",
+      "classification": "page-styled"
+    },
+    {
+      "id": "wiki-create",
+      "url": "https://gelbooru.com/index.php?page=wiki&s=create",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "wiki-view",
+        "wiki-create"
+      ],
+      "expectedPageBundles": [
+        "wiki-view",
+        "wiki-create"
+      ],
+      "expectedBundle": "wiki-view",
+      "classification": "ambiguous"
+    },
+    {
+      "id": "wiki-edit",
+      "url": "https://gelbooru.com/index.php?page=wiki&s=edit&id=33936",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "wiki-view",
+        "wiki-edit"
+      ],
+      "expectedPageBundles": [
+        "wiki-view",
+        "wiki-edit"
+      ],
+      "expectedBundle": "wiki-view",
+      "classification": "ambiguous"
+    },
+    {
+      "id": "wiki-history",
+      "url": "https://gelbooru.com/index.php?page=wiki&s=history&id=33936",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "wiki-view",
+        "wiki-history"
+      ],
+      "expectedPageBundles": [
+        "wiki-view",
+        "wiki-history"
+      ],
+      "expectedBundle": "wiki-view",
+      "classification": "ambiguous"
+    },
+    {
+      "id": "wiki-manage",
+      "url": "https://gelbooru.com/index.php?page=wiki&s=manage",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "wiki-view"
+      ],
+      "expectedPageBundles": [
+        "wiki-view"
+      ],
+      "expectedBundle": "wiki-view",
+      "classification": "page-styled"
+    },
+    {
+      "id": "tags-list",
+      "url": "https://gelbooru.com/index.php?page=tags&s=list",
+      "source": "live-nav",
+      "matchingBundles": [
+        "base",
+        "tags-list"
+      ],
+      "expectedPageBundles": [
+        "tags-list"
+      ],
+      "expectedBundle": "tags-list",
+      "classification": "page-styled"
+    },
+    {
+      "id": "tags-implications",
+      "url": "https://gelbooru.com/index.php?page=tags&s=implications",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "tags-implications"
+      ],
+      "expectedPageBundles": [
+        "tags-implications"
+      ],
+      "expectedBundle": "tags-implications",
+      "classification": "page-styled"
+    },
+    {
+      "id": "tags-edit",
+      "url": "https://gelbooru.com/index.php?page=tags&s=edit&tag=uchiha_obito",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "tags-edit"
+      ],
+      "expectedPageBundles": [
+        "tags-edit"
+      ],
+      "expectedBundle": "tags-edit",
+      "classification": "page-styled"
+    },
+    {
+      "id": "tags-saved-search",
+      "url": "https://gelbooru.com/index.php?page=tags&s=saved_search",
+      "source": "live-nav",
+      "matchingBundles": [
+        "base",
+        "tags-saved-search"
+      ],
+      "expectedPageBundles": [
+        "tags-saved-search"
+      ],
+      "expectedBundle": "tags-saved-search",
+      "classification": "page-styled"
+    },
+    {
+      "id": "tags-merge",
+      "url": "https://gelbooru.com/index.php?page=tags&s=merge",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base"
+      ],
+      "expectedPageBundles": [],
+      "expectedBundle": null,
+      "classification": "base-only"
+    },
+    {
+      "id": "alias-list",
+      "url": "https://gelbooru.com/index.php?page=alias&s=list",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "alias-list"
+      ],
+      "expectedPageBundles": [
+        "alias-list"
+      ],
+      "expectedBundle": "alias-list",
+      "classification": "page-styled"
+    },
+    {
+      "id": "help",
+      "url": "https://gelbooru.com/index.php?page=help",
+      "source": "live-nav",
+      "matchingBundles": [
+        "base",
+        "help"
+      ],
+      "expectedPageBundles": [
+        "help"
+      ],
+      "expectedBundle": "help",
+      "classification": "page-styled"
+    },
+    {
+      "id": "help-home",
+      "url": "https://gelbooru.com/index.php?page=help&s=home",
+      "source": "live-bfs",
+      "matchingBundles": [
+        "base",
+        "help"
+      ],
+      "expectedPageBundles": [
+        "help"
+      ],
+      "expectedBundle": "help",
+      "classification": "page-styled"
+    },
+    {
+      "id": "aboutus",
+      "url": "https://gelbooru.com/index.php?page=aboutus",
+      "source": "live-nav",
+      "matchingBundles": [
+        "base"
+      ],
+      "expectedPageBundles": [],
+      "expectedBundle": null,
+      "classification": "base-only"
+    },
+    {
+      "id": "tos",
+      "url": "https://gelbooru.com/tos.php",
+      "source": "live-nav",
+      "matchingBundles": [
+        "base",
+        "tos"
+      ],
+      "expectedPageBundles": [
+        "tos"
+      ],
+      "expectedBundle": "tos",
+      "classification": "page-styled"
+    }
+  ]
+}
