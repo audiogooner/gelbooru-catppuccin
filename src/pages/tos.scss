@@ -1,0 +1,33 @@
+@use "bootstrap-chrome";
+
+@include bootstrap-chrome.navbar;
+@include bootstrap-chrome.mail-alert;
+
+#submenu .navbar-nav > li > a[href*="tos.php"] {
+  color: var(--blue) !important;
+  font-weight: 600 !important;
+}
+
+.padding15 { padding: 1.5rem 1rem 2.5rem !important; }
+
+.padding15 > .container {
+  width: auto !important;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0;
+  color: var(--subtext0);
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 13px;
+  line-height: 1.6;
+
+  center,
+  center > div { text-align: left; }
+
+  h2 {
+    margin: 1.8rem 0 0.65rem;
+    color: var(--text);
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
+}
+

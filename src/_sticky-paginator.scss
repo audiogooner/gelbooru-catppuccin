@@ -1,0 +1,29 @@
+/* Shared sticky paginator bar.
+   Include on the paginator wrapper whose parent is the tall page column, so the
+   bar has room to travel; no ancestor between it and the scroller may clip
+   overflow. `$inset-x` should mirror the parent's horizontal padding when the
+   bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+   bar's edges.
+
+   When including this on the paginator itself, select it as `div#paginator`:
+   the site stylesheets zero its padding at that specificity. */
+
+@mixin bar($inset-x: 0px, $pad-x: $inset-x) {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin: 0.75rem calc(-1 * #{$inset-x}) 0;
+  padding: 0.6rem #{$pad-x};
+  background: color-mix(in srgb, var(--base) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--surface1);
+
+  /* The wrapper is rendered even when the result set fits on one page. */
+  &:not(:has(a)) {
+    display: none;
+  }
+
+  > br {
+    display: none;
+  }
+}

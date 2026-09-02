@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <!--
-snapshot: wiki
-url: https://gelbooru.com/index.php?page=wiki&s=&s=edit&id=26769
-title: | Gelbooru
-captured: 2026-08-30T21:37:57.417Z
+snapshot: tags-edit
+url: https://gelbooru.com/index.php?page=tags&s=edit&tag=danmug58
+title: | Gelbooru - Anime Art & Hentai Gallery - Free to Explore
+captured: 2026-08-30T21:35:09.289Z
 source: live
-stylesheets: default.css, jquery-ui.css
+stylesheets: gridStyle.css, jquery-ui.css
 -->
-<html>
+<html lang="en">
   <head>
-    <script type="text/javascript" async="" charset="utf-8" crossorigin="anonymous" integrity="sha384-HEUFCmJokjB+CHBYlkcDt4puBwinjtTwjglts96+ZyVMTHTkeKul3/+rAljME2Le" data-snapshot-src="recaptcha__en.js"></script>
     <meta charset="UTF-8">
-    <title>| Gelbooru</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="default.css?81" title="default">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui.css" title="default">
+    <title>| Gelbooru - Anime Art &amp; Hentai Gallery - Free to Explore</title>
     <meta name="rating" content="adult">
-    <script data-snapshot-src="api.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="gridStyle.css?16h">
+    <script async="" type="application/javascript" data-snapshot-src="ad-provider.js"></script>
     <style data-gelbooru-dev="blackout">
     main img:not(.voteUpComment, .reportComment),
     main video,
@@ -643,473 +642,141 @@ footer * {
 .mainBodyPadding > div:nth-child(n+18) > div:nth-child(2) > span:nth-child(6) > span:nth-child(2) > a:nth-child(1) {
   color: var(--red) !important;
 }</style>
-    <style data-gelbooru-dev="wiki-view">/* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-   Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
-/* ----------------------------------------------------
-   WIKI VIEW (bootstrap / responsive.css layout)
-   ---------------------------------------------------- */
-.container-fluid:has(> .navbar) {
-  padding: 0;
-}
-
-.navbar,
-.navbar-default {
-  min-height: 0;
-  margin-bottom: 0;
-  overflow: hidden;
-  background: var(--surface0) !important;
-  border: 0;
-  font-family: verdana, sans-serif, helvetica;
-  font-size: 12px;
-  line-height: 1.42857143;
-}
-
-.navbar-header {
-  height: calc(20px + 1.42857143em + 23px);
-}
-
-.navbar-brand {
-  float: left;
-  box-sizing: content-box;
-  width: 46px;
-  height: 46px !important;
-  min-width: 0;
-  padding: 7px 15px 1px 25px !important;
-  margin: 0 !important;
-  font-size: 12px;
-  background-size: 46px 46px;
-  background-position: 25px 7px;
-}
-
-#navbar.navbar-collapse {
-  padding: 0;
-  box-shadow: none;
-}
-
-#navbar .navbar-nav {
-  margin: 0;
-}
-
-#navbar .navbar-nav > li > a {
-  padding: 20px 16px 23px !important;
-  color: var(--text) !important;
-  font-family: verdana, sans-serif, helvetica;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 1.42857143;
-  text-decoration: none;
-}
-
-#navbar .navbar-nav > li > a:hover,
-#navbar .navbar-nav > li > a:focus {
-  background-color: transparent !important;
-}
-
-#navbar .navbar-nav > .active > a,
-#navbar .navbar-nav > .active > a:hover,
-#navbar .navbar-nav > .active > a:focus {
-  background-color: var(--surface2) !important;
-  color: var(--blue) !important;
-  font-weight: bold;
-}
-
-#navbar a.ui-icon {
-  margin: 0 !important;
-  font-size: 14px !important;
-}
-
-.navbar-default .navbar-toggle {
-  border-color: var(--surface1);
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: var(--text);
-}
-
-.navbar-header > button:hover,
-.navbar-header > button:focus,
-.navbar-header > button:active {
-  background: var(--surface1) !important;
-}
-
-#submenu.navbar {
-  min-height: 0;
-  overflow: visible;
-  padding: 10px 15px !important;
-  background: var(--surface1) !important;
-  font-size: 12px;
-  line-height: 1.42857143;
-}
-#submenu.navbar .navbar-nav {
-  float: none;
-  margin: 0;
-}
-#submenu.navbar .navbar-nav > li {
-  float: none;
-  display: inline-block;
-}
-#submenu.navbar .navbar-nav > li > a {
-  display: inline-block;
-  padding: 0 !important;
-  margin: 5px 15px !important;
-  color: var(--text) !important;
-  font-family: verdana, sans-serif, helvetica;
-  font-size: 12px !important;
-  font-weight: normal;
-  line-height: 1.42857143;
-  background: transparent !important;
-}
-
-.alert-success {
-  margin: 0.75rem 0 0 !important;
-  padding: 0.65rem 1rem !important;
-  color: var(--green) !important;
-  background: var(--surface0) !important;
-  border: 1px solid var(--green) !important;
-  border-radius: 10px;
-}
-.alert-success a {
-  color: var(--green) !important;
-  font-weight: 600;
-}
-
-#submenu a[href*="s=create"] {
-  color: var(--green) !important;
-}
-
-#submenu a[href*="action=delete"] {
-  color: var(--red) !important;
-}
-
-.padding15 {
-  padding: 1.5rem 1.75rem 2.5rem !important;
-}
-
-.padding15 > br {
-  display: none !important;
-}
-
-.padding15 .row {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.padding15 [class*=col-] {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.padding15 form .col-xs-12 {
-  display: flex !important;
-  gap: 0.75rem;
-  align-items: stretch;
-}
-
-.padding15 #tags-search {
-  flex: 1 1 auto;
-  width: auto !important;
-  min-width: 0;
-  padding: 0.55rem 0.9rem !important;
-}
-
-.new_secondary_search {
-  flex: 0 0 auto;
-  width: auto !important;
-  margin: 0 !important;
-  padding: 0.55rem 1.25rem !important;
-  color: var(--crust) !important;
-  font-weight: 600;
-  background: var(--blue) !important;
-  border: none !important;
-  border-radius: 7px !important;
-}
-.new_secondary_search:hover {
-  background: var(--sapphire) !important;
-}
-
-.padding15 > table {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) max-content;
-  gap: 2rem !important;
-  width: 100% !important;
-  margin: 1.5rem 0 0 !important;
-  padding: 0 !important;
-}
-
-.padding15 > table > tbody,
-.padding15 > table > tbody > tr {
-  display: contents !important;
-}
-
-.padding15 > table > tbody > tr > td {
-  background: transparent !important;
-  border-radius: 0;
-}
-
-.padding15 > table > tbody > tr > td:first-child,
-td[style*=border-right] {
-  min-width: 0;
-  padding: 1.35rem 1.6rem 1.5rem !important;
-  color: var(--text);
-  line-height: 1.55;
-  text-align: left !important;
-  background: var(--mantle) !important;
-  border: 1px solid var(--surface0) !important;
-  border-right: 1px solid var(--surface0) !important;
-  border-radius: 10px;
-}
-
-.padding15 > table > tbody > tr > td:last-child {
-  display: grid !important;
-  grid-template-columns: repeat(3, max-content);
-  gap: 1.5rem !important;
-  justify-content: start;
-  align-content: start;
-  width: auto;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-}
-
-.padding15 > table > tbody > tr > td:first-child h2 {
-  display: block !important;
-  margin: 0 0 0.5em !important;
-  color: var(--subtext1);
-  font-size: 1.15em;
-  font-weight: 600;
-}
-.padding15 > table > tbody > tr > td:first-child h1 {
-  margin: 0.4em 0 0.5em;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-.padding15 > table > tbody > tr > td:first-child > span {
-  display: block;
-  margin-bottom: 1.1rem !important;
-  color: var(--subtext0);
-}
-.padding15 > table > tbody > tr > td:first-child b {
-  color: var(--text);
-}
-
-div[style*=e9f3ff],
-div[style*=f7fbff],
-div[style*=cee3ff] {
-  margin: 1.35rem 0 0 !important;
-  padding: 0.8rem 1rem !important;
-  color: var(--subtext0) !important;
-  background: var(--surface0) !important;
-  border: 1px solid var(--surface1) !important;
-  border-radius: 10px;
-}
-
-div[style*=e9f3ff] {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  margin-bottom: 0 !important;
-}
-
-div[style*=f7fbff] {
-  border-top: none !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  margin-top: 0 !important;
-}
-
-.padding15 .thumbnail-preview {
-  display: inline-block;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  max-width: none !important;
-  max-height: none !important;
-  vertical-align: top;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 7px;
-  box-shadow: 0 0 10px var(--crust);
-  transition: scale 400ms cubic-bezier(0, 0.55, 0.45, 1), border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1), box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
-}
-.padding15 .thumbnail-preview span.thumb {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-.padding15 .thumbnail-preview img {
-  display: block;
-  border-radius: 7px;
-}
-.padding15 .thumbnail-preview:hover {
-  scale: 110%;
-  border-radius: 0;
-  box-shadow: 0 0 30px var(--surface0);
-}
-.padding15 .thumbnail-preview:hover img {
-  border-radius: 0;
-}
-.padding15 .thumbnail-preview:has(img.webm), .padding15 .thumbnail-preview:has(img[alt~=animated]), .padding15 .thumbnail-preview:has(img[alt~=video]) {
-  outline: 3px solid var(--blue);
-  outline-offset: -3px;
-}
-
-.padding15 > table > tbody > tr > td:last-child > table {
-  grid-column: 1/-1;
-  margin: 0.5rem 0 0 !important;
-}
-.padding15 > table > tbody > tr > td:last-child > table td {
-  width: auto !important;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-}
-.padding15 > table > tbody > tr > td:last-child > table h3 {
-  margin: 0;
-  font-size: 1em;
-  text-align: right;
-}</style>
-    <script data-snapshot-src="jquery.min.js"></script>
-    <script type="text/javascript" data-snapshot-src="application3.js"></script>
   </head>
   <body class="vc-init">
-    <div id="gelbooru-dev-overlay" data-gelbooru-dev="overlay" style="border-block-style: initial !important; border-inline: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-block-width: initial !important; border-block-color: initial !important; overflow-block: initial !important; overflow-inline: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !importan…"></div>
-    <div class="header">
-      <div class="center">
-        <h2 class="siteName">
-          <a href="https://gelbooru.com/">Gelbooru</a>
-        </h2>
-        <ul class="flat-list">
-          <li>
-            <a href="index.php?page=account&amp;s=home">My Account</a>
-          </li>
-          <li>
-            <a href="index.php?page=post&amp;s=list&amp;tags=all">Posts</a>
-          </li>
-          <li>
-            <a href="index.php?page=comment&amp;s=list">Comments</a>
-          </li>
-          <li class="current-page">
-            <a href="index.php?page=wiki&amp;s=list">Wiki</a>
-          </li>
-          <li>
-            <a href="index.php?page=tags&amp;s=list">Tags</a>
-          </li>
-          <li>
-            <a href="index.php?page=pool&amp;s=list">Pools</a>
-          </li>
-          <li>
-            <a href="index.php?page=forum&amp;s=list">Forum</a>
-          </li>
-          <li>
-            <a href="index.php?page=tracker&amp;s=list">Trac</a>
-          </li>
-          <li>
-            <a href="index.php?page=help" style="color: #00ff00;">
-              <b>Help</b>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="submenu">
-      <div class="center">
-        <ul class="flat-list2" id="subnavbar">
-          <li>
-            <a href="index.php?page=wiki&amp;s=create">
-              <b>Create</b>
-            </a>
-          </li>
-          <li>
-            <a href="index.php?page=wiki&amp;s=list">List</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="noticeError" style="">
-      <div class="center">
-        <i>
-          <b>Notice</b>
-        </i>
-        : We are now selling NEW
-        <a href="https://buymyshit.moneygrubbingwhore.com/?1" style="color: #ffff00; font-weight: bold;" target="_blank">Gelbooru Merch~</a>
-        ! Domestic shipping is free on all orders! Do you have an artist tag on Gelbooru?
-        <a href="https://discord.gg/Zxs9tPE" target="_blank" rel="nofollow" style="color: #ffff00;">Let us know so we can properly credit you!</a>
-      </div>
-    </div>
-    <div id="long-notice"></div>
-    <div id="notice" style="display: none;"></div>
-    <div class="success-notice" style="display: none;">
-      <a href="index.php?page=gmail">You have mail</a>
-    </div>
-    <br>
-    <div id="content">
-      <div style="color: #464646; margin-bottom: 5px; font-size: 11px;">
-        <div id="post-list">
-          <div class="sidebar">
-            <div style="padding-right: 15px;">
-              <span style="font-size: 12px;">
-                <b>Formatting Help &amp; Info</b>
-              </span>
-              <br>
-              <br>
-              If you are unsure how to edit/create articles and have no idea what all those crazy symbols mean, then you should perhaps read over our
-              <a href="index.php?page=wiki&amp;s=list&amp;search=howto">howto section</a>
-              .
-              <br>
-              <br>
-              If you have any other questions not answered in that documentation, please create a new
-              <a href="index.php?page=forum&amp;s=list">forum topic</a>
-              with a description of what you are trying to accomplish.
-              <br>
-              <br>
-              <br>
-              <br>
-              <span style="font-size: 12px;">
-                <b>More about the Wiki</b>
-              </span>
-              <br>
-              <br>
-              The wiki is meant to help users discover meanings to the massive amount of tags that exist on the site. If you want to invent a new tag, it is recommended that …
-            </div>
-          </div>
+    <style>
+	 .mn-container-adsby_position_bottom-right {
+		 display: none;
+	 }
+	</style>
+    <div id="container">
+      <div id="long-notice"></div>
+      <div id="notice" style="display: none;"></div>
+      <header>
+        <div class="topnav" id="myTopnav">
+          <a href="https://gelbooru.com/index.php" class="homeIcon">
+            <img style="height: 46px; width: 46px; margin: 0px; padding-bottom: 2px;" data-snapshot-src="gelbooru-logo.svg">
+          </a>
+          <a href="index.php?page=account&amp;s=home">Settings</a>
+          <a href="index.php?page=post&amp;s=list&amp;tags=all">Posts</a>
+          <a href="index.php?page=comment&amp;s=list">Comments</a>
+          <a href="index.php?page=wiki&amp;s=list">Wiki</a>
+          <a href="index.php?page=tags&amp;s=list" class="active">Tags</a>
+          <a href="index.php?page=pool&amp;s=list">Pools</a>
+          <a href="index.php?page=extras&amp;s=artists">Featured</a>
+          <a href="index.php?page=forum&amp;s=list">Forum</a>
+          <a href="index.php?page=tracker&amp;s=list">Trac</a>
+          <a href="index.php?page=conversation&amp;s=list">Live Chat</a>
+          <a href="javascript:;">
+            <img style="filter: invert(62%) sepia(93%) saturate(1352%) hue-rotate(18deg) brightness(119%) contrast(119%); width: 14px; padding: 0px; margin: 0px;" data-snapshot-src="lightbulb-fill.svg">
+          </a>
+          <a href="javascript:;" class="icon">
+            <img style="filter: invert(100); height: 16px;" data-snapshot-src="list.svg">
+          </a>
         </div>
-        <div class="content">
-          <h3 style="display: inline;">Edit Wiki</h3>
-          <br>
-          <br>
-          <form method="post" action="">
-            Title
-            <br>
-            <input type="text" value="ninomae_ina'nis" style="width: 70%;" disabled="">
-            <br>
-            <br>
-            <input type="hidden" name="title" value="ninomae_ina'nis">
-            Body
-            <br>
-            <textarea name="body" rows="20" cols="10" style="width: 100%;">一伊那尓栖/にのまえいなにす
-
-A petite dark-haired girl with a mass of purple [[tentacles]] sprouting from her back. She has [[pointy_ears]] and bangs that resemble tentacles. Her hairstyle head accessories are arranged in such a way that the top of her head resembles a stylized approximation of Cthulhu's face. She is a [[virtual_youtuber]] who is part of [[Hololive_English]]. She debuted on September 13, 2020. She was designed by [[Kuroboshi_Kouhaku]] who's most known for his contributions to [[Fate/Grand_Order]] and who Ina herself is a fan of.
-
-She is normal human girl who became involved with eldritch abominations when she picked up a book that gave her control over tentacles and all of her current powers. In spite of her sinister background, she is the most mellow member of Hololive English and gets along well with others. She is multilingual, speaking English, Korean, and some Japanese. Like her fellow members, her contents consists of streams: video game playthroughs, free talks, and karaoke. She is notably one of the most artistically inclined members of hololive and has dedicated many of her streams to creating art in front of her audience. Art created by her should be tagged as [[Ninomae_Ina'nis_(artist)]]. She is very fond of puns, particularly those related to her.
-
-Her channel:
-
-https://www.youtube.com/channel/UCMwGHR0BTZuLsmjY_NT5Pwg
-
-Her profile:
-
-https://en.hololive.tv/portfolio/items/584532
-
-Twitter:
-
-https://twitter.com/ninomaeinanis</textarea>
-            <br>
-            <input type="submit" value="Edit Article">
+        <div style="background: #a43535; color: #fff; padding: 10px; font-size: 11px;" id="motd">
+          <i>
+            <b>Notice</b>
+          </i>
+          : We will show one popunder ad per half day. This can be disabled in your account options. The popunder will spawn as soon as you click on the page. You have be…
+          <a href="javascript:;" style="color: #fff; text-decoration: underline;">(Dismiss)</a>
+        </div>
+      </header>
+      <div class="navSubmenu">
+        <a href="index.php?page=tags&amp;s=list">List</a>
+        <a href="index.php?page=alias&amp;s=list">Aliases</a>
+        <a href="index.php?page=tags&amp;s=implications">Implications</a>
+        <a href="index.php?page=tags&amp;s=saved_search">Saved Searches</a>
+      </div>
+      <div class="searchArea">
+        <div>
+          <form action="index.php?page=search" method="post">
+            <a href="javascript:;">
+              <img class="" style="vertical-align: top; margin: 4px 10px 0px 10px; height: 24px; width: 24px; border: 0px !important; opacity: .6;" title="Save this search. Check your account page." data-snapshot-src="heart-fill.svg">
+            </a>
+            <input id="tags-search" name="tags" autocomplete="off" style="padding: 7px; width: calc(100% - 180px); border: 1px solid #e0e0e0;" data-autocomplete="tag-query" type="text" value="" placeholder="Search Example: video black_hair rating:sensitive" class="ui-autocomplete-input">
+            <input name="commit" type="submit" value="Search" class="searchList">
           </form>
-          <br>
-          <center>
-            Make sure you understand what you are doing before you hit edit. Any poisoning done accidentally or otherwise will result in a permanent ban.
-          </center>
         </div>
       </div>
+      <aside></aside>
+      <main>
+        <div class="mainBodyPadding">
+          <form action="index.php?page=tags&amp;s=edit" method="post">
+            <table class="form">
+              <tbody>
+                <tr>
+                  <th width="15%">
+                    <label for="tag_name">Name</label>
+                  </th>
+                  <td width="85%">
+                    <input id="tag_name" name="tag" size="30" type="text" class="tag-list-search" value="danmug58">
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label for="tag_tag_type">Type</label>
+                  </th>
+                  <td>
+                    <select id="tag_tag_type" name="type">
+                      <option value="copyright">Copyright</option>
+                      <option value="tag">General</option>
+                      <option value="artist" selected="">Artist</option>
+                      <option value="character">Character</option>
+                      <option value="metadata">Metadata</option>
+                      <option value="deprecated">Deprecated</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label for="tag_is_ambiguous">Ambiguous</label>
+                  </th>
+                  <td>
+                    <input name="ambiguous" type="checkbox">
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2">
+                    <input name="commit" type="submit" value="Save" class="searchList">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </main>
+      <footer>
+        <a href="index.php?page=dmca&amp;s=index">
+          <h2 style="display: inline-block;">DMCA</h2>
+        </a>
+        <a href="tos.php">
+          <h2 style="display: inline-block;">TOS</h2>
+        </a>
+        <br>
+        <br>
+        <a href="index.php?page=wiki&amp;s=list&amp;search=howto">
+          <b>Help</b>
+        </a>
+        <a href="https://twitter.com/gelbooru" target="_blank">Twitter</a>
+        <a href="https://discord.gg/Zxs9tPE">
+          <b>Discord</b>
+        </a>
+        <a href="index.php?page=extras&amp;s=patreon">Project Supporters</a>
+      </footer>
     </div>
+    <script></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui.css?2" title="default">
+    <script data-snapshot-src="jquery.min.js"></script>
+    <script data-snapshot-src="jquery.cookie.js"></script>
+    <script data-snapshot-src="application.grid.js"></script>
+    <script data-snapshot-src="jquery-hotkeys.js"></script>
+    <script data-snapshot-src="autocomplete3.js"></script>
+    <script type="text/javascript"></script>
+    <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul>
+    <div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+    <div style="all: initial;" class="notranslate"></div>
+    <div id="gelbooru-dev-overlay" data-gelbooru-dev="overlay" style="border-block-style: initial !important; border-inline: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-block-width: initial !important; border-block-color: initial !important; overflow-block: initial !important; overflow-inline: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !importan…"></div>
   </body>
 </html>

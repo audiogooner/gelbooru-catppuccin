@@ -1,0 +1,53 @@
+@use "bootstrap-chrome";
+
+@include bootstrap-chrome.navbar;
+@include bootstrap-chrome.mail-alert;
+
+#submenu .navbar-nav > li > a[href*="extras"][href*="patreon"] {
+  color: var(--blue) !important;
+  font-weight: 600 !important;
+}
+
+.padding15 { padding: 1.5rem 1rem 2.5rem !important; }
+
+.padding15 > .container-fluid {
+  width: auto !important;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0;
+  color: var(--subtext0);
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 13px;
+  line-height: 1.6;
+
+  > br { display: none; }
+
+  > .alert-info {
+    margin: 0 0 1rem !important;
+    padding: 0.8rem 1rem !important;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 10px;
+  }
+
+  > .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.5rem;
+    margin: 0 0 0.5rem !important;
+
+    > a > [class*="col-"] {
+      float: none !important;
+      box-sizing: border-box;
+      width: 100% !important;
+      min-height: 2.6rem;
+      padding: 0.65rem 0.75rem !important;
+      overflow-wrap: anywhere;
+      background: var(--surface0);
+      border: 1px solid var(--surface1);
+      border-radius: 8px;
+    }
+  }
+}
+

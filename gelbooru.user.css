@@ -9,6 +9,7 @@
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://gelbooru.com") {
+  @charset "UTF-8";
   /* ----------------------------------------------------
      CONTENT BLOCKING
      ---------------------------------------------------- */
@@ -142,7 +143,7 @@
     border-radius: 7px !important;
     background: var(--surface0) !important;
     color: var(--text) !important;
-    transition: 0.1s;
+    transition: background-color 0.1s, color 0.1s;
   }
   .secondary_search:hover,
   .searchList:hover {
@@ -191,12 +192,76 @@
 
   /* ----------------------------------------------------
      SEARCH AREA
+     The tag search bar of the grid layout (`#container > .searchArea`). Every
+     grid page gets the same height, margins and control sizes from here; page
+     bundles should not redefine its geometry.
      ---------------------------------------------------- */
+  :root {
+    --search-area-h: 44px;
+    --search-area-pad-x: 10px;
+    --search-area-gap: 0.5rem;
+    --search-control-h: 32px;
+  }
+
   .searchArea {
     background-color: var(--base);
   }
-  .searchArea > div:nth-child(1) > form:nth-child(1) > a:nth-child(1) > img:nth-child(1) {
+
+  #container > .searchArea {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: var(--search-area-h) !important;
+    margin: 0 !important;
+    padding: 0 var(--search-area-pad-x) !important;
+  }
+  #container > .searchArea > div {
+    width: 100%;
+  }
+  #container > .searchArea form {
+    display: flex;
+    gap: var(--search-area-gap);
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+  #container > .searchArea {
+    /* "Save this search" heart */
+  }
+  #container > .searchArea form > a {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+  }
+  #container > .searchArea form > a img {
+    margin: 0 !important;
     filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg) brightness(100%) contrast(92%);
+  }
+  #container > .searchArea #tags-search {
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    width: auto !important;
+    min-width: 0;
+    height: var(--search-control-h);
+    margin: 0;
+    padding: 0 0.75rem !important;
+    border: solid 1px var(--surface1) !important;
+  }
+  #container > .searchArea input.searchList {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    width: auto !important;
+    height: var(--search-control-h);
+    margin: 0;
+    padding: 0 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    cursor: pointer;
+  }
+  #container > .searchArea input.searchList:hover {
+    background: var(--sapphire) !important;
   }
 
   .sm-hidden {
@@ -207,6 +272,7 @@
     background-color: var(--surface0) !important;
     border: none !important;
     border-radius: 7px;
+    overflow: hidden;
     color: var(--text) !important;
   }
   .ui-menu.ui-autocomplete .ui-menu-item-wrapper {
@@ -219,6 +285,30 @@
     background: var(--surface1) !important;
     color: var(--text) !important;
   }
+  .ui-menu.ui-autocomplete .ui-menu-item:first-child .ui-menu-item-wrapper {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
+  .ui-menu.ui-autocomplete .ui-menu-item:last-child .ui-menu-item-wrapper {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  /* jQuery UI appends the menu to <body> and toggles inline display, so the open
+     state has to be detected from the document root. */
+  body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) .ui-menu.ui-autocomplete {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) .ui-menu.ui-autocomplete .ui-menu-item:first-child .ui-menu-item-wrapper {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) input.ui-autocomplete-input:focus,
+  body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-autocomplete-input:focus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
   /* ----------------------------------------------------
      HOMEPAGE SPECIFIC
@@ -228,7 +318,7 @@
   }
   #static-index > h1:nth-child(1) > a:nth-child(1) {
     color: var(--blue) !important;
-    transition: 0.5s;
+    transition: color 0.5s;
   }
   #static-index > div:nth-child(8) > a:nth-child(1),
   #static-index > small:nth-child(19) a {
@@ -251,7 +341,7 @@
   }
   #links > a:nth-child(n) {
     color: var(--subtext1) !important;
-    transition: 140ms;
+    transition: color 140ms;
   }
   #links > a:nth-child(n):hover {
     color: var(--text) !important;
@@ -265,7 +355,7 @@
   .tag-type-copyright .sm-hidden a,
   .tag-type-metadata .sm-hidden a,
   .tag-type-general .sm-hidden a {
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
   .tag-type-artist:hover .sm-hidden a,
   .tag-type-character:hover .sm-hidden a,
@@ -280,7 +370,7 @@
   .tag-type-metadata > span,
   .tag-type-general > span {
     color: var(--subtext0) !important;
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
   .tag-type-artist:hover > span,
   .tag-type-character:hover > span,
@@ -292,7 +382,7 @@
 
   .tag-type-artist > a {
     color: var(--red) !important;
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
   .tag-type-artist:hover > a {
     text-shadow: 0 0 10px var(--red);
@@ -300,7 +390,7 @@
 
   .tag-type-character > a {
     color: var(--green) !important;
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
   .tag-type-character:hover > a {
     text-shadow: 0 0 10px var(--green);
@@ -308,7 +398,7 @@
 
   .tag-type-copyright > a {
     color: var(--pink) !important;
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
   .tag-type-copyright:hover > a {
     text-shadow: 0 0 10px var(--pink);
@@ -316,7 +406,7 @@
 
   .tag-type-metadata > a {
     color: var(--yellow) !important;
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
   .tag-type-metadata:hover > a {
     text-shadow: 0 0 10px var(--yellow);
@@ -324,7 +414,7 @@
 
   .tag-type-general > a {
     color: var(--blue) !important;
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
   .tag-type-general:hover > a {
     text-shadow: 0 0 10px var(--blue);
@@ -342,24 +432,75 @@
   .mainBodyPadding > div:nth-child(n) img,
   article img {
     border-radius: 7px;
-    transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
-    box-shadow: 0 0 10px var(--crust);
+    box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+    transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
   }
   .mainBodyPadding > div:nth-child(n) img:hover:not(.voteUpComment):not(.reportComment),
   article img:hover:not(.voteUpComment):not(.reportComment) {
-    scale: 110%;
-    border-radius: 0;
-    box-shadow: 0 0 30px var(--surface0);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent), 0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .mainBodyPadding > div:nth-child(n) img,
+    article img {
+      transition: none;
+    }
+  }
   .fluid_controls_currentprogress {
     background-color: var(--blue) !important;
   }
 
   img.webm {
-    border: 3px solid var(--blue);
+    border: none;
+    box-shadow: 0 0 0 0 transparent, 0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent), 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+    transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+  img.webm:hover:not(.voteUpComment):not(.reportComment) {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)), 0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
   }
 
+  a:has(> img.webm) {
+    position: relative;
+  }
+  a:has(> img.webm) > img.webm {
+    anchor-name: --thumb-media;
+  }
+  a:has(> img.webm)::after {
+    content: "";
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center/contain no-repeat;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    transition: opacity 220ms ease;
+  }
+  a:has(> img.webm):hover::after {
+    opacity: 1;
+  }
+  @supports (anchor-name: --thumb-media) {
+    a:has(> img.webm)::after {
+      right: auto;
+      bottom: auto;
+      position-anchor: --thumb-media;
+      top: anchor(bottom);
+      left: anchor(right);
+      transform: translate(calc(-100% - 3px), calc(-100% - 3px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    img.webm {
+      transition: none;
+    }
+    a:has(> img.webm)::after {
+      transition: none;
+    }
+  }
   /* ----------------------------------------------------
      COMMENTS AND USER CONTENT
      ---------------------------------------------------- */
@@ -396,21 +537,75 @@
   /* ----------------------------------------------------
      PAGINATION AND TABLES
      ---------------------------------------------------- */
-  #paginator a {
-    display: inline-block;
-    margin: 3px !important;
-    padding: 12px 16px !important;
-    border-radius: 10px;
+  /* `div#paginator`, not `#paginator`: default.css and responsive.css both set
+     `display: block` with that same specificity, which would otherwise win over
+     the flex layout on the legacy and bootstrap pages. */
+  div#paginator {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  div#paginator > br {
+    display: none;
+  }
+  div#paginator {
+    /* Most pages wrap the links in one or two `.pagination` divs inside the
+       paginator. Flattening them lets the links become flex items here, so they
+       pick up the gap instead of relying on collapsed whitespace. */
+  }
+  div#paginator .pagination {
+    display: contents;
+  }
+  div#paginator {
+    /* The forum marks the current page with `span.current` instead of `<b>`, and
+       labels its arrows "« Previous" / "Next »", so the pills size to their text
+       from a page-number-sized floor. */
+  }
+  div#paginator a,
+  div#paginator b,
+  div#paginator span.current {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box;
+    min-width: 42px;
+    height: 40px;
+    margin: 0 !important;
+    padding: 0 0.7rem !important;
+    color: var(--subtext1) !important;
+    font-weight: 600;
+    line-height: 1 !important;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
     background-color: var(--surface1);
     border: none !important;
-    transition: 0.1s;
+    border-radius: 10px;
+    transition: color 180ms ease, background-color 180ms ease;
   }
-  #paginator a:hover {
+  div#paginator a:hover, div#paginator a:focus-visible {
+    color: var(--blue) !important;
+    background-color: var(--surface2) !important;
+  }
+  div#paginator a:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+  }
+  div#paginator b,
+  div#paginator span.current {
+    color: var(--crust) !important;
     background-color: var(--blue) !important;
-    color: var(--text) !important;
   }
-  #paginator b {
-    background-color: transparent;
+  div#paginator {
+    /* Gap markers ("...") between page ranges: text only, no pill. */
+  }
+  div#paginator span:not(.current) {
+    margin: 0 !important;
+    padding: 0 0.2rem !important;
+    color: var(--subtext0) !important;
+    font-weight: 600;
   }
 
   table {
@@ -1441,7 +1636,7 @@
     vertical-align: top !important;
     border-radius: 7px;
     box-shadow: 0 0 10px var(--crust);
-    transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+    transition: scale 400ms cubic-bezier(0, 0.55, 0.45, 1), border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1), box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
   }
   .profileThumbnailPadding img {
     display: block;
@@ -1510,6 +1705,33 @@
   /* ----------------------------------------------------
      WIKI PAGES
      ---------------------------------------------------- */
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0px;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
+  }
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
+    display: none;
+  }
+
   #container > main > div > div:nth-child(1) > form > table td {
     background: none !important;
   }
@@ -1818,7 +2040,7 @@
     border: none !important;
     border-radius: 7px;
     box-shadow: 0 0 10px var(--crust);
-    transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+    transition: scale 400ms cubic-bezier(0, 0.55, 0.45, 1), border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1), box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
   }
   .padding15 .thumbnail-preview span.thumb {
     display: block;
@@ -2125,7 +2347,618 @@
   }
 }
 
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=wiki&s=create") {
+  @charset "UTF-8";
+  /* ----------------------------------------------------
+     WIKI CREATE (legacy default.css layout)
+     ---------------------------------------------------- */
+  body {
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  body > br {
+    display: none;
+  }
+
+  .header {
+    overflow: hidden;
+    background: var(--surface0) !important;
+  }
+  .header .center {
+    margin: 0;
+  }
+  .header a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  h2.siteName {
+    display: block;
+    float: left;
+    height: calc(20px + 1.42857143em + 23px);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  h2.siteName a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  ul.flat-list {
+    display: block;
+    font-size: 12px !important;
+    line-height: 1.42857143;
+  }
+  ul.flat-list li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+  ul.flat-list li a {
+    width: auto !important;
+    height: auto !important;
+  }
+  ul.flat-list li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+  ul.flat-list a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
+    content: "Settings";
+    font-size: 12px;
+    font-weight: inherit;
+    font-family: verdana, sans-serif, helvetica;
+    line-height: 1.42857143;
+  }
+
+  div.submenu {
+    background: var(--surface1) !important;
+    padding: 10px 15px !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  div.submenu .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  div.submenu ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  div.submenu {
+    /* Current section — Create is the page we are on */
+  }
+  div.submenu ul.flat-list2 > li > a[href*="page=wiki"][href*="s=create"] {
+    color: var(--blue) !important;
+    font-weight: bold;
+  }
+
+  .success-notice {
+    margin: 0.75rem 1.25rem 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green);
+    font-size: 0.875em;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .success-notice a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  /* ----- Two-column shell: form left, help panel right ----- */
+  #content {
+    padding: 1.25rem 1.25rem 2rem !important;
+    text-align: left;
+  }
+  #content > #post-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  #content > #post-list > div.content {
+    float: none !important;
+    width: auto !important;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0 !important;
+  }
+
+  #content > #post-list > #post-list {
+    order: 2;
+    min-width: 0;
+  }
+
+  div.sidebar {
+    float: none !important;
+    width: auto !important;
+    max-width: none !important;
+    font-size: 12px;
+    /* Site sets inline `padding-right: 15px` on the copy wrapper */
+  }
+  div.sidebar > div {
+    padding: 1.35rem 1.6rem 1.5rem !important;
+    color: var(--subtext0);
+    line-height: 1.55;
+    background: var(--mantle);
+    border: 1px solid var(--surface0);
+    border-radius: 10px;
+  }
+  div.sidebar span > b {
+    color: var(--text);
+    font-size: 1.05em;
+  }
+  div.sidebar span {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  div.sidebar a {
+    color: var(--blue) !important;
+  }
+
+  /* ----- Create form ----- */
+  div.content > div[style*=width] {
+    width: auto !important;
+  }
+
+  /* Site sets inline `color: #464646; font-size: 11px` on the intro wrapper */
+  div.content div[style*="464646"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    line-height: 1.55;
+  }
+
+  div.content h3 {
+    /* default.css sets `h3 { display: inline }`, which drops vertical margins */
+    display: block;
+    margin: 0 0 0.75rem;
+    color: var(--text);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+  }
+
+  div.content center {
+    display: block;
+    margin-top: 1.25rem;
+    text-align: left;
+  }
+
+  div.content br {
+    display: none;
+  }
+
+  div.content form {
+    display: grid;
+    gap: 0.35rem;
+    min-width: 0;
+    color: var(--subtext1);
+    /* Site sets inline `width: 100%`; padding must stay inside the column */
+  }
+  div.content form input,
+  div.content form textarea {
+    box-sizing: border-box;
+  }
+  div.content form input[name=title] {
+    width: 100% !important;
+    padding: 0.55rem 0.9rem !important;
+    margin-bottom: 0.75rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+  }
+  div.content form input[name=title]:disabled {
+    color: var(--subtext0);
+    background: var(--surface0) !important;
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+  div.content form textarea[name=body] {
+    width: 100% !important;
+    min-height: 24rem;
+    padding: 0.75rem 0.9rem !important;
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.55;
+    resize: vertical;
+  }
+  div.content form input[type=submit] {
+    justify-self: start;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  div.content form input[type=submit]:hover {
+    background: var(--sapphire) !important;
+  }
+  div.content form {
+    /* Title field is disabled when the article already exists */
+  }
+  div.content form:has(input[name=title]:disabled) input[type=submit] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  @media only screen and (max-width: 900px) {
+    #content > #post-list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    div.content form textarea[name=body] {
+      min-height: 18rem;
+    }
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=wiki&s=edit") {
+  /* ----------------------------------------------------
+     WIKI EDIT (legacy default.css layout)
+     ---------------------------------------------------- */
+  body {
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  body > br {
+    display: none;
+  }
+
+  .header {
+    overflow: hidden;
+    background: var(--surface0) !important;
+  }
+  .header .center {
+    margin: 0;
+  }
+  .header a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  h2.siteName {
+    display: block;
+    float: left;
+    height: calc(20px + 1.42857143em + 23px);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  h2.siteName a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  ul.flat-list {
+    display: block;
+    font-size: 12px !important;
+    line-height: 1.42857143;
+  }
+  ul.flat-list li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+  ul.flat-list li a {
+    width: auto !important;
+    height: auto !important;
+  }
+  ul.flat-list li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+  ul.flat-list a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
+    content: "Settings";
+    font-size: 12px;
+    font-weight: inherit;
+    font-family: verdana, sans-serif, helvetica;
+    line-height: 1.42857143;
+  }
+
+  div.submenu {
+    background: var(--surface1) !important;
+    padding: 10px 15px !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  div.submenu .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  div.submenu ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  div.submenu ul.flat-list2 > li > a[href*="s=create"] {
+    color: var(--green) !important;
+  }
+
+  .success-notice {
+    margin: 0.75rem 1.25rem 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green);
+    font-size: 0.875em;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .success-notice a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  /* ----- Two-column shell: form left, help panel right ----- */
+  #content {
+    padding: 1.25rem 1.25rem 2rem !important;
+    text-align: left;
+    /* Site sets inline `color: #464646; font-size: 11px` on the shell wrapper */
+  }
+  #content > div[style*="464646"] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: 2rem;
+    align-items: start;
+    margin: 0 !important;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    line-height: 1.55;
+  }
+  #content > div[style*="464646"] > #post-list {
+    order: 2;
+    min-width: 0;
+  }
+  #content > div[style*="464646"] > div.content {
+    float: none !important;
+    width: auto !important;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0 !important;
+  }
+
+  div.sidebar {
+    float: none !important;
+    width: auto !important;
+    max-width: none !important;
+    font-size: 12px;
+    /* Site sets inline `padding-right: 15px` on the copy wrapper */
+  }
+  div.sidebar > div {
+    padding: 1.35rem 1.6rem 1.5rem !important;
+    color: var(--subtext0);
+    line-height: 1.55;
+    background: var(--mantle);
+    border: 1px solid var(--surface0);
+    border-radius: 10px;
+  }
+  div.sidebar span > b {
+    color: var(--text);
+    font-size: 1.05em;
+  }
+  div.sidebar span {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  div.sidebar a {
+    color: var(--blue) !important;
+  }
+
+  /* ----- Edit form ----- */
+  div.content h3 {
+    /* default.css sets `h3 { display: inline }`, which drops vertical margins */
+    display: block !important;
+    margin: 0 0 0.75rem;
+    color: var(--text);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+  }
+
+  div.content br {
+    display: none;
+  }
+
+  div.content form {
+    display: grid;
+    gap: 0.35rem;
+    min-width: 0;
+    color: var(--subtext1);
+    /* Site sets inline `width: 70%` / `width: 100%`; padding must stay inside */
+  }
+  div.content form input,
+  div.content form textarea {
+    box-sizing: border-box;
+  }
+  div.content form input[type=text] {
+    width: 100% !important;
+    padding: 0.55rem 0.9rem !important;
+    margin-bottom: 0.75rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    /* The title is always locked while editing an existing article */
+  }
+  div.content form input[type=text]:disabled {
+    color: var(--subtext0);
+    background: var(--surface0) !important;
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+  div.content form textarea[name=body] {
+    width: 100% !important;
+    min-height: 24rem;
+    padding: 0.75rem 0.9rem !important;
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.55;
+    resize: vertical;
+  }
+  div.content form input[type=submit] {
+    justify-self: start;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  div.content form input[type=submit]:hover {
+    background: var(--sapphire) !important;
+  }
+
+  /* Warning about editing articles */
+  div.content center {
+    display: block;
+    margin-top: 1.25rem;
+    padding: 0.65rem 1rem;
+    color: var(--peach);
+    text-align: left;
+    background: var(--surface0);
+    border: 1px solid var(--peach);
+    border-radius: 10px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    #content > div[style*="464646"] {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    div.content form textarea[name=body] {
+      min-height: 18rem;
+    }
+  }
+}
+
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tags&s=list") {
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      TAGS LIST (grid layout)
      ---------------------------------------------------- */
@@ -2297,10 +3130,21 @@
     color: var(--subtext0);
   }
 
-  #paginator {
-    padding: 0.5rem 0 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0px;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
   }
-  #paginator > br {
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
     display: none;
   }
 
@@ -2339,6 +3183,15 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tags&s=implications") {
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      TAG IMPLICATIONS (grid layout)
      ---------------------------------------------------- */
@@ -2461,10 +3314,21 @@
     background: color-mix(in srgb, var(--blue) 16%, var(--base)) !important;
   }
 
-  #paginator {
-    padding: 0.5rem 0 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0px;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
   }
-  #paginator > br {
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
     display: none;
   }
 
@@ -2483,7 +3347,140 @@
   }
 }
 
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=tags&s=edit") {
+  /* ----------------------------------------------------
+     TAG EDIT (grid layout)
+     ---------------------------------------------------- */
+  .aside {
+    display: none !important;
+  }
+
+  #container {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 100%;
+  }
+
+  main {
+    grid-column: 1/-1;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .navSubmenu > a[href*="page=tags"][href*="s=list"] {
+    color: var(--blue) !important;
+  }
+
+  .mainBodyPadding {
+    padding-top: 1rem;
+  }
+  .mainBodyPadding > br {
+    display: none;
+  }
+
+  table.form {
+    width: auto;
+    max-width: 100%;
+  }
+  table.form > tbody {
+    display: grid;
+    grid-template-columns: auto minmax(0, 26rem);
+    align-items: center;
+    column-gap: 0.65rem;
+  }
+  table.form > tbody > tr {
+    display: contents;
+  }
+  table.form th,
+  table.form td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    text-align: left !important;
+    font-weight: normal;
+  }
+  table.form th {
+    padding: 0.4rem 0.6rem 0.4rem 0;
+    min-width: 0;
+  }
+  table.form th label {
+    color: var(--subtext1);
+  }
+  table.form td {
+    padding: 0.4rem 0;
+  }
+  table.form {
+    /* Spacer cell in front of the submit button */
+  }
+  table.form > tbody > tr:has(> td:first-child:empty) > td:first-child:empty {
+    display: none;
+  }
+  table.form input.tag-list-search,
+  table.form select {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+  table.form select {
+    color: var(--text);
+    background: var(--surface0);
+    border: 1px solid var(--surface1) !important;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  table.form select:focus {
+    border-color: var(--blue) !important;
+    outline: none;
+  }
+  table.form select option {
+    color: var(--text);
+    background: var(--surface0);
+  }
+  table.form input[type=checkbox] {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--blue);
+    cursor: pointer;
+  }
+  table.form td:has(input.searchList) {
+    padding-top: 0.9rem;
+  }
+  table.form input.searchList {
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  table.form input.searchList:hover {
+    background: var(--sapphire) !important;
+  }
+
+  @media only screen and (max-width: 600px) {
+    table.form > tbody {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    table.form th {
+      padding: 0.4rem 0 0.15rem;
+    }
+  }
+}
+
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=alias") {
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      ALIAS LIST (grid layout)
      ---------------------------------------------------- */
@@ -2667,10 +3664,21 @@
     color: var(--subtext0);
   }
 
-  #paginator {
-    padding: 0.5rem 0 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0px;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
   }
-  #paginator > br {
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
     display: none;
   }
 
@@ -2697,6 +3705,15 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tags&s=saved_search") {
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      SAVED SEARCHES PAGE
      ---------------------------------------------------- */
@@ -2854,12 +3871,35 @@
     object-fit: contain;
   }
 
-  #paginator {
-    padding: 0.5rem 1.25rem 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 1.25rem) 0;
+    padding: 0.6rem 1.25rem;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
+  }
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
+    display: none;
   }
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=pool&s=list") {
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      POOL LIST (grid layout)
      ---------------------------------------------------- */
@@ -2932,7 +3972,7 @@
     margin: 0 auto;
     border-radius: 7px;
     box-shadow: 0 0 10px var(--crust);
-    transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+    transition: scale 400ms cubic-bezier(0, 0.55, 0.45, 1), border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1), box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
   }
   table.highlightable td:first-child img:hover {
     scale: 110%;
@@ -2967,10 +4007,21 @@
     color: var(--text);
   }
 
-  #paginator {
-    padding: 0.5rem 0 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0px;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
   }
-  #paginator > br {
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
     display: none;
   }
 
@@ -2991,6 +4042,15 @@
   @charset "UTF-8";
   /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
      Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      POOL SHOW (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
@@ -3224,7 +4284,7 @@
     object-fit: contain;
     border-radius: 7px;
     box-shadow: 0 0 10px var(--crust);
-    transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+    transition: scale 400ms cubic-bezier(0, 0.55, 0.45, 1), border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1), box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
   }
   img.thumbnail-preview:hover {
     scale: 110%;
@@ -3236,10 +4296,21 @@
     outline-offset: -3px;
   }
 
-  #paginator {
-    padding: 0.5rem 0 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0px;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
   }
-  #paginator > br {
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
     display: none;
   }
 }
@@ -3747,7 +4818,1417 @@
   }
 }
 
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=post&s=view") {
+  @charset "UTF-8";
+  /* ----------------------------------------------------
+     POST VIEW (grid layout)
+     Everything fits on the first screen with no scrolling: the media fills the
+     space between the site chrome and the Edit / Comment / Favorite row, which
+     sits just above the bottom edge.
+
+     Auto-scrolling is not used — scroll-initial-target is Chromium-only, so it
+     would give two different layouts. The media height is instead:
+
+       100dvh − (chrome above the media) − (action row) − (bottom margin)
+
+     Rows above and below the media get explicit heights so the subtraction is
+     exact rather than an estimate.
+     ---------------------------------------------------- */
+  :root {
+    /* Site chrome above the main column, measured at the top of the page:
+       header (topnav, with #motd hidden by content-blocking) + .navSubmenu. */
+    --post-header-h: 60px;
+    --post-submenu-h: 47px;
+    /* Search bar, sized by the shared rule in base.scss */
+    --post-search-h: var(--search-area-h);
+    /* Round Previous / Next buttons pinned to the edges of the main column */
+    --post-nav-size: 2.75rem;
+    --post-nav-icon: 1.5rem;
+    --post-nav-edge: 0.75rem;
+    --post-aside-w: 240px;
+    /* #scrollebox row (Edit | Leave a Comment | Favorite), including the gap
+       above it, plus breathing room under it at the bottom of the screen. */
+    --post-actions-gap: 0.5rem;
+    --post-actions-h: calc(30px + var(--post-actions-gap));
+    --post-bottom-gap: 0.75rem;
+    /* The fullscreen toggle is pinned to the viewport, so it takes no row here. */
+    --post-above-h: calc(
+      var(--post-header-h) + var(--post-submenu-h) + var(--post-search-h)
+    );
+    /* Exit button of the fullscreen overlay, which is pinned to the viewport:
+       clear of the header, submenu and search bar. */
+    --post-fs-top: calc(var(--post-above-h) + var(--post-nav-edge));
+    --post-media-max-h: calc(
+      100vh - var(--post-above-h) - var(--post-actions-h) - var(--post-bottom-gap)
+    );
+    --post-media-max-h: calc(
+      100dvh - var(--post-above-h) - var(--post-actions-h) - var(
+          --post-bottom-gap
+        )
+    );
+  }
+
+  .navSubmenu > a[href*="page=post"][href*="s=list"] {
+    color: var(--blue) !important;
+  }
+
+  .navSubmenu > a[href*="page=post"][href*="s=add"] {
+    color: var(--green) !important;
+  }
+
+  main {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  main > br {
+    display: none;
+  }
+
+  .alert-success {
+    margin: 0.75rem 1.25rem 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .alert-success a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  /* ----- Tag sidebar ----- */
+  .aside {
+    min-width: 0;
+    border-right: solid 1px var(--surface1);
+  }
+
+  ul.tag-list {
+    margin: 0 !important;
+    padding: 0.35rem 0.75rem 1.25rem;
+  }
+  ul.tag-list > br {
+    display: none;
+  }
+  ul.tag-list {
+    /* Beat gridStyle's `ul.tag-list li { display: inline-block; width: 200px }` */
+  }
+  ul.tag-list li {
+    display: block !important;
+    width: auto !important;
+    margin: 0.12rem 0 !important;
+    color: var(--subtext0);
+    line-height: 1.45;
+    word-break: break-word;
+  }
+  ul.tag-list li > br {
+    display: none;
+  }
+  ul.tag-list h3 {
+    margin: 1rem 0 0.4rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.05em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  ul.tag-list li:has(> h3) {
+    margin-top: 0.35rem !important;
+  }
+  ul.tag-list {
+    /* Category labels are <span class="sm-hidden"> wrapping an <li>; the inline
+       span keeps them on the previous tag's line. Inner "?" wiki links use the
+       same class, so only unwrap the ul's own children. */
+  }
+  ul.tag-list > .sm-hidden {
+    display: block;
+  }
+  ul.tag-list > .sm-hidden > li {
+    margin-top: 0.85rem !important;
+    color: var(--subtext0);
+  }
+  ul.tag-list > .sm-hidden > li b {
+    color: var(--subtext1);
+    font-size: 0.85em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  ul.tag-list a[href="//gelbooru.com"],
+  ul.tag-list #pfd a {
+    color: var(--red) !important;
+  }
+
+  /* ----- Main column ----- */
+  .mainBodyPadding {
+    /* Containing block for the fullscreen toggle and the Previous / Next
+       buttons, so they scroll away with the post instead of tracking the
+       viewport. */
+    position: relative;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0 1.25rem 1.5rem;
+  }
+  .mainBodyPadding > br {
+    display: none;
+  }
+  .mainBodyPadding {
+    /* Empty header-ad slot above the post */
+  }
+  .mainBodyPadding > div:not([id], [class]):empty,
+  .mainBodyPadding > div:not([id], [class])[style*="max-width: 350px"]:not(:has(*)) {
+    display: none !important;
+  }
+  .mainBodyPadding > h2 {
+    margin: 1.25rem 0 0.75rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text);
+  }
+
+  /* ----- Fullscreen toggle ----- */
+  /* The site's expand chip, turned into a round icon button pinned to the top
+     right corner. base.scss paints `.alert-info *` too, so the inner link has to
+     stay transparent or the button doubles up. */
+  #resize-link {
+    position: absolute;
+    z-index: 901;
+    top: var(--post-nav-edge);
+    right: var(--post-nav-edge);
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    width: var(--post-nav-size);
+    height: var(--post-nav-size);
+    margin: 0 !important;
+    padding: 0 !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface2) !important;
+    border-radius: 50%;
+    /* Filling the circle from the padding box, rather than sizing the link in
+       flow, keeps the glyph centred whatever padding the site puts on the link. */
+  }
+  #resize-link a {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0;
+    line-height: 0;
+    color: var(--subtext1) !important;
+    background: transparent !important;
+    border: none !important;
+    transition: color 0.1s;
+  }
+  #resize-link:hover {
+    background: var(--blue) !important;
+    border-color: var(--blue) !important;
+  }
+  #resize-link:hover a {
+    color: var(--crust) !important;
+  }
+  #resize-link {
+    /* Material Symbols Rounded "fullscreen". Drawn as a mask so it inherits
+       currentColor and the hover recolor needs no second icon. It covers the
+       whole link because the label text still occupies a box of its own. */
+  }
+  #resize-link a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: var(--post-nav-icon) var(--post-nav-icon);
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: var(--post-nav-icon) var(--post-nav-icon);
+  }
+
+  /* ----- Fullscreen overlay ----- */
+  /* Native fullscreen needs JS, so this is a viewport-filling overlay instead.
+     The button's <a> is the only element next to the media that can hold state
+     in pure CSS: clicking it focuses it, and clicking anywhere else blurs it,
+     which is what closes the overlay. Escape does not blur, so it stays open. */
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    margin: 0;
+    background: var(--crust);
+  }
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container picture,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container img,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container video,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container canvas,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container .fluid_video_wrapper,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container .fluid_video_wrapper video,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container #gelcomVideoPlayer {
+    width: auto !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    max-height: 100dvh !important;
+  }
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+    /* Notes are placed against the inline image's box, so they land in the wrong
+       spot once the media is rescaled. */
+  }
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container #notes,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container #note-preview,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container .note-box,
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container .note-body {
+    display: none !important;
+  }
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+    /* The button that opened the overlay is buried underneath it, so its round
+       chrome is redrawn here in the same spot. */
+  }
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container::before {
+    content: "";
+    position: fixed;
+    top: var(--post-fs-top);
+    right: var(--post-nav-edge);
+    box-sizing: border-box;
+    width: var(--post-nav-size);
+    height: var(--post-nav-size);
+    background: var(--surface0);
+    border: 1px solid var(--surface2);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+    /* Material Symbols Rounded "fullscreen_exit", centred on that circle. Any
+       click closes the overlay — this is an affordance for the blur, not a
+       separate target. */
+  }
+  .mainBodyPadding:has(#resize-link a:focus) .image-container.note-container::after {
+    content: "";
+    position: fixed;
+    top: calc(var(--post-fs-top) + (var(--post-nav-size) - var(--post-nav-icon)) / 2);
+    right: calc(var(--post-nav-edge) + (var(--post-nav-size) - var(--post-nav-icon)) / 2);
+    width: var(--post-nav-icon);
+    height: var(--post-nav-icon);
+    background: var(--text);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    cursor: pointer;
+  }
+
+  /* ----- Previous / Next ----- */
+  /* Site markup is two bare links in an .alert-info, Next floated right, with no
+     id — tell it apart from #resize-link by the navigate* handlers. The wrapper
+     becomes a transparent overlay so each link can sit at a viewport edge. */
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) {
+    position: absolute;
+    z-index: 900;
+    /* The media starts at the top of the main column and is exactly
+       --post-media-max-h tall, so its middle is half that down. */
+    top: calc(var(--post-media-max-h) / 2);
+    left: var(--post-nav-edge);
+    right: var(--post-nav-edge);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateY(-50%);
+    pointer-events: none;
+    background: transparent !important;
+    border: none !important;
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) a {
+    /* Flex, not grid: the site's "Previous" / "Next" text node is still a box
+       here, and as a grid item it would take its own row and shove the glyph
+       off centre. In a row flex container it collapses to zero width. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    float: none !important;
+    box-sizing: border-box;
+    width: var(--post-nav-size);
+    height: var(--post-nav-size);
+    /* Hides the label; the glyph sets its own size on ::before */
+    font-size: 0;
+    line-height: 0;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface2) !important;
+    border-radius: 50%;
+    pointer-events: auto;
+    transition: color 0.1s, background-color 0.1s, border-color 0.1s;
+    /* Material Symbols glyph as a mask, so it inherits currentColor and the
+       hover recolor works without shipping a font. */
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) a::before {
+    content: "";
+    display: block;
+    width: var(--post-nav-icon);
+    height: var(--post-nav-icon);
+    background: currentColor;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) a:hover {
+    color: var(--crust) !important;
+    background: var(--blue) !important;
+    border-color: var(--blue) !important;
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) {
+    /* Material Symbols Rounded "arrow_back" */
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) a[onclick*=navigatePrev]::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) {
+    /* Material Symbols Rounded "arrow_forward" */
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) a[onclick*=navigateNext]::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) {
+    /* Keep Next on the right when Previous is missing on the first post. */
+  }
+  .alert-info:not(#resize-link):has(a[onclick*=navigate]) a[onclick*=navigateNext]:first-child {
+    margin-left: auto;
+  }
+
+  /* ----- Media: leftover viewport below the search bar ----- */
+  .image-container.note-container {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    /* Fixed, not max — the media should grow to reach the action row. */
+    height: var(--post-media-max-h);
+    --note-body-background: var(--surface0);
+    --note-body-text-color: var(--text);
+    --note-body-border: 1px solid var(--surface2);
+    --note-box-border: 1px solid var(--blue);
+    --note-box-shadow: 0 0 0 1px var(--crust);
+    --unsaved-note-box-border: 1px solid var(--red);
+    --movable-note-box-border: 1px solid var(--green);
+    --note-preview-border: 1px solid var(--red);
+    --note-preview-background: var(--surface0);
+    --note-highlight-color: var(--blue);
+    --note-tn-color: var(--subtext0);
+  }
+
+  .image-container picture {
+    display: block;
+    height: 100%;
+    line-height: 0;
+  }
+
+  #image,
+  .image-container img,
+  .image-container video,
+  .image-container canvas,
+  .image-container .fluid_video_wrapper video {
+    display: block;
+    max-width: 100% !important;
+    width: auto !important;
+    height: 100% !important;
+    object-fit: contain;
+    /* A wide image is limited by the column width, so `object-fit` letterboxes it
+       inside a box that stays as tall as the container. base.scss's radius and
+       shadow would then be drawn around those empty strips rather than around the
+       picture, so the media is left flat here. */
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Video posts place the player directly in `.mainBodyPadding`, without the
+     height-constrained `.image-container` used by picture posts. Give the direct
+     player that same viewport-derived height explicitly; `max-width` then scales
+     wide videos down against the main column while preserving their ratio. */
+  #gelcomVideoPlayer {
+    display: block;
+    width: auto !important;
+    max-width: 100% !important;
+    height: var(--post-media-max-h) !important;
+    object-fit: contain;
+    margin-inline: auto;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .image-container .fluid_video_wrapper {
+    /* Fluid Player normally stretches this wrapper across the whole column.
+       Shrink-wrap it to the video's scaled width so video posts use the same
+       centred, height-constrained media box as picture posts. */
+    width: fit-content !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    margin-inline: auto;
+  }
+
+  .image-container .fluid_video_wrapper video {
+    margin-inline: auto;
+  }
+
+  #image {
+    margin-top: 0 !important;
+  }
+
+  .image-container img:hover,
+  .image-container video:hover {
+    scale: none;
+  }
+
+  /* ----- Edit / comment / favorite ----- */
+  #scrollebox {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    box-sizing: border-box;
+    height: var(--post-actions-h);
+    margin: 0 0 1rem;
+    padding-top: var(--post-actions-gap);
+    font-size: 0;
+    font-weight: 600;
+    line-height: 1.2;
+    /* Pool Relationships is wrapped in a <span id="pool…">, which would make the
+       link stretch against an auto-height parent instead of the row. */
+  }
+  #scrollebox > span {
+    display: contents;
+  }
+  #scrollebox a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 0.75rem;
+    font-size: 12px;
+    font-family: verdana, sans-serif, helvetica;
+    background: var(--surface0);
+    border-radius: 7px;
+  }
+  #scrollebox a b {
+    font-weight: inherit;
+  }
+  #scrollebox a:hover {
+    background: var(--surface1);
+  }
+
+  /* ----- More Like This -----
+     The site ships this block with no class or id, so it is matched by the
+     inline max-height its thumbnails carry. */
+  div:has(> a > img[style*="max-height: 100px"]) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  div:has(> a > img[style*="max-height: 100px"]) > div:first-child {
+    flex: 0 0 100%;
+    text-align: center;
+  }
+
+  table.post-view {
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 0 1rem;
+  }
+  table.post-view th,
+  table.post-view td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: normal;
+    padding: 0.45rem 0;
+  }
+  table.post-view h2 {
+    margin: 0 0 0.65rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text);
+  }
+  table.post-view b {
+    color: var(--text);
+  }
+  table.post-view input[type=radio] {
+    margin: 0 0.25rem 0 0.7rem;
+    accent-color: var(--blue);
+  }
+  table.post-view input[type=radio]:first-of-type {
+    margin-left: 0;
+  }
+  table.post-view input[type=text],
+  table.post-view textarea {
+    width: 100% !important;
+    max-width: 42rem;
+    box-sizing: border-box;
+    margin: 0.35rem 0 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+  table.post-view textarea {
+    min-height: 8rem;
+    resize: vertical;
+  }
+  table.post-view input.searchList,
+  table.post-view input[type=submit] {
+    width: auto !important;
+    margin: 0.35rem 0.5rem 0 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  table.post-view input.searchList:hover,
+  table.post-view input[type=submit]:hover {
+    background: var(--sapphire) !important;
+  }
+  table.post-view input[type=button] {
+    width: auto !important;
+    margin: 0.35rem 0.5rem 0 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--text) !important;
+    font-weight: 600;
+    background: var(--surface1) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  table.post-view input[type=button]:hover {
+    background: var(--surface2) !important;
+  }
+
+  #comment_form > br,
+  .mainBodyPadding > div:has(> form[name=edit_form]) > br {
+    display: none;
+  }
+
+  /* ----- Related posts ----- */
+  .mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.5rem 0.65rem;
+    width: 100% !important;
+    margin: 0 0 0.5rem;
+  }
+  .mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) > div {
+    flex: 1 0 100%;
+    margin: 0;
+    padding: 0 !important;
+    color: var(--subtext0);
+    font-weight: 600;
+  }
+  .mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) a {
+    display: block;
+    line-height: 0;
+  }
+  .mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) img {
+    margin: 0 !important;
+    max-height: 120px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  /* ----- Comments ----- */
+  .mainBodyPadding > div:has(> .commentAvatar, > .commentBody) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0 0 0.85rem;
+  }
+
+  .spoiler {
+    color: var(--text);
+    background: var(--text);
+    border-radius: 3px;
+  }
+  .spoiler:hover, .spoiler:focus {
+    background: transparent;
+  }
+  .spoiler a {
+    color: var(--text);
+    background: var(--text);
+  }
+  .spoiler a:hover, .spoiler a:focus {
+    background: transparent;
+  }
+
+  #paginator {
+    padding: 0.5rem 0 1.5rem;
+  }
+  #paginator > br {
+    display: none;
+  }
+
+  @media only screen and (max-width: 850px) {
+    .aside {
+      position: static;
+      max-height: none;
+      overflow: visible;
+      border-right: none;
+    }
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=post&s=list") {
+  /* Post index: gallery and notices only. Tag-rail spacing stays site-native. */
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
+  :root {
+    --post-list-pad-x: 1.25rem;
+  }
+
+  main {
+    min-width: 0;
+    padding: 1rem var(--post-list-pad-x) 2rem !important;
+  }
+
+  .alert {
+    margin: 0.75rem 0 !important;
+    padding: 0.7rem 1rem !important;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 10px;
+  }
+
+  /* This notice is hidden until safe-only mode is active. */
+  .alert-success:has(a[href*="page=help"][href*="topic=post"]) {
+    color: var(--green) !important;
+    background: color-mix(in srgb, var(--green) 10%, var(--surface0)) !important;
+    border-color: color-mix(in srgb, var(--green) 55%, var(--surface1)) !important;
+  }
+  .alert-success:has(a[href*="page=help"][href*="topic=post"]) a,
+  .alert-success:has(a[href*="page=help"][href*="topic=post"]) b {
+    color: var(--green) !important;
+  }
+
+  .thumbnail-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.8rem;
+    align-items: start;
+  }
+
+  .thumbnail-preview {
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Gelbooru ships thumbnails without width/height attributes, so an image that
+       has not loaded yet collapses to ~0px and the grid reflows on every load.
+       Every cell gets the same footprint anyway, so reserving a square slot up
+       front fixes the full grid height from first paint. Thumbnails are capped at
+       250x250, so they always fit inside it. */
+    /* `width` is explicit because the site makes `.thumbnail-preview` a flex
+       container, so the anchor would otherwise be sized by its (empty) content
+       and `aspect-ratio` would resolve to a height of 0. */
+  }
+  .thumbnail-preview > a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    /* The anchor is larger than the thumbnail it reserves space for, so clicks
+       and hover are handed back to the media itself. */
+    pointer-events: none;
+  }
+  .thumbnail-preview {
+    /* base.scss `a:has(> img.webm)` ties this selector on specificity; keep video
+       thumbs in the same square centered slot as still images. */
+  }
+  .thumbnail-preview > a:has(> img.webm) {
+    display: flex !important;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+  }
+  .thumbnail-preview img,
+  .thumbnail-preview video {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    pointer-events: auto;
+  }
+
+  /* The gallery is taller than the viewport, so the paginator sits far below the
+     fold. Sticking it to the bottom of `main` keeps it reachable while scrolling
+     and lets it settle in place once the end of the list is on screen. */
+  .pagination {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * var(--post-list-pad-x)) 0;
+    padding: 0.6rem var(--post-list-pad-x);
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
+  }
+  .pagination:not(:has(a)) {
+    display: none;
+  }
+  .pagination > br {
+    display: none;
+  }
+
+  @media only screen and (max-width: 850px) {
+    #container {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+    .aside {
+      display: none !important;
+    }
+    main {
+      grid-column: 1/-1;
+      padding: 0.75rem var(--post-list-pad-x) 0.75rem !important;
+    }
+    :root {
+      --post-list-pad-x: 0.75rem;
+    }
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=comment&s=list") {
+  /* Comment index: preserve the site's structure and normalize its finish. */
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
+  aside {
+    display: none !important;
+  }
+
+  #container {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 100%;
+  }
+
+  main {
+    grid-column: 1/-1;
+    min-width: 0;
+  }
+
+  .navSubmenu > a[href*="page=comment"][href*="s=list"] {
+    color: var(--blue) !important;
+  }
+
+  .mainBodyPadding {
+    padding: 1.25rem !important;
+    color: var(--text);
+  }
+  .mainBodyPadding > div:first-child {
+    margin-bottom: 1rem;
+    color: var(--subtext0);
+    line-height: 1.55;
+  }
+
+  .commentHeader {
+    color: var(--text);
+  }
+  .commentHeader > div:first-child,
+  .commentHeader .tags {
+    line-height: 1.55;
+  }
+  .commentHeader .info {
+    color: var(--subtext0) !important;
+  }
+
+  .commentThumbnail img,
+  .profileAvatar {
+    border: 1px solid var(--surface1);
+    border-radius: 10px;
+  }
+
+  .commentBody {
+    padding: 0.8rem 1rem !important;
+    color: var(--text);
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1);
+    border-radius: 10px;
+  }
+
+  /* The paginator is a grid item of `#container`, one row below `main`, so on its
+     own it has no room to travel. Stretching its area over `main`'s row and
+     parking it at the end gives the sticky bar the whole comment list to slide
+     along. */
+  .pagination {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 1.25rem;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
+  }
+  .pagination:not(:has(a)) {
+    display: none;
+  }
+  .pagination > br {
+    display: none;
+  }
+  .pagination {
+    align-self: end;
+    margin-top: 0;
+  }
+
+  @media only screen and (min-width: 851px) {
+    .pagination {
+      grid-row: 5/8;
+    }
+  }
+  @media only screen and (max-width: 850px) {
+    .pagination {
+      grid-row: main-start/websitePagination-end;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .mainBodyPadding {
+      padding: 0.75rem !important;
+    }
+    .pagination {
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      margin: 0.75rem calc(-1 * 0px) 0;
+      padding: 0.6rem 0.75rem;
+      background: color-mix(in srgb, var(--base) 88%, transparent);
+      backdrop-filter: blur(6px);
+      border-top: 1px solid var(--surface1);
+      /* The wrapper is rendered even when the result set fits on one page. */
+    }
+    .pagination:not(:has(a)) {
+      display: none;
+    }
+    .pagination > br {
+      display: none;
+    }
+    .pagination {
+      align-self: end;
+      margin-top: 0;
+    }
+    .commentThumbnail,
+    .commentHeader,
+    .commentAvatar,
+    .commentBody {
+      float: none !important;
+      box-sizing: border-box;
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=extras&s=artists") {
+  /* Featured artists grid page. */
+  aside {
+    display: none !important;
+  }
+
+  #container {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 100%;
+  }
+
+  main {
+    grid-column: 1/-1;
+    min-width: 0;
+  }
+
+  .navSubmenu > a[href*=extras][href*=artists] {
+    color: var(--blue) !important;
+  }
+
+  .mainBodyPadding {
+    padding: 1.25rem !important;
+  }
+  .mainBodyPadding .alert-info {
+    margin: 0 0 1.25rem !important;
+    padding: 0.75rem 1rem !important;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 10px;
+  }
+  .mainBodyPadding center > div,
+  .mainBodyPadding ol {
+    max-width: 64rem;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+  }
+  .mainBodyPadding ol {
+    padding: 0;
+    list-style-position: inside;
+  }
+  .mainBodyPadding ol > br {
+    display: none;
+  }
+  .mainBodyPadding ol > li {
+    margin-top: 1rem;
+    padding: 0.65rem 0.85rem;
+    color: var(--subtext0);
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-radius: 10px 10px 0 0;
+  }
+  .mainBodyPadding ol > li + a {
+    display: block;
+    padding: 0.7rem;
+    overflow: hidden;
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+  }
+  .mainBodyPadding ol img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=dmca&s=index") {
+  /* DMCA information page. */
+  aside {
+    display: none !important;
+  }
+
+  #container {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 100%;
+  }
+
+  main {
+    grid-column: 1/-1;
+    min-width: 0;
+  }
+
+  .mainBodyPadding {
+    box-sizing: border-box;
+    max-width: 64rem;
+    padding: 1.5rem 1.25rem 2.5rem !important;
+    color: var(--subtext0);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .mainBodyPadding > br {
+    display: none;
+  }
+  .mainBodyPadding h1,
+  .mainBodyPadding h2,
+  .mainBodyPadding h3,
+  .mainBodyPadding b,
+  .mainBodyPadding strong {
+    color: var(--text) !important;
+  }
+  .mainBodyPadding h1,
+  .mainBodyPadding h2,
+  .mainBodyPadding h3 {
+    margin: 0 0 1rem;
+    line-height: 1.25;
+  }
+  .mainBodyPadding p,
+  .mainBodyPadding ul,
+  .mainBodyPadding ol {
+    margin: 0 0 1rem;
+  }
+}
+
+@-moz-document url("https://gelbooru.com/tos.php") {
+  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
+     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
+  .container-fluid:has(> .navbar) {
+    padding: 0;
+  }
+
+  .navbar,
+  .navbar-default {
+    min-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    background: var(--surface0) !important;
+    border: 0;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  .navbar-header {
+    height: calc(20px + 1.42857143em + 23px);
+  }
+
+  .navbar-brand {
+    float: left;
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px !important;
+    min-width: 0;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    font-size: 12px;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  #navbar.navbar-collapse {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  #navbar .navbar-nav {
+    margin: 0;
+  }
+
+  #navbar .navbar-nav > li > a {
+    padding: 20px 16px 23px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-decoration: none;
+  }
+
+  #navbar .navbar-nav > li > a:hover,
+  #navbar .navbar-nav > li > a:focus {
+    background-color: transparent !important;
+  }
+
+  #navbar .navbar-nav > .active > a,
+  #navbar .navbar-nav > .active > a:hover,
+  #navbar .navbar-nav > .active > a:focus {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+  }
+
+  #navbar a.ui-icon {
+    margin: 0 !important;
+    font-size: 14px !important;
+  }
+
+  .navbar-default .navbar-toggle {
+    border-color: var(--surface1);
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: var(--text);
+  }
+
+  .navbar-header > button:hover,
+  .navbar-header > button:focus,
+  .navbar-header > button:active {
+    background: var(--surface1) !important;
+  }
+
+  #submenu.navbar {
+    min-height: 0;
+    overflow: visible;
+    padding: 10px 15px !important;
+    background: var(--surface1) !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  #submenu.navbar .navbar-nav {
+    float: none;
+    margin: 0;
+  }
+  #submenu.navbar .navbar-nav > li {
+    float: none;
+    display: inline-block;
+  }
+  #submenu.navbar .navbar-nav > li > a {
+    display: inline-block;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    background: transparent !important;
+  }
+
+  .alert-success {
+    margin: 0.75rem 0 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .alert-success a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  #submenu .navbar-nav > li > a[href*="tos.php"] {
+    color: var(--blue) !important;
+    font-weight: 600 !important;
+  }
+
+  .padding15 {
+    padding: 1.5rem 1rem 2.5rem !important;
+  }
+
+  .padding15 > .container {
+    width: auto !important;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0;
+    color: var(--subtext0);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .padding15 > .container center,
+  .padding15 > .container center > div {
+    text-align: left;
+  }
+  .padding15 > .container h2 {
+    margin: 1.8rem 0 0.65rem;
+    color: var(--text);
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=extras&s=patreon") {
+  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
+     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
+  .container-fluid:has(> .navbar) {
+    padding: 0;
+  }
+
+  .navbar,
+  .navbar-default {
+    min-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    background: var(--surface0) !important;
+    border: 0;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  .navbar-header {
+    height: calc(20px + 1.42857143em + 23px);
+  }
+
+  .navbar-brand {
+    float: left;
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px !important;
+    min-width: 0;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    font-size: 12px;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  #navbar.navbar-collapse {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  #navbar .navbar-nav {
+    margin: 0;
+  }
+
+  #navbar .navbar-nav > li > a {
+    padding: 20px 16px 23px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-decoration: none;
+  }
+
+  #navbar .navbar-nav > li > a:hover,
+  #navbar .navbar-nav > li > a:focus {
+    background-color: transparent !important;
+  }
+
+  #navbar .navbar-nav > .active > a,
+  #navbar .navbar-nav > .active > a:hover,
+  #navbar .navbar-nav > .active > a:focus {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+  }
+
+  #navbar a.ui-icon {
+    margin: 0 !important;
+    font-size: 14px !important;
+  }
+
+  .navbar-default .navbar-toggle {
+    border-color: var(--surface1);
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: var(--text);
+  }
+
+  .navbar-header > button:hover,
+  .navbar-header > button:focus,
+  .navbar-header > button:active {
+    background: var(--surface1) !important;
+  }
+
+  #submenu.navbar {
+    min-height: 0;
+    overflow: visible;
+    padding: 10px 15px !important;
+    background: var(--surface1) !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  #submenu.navbar .navbar-nav {
+    float: none;
+    margin: 0;
+  }
+  #submenu.navbar .navbar-nav > li {
+    float: none;
+    display: inline-block;
+  }
+  #submenu.navbar .navbar-nav > li > a {
+    display: inline-block;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    background: transparent !important;
+  }
+
+  .alert-success {
+    margin: 0.75rem 0 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .alert-success a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+
+  #submenu .navbar-nav > li > a[href*=extras][href*=patreon] {
+    color: var(--blue) !important;
+    font-weight: 600 !important;
+  }
+
+  .padding15 {
+    padding: 1.5rem 1rem 2.5rem !important;
+  }
+
+  .padding15 > .container-fluid {
+    width: auto !important;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0;
+    color: var(--subtext0);
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .padding15 > .container-fluid > br {
+    display: none;
+  }
+  .padding15 > .container-fluid > .alert-info {
+    margin: 0 0 1rem !important;
+    padding: 0.8rem 1rem !important;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 10px;
+  }
+  .padding15 > .container-fluid > .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.5rem;
+    margin: 0 0 0.5rem !important;
+  }
+  .padding15 > .container-fluid > .row > a > [class*=col-] {
+    float: none !important;
+    box-sizing: border-box;
+    width: 100% !important;
+    min-height: 2.6rem;
+    padding: 0.65rem 0.75rem !important;
+    overflow-wrap: anywhere;
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-radius: 8px;
+  }
+}
+
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=forum&s=list") {
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      FORUM LIST (grid layout)
      ---------------------------------------------------- */
@@ -3797,7 +6278,6 @@
   }
   .mainBodyPadding > .searchArea {
     display: flex !important;
-    margin: 0 0 1rem;
     padding: 0;
   }
   .mainBodyPadding > .searchArea form {
@@ -4021,10 +6501,21 @@
     font-weight: 600;
   }
 
-  #paginator {
-    padding: 0.5rem 0 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0px;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
   }
-  #paginator > br {
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
     display: none;
   }
 
@@ -4449,15 +6940,6 @@
   #paginator > br {
     display: none;
   }
-  #paginator .current,
-  #paginator span.current {
-    display: inline-block;
-    margin: 3px !important;
-    padding: 12px 16px !important;
-    color: var(--text);
-    background-color: transparent;
-    border-radius: 10px;
-  }
 
   @media only screen and (max-width: 767px) {
     .row.forum-spacing > .row {
@@ -4487,6 +6969,15 @@
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=favorites") {
   @charset "UTF-8";
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      FAVORITES (legacy default.css layout)
      ---------------------------------------------------- */
@@ -4628,13 +7119,54 @@
     color: var(--blue) !important;
   }
 
+  :root {
+    --favorites-pad-x: 1.25rem;
+  }
+
+  /* Legacy markup has no gallery wrapper; span.thumb siblings share a grid on body. */
+  body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    column-gap: 0.8rem;
+    row-gap: 0;
+    align-items: start;
+    padding: 0 var(--favorites-pad-x) 2rem;
+  }
+
+  .header,
+  .submenu,
+  #long-notice,
+  #notice,
+  .success-notice,
+  body > br,
+  body > script,
+  body > div:has(#pi),
+  div#paginator {
+    grid-column: 1/-1;
+  }
+
+  .header,
+  .submenu {
+    margin-left: calc(-1 * var(--favorites-pad-x));
+    margin-right: calc(-1 * var(--favorites-pad-x));
+  }
+
+  .submenu {
+    margin-bottom: 1rem;
+  }
+
+  body > br,
+  body > script {
+    display: none;
+  }
+
   .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
+    margin: 0.75rem 0 1rem !important;
+    padding: 0.7rem 1rem !important;
+    color: var(--green) !important;
     font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
+    background: color-mix(in srgb, var(--green) 10%, var(--surface0)) !important;
+    border: 1px solid color-mix(in srgb, var(--green) 55%, var(--surface1)) !important;
     border-radius: 10px;
   }
   .success-notice a {
@@ -4643,49 +7175,182 @@
   }
 
   span.thumb {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    position: relative;
+    display: block;
+    overflow: visible;
     float: none !important;
     box-sizing: border-box;
-    width: 195px !important;
+    width: 100% !important;
     height: auto !important;
-    margin: 0.35rem 0.15rem;
-    padding: 0.35rem 0.2rem 0.15rem;
-    vertical-align: top;
-    text-align: center;
+    margin: 0 0 0.8rem;
+    padding: 0;
+    min-width: 0;
   }
   span.thumb > br {
     display: none;
   }
-  span.thumb img {
+  span.thumb > a:first-of-type {
+    position: relative;
+    display: flex;
     width: 100%;
-    max-width: 175px !important;
-    max-height: 175px !important;
-    height: auto;
-    object-fit: contain;
-    border-radius: 7px;
-    box-shadow: 0 0 10px var(--crust);
-    transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    pointer-events: none;
   }
-  span.thumb img:hover {
-    scale: 110%;
-    border-radius: 0;
-    box-shadow: 0 0 30px var(--surface0);
+  span.thumb img {
+    position: relative;
+    anchor-name: --fav-thumb;
+    display: block;
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    height: auto !important;
+    margin: auto;
+    object-fit: contain;
+    pointer-events: auto;
+    border-radius: 7px;
+    box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+    transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+  span.thumb img:hover:not(.voteUpComment):not(.reportComment) {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent), 0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
+  }
+  span.thumb img {
+    /* Legacy favorites thumbs never get .webm from list JS; tags live in title. */
+  }
+  span.thumb img[title~=animated]:not([title~=video]):not(.webm) {
+    outline: 3px solid var(--blue);
+    outline-offset: -3px;
+  }
+  span.thumb img[title~=video], span.thumb img.webm {
+    box-shadow: 0 0 0 0 transparent, 0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent), 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  }
+  span.thumb img[title~=video]:hover:not(.voteUpComment):not(.reportComment), span.thumb img.webm:hover:not(.voteUpComment):not(.reportComment) {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)), 0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
+  }
+  span.thumb:has(> a:first-of-type > img[title~=video]) > a:first-of-type::after, span.thumb:has(> a:first-of-type > img.webm) > a:first-of-type::after {
+    content: "";
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center/contain no-repeat;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    transition: opacity 220ms ease;
+  }
+  span.thumb:has(> a:first-of-type > img[title~=video]):hover > a:first-of-type::after, span.thumb:has(> a:first-of-type > img.webm):hover > a:first-of-type::after {
+    opacity: 1;
+  }
+  @supports (anchor-name: --fav-thumb) {
+    span.thumb:has(> a:first-of-type > img[title~=video]) > a:first-of-type::after, span.thumb:has(> a:first-of-type > img.webm) > a:first-of-type::after {
+      right: auto;
+      bottom: auto;
+      position-anchor: --fav-thumb;
+      top: anchor(bottom);
+      left: anchor(right);
+      transform: translate(calc(-100% - 3px), calc(-100% - 3px));
+    }
   }
   span.thumb a[href*="s=delete"] {
-    margin-top: 0.4rem;
-    color: var(--red) !important;
-    font-size: 0.75em;
+    position: absolute;
+    position-anchor: --fav-thumb;
+    top: anchor(top);
+    left: anchor(right);
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin: 0;
+    padding: 0;
+    color: transparent !important;
+    font-size: 0;
+    line-height: 0;
+    text-decoration: none;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    background-color: var(--red);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z' fill='%23fff'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.72rem;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 1px 6px color-mix(in srgb, var(--crust) 70%, transparent);
+    pointer-events: none;
+    transition: opacity 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+  span.thumb a[href*="s=delete"] b {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
   span.thumb a[href*="s=delete"]:hover {
-    color: var(--maroon) !important;
+    background-color: var(--maroon);
+    box-shadow: 0 3px 14px color-mix(in srgb, var(--red) 35%, transparent);
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  span.thumb a[href*="s=delete"]:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+  }
+  span.thumb a[href*="s=delete"]:active {
+    background-color: color-mix(in srgb, var(--maroon) 85%, var(--crust));
+    transform: translate(-50%, -50%) scale(0.97);
+  }
+  span.thumb:hover a[href*="s=delete"],
+  span.thumb a[href*="s=delete"]:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 
+  /* Browsers without anchor positioning: shrink-wrap the thumb and pin the
+     button to the image box instead of the square cell. */
+  @supports not (anchor-name: --fav-thumb) {
+    span.thumb {
+      display: grid;
+      width: fit-content !important;
+      max-width: 100%;
+      justify-self: center;
+    }
+    span.thumb > a:first-of-type {
+      grid-area: 1/1;
+      width: fit-content;
+      max-width: 100%;
+      aspect-ratio: unset;
+    }
+    span.thumb a[href*="s=delete"] {
+      position: relative;
+      grid-area: 1/1;
+      place-self: start end;
+      top: auto;
+      left: auto;
+      transform: translate(50%, -50%);
+    }
+    span.thumb a[href*="s=delete"]:hover {
+      transform: translate(50%, -50%) scale(1.05);
+    }
+    span.thumb a[href*="s=delete"]:active {
+      transform: translate(50%, -50%) scale(0.97);
+    }
+  }
   body > div:has(#pi) {
     float: none !important;
-    margin: 0.75rem 1.25rem 0 auto !important;
+    margin: 0.75rem 0 0 auto !important;
     color: var(--subtext0);
     font-size: 0.8em;
     text-align: right;
@@ -4697,11 +7362,40 @@
     color: var(--text) !important;
   }
 
-  #paginator {
-    padding: 0.5rem 1.25rem 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * var(--favorites-pad-x)) 0;
+    padding: 0.6rem var(--favorites-pad-x);
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
   }
-  #paginator > br {
+  div#paginator:not(:has(a)) {
     display: none;
+  }
+  div#paginator > br {
+    display: none;
+  }
+
+  @media only screen and (max-width: 850px) {
+    :root {
+      --favorites-pad-x: 0.75rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    span.thumb img {
+      transition: none;
+    }
+    span.thumb a[href*="s=delete"] {
+      transition: none;
+    }
+    span.thumb:has(> a:first-of-type > img[title~=video]) > a:first-of-type::after,
+    span.thumb:has(> a:first-of-type > img.webm) > a:first-of-type::after {
+      transition: none;
+    }
   }
 }
 
@@ -5351,6 +8045,15 @@
   /* ----------------------------------------------------
      GMAIL HOME (grid layout)
      ---------------------------------------------------- */
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* Mail folder nav in the aside (reuses #tag-list markup) */
   #tag-list {
     margin: 0.75rem 0 1.25rem;
@@ -5499,10 +8202,21 @@
     border-radius: 0 0 10px 10px;
   }
   .mainBodyPadding .pagination {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0.75rem 0 0;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0.75rem;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
+  }
+  .mainBodyPadding .pagination:not(:has(a)) {
+    display: none;
+  }
+  .mainBodyPadding .pagination > br {
+    display: none;
   }
   .mainBodyPadding .rounded_footer {
     margin: 0 0 1.25rem;
@@ -5913,6 +8627,15 @@
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tracker&s=list") {
   /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
      Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
+  /* Shared sticky paginator bar.
+     Include on the paginator wrapper whose parent is the tall page column, so the
+     bar has room to travel; no ancestor between it and the scroller may clip
+     overflow. `$inset-x` should mirror the parent's horizontal padding when the
+     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      TRACKER LIST (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
@@ -6209,10 +8932,21 @@
     line-height: 1.4;
   }
 
-  #paginator {
-    padding: 0.5rem 0 1.5rem;
+  div#paginator {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * 0px) 0;
+    padding: 0.6rem 0px;
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
   }
-  #paginator > br {
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
     display: none;
   }
 

@@ -1,0 +1,137 @@
+/* ----------------------------------------------------
+   TAG EDIT (grid layout)
+   ---------------------------------------------------- */
+
+.aside {
+  display: none !important;
+}
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navSubmenu > a[href*="page=tags"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+.mainBodyPadding {
+  padding-top: 1rem;
+
+  > br {
+    display: none;
+  }
+}
+
+table.form {
+  width: auto;
+  max-width: 100%;
+
+  > tbody {
+    display: grid;
+    grid-template-columns: auto minmax(0, 26rem);
+    align-items: center;
+    column-gap: 0.65rem;
+  }
+
+  > tbody > tr {
+    display: contents;
+  }
+
+  th,
+  td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    text-align: left !important;
+    font-weight: normal;
+  }
+
+  th {
+    padding: 0.4rem 0.6rem 0.4rem 0;
+    min-width: 0;
+
+    label {
+      color: var(--subtext1);
+    }
+  }
+
+  td {
+    padding: 0.4rem 0;
+  }
+
+  /* Spacer cell in front of the submit button */
+  > tbody > tr:has(> td:first-child:empty) > td:first-child:empty {
+    display: none;
+  }
+
+  input.tag-list-search,
+  select {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  select {
+    color: var(--text);
+    background: var(--surface0);
+    border: 1px solid var(--surface1) !important;
+    border-radius: 7px;
+    cursor: pointer;
+
+    &:focus {
+      border-color: var(--blue) !important;
+      outline: none;
+    }
+
+    option {
+      color: var(--text);
+      background: var(--surface0);
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--blue);
+    cursor: pointer;
+  }
+
+  td:has(input.searchList) {
+    padding-top: 0.9rem;
+  }
+
+  input.searchList {
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  table.form > tbody {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  table.form th {
+    padding: 0.4rem 0 0.15rem;
+  }
+}

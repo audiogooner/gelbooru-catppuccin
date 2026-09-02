@@ -9,9 +9,9 @@ npm install
 npm run dev
 ```
 
-Then install the userscript from [http://127.0.0.1:3847/gelbooru-dev.user.js](http://127.0.0.1:3847/gelbooru-dev.user.js) in Violentmonkey. Open [gelbooru.com](https://gelbooru.com) — changes under `src/` are compiled and injected automatically.
+Then install the userscript from [http://127.0.0.1:3847/gelbooru-dev.user.js](http://127.0.0.1:3847/gelbooru-dev.user.js) in Violentmonkey. Open [gelbooru.com](https://gelbooru.com) — changes under `src/` and bundle changes in `style.config.mjs` are compiled and injected automatically. Every successful rebuild also publishes the latest complete UserStyle to `gelbooru.user.css`; a Sass or configuration error leaves the last good bundle in place.
 
-A **dev** chip sits in the top-right of Gelbooru pages (**Alt+Shift+D**). From there you can turn the theme off, black out media, disable individual page bundles, or disable Gelbooru’s own CSS, without uninstalling anything. Reinstall the userscript if it is still below 1.4.0.
+A **dev** chip sits in the top-right of Gelbooru pages (**Alt+Shift+D**). From there you can turn the theme off, black out media, disable individual page bundles, or disable Gelbooru’s own CSS, without uninstalling anything. Drag the chip (or the panel header) to move it out of the way — the position is remembered, and **Reset** puts it back. Reinstall the userscript if it is still below 1.5.0.
 
 Disable any installed copy of the exported UserStyle while developing, or the two will fight.
 

@@ -1,8 +1,15 @@
 import { createServer } from "node:http";
-import { readFileSync, watch } from "node:fs";
+import { readFileSync, watch, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { compileBundles, cssForHref, root, serializeDevBundles } from "./lib.mjs";
-import { host, port } from "../style.config.mjs";
+import {
+  assembleUserstyle,
+  compileBundles,
+  cssForHref,
+  root,
+  serializeDevBundles,
+  useConfig,
+} from "./lib.mjs";
+import { exportFile, host, port } from "../style.config.mjs";
 import { writeSnapshot } from "./lib/snapshot-io.mjs";
 import { selectorTargetsForHref } from "./lib/selector-targets.mjs";
 import { writeSnapshotPreviews } from "./lib/snapshot-previews.mjs";
@@ -17,13 +24,23 @@ const MAX_PREVIEW_BYTES = 32 * 1024 * 1024;
 let compiled = [];
 let generation = 0;
 let compileError = null;
+let configRevision = 0;
 
-function compile() {
+async function compile() {
   try {
-    compiled = compileBundles();
+    // The query string bypasses Node's ESM cache when style.config.mjs changes.
+    const configUrl = new URL("../style.config.mjs", import.meta.url);
+    configUrl.searchParams.set("revision", String(configRevision++));
+    const config = await import(configUrl.href);
+    useConfig(config);
+    const nextCompiled = compileBundles();
+    writeFileSync(join(root, config.exportFile), assembleUserstyle(nextCompiled));
+    compiled = nextCompiled;
     compileError = null;
     generation += 1;
-    console.log(`[${timestamp()}] compiled (${generation})`);
+    console.log(
+      `[${timestamp()}] compiled and published ${config.exportFile} (${generation})`,
+    );
   } catch (error) {
     compileError = error.message;
     console.error(`[${timestamp()}] sass error:\n${error.message}`);
@@ -38,7 +55,7 @@ function debounce(fn, ms) {
   let timer;
   return (...args) => {
     clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), ms);
+    timer = setTimeout(() => void fn(...args), ms);
   };
 }
 
@@ -230,17 +247,19 @@ const server = createServer((req, res) => {
   send(res, 404, "Not found\n", "text/plain; charset=utf-8");
 });
 
-compile();
-watch(join(root, "src"), { recursive: true }, debounce(compile, 80));
+await compile();
+const rebuild = debounce(compile, 80);
+watch(join(root, "src"), { recursive: true }, rebuild);
+watch(join(root, "style.config.mjs"), rebuild);
 
 server.listen(port, host, () => {
   console.log(`
 Gelbooru userstyle — live inject
   1. Install the userscript in Violentmonkey:
        http://${host}:${port}/gelbooru-dev.user.js
-  2. Open https://gelbooru.com — edits to src/ reload automatically
+  2. Open https://gelbooru.com — source and bundle config edits reload automatically
   3. Alt+Shift+D toggles the dev overlay (disable theme / page bundles / site CSS)
   4. Alt+Shift+S captures a slimmed DOM snapshot and selector hover previews
-  5. Export a UserStyle with: npm run export
+  5. The latest UserStyle is published to ${exportFile} after every successful build
 `);
 });

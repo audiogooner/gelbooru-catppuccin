@@ -1,19 +1,19 @@
 html
   head
-    script
+    style
+  body.vc-init
+    div#gelbooru-dev-overlay
+    style
+    style
     meta
     title
     link
     link
     meta
     script
-    style
-    style
-    style
     script
     script
-  body.vc-init
-    div#gelbooru-dev-overlay
+    script
     div.header
       div.center
         h2.siteName
@@ -58,7 +58,7 @@ html
       a
     br
     div#content
-      div
+      div#post-list
         div#post-list
           div.sidebar
             div
@@ -79,18 +79,21 @@ html
               br
               br
         div.content
-          h3
-          br
-          br
-          form
-            br
-            input
-            br
-            br
-            input
-            br
-            textarea
-            br
-            input
-          br
-          center
+          div
+            div
+              h3
+              br
+              br
+              br
+              br
+              center
+                div
+                  form
+                    br
+                    input
+                    br
+                    br
+                    br
+                    textarea
+                    br
+                    input

@@ -1,0 +1,732 @@
+/* ----------------------------------------------------
+   POST VIEW (grid layout)
+   Everything fits on the first screen with no scrolling: the media fills the
+   space between the site chrome and the Edit / Comment / Favorite row, which
+   sits just above the bottom edge.
+
+   Auto-scrolling is not used — scroll-initial-target is Chromium-only, so it
+   would give two different layouts. The media height is instead:
+
+     100dvh − (chrome above the media) − (action row) − (bottom margin)
+
+   Rows above and below the media get explicit heights so the subtraction is
+   exact rather than an estimate.
+   ---------------------------------------------------- */
+
+:root {
+  /* Site chrome above the main column, measured at the top of the page:
+     header (topnav, with #motd hidden by content-blocking) + .navSubmenu. */
+  --post-header-h: 60px;
+  --post-submenu-h: 47px;
+  /* Search bar, sized by the shared rule in base.scss */
+  --post-search-h: var(--search-area-h);
+  /* Round Previous / Next buttons pinned to the edges of the main column */
+  --post-nav-size: 2.75rem;
+  --post-nav-icon: 1.5rem;
+  --post-nav-edge: 0.75rem;
+  --post-aside-w: 240px;
+  /* #scrollebox row (Edit | Leave a Comment | Favorite), including the gap
+     above it, plus breathing room under it at the bottom of the screen. */
+  --post-actions-gap: 0.5rem;
+  --post-actions-h: calc(30px + var(--post-actions-gap));
+  --post-bottom-gap: 0.75rem;
+
+  /* The fullscreen toggle is pinned to the viewport, so it takes no row here. */
+  --post-above-h: calc(
+    var(--post-header-h) + var(--post-submenu-h) + var(--post-search-h)
+  );
+  /* Exit button of the fullscreen overlay, which is pinned to the viewport:
+     clear of the header, submenu and search bar. */
+  --post-fs-top: calc(var(--post-above-h) + var(--post-nav-edge));
+  --post-media-max-h: calc(
+    100vh - var(--post-above-h) - var(--post-actions-h) - var(--post-bottom-gap)
+  );
+  --post-media-max-h: calc(
+    100dvh - var(--post-above-h) - var(--post-actions-h) - var(
+        --post-bottom-gap
+      )
+  );
+}
+
+.navSubmenu > a[href*="page=post"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+.navSubmenu > a[href*="page=post"][href*="s=add"] {
+  color: var(--green) !important;
+}
+
+main {
+  min-width: 0;
+  max-width: 100%;
+}
+
+main > br {
+  display: none;
+}
+
+.alert-success {
+  margin: 0.75rem 1.25rem 0 !important;
+  padding: 0.65rem 1rem !important;
+  color: var(--green) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--green) !important;
+  border-radius: 10px;
+
+  a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+}
+
+/* ----- Tag sidebar ----- */
+
+.aside {
+  min-width: 0;
+  border-right: solid 1px var(--surface1);
+}
+
+ul.tag-list {
+  margin: 0 !important;
+  padding: 0.35rem 0.75rem 1.25rem;
+
+  > br {
+    display: none;
+  }
+
+  /* Beat gridStyle's `ul.tag-list li { display: inline-block; width: 200px }` */
+  li {
+    display: block !important;
+    width: auto !important;
+    margin: 0.12rem 0 !important;
+    color: var(--subtext0);
+    line-height: 1.45;
+    word-break: break-word;
+
+    > br {
+      display: none;
+    }
+  }
+
+  h3 {
+    margin: 1rem 0 0.4rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.05em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  li:has(> h3) {
+    margin-top: 0.35rem !important;
+  }
+
+  /* Category labels are <span class="sm-hidden"> wrapping an <li>; the inline
+     span keeps them on the previous tag's line. Inner "?" wiki links use the
+     same class, so only unwrap the ul's own children. */
+  > .sm-hidden {
+    display: block;
+  }
+
+  > .sm-hidden > li {
+    margin-top: 0.85rem !important;
+    color: var(--subtext0);
+
+    b {
+      color: var(--subtext1);
+      font-size: 0.85em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+  }
+
+  a[href="//gelbooru.com"],
+  #pfd a {
+    color: var(--red) !important;
+  }
+}
+
+/* ----- Main column ----- */
+
+.mainBodyPadding {
+  /* Containing block for the fullscreen toggle and the Previous / Next
+     buttons, so they scroll away with the post instead of tracking the
+     viewport. */
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0 1.25rem 1.5rem;
+
+  > br {
+    display: none;
+  }
+
+  /* Empty header-ad slot above the post */
+  > div:not([id], [class]):empty,
+  > div:not([id], [class])[style*="max-width: 350px"]:not(:has(*)) {
+    display: none !important;
+  }
+
+  > h2 {
+    margin: 1.25rem 0 0.75rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text);
+  }
+}
+
+/* ----- Fullscreen toggle ----- */
+
+/* The site's expand chip, turned into a round icon button pinned to the top
+   right corner. base.scss paints `.alert-info *` too, so the inner link has to
+   stay transparent or the button doubles up. */
+#resize-link {
+  position: absolute;
+  z-index: 901;
+  top: var(--post-nav-edge);
+  right: var(--post-nav-edge);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: var(--post-nav-size);
+  height: var(--post-nav-size);
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface2) !important;
+  border-radius: 50%;
+
+  /* Filling the circle from the padding box, rather than sizing the link in
+     flow, keeps the glyph centred whatever padding the site puts on the link. */
+  a {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0;
+    line-height: 0;
+    color: var(--subtext1) !important;
+    background: transparent !important;
+    border: none !important;
+    transition: color 0.1s;
+  }
+
+  &:hover {
+    background: var(--blue) !important;
+    border-color: var(--blue) !important;
+
+    a {
+      color: var(--crust) !important;
+    }
+  }
+
+  /* Material Symbols Rounded "fullscreen". Drawn as a mask so it inherits
+     currentColor and the hover recolor needs no second icon. It covers the
+     whole link because the label text still occupies a box of its own. */
+  a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: var(--post-nav-icon) var(--post-nav-icon);
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: var(--post-nav-icon) var(--post-nav-icon);
+  }
+}
+
+/* ----- Fullscreen overlay ----- */
+
+/* Native fullscreen needs JS, so this is a viewport-filling overlay instead.
+   The button's <a> is the only element next to the media that can hold state
+   in pure CSS: clicking it focuses it, and clicking anywhere else blurs it,
+   which is what closes the overlay. Escape does not blur, so it stays open. */
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  margin: 0;
+  background: var(--crust);
+
+  picture,
+  img,
+  video,
+  canvas,
+  .fluid_video_wrapper,
+  .fluid_video_wrapper video,
+  #gelcomVideoPlayer {
+    width: auto !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    max-height: 100dvh !important;
+  }
+
+  /* Notes are placed against the inline image's box, so they land in the wrong
+     spot once the media is rescaled. */
+  #notes,
+  #note-preview,
+  .note-box,
+  .note-body {
+    display: none !important;
+  }
+
+  /* The button that opened the overlay is buried underneath it, so its round
+     chrome is redrawn here in the same spot. */
+  &::before {
+    content: "";
+    position: fixed;
+    top: var(--post-fs-top);
+    right: var(--post-nav-edge);
+    box-sizing: border-box;
+    width: var(--post-nav-size);
+    height: var(--post-nav-size);
+    background: var(--surface0);
+    border: 1px solid var(--surface2);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  /* Material Symbols Rounded "fullscreen_exit", centred on that circle. Any
+     click closes the overlay — this is an affordance for the blur, not a
+     separate target. */
+  &::after {
+    content: "";
+    position: fixed;
+    top: calc(
+      var(--post-fs-top) + (var(--post-nav-size) - var(--post-nav-icon)) / 2
+    );
+    right: calc(
+      var(--post-nav-edge) + (var(--post-nav-size) - var(--post-nav-icon)) / 2
+    );
+    width: var(--post-nav-icon);
+    height: var(--post-nav-icon);
+    background: var(--text);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    cursor: pointer;
+  }
+}
+
+/* ----- Previous / Next ----- */
+
+/* Site markup is two bare links in an .alert-info, Next floated right, with no
+   id — tell it apart from #resize-link by the navigate* handlers. The wrapper
+   becomes a transparent overlay so each link can sit at a viewport edge. */
+.alert-info:not(#resize-link):has(a[onclick*="navigate"]) {
+  position: absolute;
+  z-index: 900;
+  /* The media starts at the top of the main column and is exactly
+     --post-media-max-h tall, so its middle is half that down. */
+  top: calc(var(--post-media-max-h) / 2);
+  left: var(--post-nav-edge);
+  right: var(--post-nav-edge);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: transparent !important;
+  border: none !important;
+
+  a {
+    /* Flex, not grid: the site's "Previous" / "Next" text node is still a box
+       here, and as a grid item it would take its own row and shove the glyph
+       off centre. In a row flex container it collapses to zero width. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    float: none !important;
+    box-sizing: border-box;
+    width: var(--post-nav-size);
+    height: var(--post-nav-size);
+    /* Hides the label; the glyph sets its own size on ::before */
+    font-size: 0;
+    line-height: 0;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface2) !important;
+    border-radius: 50%;
+    pointer-events: auto;
+    transition:
+      color 0.1s,
+      background-color 0.1s,
+      border-color 0.1s;
+
+    /* Material Symbols glyph as a mask, so it inherits currentColor and the
+       hover recolor works without shipping a font. */
+    &::before {
+      content: "";
+      display: block;
+      width: var(--post-nav-icon);
+      height: var(--post-nav-icon);
+      background: currentColor;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+    }
+
+    &:hover {
+      color: var(--crust) !important;
+      background: var(--blue) !important;
+      border-color: var(--blue) !important;
+    }
+  }
+
+  /* Material Symbols Rounded "arrow_back" */
+  a[onclick*="navigatePrev"]::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
+  }
+
+  /* Material Symbols Rounded "arrow_forward" */
+  a[onclick*="navigateNext"]::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
+  }
+
+  /* Keep Next on the right when Previous is missing on the first post. */
+  a[onclick*="navigateNext"]:first-child {
+    margin-left: auto;
+  }
+}
+
+/* ----- Media: leftover viewport below the search bar ----- */
+
+.image-container.note-container {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  /* Fixed, not max — the media should grow to reach the action row. */
+  height: var(--post-media-max-h);
+  --note-body-background: var(--surface0);
+  --note-body-text-color: var(--text);
+  --note-body-border: 1px solid var(--surface2);
+  --note-box-border: 1px solid var(--blue);
+  --note-box-shadow: 0 0 0 1px var(--crust);
+  --unsaved-note-box-border: 1px solid var(--red);
+  --movable-note-box-border: 1px solid var(--green);
+  --note-preview-border: 1px solid var(--red);
+  --note-preview-background: var(--surface0);
+  --note-highlight-color: var(--blue);
+  --note-tn-color: var(--subtext0);
+}
+
+.image-container picture {
+  display: block;
+  height: 100%;
+  line-height: 0;
+}
+
+#image,
+.image-container img,
+.image-container video,
+.image-container canvas,
+.image-container .fluid_video_wrapper video {
+  display: block;
+  max-width: 100% !important;
+  width: auto !important;
+  height: 100% !important;
+  object-fit: contain;
+  /* A wide image is limited by the column width, so `object-fit` letterboxes it
+     inside a box that stays as tall as the container. base.scss's radius and
+     shadow would then be drawn around those empty strips rather than around the
+     picture, so the media is left flat here. */
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Video posts place the player directly in `.mainBodyPadding`, without the
+   height-constrained `.image-container` used by picture posts. Give the direct
+   player that same viewport-derived height explicitly; `max-width` then scales
+   wide videos down against the main column while preserving their ratio. */
+#gelcomVideoPlayer {
+  display: block;
+  width: auto !important;
+  max-width: 100% !important;
+  height: var(--post-media-max-h) !important;
+  object-fit: contain;
+  margin-inline: auto;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.image-container .fluid_video_wrapper {
+  /* Fluid Player normally stretches this wrapper across the whole column.
+     Shrink-wrap it to the video's scaled width so video posts use the same
+     centred, height-constrained media box as picture posts. */
+  width: fit-content !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  margin-inline: auto;
+}
+
+.image-container .fluid_video_wrapper video {
+  margin-inline: auto;
+}
+
+#image {
+  margin-top: 0 !important;
+}
+
+.image-container img:hover,
+.image-container video:hover {
+  scale: none;
+}
+
+/* ----- Edit / comment / favorite ----- */
+
+#scrollebox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  box-sizing: border-box;
+  height: var(--post-actions-h);
+  margin: 0 0 1rem;
+  padding-top: var(--post-actions-gap);
+  font-size: 0;
+  font-weight: 600;
+  line-height: 1.2;
+
+  /* Pool Relationships is wrapped in a <span id="pool…">, which would make the
+     link stretch against an auto-height parent instead of the row. */
+  > span {
+    display: contents;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 0.75rem;
+    font-size: 12px;
+    font-family: verdana, sans-serif, helvetica;
+    background: var(--surface0);
+    border-radius: 7px;
+
+    b {
+      font-weight: inherit;
+    }
+
+    &:hover {
+      background: var(--surface1);
+    }
+  }
+}
+
+/* ----- More Like This -----
+   The site ships this block with no class or id, so it is matched by the
+   inline max-height its thumbnails carry. */
+
+div:has(> a > img[style*="max-height: 100px"]) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  > div:first-child {
+    flex: 0 0 100%;
+    text-align: center;
+  }
+}
+
+table.post-view {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 0 1rem;
+
+  th,
+  td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: normal;
+    padding: 0.45rem 0;
+  }
+
+  h2 {
+    margin: 0 0 0.65rem;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text);
+  }
+
+  b {
+    color: var(--text);
+  }
+
+  input[type="radio"] {
+    margin: 0 0.25rem 0 0.7rem;
+    accent-color: var(--blue);
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100% !important;
+    max-width: 42rem;
+    box-sizing: border-box;
+    margin: 0.35rem 0 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  textarea {
+    min-height: 8rem;
+    resize: vertical;
+  }
+
+  input.searchList,
+  input[type="submit"] {
+    width: auto !important;
+    margin: 0.35rem 0.5rem 0 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
+  }
+
+  input[type="button"] {
+    width: auto !important;
+    margin: 0.35rem 0.5rem 0 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--text) !important;
+    font-weight: 600;
+    background: var(--surface1) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--surface2) !important;
+    }
+  }
+}
+
+#comment_form,
+.mainBodyPadding > div:has(> form[name="edit_form"]) {
+  > br {
+    display: none;
+  }
+}
+
+/* ----- Related posts ----- */
+
+.mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem 0.65rem;
+  width: 100% !important;
+  margin: 0 0 0.5rem;
+
+  > div {
+    flex: 1 0 100%;
+    margin: 0;
+    padding: 0 !important;
+    color: var(--subtext0);
+    font-weight: 600;
+  }
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+
+  img {
+    margin: 0 !important;
+    max-height: 120px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+}
+
+/* ----- Comments ----- */
+
+.mainBodyPadding > div:has(> .commentAvatar, > .commentBody) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0 0 0.85rem;
+}
+
+.spoiler {
+  color: var(--text);
+  background: var(--text);
+  border-radius: 3px;
+
+  &:hover,
+  &:focus {
+    background: transparent;
+  }
+
+  a {
+    color: var(--text);
+    background: var(--text);
+
+    &:hover,
+    &:focus {
+      background: transparent;
+    }
+  }
+}
+
+#paginator {
+  padding: 0.5rem 0 1.5rem;
+
+  > br {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .aside {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    border-right: none;
+  }
+}

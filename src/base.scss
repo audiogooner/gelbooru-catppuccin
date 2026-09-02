@@ -55,7 +55,9 @@ textarea {
   border-radius: 7px !important;
   background: var(--surface0) !important;
   color: var(--text) !important;
-  transition: 0.1s;
+  transition:
+    background-color 0.1s,
+    color 0.1s;
 
   &:hover {
     background: var(--surface1) !important;
@@ -108,13 +110,81 @@ div.submenu {
 
 /* ----------------------------------------------------
    SEARCH AREA
+   The tag search bar of the grid layout (`#container > .searchArea`). Every
+   grid page gets the same height, margins and control sizes from here; page
+   bundles should not redefine its geometry.
    ---------------------------------------------------- */
+:root {
+  --search-area-h: 44px;
+  --search-area-pad-x: 10px;
+  --search-area-gap: 0.5rem;
+  --search-control-h: 32px;
+}
+
 .searchArea {
   background-color: var(--base);
+}
 
-  > div:nth-child(1) > form:nth-child(1) > a:nth-child(1) > img:nth-child(1) {
-    filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg)
-      brightness(100%) contrast(92%);
+#container > .searchArea {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--search-area-h) !important;
+  margin: 0 !important;
+  padding: 0 var(--search-area-pad-x) !important;
+
+  > div {
+    width: 100%;
+  }
+
+  form {
+    display: flex;
+    gap: var(--search-area-gap);
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  /* "Save this search" heart */
+  form > a {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+
+    img {
+      margin: 0 !important;
+      filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg)
+        brightness(100%) contrast(92%);
+    }
+  }
+
+  #tags-search {
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    width: auto !important;
+    min-width: 0;
+    height: var(--search-control-h);
+    margin: 0;
+    padding: 0 0.75rem !important;
+    border: solid 1px var(--surface1) !important;
+  }
+
+  input.searchList {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    width: auto !important;
+    height: var(--search-control-h);
+    margin: 0;
+    padding: 0 1.25rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--sapphire) !important;
+    }
   }
 }
 
@@ -126,6 +196,7 @@ div.submenu {
   background-color: var(--surface0) !important;
   border: none !important;
   border-radius: 7px;
+  overflow: hidden;
   color: var(--text) !important;
 
   .ui-menu-item-wrapper {
@@ -139,6 +210,36 @@ div.submenu {
     background: var(--surface1) !important;
     color: var(--text) !important;
   }
+
+  .ui-menu-item:first-child .ui-menu-item-wrapper {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
+
+  .ui-menu-item:last-child .ui-menu-item-wrapper {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+}
+
+/* jQuery UI appends the menu to <body> and toggles inline display, so the open
+   state has to be detected from the document root. */
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) {
+  .ui-menu.ui-autocomplete {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    .ui-menu-item:first-child .ui-menu-item-wrapper {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  input.ui-autocomplete-input:focus,
+  textarea.ui-autocomplete-input:focus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
 /* ----------------------------------------------------
@@ -149,7 +250,7 @@ div.submenu {
 
   > h1:nth-child(1) > a:nth-child(1) {
     color: var(--blue) !important;
-    transition: 0.5s;
+    transition: color 0.5s;
   }
 
   > div:nth-child(8) > a:nth-child(1),
@@ -177,7 +278,7 @@ div.submenu {
 
   > a:nth-child(n) {
     color: var(--subtext1) !important;
-    transition: 140ms;
+    transition: color 140ms;
 
     &:hover {
       color: var(--text) !important;
@@ -194,7 +295,7 @@ div.submenu {
 .tag-type-metadata,
 .tag-type-general {
   .sm-hidden a {
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
 
   &:hover .sm-hidden a {
@@ -203,7 +304,7 @@ div.submenu {
 
   > span {
     color: var(--subtext0) !important;
-    transition: 0.1s;
+    transition: text-shadow 0.1s;
   }
 
   &:hover > span {
@@ -224,7 +325,7 @@ div.submenu {
   .tag-type-#{$type} {
     > a {
       color: var(--#{$color}) !important;
-      transition: 0.1s;
+      transition: text-shadow 0.1s;
     }
 
     &:hover > a {
@@ -245,13 +346,24 @@ div.submenu {
 .mainBodyPadding > div:nth-child(n) img,
 article img {
   border-radius: 7px;
-  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
-  box-shadow: 0 0 10px var(--crust);
+  box-shadow:
+    0 0 0 0 transparent,
+    0 0 0 0 transparent,
+    0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
 
   &:hover:not(.voteUpComment):not(.reportComment) {
-    scale: 110%;
-    border-radius: 0;
-    box-shadow: 0 0 30px var(--surface0);
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent),
+      0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent),
+      0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainBodyPadding > div:nth-child(n) img,
+  article img {
+    transition: none;
   }
 }
 
@@ -260,7 +372,67 @@ article img {
 }
 
 img.webm {
-  border: 3px solid var(--blue);
+  border: none;
+  box-shadow:
+    0 0 0 0 transparent,
+    0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent),
+    0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+
+  &:hover:not(.voteUpComment):not(.reportComment) {
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)),
+      0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent),
+      0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
+  }
+}
+
+a:has(> img.webm) {
+  position: relative;
+
+  > img.webm {
+    anchor-name: --thumb-media;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center / contain no-repeat;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 28%);
+    transition: opacity 220ms ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  @supports (anchor-name: --thumb-media) {
+    &::after {
+      right: auto;
+      bottom: auto;
+      position-anchor: --thumb-media;
+      top: anchor(bottom);
+      left: anchor(right);
+      transform: translate(calc(-100% - 3px), calc(-100% - 3px));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.webm {
+    transition: none;
+  }
+
+  a:has(> img.webm)::after {
+    transition: none;
+  }
 }
 
 /* ----------------------------------------------------
@@ -301,24 +473,80 @@ div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
 /* ----------------------------------------------------
    PAGINATION AND TABLES
    ---------------------------------------------------- */
-#paginator {
-  a {
-    display: inline-block;
-    margin: 3px !important;
-    padding: 12px 16px !important;
-    border-radius: 10px;
+/* `div#paginator`, not `#paginator`: default.css and responsive.css both set
+   `display: block` with that same specificity, which would otherwise win over
+   the flex layout on the legacy and bootstrap pages. */
+div#paginator {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  > br {
+    display: none;
+  }
+
+  /* Most pages wrap the links in one or two `.pagination` divs inside the
+     paginator. Flattening them lets the links become flex items here, so they
+     pick up the gap instead of relying on collapsed whitespace. */
+  .pagination {
+    display: contents;
+  }
+
+  /* The forum marks the current page with `span.current` instead of `<b>`, and
+     labels its arrows "« Previous" / "Next »", so the pills size to their text
+     from a page-number-sized floor. */
+  a,
+  b,
+  span.current {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box;
+    min-width: 42px;
+    height: 40px;
+    margin: 0 !important;
+    padding: 0 0.7rem !important;
+    color: var(--subtext1) !important;
+    font-weight: 600;
+    line-height: 1 !important;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
     background-color: var(--surface1);
     border: none !important;
-    transition: 0.1s;
+    border-radius: 10px;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease;
+  }
 
-    &:hover {
-      background-color: var(--blue) !important;
-      color: var(--text) !important;
+  a {
+    &:hover,
+    &:focus-visible {
+      color: var(--blue) !important;
+      background-color: var(--surface2) !important;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
     }
   }
 
-  b {
-    background-color: transparent;
+  b,
+  span.current {
+    color: var(--crust) !important;
+    background-color: var(--blue) !important;
+  }
+
+  /* Gap markers ("...") between page ranges: text only, no pill. */
+  span:not(.current) {
+    margin: 0 !important;
+    padding: 0 0.2rem !important;
+    color: var(--subtext0) !important;
+    font-weight: 600;
   }
 }
 

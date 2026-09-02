@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Gelbooru Catppuccin — live inject
 // @namespace   https://github.com/nils-affentranger
-// @version     1.4.0
+// @version     1.5.0
 // @description Development injector: live CSS, overlay to toggle bundles, snapshot capture
 // @match       https://gelbooru.com/*
 // @grant       GM_xmlhttpRequest
@@ -23,7 +23,10 @@
     siteCss: true,
     blackoutMedia: false,
     disabled: {},
+    pos: null,
   };
+
+  const DRAG_THRESHOLD = 3;
 
   const BLACKOUT_CSS = `
     main img:not(.voteUpComment, .reportComment),
@@ -58,6 +61,8 @@
   let hostEl = null;
   let shadow = null;
   let toastTimer = 0;
+  let drag = null;
+  let suppressClick = false;
 
   function loadState() {
     try {
@@ -82,6 +87,7 @@
           siteCss: state.siteCss,
           blackoutMedia: state.blackoutMedia,
           disabled: state.disabled,
+          pos: state.pos,
         }),
       );
     } catch {
@@ -216,7 +222,9 @@
       padding: 6px 10px;
       border: 1px solid #45475a;
       border-radius: 999px;
-      cursor: pointer;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
     }
     .fab:hover { border-color: #89b4fa; }
     .panel {
@@ -233,14 +241,19 @@
       padding: 8px 10px;
       background: #181825;
       border-bottom: 1px solid #313244;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
     }
+    .dragging .fab, .dragging header { cursor: grabbing; }
+    .dragging { user-select: none; }
     header strong { font-weight: 650; }
     .grow { flex: 1; }
     .dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #a6e3a1;
+      background: #89b4fa;
       flex: none;
     }
     .dot.warn { background: #f9e2af; }
@@ -388,6 +401,94 @@
     return shadow.querySelector(sel);
   }
 
+  function clampPosition(pos) {
+    const rect = hostEl?.getBoundingClientRect();
+    const maxTop = Math.max(window.innerHeight - (rect?.height || 0), 0);
+    const maxRight = Math.max(window.innerWidth - (rect?.width || 0), 0);
+    return {
+      top: Math.round(Math.min(Math.max(pos.top, 0), maxTop)),
+      right: Math.round(Math.min(Math.max(pos.right, 0), maxRight)),
+    };
+  }
+
+  function applyOverlayPosition() {
+    if (!hostEl) {
+      return;
+    }
+
+    const pos = state.pos || { top: 12, right: 12 };
+    hostEl.style.cssText = [
+      "all:initial !important",
+      "position:fixed !important",
+      "z-index:2147483647 !important",
+      `top:${pos.top}px !important`,
+      `right:${pos.right}px !important`,
+      "display:block !important",
+      "width:auto !important",
+      "height:auto !important",
+      "pointer-events:none !important",
+    ].join(";");
+  }
+
+  function onDragStart(event) {
+    if (event.button !== 0 || drag) {
+      return;
+    }
+
+    const handle = event.target.closest?.(".fab, header");
+    if (!handle || event.target.closest("button.icon, input, .only")) {
+      return;
+    }
+
+    const rect = hostEl.getBoundingClientRect();
+    drag = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      top: rect.top,
+      right: window.innerWidth - rect.right,
+      moved: false,
+    };
+    window.addEventListener("pointermove", onDragMove, true);
+    window.addEventListener("pointerup", onDragEnd, true);
+    window.addEventListener("pointercancel", onDragEnd, true);
+    event.preventDefault();
+  }
+
+  function onDragMove(event) {
+    if (!drag || event.pointerId !== drag.pointerId) {
+      return;
+    }
+
+    const dx = event.clientX - drag.startX;
+    const dy = event.clientY - drag.startY;
+    if (!drag.moved && Math.hypot(dx, dy) < DRAG_THRESHOLD) {
+      return;
+    }
+
+    drag.moved = true;
+    $(".ui").classList.add("dragging");
+    state.pos = clampPosition({ top: drag.top + dy, right: drag.right - dx });
+    applyOverlayPosition();
+    event.preventDefault();
+  }
+
+  function onDragEnd(event) {
+    if (!drag || event.pointerId !== drag.pointerId) {
+      return;
+    }
+
+    window.removeEventListener("pointermove", onDragMove, true);
+    window.removeEventListener("pointerup", onDragEnd, true);
+    window.removeEventListener("pointercancel", onDragEnd, true);
+    $(".ui").classList.remove("dragging");
+    suppressClick = drag.moved;
+    drag = null;
+    if (suppressClick) {
+      saveState();
+    }
+  }
+
   function mount() {
     if (hostEl?.isConnected) {
       return;
@@ -396,17 +497,7 @@
     hostEl = document.getElementById(HOST_ID) || document.createElement("div");
     hostEl.id = HOST_ID;
     hostEl.setAttribute("data-gelbooru-dev", "overlay");
-    hostEl.style.cssText = [
-      "all:initial !important",
-      "position:fixed !important",
-      "z-index:2147483647 !important",
-      "top:12px !important",
-      "right:12px !important",
-      "display:block !important",
-      "width:auto !important",
-      "height:auto !important",
-      "pointer-events:none !important",
-    ].join(";");
+    applyOverlayPosition();
 
     shadow = hostEl.shadowRoot || hostEl.attachShadow({ mode: "open" });
     shadow.innerHTML = `
@@ -452,12 +543,18 @@
     for (const type of ["mousedown", "mouseup", "pointerdown"]) {
       shadow.addEventListener(type, (event) => event.stopPropagation());
     }
+    shadow.addEventListener("pointerdown", onDragStart);
     (document.documentElement || document.body).appendChild(hostEl);
     renderOverlay();
   }
 
   function onOverlayClick(event) {
     event.stopPropagation();
+    if (suppressClick) {
+      suppressClick = false;
+      event.preventDefault();
+      return;
+    }
     const act = event.target.closest("[data-act], [data-solo]");
     if (!act) {
       return;
@@ -474,6 +571,8 @@
       state.siteCss = true;
       state.blackoutMedia = false;
       state.disabled = {};
+      state.pos = null;
+      applyOverlayPosition();
       applySiteCss();
       applyThemeCss();
       applyBlackout();
@@ -565,6 +664,11 @@
     } else {
       errorEl.hidden = true;
       errorEl.textContent = "";
+    }
+
+    if (state.pos) {
+      state.pos = clampPosition(state.pos);
+      applyOverlayPosition();
     }
 
     const sorted = sortedBundles();
@@ -659,6 +763,13 @@
     },
     true,
   );
+
+  window.addEventListener("resize", () => {
+    if (state.pos && hostEl) {
+      state.pos = clampPosition(state.pos);
+      applyOverlayPosition();
+    }
+  });
 
   observeSiteCss();
   applySiteCss();

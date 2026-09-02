@@ -1,0 +1,113 @@
+/* Post index: gallery and notices only. Tag-rail spacing stays site-native. */
+
+@use "sticky-paginator";
+
+:root {
+  --post-list-pad-x: 1.25rem;
+}
+
+main {
+  min-width: 0;
+  padding: 1rem var(--post-list-pad-x) 2rem !important;
+}
+
+.alert {
+  margin: 0.75rem 0 !important;
+  padding: 0.7rem 1rem !important;
+  color: var(--text) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface1) !important;
+  border-radius: 10px;
+}
+
+/* This notice is hidden until safe-only mode is active. */
+.alert-success:has(a[href*="page=help"][href*="topic=post"]) {
+  color: var(--green) !important;
+  background: color-mix(in srgb, var(--green) 10%, var(--surface0)) !important;
+  border-color: color-mix(in srgb, var(--green) 55%, var(--surface1)) !important;
+
+  a,
+  b {
+    color: var(--green) !important;
+  }
+}
+
+.thumbnail-container {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.thumbnail-preview {
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  /* Gelbooru ships thumbnails without width/height attributes, so an image that
+     has not loaded yet collapses to ~0px and the grid reflows on every load.
+     Every cell gets the same footprint anyway, so reserving a square slot up
+     front fixes the full grid height from first paint. Thumbnails are capped at
+     250x250, so they always fit inside it. */
+  /* `width` is explicit because the site makes `.thumbnail-preview` a flex
+     container, so the anchor would otherwise be sized by its (empty) content
+     and `aspect-ratio` would resolve to a height of 0. */
+  > a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+
+    /* The anchor is larger than the thumbnail it reserves space for, so clicks
+       and hover are handed back to the media itself. */
+    pointer-events: none;
+  }
+
+  /* base.scss `a:has(> img.webm)` ties this selector on specificity; keep video
+     thumbs in the same square centered slot as still images. */
+  > a:has(> img.webm) {
+    display: flex !important;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    pointer-events: auto;
+  }
+}
+
+/* The gallery is taller than the viewport, so the paginator sits far below the
+   fold. Sticking it to the bottom of `main` keeps it reachable while scrolling
+   and lets it settle in place once the end of the list is on screen. */
+.pagination {
+  @include sticky-paginator.bar(var(--post-list-pad-x));
+}
+
+@media only screen and (max-width: 850px) {
+  #container {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .aside {
+    display: none !important;
+  }
+
+  main {
+    grid-column: 1 / -1;
+    padding: 0.75rem var(--post-list-pad-x) 0.75rem !important;
+  }
+
+  :root {
+    --post-list-pad-x: 0.75rem;
+  }
+}
+

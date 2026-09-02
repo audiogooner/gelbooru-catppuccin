@@ -1,0 +1,36 @@
+/* DMCA information page. */
+
+aside { display: none !important; }
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main { grid-column: 1 / -1; min-width: 0; }
+
+.mainBodyPadding {
+  box-sizing: border-box;
+  max-width: 64rem;
+  padding: 1.5rem 1.25rem 2.5rem !important;
+  color: var(--subtext0);
+  font-size: 1rem;
+  line-height: 1.65;
+
+  > br { display: none; }
+
+  h1,
+  h2,
+  h3,
+  b,
+  strong { color: var(--text) !important; }
+
+  h1,
+  h2,
+  h3 { margin: 0 0 1rem; line-height: 1.25; }
+
+  p,
+  ul,
+  ol { margin: 0 0 1rem; }
+}
+

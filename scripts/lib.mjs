@@ -1,7 +1,20 @@
 import * as sass from "sass";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { bundles, metadata } from "../style.config.mjs";
+import {
+  bundles as configBundles,
+  metadata as configMetadata,
+} from "../style.config.mjs";
+
+// Node caches this module, so the dev server cannot pick up config changes by
+// re-importing style.config.mjs alone. It hands the fresh config to useConfig().
+let bundles = configBundles;
+let styleMetadata = configMetadata;
+
+export function useConfig(config) {
+  bundles = config.bundles ?? configBundles;
+  styleMetadata = config.metadata ?? configMetadata;
+}
 
 export const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -75,7 +88,7 @@ export function serializeDevBundles(compiled, href) {
 }
 
 export function userstyleHeader() {
-  const lines = Object.entries(metadata).map(
+  const lines = Object.entries(styleMetadata).map(
     ([key, value]) => `@${key.padEnd(15)} ${value}`,
   );
 

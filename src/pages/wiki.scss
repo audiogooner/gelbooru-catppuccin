@@ -1,6 +1,13 @@
 /* ----------------------------------------------------
    WIKI PAGES
    ---------------------------------------------------- */
+
+@use "sticky-paginator";
+
+div#paginator {
+  @include sticky-paginator.bar(0px);
+}
+
 #container > main > div > div:nth-child(1) > form > table td {
   background: none !important;
 }

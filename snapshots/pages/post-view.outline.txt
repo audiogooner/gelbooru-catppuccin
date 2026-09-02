@@ -11,9 +11,9 @@ html
     meta
     script
     style
-    script
     style
-    meta
+    style
+    script
   body.vc-init
     style
     div#container
@@ -64,6 +64,14 @@ html
           span.sm-hidden
             li
               b
+          li.tag-type-artist
+            span.sm-hidden
+              a
+            a
+            span
+          span.sm-hidden
+            li
+              b
           li.tag-type-character
             span.sm-hidden
               a
@@ -85,6 +93,11 @@ html
           span.sm-hidden
             li
               b
+          li.tag-type-metadata
+            span.sm-hidden
+              a
+            a
+            span
           li.tag-type-metadata
             span.sm-hidden
               a
@@ -131,7 +144,7 @@ html
           li
             br
           li
-            span#psc14751384
+            span#psc13547220
             a
           li
           li
@@ -205,10 +218,16 @@ html
               img#image.fit-width
             div#note-preview
           section#notes
+          div.alert.alert-info
+            a
+            a
           h4#scrollebox
             a.showEditBox
             a#showCommentBox
             a
+            span#pool13547220
+              a
+                b
           div
             form#[object HTMLInputElement]
               br
@@ -298,23 +317,51 @@ html
               img
             a
               img
-            a
-              img
           br
           br
           h2
           br
-          br
-          center
-            div
-              div#__clb-spot_2099173_zxf_1
-                iframe#__clb-spot_2099173_zxf_1_container
-              div#__clb-spot_2099169_kas_2
-                iframe#__clb-spot_2099169_kas_2_container
-              div#__clb-spot_2099171_fxb_3
-                iframe#__clb-spot_2099171_fxb_3_container
+          div
+            div.commentAvatar
+              div.profileAvatar
+            div.commentBody
+              a
+                b
+              br
+              br
+              br
+              br
+              span
+                span.info
+                  a
+                    img.voteUpComment
+                  span#sc3030174
+                span.info
+                  a
+                    img.reportComment
+          div
+            div.commentAvatar
+              div.profileAvatar
+            div.commentBody
+              a
+                b
+              br
+              br
+              br
+              br
+              br
+              br
+              span
+                span.info
+                  a
+                    img.voteUpComment
+                  span#sc3047785
+                span.info
+                  a
+                    img.reportComment
         div#paginator
           div.pagination
+            b
         br
         br
       footer
@@ -343,16 +390,10 @@ html
     script
     script
     script
-    ins.easa1w3m3e331
-    script
     script
     ul#ui-id-1.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
     div.ui-helper-hidden-accessible
     ul#ui-id-2.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
     div.ui-helper-hidden-accessible
     script
-    script
-    script
-    script
     div#gelbooru-dev-overlay
-    script

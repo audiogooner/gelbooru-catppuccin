@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
 snapshot: forum-list
-url: https://gelbooru.com/index.php?page=forum&s=list
+url: https://gelbooru.com/index.php?page=forum&s=list&pid=2
 title: Forum | Gelbooru - Anime Art & Hentai Gallery - Free to Explore
-captured: 2026-08-26T20:17:49.066Z
+captured: 2026-08-31T22:00:42.911Z
 source: live
 stylesheets: gridStyle.css, jquery-ui.css
 -->
@@ -146,6 +146,11 @@ input {
   border-radius: 7px;
   color: var(--text);
 }
+textarea:focus,
+input:focus {
+  background-color: var(--surface0) !important;
+  border-color: var(--blue) !important;
+}
 textarea::placeholder,
 input::placeholder {
   color: var(--text) !important;
@@ -164,7 +169,7 @@ textarea {
   border-radius: 7px !important;
   background: var(--surface0) !important;
   color: var(--text) !important;
-  transition: 0.1s;
+  transition: background-color 0.1s, color 0.1s;
 }
 .secondary_search:hover,
 .searchList:hover {
@@ -213,12 +218,76 @@ div.submenu {
 
 /* ----------------------------------------------------
    SEARCH AREA
+   The tag search bar of the grid layout (`#container > .searchArea`). Every
+   grid page gets the same height, margins and control sizes from here; page
+   bundles should not redefine its geometry.
    ---------------------------------------------------- */
+:root {
+  --search-area-h: 44px;
+  --search-area-pad-x: 10px;
+  --search-area-gap: 0.5rem;
+  --search-control-h: 32px;
+}
+
 .searchArea {
   background-color: var(--base);
 }
-.searchArea > div:nth-child(1) > form:nth-child(1) > a:nth-child(1) > img:nth-child(1) {
+
+#container > .searchArea {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--search-area-h) !important;
+  margin: 0 !important;
+  padding: 0 var(--search-area-pad-x) !important;
+}
+#container > .searchArea > div {
+  width: 100%;
+}
+#container > .searchArea form {
+  display: flex;
+  gap: var(--search-area-gap);
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+#container > .searchArea {
+  /* "Save this search" heart */
+}
+#container > .searchArea form > a {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+#container > .searchArea form > a img {
+  margin: 0 !important;
   filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg) brightness(100%) contrast(92%);
+}
+#container > .searchArea #tags-search {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  width: auto !important;
+  min-width: 0;
+  height: var(--search-control-h);
+  margin: 0;
+  padding: 0 0.75rem !important;
+  border: solid 1px var(--surface1) !important;
+}
+#container > .searchArea input.searchList {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: auto !important;
+  height: var(--search-control-h);
+  margin: 0;
+  padding: 0 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  cursor: pointer;
+}
+#container > .searchArea input.searchList:hover {
+  background: var(--sapphire) !important;
 }
 
 .sm-hidden {
@@ -229,6 +298,7 @@ div.submenu {
   background-color: var(--surface0) !important;
   border: none !important;
   border-radius: 7px;
+  overflow: hidden;
   color: var(--text) !important;
 }
 .ui-menu.ui-autocomplete .ui-menu-item-wrapper {
@@ -241,6 +311,30 @@ div.submenu {
   background: var(--surface1) !important;
   color: var(--text) !important;
 }
+.ui-menu.ui-autocomplete .ui-menu-item:first-child .ui-menu-item-wrapper {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.ui-menu.ui-autocomplete .ui-menu-item:last-child .ui-menu-item-wrapper {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+/* jQuery UI appends the menu to <body> and toggles inline display, so the open
+   state has to be detected from the document root. */
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) .ui-menu.ui-autocomplete {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) .ui-menu.ui-autocomplete .ui-menu-item:first-child .ui-menu-item-wrapper {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) input.ui-autocomplete-input:focus,
+body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-autocomplete-input:focus {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
 /* ----------------------------------------------------
    HOMEPAGE SPECIFIC
@@ -250,7 +344,7 @@ div.submenu {
 }
 #static-index > h1:nth-child(1) > a:nth-child(1) {
   color: var(--blue) !important;
-  transition: 0.5s;
+  transition: color 0.5s;
 }
 #static-index > div:nth-child(8) > a:nth-child(1),
 #static-index > small:nth-child(19) a {
@@ -273,7 +367,7 @@ div.submenu {
 }
 #links > a:nth-child(n) {
   color: var(--subtext1) !important;
-  transition: 140ms;
+  transition: color 140ms;
 }
 #links > a:nth-child(n):hover {
   color: var(--text) !important;
@@ -287,7 +381,7 @@ div.submenu {
 .tag-type-copyright .sm-hidden a,
 .tag-type-metadata .sm-hidden a,
 .tag-type-general .sm-hidden a {
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-artist:hover .sm-hidden a,
 .tag-type-character:hover .sm-hidden a,
@@ -302,7 +396,7 @@ div.submenu {
 .tag-type-metadata > span,
 .tag-type-general > span {
   color: var(--subtext0) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-artist:hover > span,
 .tag-type-character:hover > span,
@@ -314,7 +408,7 @@ div.submenu {
 
 .tag-type-artist > a {
   color: var(--red) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-artist:hover > a {
   text-shadow: 0 0 10px var(--red);
@@ -322,7 +416,7 @@ div.submenu {
 
 .tag-type-character > a {
   color: var(--green) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-character:hover > a {
   text-shadow: 0 0 10px var(--green);
@@ -330,7 +424,7 @@ div.submenu {
 
 .tag-type-copyright > a {
   color: var(--pink) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-copyright:hover > a {
   text-shadow: 0 0 10px var(--pink);
@@ -338,7 +432,7 @@ div.submenu {
 
 .tag-type-metadata > a {
   color: var(--yellow) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-metadata:hover > a {
   text-shadow: 0 0 10px var(--yellow);
@@ -346,7 +440,7 @@ div.submenu {
 
 .tag-type-general > a {
   color: var(--blue) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-general:hover > a {
   text-shadow: 0 0 10px var(--blue);
@@ -364,29 +458,71 @@ div.submenu {
 .mainBodyPadding > div:nth-child(n) img,
 article img {
   border-radius: 7px;
-  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
-  box-shadow: 0 0 10px var(--crust);
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 .mainBodyPadding > div:nth-child(n) img:hover:not(.voteUpComment):not(.reportComment),
 article img:hover:not(.voteUpComment):not(.reportComment) {
-  scale: 110%;
-  border-radius: 0;
-  box-shadow: 0 0 30px var(--surface0);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent), 0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .mainBodyPadding > div:nth-child(n) img,
+  article img {
+    transition: none;
+  }
+}
 .fluid_controls_currentprogress {
   background-color: var(--blue) !important;
 }
 
 img.webm {
-  border: 3px solid var(--blue);
+  border: none;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent), 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+img.webm:hover:not(.voteUpComment):not(.reportComment) {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)), 0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
 }
 
+a:has(> img.webm) {
+  position: relative;
+  display: inline-block;
+}
+a:has(> img.webm)::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center/contain no-repeat;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  transition: opacity 220ms ease;
+}
+a:has(> img.webm):hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.webm {
+    transition: none;
+  }
+  a:has(> img.webm)::after {
+    transition: none;
+  }
+}
 /* ----------------------------------------------------
    COMMENTS AND USER CONTENT
    ---------------------------------------------------- */
 .commentBody {
   color: var(--text) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface2);
+  border-radius: 10px;
 }
 
 div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
@@ -415,21 +551,59 @@ div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
 /* ----------------------------------------------------
    PAGINATION AND TABLES
    ---------------------------------------------------- */
-#paginator a {
-  display: inline-block;
-  margin: 3px !important;
-  padding: 12px 16px !important;
-  border-radius: 10px;
+/* `div#paginator`, not `#paginator`: default.css and responsive.css both set
+   `display: block` with that same specificity, which would otherwise win over
+   the flex layout on the legacy and bootstrap pages. */
+div#paginator {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+div#paginator > br {
+  display: none;
+}
+div#paginator {
+  /* Most pages wrap the links in one or two `.pagination` divs inside the
+     paginator. Flattening them lets the links become flex items here, so they
+     pick up the gap instead of relying on collapsed whitespace. */
+}
+div#paginator .pagination {
+  display: contents;
+}
+div#paginator a,
+div#paginator b {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box;
+  width: 42px;
+  height: 40px;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--subtext1) !important;
+  font-weight: 600;
+  line-height: 1 !important;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
   background-color: var(--surface1);
   border: none !important;
-  transition: 0.1s;
+  border-radius: 10px;
+  transition: color 180ms ease, background-color 180ms ease;
 }
-#paginator a:hover {
+div#paginator a:hover, div#paginator a:focus-visible {
+  color: var(--blue) !important;
+  background-color: var(--surface2) !important;
+}
+div#paginator a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+div#paginator b {
+  color: var(--crust) !important;
   background-color: var(--blue) !important;
-  color: var(--text) !important;
-}
-#paginator b {
-  background-color: transparent;
 }
 
 table {
@@ -478,6 +652,318 @@ footer * {
 
 .mainBodyPadding > div:nth-child(n+18) > div:nth-child(2) > span:nth-child(6) > span:nth-child(2) > a:nth-child(1) {
   color: var(--red) !important;
+}</style>
+    <style data-gelbooru-dev="forum-list">/* Shared sticky paginator bar.
+   Include on the paginator wrapper whose parent is the tall page column, so the
+   bar has room to travel; no ancestor between it and the scroller may clip
+   overflow. `$inset-x` should mirror the parent's horizontal padding when the
+   bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+   bar's edges.
+
+   When including this on the paginator itself, select it as `div#paginator`:
+   the site stylesheets zero its padding at that specificity. */
+/* ----------------------------------------------------
+   FORUM LIST (grid layout)
+   ---------------------------------------------------- */
+.aside {
+  display: none !important;
+}
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1/-1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navSubmenu > a#showNewThread {
+  color: var(--green) !important;
+}
+.navSubmenu > a[href*="page=help"][href*="topic=forum"] {
+  color: var(--green) !important;
+}
+
+.alert-success {
+  margin: 0.75rem 1.25rem 0 !important;
+  padding: 0.65rem 1rem !important;
+  color: var(--green) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--green) !important;
+  border-radius: 10px;
+}
+.alert-success a {
+  color: var(--green) !important;
+  font-weight: 600;
+}
+
+.mainBodyPadding {
+  font-size: 1em !important;
+}
+.mainBodyPadding > br {
+  display: none;
+}
+.mainBodyPadding {
+  /* Forum search (tag searchArea is hidden by page CSS) */
+}
+.mainBodyPadding > .searchArea {
+  display: flex !important;
+  padding: 0;
+}
+.mainBodyPadding > .searchArea form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 36rem;
+}
+.mainBodyPadding > .searchArea .tag-list-search {
+  flex: 1 1 12rem;
+  width: auto !important;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.55rem 0.75rem !important;
+}
+.mainBodyPadding > .searchArea input.searchList {
+  flex: 0 0 auto;
+  width: auto !important;
+  margin: 0;
+  padding: 0.55rem 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+}
+.mainBodyPadding > .searchArea input.searchList:hover {
+  background: var(--sapphire) !important;
+}
+.mainBodyPadding > .searchArea form:has(.tag-list-search:disabled) input.searchList {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.mainBodyPadding > .searchArea form:has(.tag-list-search:disabled) input.searchList:hover {
+  background: var(--blue) !important;
+}
+.mainBodyPadding > .searchArea .tag-list-search:disabled {
+  opacity: 0.7;
+  color: var(--subtext0);
+  cursor: not-allowed !important;
+}
+
+/* New topic compose (toggled via #showNewThread) */
+#new_topic {
+  margin: 0 0 1.25rem;
+  text-align: left !important;
+}
+#new_topic .replies-box {
+  padding: 1rem 1.15rem;
+  background: var(--surface0);
+  border-radius: 10px;
+}
+#new_topic .replies-box > br {
+  display: none;
+}
+#new_topic .replies-box h3 {
+  margin: 0 0 0.85rem;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1.25;
+  color: var(--text);
+}
+#new_topic .replies-box table {
+  width: 100% !important;
+  max-width: 36rem;
+}
+#new_topic .replies-box table td {
+  border: none !important;
+  background: transparent !important;
+  color: var(--text) !important;
+  padding: 0.35rem 0.65rem 0.35rem 0;
+  vertical-align: top;
+}
+#new_topic .replies-box table td:first-child {
+  width: 4.5rem;
+  white-space: nowrap;
+  color: var(--subtext0) !important;
+  font-weight: 600;
+}
+#new_topic .replies-box table td:first-child:empty {
+  display: none;
+}
+#new_topic .replies-box #topic.tag-list-search,
+#new_topic .replies-box textarea.tag-list-search {
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.55rem 0.75rem !important;
+}
+#new_topic .replies-box textarea.tag-list-search {
+  min-height: 8rem;
+  resize: vertical;
+}
+#new_topic .replies-box input.searchList {
+  margin-top: 0.35rem;
+  width: auto !important;
+  padding: 0.55rem 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+}
+#new_topic .replies-box input.searchList:hover {
+  background: var(--sapphire) !important;
+}
+
+/* Thread listing */
+.mainBodyPadding > table {
+  width: 100% !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--surface1);
+  border-radius: 10px;
+  overflow: hidden;
+  color: var(--text) !important;
+}
+.mainBodyPadding > table th,
+.mainBodyPadding > table td {
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid var(--surface1) !important;
+  padding: 0.65rem 0.85rem !important;
+  vertical-align: top;
+  background: transparent !important;
+  color: var(--text) !important;
+}
+.mainBodyPadding > table th + th,
+.mainBodyPadding > table td + td {
+  border-left: 1px solid var(--surface1) !important;
+}
+.mainBodyPadding > table tr:last-child > td {
+  border-bottom: none !important;
+}
+.mainBodyPadding > table {
+  /* Header row (inline #006ffa) */
+}
+.mainBodyPadding > table > tbody > tr:first-child,
+.mainBodyPadding > table > tbody > tr[style*="006ffa"],
+.mainBodyPadding > table > tbody > tr[style*=background] {
+  background: var(--blue) !important;
+}
+.mainBodyPadding > table > tbody > tr:first-child th,
+.mainBodyPadding > table > tbody > tr[style*="006ffa"] th,
+.mainBodyPadding > table > tbody > tr[style*=background] th {
+  color: var(--crust) !important;
+  font-weight: 600;
+  vertical-align: middle;
+  border-bottom-color: color-mix(in srgb, var(--blue) 70%, var(--crust)) !important;
+}
+.mainBodyPadding > table > tbody > tr:first-child th div,
+.mainBodyPadding > table > tbody > tr[style*="006ffa"] th div,
+.mainBodyPadding > table > tbody > tr[style*=background] th div {
+  padding: 0 !important;
+  font-size: 1em !important;
+}
+.mainBodyPadding > table > tbody > tr:first-child th b,
+.mainBodyPadding > table > tbody > tr[style*="006ffa"] th b,
+.mainBodyPadding > table > tbody > tr[style*=background] th b {
+  font-weight: 700;
+}
+.mainBodyPadding > table td.threadTitle {
+  max-width: 0;
+  width: 100%;
+  word-break: break-word;
+}
+.mainBodyPadding > table td.threadTitle > br {
+  display: none;
+}
+.mainBodyPadding > table td.threadTitle small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--subtext0);
+  font-size: 0.85em;
+  line-height: 1.45;
+}
+.mainBodyPadding > table td.threadTitle small a {
+  color: var(--subtext1) !important;
+}
+.mainBodyPadding > table td.threadTitle small a:hover {
+  color: var(--blue) !important;
+}
+.mainBodyPadding > table td.sm-hidden {
+  white-space: nowrap;
+  color: var(--subtext0) !important;
+  font-size: 0.9em;
+}
+.mainBodyPadding > table td.sm-hidden small {
+  color: var(--subtext0);
+  line-height: 1.45;
+}
+.mainBodyPadding > table td.sm-hidden small a {
+  color: var(--subtext1) !important;
+}
+.mainBodyPadding > table td.sm-hidden small a:hover {
+  color: var(--blue) !important;
+}
+.mainBodyPadding > table td.sm-hidden small b {
+  color: var(--text);
+  font-weight: 600;
+}
+.mainBodyPadding > table .forum-topicpin > span > b:first-child {
+  margin-right: 0.35em;
+  color: var(--peach);
+  font-weight: 700;
+}
+.mainBodyPadding > table .forum-topicunread a {
+  font-weight: 700;
+}
+.mainBodyPadding > table .locked-topic {
+  margin-left: 0.35em;
+  color: var(--red);
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+div#paginator {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin: 0.75rem calc(-1 * 0px) 0;
+  padding: 0.6rem 0px;
+  background: color-mix(in srgb, var(--base) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--surface1);
+  /* The wrapper is rendered even when the result set fits on one page. */
+}
+div#paginator:not(:has(a)) {
+  display: none;
+}
+div#paginator > br {
+  display: none;
+}
+
+@media only screen and (max-width: 850px) {
+  .mainBodyPadding > table td.sm-hidden,
+  .mainBodyPadding > table th.sm-hidden {
+    display: none !important;
+  }
+  .mainBodyPadding > table th + th,
+  .mainBodyPadding > table td + td {
+    border-left: none !important;
+  }
+  .mainBodyPadding > table td.threadTitle {
+    max-width: none;
+  }
 }</style>
   </head>
   <body class="vc-init">
@@ -626,830 +1112,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicpin">
+                  <span class="forum-topicread">
                     <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=484">Want an image restored?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1">lozertuser</a>
-                    12/10/09 9:00 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=110312">Mderms</a>
-                    08/25/26 9:05 PM
-                    <br>
-                    <b>10297 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=1706">[Tagging] Gardeners Guild: Discuss Tagging Here!</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=11053">Xalrun</a>
-                    09/05/11 10:44 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1387825">randomwriter391</a>
-                    08/25/26 7:34 PM
-                    <br>
-                    <b>12271 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=1226">Report Tag Poisoners</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=12973">hentaiprovisions</a>
-                    12/09/10 11:07 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1337460">VIZARD</a>
-                    08/24/26 11:10 PM
-                    <br>
-                    <b>3436 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=2825">
-                          [Requests] POST ALL REQUESTS HERE INSTEAD OF MAKING A NEW THREAD! Read the first post in this thread before posting, too.
-                        </a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=75981">Jerl</a>
-                    04/08/14 11:03 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1518067">hunter of the sauce</a>
-                    08/21/26 8:49 AM
-                    <br>
-                    <b>1598 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=5646">New post rating: General (report misuse here)</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=184635">AngryZapdos</a>
-                    05/22/22 7:58 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1409588">Dlettie</a>
-                    08/14/26 10:34 PM
-                    <br>
-                    <b>243 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=19">READ THIS FIRST! The (un)official Faq</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=7190">nozalf</a>
-                    07/17/08 11:05 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=75981">Jerl</a>
-                    08/06/26 12:03 PM
-                    <br>
-                    <b>1023 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7074">Futanari are now tagged 1futa</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=184635">AngryZapdos</a>
-                    05/31/24 9:17 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1387825">randomwriter391</a>
-                    07/29/26 4:14 AM
-                    <br>
-                    <b>62 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=4555">How to search or/and now?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=169554">antifaith</a>
-                    07/12/20 2:59 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=75981">Jerl</a>
-                    07/24/26 9:24 AM
-                    <br>
-                    <b>40 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=4059">[Translating] Moon Rune Unit: Are you a translator? Discuss Translating Here!</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=17223">jedi1357</a>
-                    12/13/18 10:30 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=249216">doopaboop</a>
-                    06/13/26 5:35 PM
-                    <br>
-                    <b>310 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicpin">
-                    <span>
-                      <b>Sticky:</b>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8369">Looking for four volunteer mods</a>
-                      </b>
-                    </span>
-                  </span>
-                  <span class="locked-topic">(locked)</span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1">lozertuser</a>
-                    01/15/26 6:41 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=350951">hentaiboy2000</a>
-                    05/23/26 1:12 PM
-                    <br>
-                    <b>308 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7053">Pick your favorite post from page 1 of the above user's favorites list.</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1446933">SailerBoy</a>
-                    05/21/24 6:08 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1860185">CyberSage9999</a>
-                    08/26/26 2:43 PM
-                    <br>
-                    <b>14441 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7848">Name a tag, next user chooses an image with that tag</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1553109">CruelAndUnusual</a>
-                    04/29/25 5:03 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1860185">CyberSage9999</a>
-                    08/26/26 2:30 PM
-                    <br>
-                    <b>2238 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7385">Post the last pic u came to, next user s gonna rate it.</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=813843">EriHazama</a>
-                    10/04/24 3:10 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=589737">Xhinope</a>
-                    08/26/26 1:33 PM
-                    <br>
-                    <b>769 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7877">Smash or Pass Loli Edition - Which Hole?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1553109">CruelAndUnusual</a>
-                    05/11/25 5:41 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=589737">Xhinope</a>
-                    08/26/26 1:11 PM
-                    <br>
-                    <b>5533 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8548">Rate the above user's most recent favorited post</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=215476">Narukovore</a>
-                    04/09/26 6:12 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=589737">Xhinope</a>
-                    08/26/26 1:02 PM
-                    <br>
-                    <b>803 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7779">General Chat</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1413943">HugeTiddyEnthusiast</a>
-                    04/07/25 1:35 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=249216">doopaboop</a>
-                    08/26/26 12:56 PM
-                    <br>
-                    <b>5679 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8935">black clover s2/171+</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1518067">hunter of the sauce</a>
-                    08/24/26 11:01 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=965060">Zealana</a>
-                    08/26/26 8:28 AM
-                    <br>
-                    <b>1 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8587">Any Rule34 "rejects"?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1692751">ApolloSixty9</a>
-                    04/26/26 8:12 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=195820">pc88</a>
-                    08/26/26 7:12 AM
-                    <br>
-                    <b>31 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7921">Smash or Pass SHOTA Edition</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=738295">Nightfall Yeh</a>
-                    06/03/25 7:45 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1641888">smutgoblin</a>
-                    08/26/26 5:58 AM
-                    <br>
-                    <b>291 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8927">Under Appreciated / Under Utilized Tag?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1159777">mysecretlewd</a>
-                    08/21/26 11:54 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=249216">doopaboop</a>
-                    08/26/26 12:32 AM
-                    <br>
-                    <b>10 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8889">Underrated characters</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1915563">Masterbaitor</a>
-                    08/10/26 7:07 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1971807">Meep4542</a>
-                    08/25/26 7:12 PM
-                    <br>
-                    <b>9 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8481">Based on the previous users favorites, post something they may like.</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=769535">blizzardofice</a>
-                    03/09/26 6:41 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1971807">Meep4542</a>
-                    08/25/26 6:12 PM
-                    <br>
-                    <b>401 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8837">What book/manga/doujin/gum wrapper/cereal box have you read recently?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=128773">BaconMinion</a>
-                    07/26/26 12:51 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=11053">Xalrun</a>
-                    08/25/26 7:37 AM
-                    <br>
-                    <b>20 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8713">What is your current kinky thought?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=344881">Yalara90</a>
-                    06/23/26 4:01 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1045171">burner identification</a>
-                    08/25/26 3:59 AM
-                    <br>
-                    <b>68 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7831">Female shotacons</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1690567">PlayfulKiddo</a>
-                    04/24/25 6:31 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1413943">HugeTiddyEnthusiast</a>
-                    08/24/26 9:25 PM
-                    <br>
-                    <b>131 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8492">Pick Your Favorite Post from the LAST Page of the Above User's Favorites</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=430683">al69</a>
-                    03/15/26 8:08 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=589737">Xhinope</a>
-                    08/24/26 3:19 PM
-                    <br>
-                    <b>460 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8585">Most rapeable characters for y’all?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1875672">LostBiQueen</a>
-                    04/25/26 1:57 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1638853">halfpint</a>
-                    08/24/26 2:49 PM
-                    <br>
-                    <b>169 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8937">RANDOM with a tag</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1019548">Shuhualexy</a>
-                    08/24/26 12:06 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1518067">hunter of the sauce</a>
-                    08/24/26 1:13 PM
-                    <br>
-                    <b>1 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8909">Kinks you're not into, but can understand the appeal of.</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=249216">doopaboop</a>
-                    08/16/26 6:51 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=308607">SadSap</a>
-                    08/24/26 4:40 AM
-                    <br>
-                    <b>31 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=5346">Your Favorite UPLOADED Image From Page 1 by the Previous User?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=334150">Oppai chan</a>
-                    12/31/21 8:17 PM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1714521">Toraji99</a>
-                    08/24/26 12:20 AM
-                    <br>
-                    <b>1257 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8877">Funny thread - posts that made you laugh</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1045171">burner identification</a>
-                    08/08/26 1:33 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=215476">Narukovore</a>
-                    08/23/26 10:33 PM
-                    <br>
-                    <b>28 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8923">Post a picture you like, and describe how you'd get involved with the picture</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8923">Post a picture you like, and describe how you'd get involved with the picture</a>
                     </span>
                   </span>
                   <br>
@@ -1471,11 +1136,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8181">What are you favorite tags and searches strings for when you're horny?</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8181">What are you favorite tags and searches strings for when you're horny?</a>
                     </span>
                   </span>
                   <br>
@@ -1497,39 +1160,11 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7097">Gaming Thread</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=657738">Hee-Ho</a>
-                    06/09/24 8:25 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1971807">Meep4542</a>
-                    08/22/26 8:22 PM
-                    <br>
-                    <b>2019 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8921">
-                          IT issues: reputation is exhaustible? Livechat doesn't work, have to manually make 'new conversation'
-                        </a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8921">
+                        IT issues: reputation is exhaustible? Livechat doesn't work, have to manually make 'new conversation'
+                      </a>
                     </span>
                   </span>
                   <br>
@@ -1551,11 +1186,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8931">coordinated tagging effort</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8931">coordinated tagging effort</a>
                     </span>
                   </span>
                   <span class="locked-topic">(locked)</span>
@@ -1578,11 +1211,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8929">Local Image Booru Utility</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8929">Local Image Booru Utility</a>
                     </span>
                   </span>
                   <br>
@@ -1603,36 +1234,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8925">captcha exemption from levels?</a>
-                      </b>
-                    </span>
-                  </span>
-                  <br>
-                  <small>
-                    By:
-                    <a href="index.php?page=account&amp;s=profile&amp;id=1518067">hunter of the sauce</a>
-                    08/21/26 3:40 AM
-                  </small>
-                </td>
-                <td class="sm-hidden">
-                  <small>
-                    N/A N/A
-                    <br>
-                    <b>0 Replies</b>
-                  </small>
-                </td>
-                <td class="sm-hidden"></td>
-              </tr>
-              <tr style="padding: 20px;">
-                <td class="threadTitle">
-                  <span class="forum-topicunread">
-                    <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8919">How to get more reputation?</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8919">How to get more reputation?</a>
                     </span>
                   </span>
                   <br>
@@ -1654,11 +1258,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8917">Avatar fail to upload</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8917">Avatar fail to upload</a>
                     </span>
                   </span>
                   <br>
@@ -1680,11 +1282,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8839">Best Poké-girl?</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8839">Best Poké-girl?</a>
                     </span>
                   </span>
                   <br>
@@ -1706,11 +1306,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=5508">Your favorite image on the lasts user's favorites</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=5508">Your favorite image on the lasts user's favorites</a>
                     </span>
                   </span>
                   <br>
@@ -1732,11 +1330,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8915">reuploading from youtube</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8915">reuploading from youtube</a>
                     </span>
                   </span>
                   <br>
@@ -1758,11 +1354,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8801">API docs?</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8801">API docs?</a>
                     </span>
                   </span>
                   <br>
@@ -1784,11 +1378,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8913">help making constructive comments</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8913">help making constructive comments</a>
                     </span>
                   </span>
                   <span class="locked-topic">(locked)</span>
@@ -1811,11 +1403,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=7918">Take Your Pick</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=7918">Take Your Pick</a>
                     </span>
                   </span>
                   <br>
@@ -1837,11 +1427,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8903">What's your take on "gooner games"?</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8903">What's your take on "gooner games"?</a>
                     </span>
                   </span>
                   <br>
@@ -1863,11 +1451,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8568">Least favourite thing about a show or movie</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8568">Least favourite thing about a show or movie</a>
                     </span>
                   </span>
                   <br>
@@ -1889,11 +1475,9 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8521">Male shotacons...Why are you into it?</a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8521">Male shotacons...Why are you into it?</a>
                     </span>
                   </span>
                   <br>
@@ -1915,13 +1499,11 @@ footer * {
               </tr>
               <tr style="padding: 20px;">
                 <td class="threadTitle">
-                  <span class="forum-topicunread">
+                  <span class="forum-topicread">
                     <span>
-                      <b>
-                        <a href="?page=forum&amp;s=view&amp;id=8905">
-                          How do you feel when you see an artist followed to other artists who do content that you hate?
-                        </a>
-                      </b>
+                      <a href="?page=forum&amp;s=view&amp;id=8905">
+                        How do you feel when you see an artist followed to other artists who do content that you hate?
+                      </a>
                     </span>
                   </span>
                   <br>
@@ -1941,6 +1523,804 @@ footer * {
                 </td>
                 <td class="sm-hidden"></td>
               </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8885">Do you prefer full armor or bikini armor for female characters?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=308607">SadSap</a>
+                    08/09/26 11:03 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1809521">MechaBoiyo</a>
+                    08/17/26 1:09 AM
+                    <br>
+                    <b>16 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8223">Since when do I need "reputation" to post???</a>
+                    </span>
+                  </span>
+                  <span class="locked-topic">(locked)</span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=329772">AngelFlash</a>
+                    11/02/25 3:28 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1999468">Potatotboi</a>
+                    08/17/26 12:11 AM
+                    <br>
+                    <b>8 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8911">I can't upload anymore</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=2000325">Klumster</a>
+                    08/16/26 6:44 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=308607">SadSap</a>
+                    08/16/26 7:34 PM
+                    <br>
+                    <b>2 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8795">Kinks/fetishes/sexual traits you used to be into and now are not.</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=128773">BaconMinion</a>
+                    07/12/26 10:32 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=861079">cacoethes</a>
+                    08/16/26 2:32 PM
+                    <br>
+                    <b>19 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=7844">Are you a virgin?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=810766">stayinaliv3</a>
+                    04/27/25 10:40 AM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=2037010">notlexie</a>
+                    08/16/26 6:48 AM
+                    <br>
+                    <b>176 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8907">Can't get the image from gelbooru official API</a>
+                    </span>
+                  </span>
+                  <span class="locked-topic">(locked)</span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1160132">BrenoMartins</a>
+                    08/15/26 12:09 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=75981">Jerl</a>
+                    08/15/26 6:14 PM
+                    <br>
+                    <b>1 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8901">Bad Anatomy Tag</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1545204">GelatenousHero</a>
+                    08/13/26 3:21 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=22646">Anti Gendou</a>
+                    08/14/26 1:10 PM
+                    <br>
+                    <b>6 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8562">
+                        What was the last song you listened to, and what do you think of the person above's?
+                      </a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1928355">jerkoffwithouthands</a>
+                    04/16/26 5:00 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=744965">EyeViewer</a>
+                    08/13/26 1:25 PM
+                    <br>
+                    <b>21 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8899">The problem lies with the favorites</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1934078">ArenSan3323</a>
+                    08/12/26 2:19 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=273288">nayas</a>
+                    08/13/26 7:14 AM
+                    <br>
+                    <b>2 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=7757">For those of you into loli, what attracts you to it?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1355808">nsfwalt05</a>
+                    04/01/25 5:14 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=340599">davidshaw</a>
+                    08/12/26 9:37 PM
+                    <br>
+                    <b>119 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=6712">AI artwork generator</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=38502">Strahan</a>
+                    12/30/23 6:56 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=744965">EyeViewer</a>
+                    08/11/26 2:14 PM
+                    <br>
+                    <b>12 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8897">Female POV on nhentai</a>
+                    </span>
+                  </span>
+                  <span class="locked-topic">(locked)</span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1409588">Dlettie</a>
+                    08/11/26 12:57 AM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=833488">Maximinimal</a>
+                    08/11/26 10:56 AM
+                    <br>
+                    <b>2 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8895">Need help with a name for a specific kink plz</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1819925">hohohomerryxmasyalilshit</a>
+                    08/10/26 6:16 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1045171">burner identification</a>
+                    08/11/26 10:06 AM
+                    <br>
+                    <b>4 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8863">Why can’t I comment on nsfw images</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1409588">Dlettie</a>
+                    08/06/26 9:48 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1409588">Dlettie</a>
+                    08/11/26 2:43 AM
+                    <br>
+                    <b>7 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8893">Brazil</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1081388">Nszinnn</a>
+                    08/10/26 4:46 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1641888">smutgoblin</a>
+                    08/10/26 4:57 PM
+                    <br>
+                    <b>2 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8891">Reputation</a>
+                    </span>
+                  </span>
+                  <span class="locked-topic">(locked)</span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1081388">Nszinnn</a>
+                    08/10/26 4:44 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    N/A N/A
+                    <br>
+                    <b>0 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8803">Why are we (human men) attracted to demon girls?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=657738">Hee-Ho</a>
+                    07/15/26 4:33 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1409588">Dlettie</a>
+                    08/10/26 2:06 PM
+                    <br>
+                    <b>25 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8883">What's your opinion on ageplay?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=308607">SadSap</a>
+                    08/09/26 10:59 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=308607">SadSap</a>
+                    08/10/26 7:18 AM
+                    <br>
+                    <b>9 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8887">Question: Um so.. why is live chat not working for me?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1409588">Dlettie</a>
+                    08/09/26 11:38 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=249216">doopaboop</a>
+                    08/10/26 3:42 AM
+                    <br>
+                    <b>6 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8881">Hi,I want to upload an image but not have enough reputation</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=2032500">whygdgz</a>
+                    08/08/26 11:15 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=128773">BaconMinion</a>
+                    08/09/26 4:17 PM
+                    <br>
+                    <b>3 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8873">I can't download videos</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=795802">johnplatypus112</a>
+                    08/07/26 4:24 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=2007584">Gabriel Orion 2</a>
+                    08/07/26 8:41 PM
+                    <br>
+                    <b>1 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8869">Ad Feedback</a>
+                    </span>
+                  </span>
+                  <span class="locked-topic">(locked)</span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1954609">IncorrigibleOctopus</a>
+                    08/07/26 1:04 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1">lozertuser</a>
+                    08/07/26 3:53 PM
+                    <br>
+                    <b>3 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8867">
+                        [Interest Check] High-Quality Adult Avatar Visual Novel (Story + Build-up Focus)
+                      </a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=2031476">nextavatar</a>
+                    08/07/26 4:05 AM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    N/A N/A
+                    <br>
+                    <b>0 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8865">What does "Title" do on the "Upload" page?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=249216">doopaboop</a>
+                    08/07/26 12:21 AM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=833488">Maximinimal</a>
+                    08/07/26 1:28 AM
+                    <br>
+                    <b>1 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8859">succubus_yondara_haha_ga_kita!?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1882672">mpjibakukata</a>
+                    08/06/26 5:39 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=249216">doopaboop</a>
+                    08/06/26 11:01 PM
+                    <br>
+                    <b>4 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8861">Need some help with the tags</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=653934">N3RO 182</a>
+                    08/06/26 8:54 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1337460">VIZARD</a>
+                    08/06/26 9:10 PM
+                    <br>
+                    <b>1 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8855">is the nekocounter supposed to be sfw?</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1506080">sylvakt</a>
+                    08/06/26 12:26 AM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=75981">Jerl</a>
+                    08/06/26 12:04 PM
+                    <br>
+                    <b>2 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8853">I need help with this website please</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1915563">Masterbaitor</a>
+                    08/05/26 11:14 AM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=308607">SadSap</a>
+                    08/06/26 5:19 AM
+                    <br>
+                    <b>12 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8857">Just wanted to respond to some people regarding my last post</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1915563">Masterbaitor</a>
+                    08/06/26 4:28 AM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=308607">SadSap</a>
+                    08/06/26 4:57 AM
+                    <br>
+                    <b>1 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=6914">Search exclude favorites</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1157124">dariusmega12</a>
+                    04/03/24 4:27 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1879695">Fua Art</a>
+                    08/03/26 9:08 PM
+                    <br>
+                    <b>2 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=5242">Exclude favorites</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=191716">DarkDooM</a>
+                    10/15/21 11:27 AM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1879695">Fua Art</a>
+                    08/03/26 9:07 PM
+                    <br>
+                    <b>2 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=6233">Search images exclude favorites</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1137674">AoHeaven</a>
+                    03/27/23 1:53 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1879695">Fua Art</a>
+                    08/03/26 9:04 PM
+                    <br>
+                    <b>4 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
+              <tr style="padding: 20px;">
+                <td class="threadTitle">
+                  <span class="forum-topicread">
+                    <span>
+                      <a href="?page=forum&amp;s=view&amp;id=8851">I found a way for you to exclude your favourites for searches</a>
+                    </span>
+                  </span>
+                  <br>
+                  <small>
+                    By:
+                    <a href="index.php?page=account&amp;s=profile&amp;id=1879695">Fua Art</a>
+                    08/03/26 8:28 PM
+                  </small>
+                </td>
+                <td class="sm-hidden">
+                  <small>
+                    N/A N/A
+                    <br>
+                    <b>0 Replies</b>
+                  </small>
+                </td>
+                <td class="sm-hidden"></td>
+              </tr>
             </tbody>
           </table>
           <script type="text/javascript"></script>
@@ -1950,14 +2330,16 @@ footer * {
     <div id="paginator">
       <div class="pagination">
         <div class="pagination">
-          <span class="current">1</span>
-          <a href="?page=forum&amp;s=list&amp;pid=2" class="desktop-only">2</a>
+          <a href="?page=forum&amp;s=list&amp;pid=1">« Previous</a>
+          <a href="?page=forum&amp;s=list&amp;pid=1" class="desktop-only">1</a>
+          <span class="current">2</span>
           <a href="?page=forum&amp;s=list&amp;pid=3" class="desktop-only">3</a>
           <a href="?page=forum&amp;s=list&amp;pid=4" class="desktop-only">4</a>
           <a href="?page=forum&amp;s=list&amp;pid=5" class="desktop-only">5</a>
+          <a href="?page=forum&amp;s=list&amp;pid=6" class="desktop-only">6</a>
           <span class="desktop-only">...</span>
-          <a href="?page=forum&amp;s=list&amp;pid=156" class="desktop-only">156</a>
-          <a href="?page=forum&amp;s=list&amp;pid=2">Next »</a>
+          <a href="?page=forum&amp;s=list&amp;pid=157" class="desktop-only">157</a>
+          <a href="?page=forum&amp;s=list&amp;pid=3">Next »</a>
         </div>
       </div>
     </div>

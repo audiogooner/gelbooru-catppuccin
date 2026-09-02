@@ -1,0 +1,68 @@
+/* Featured artists grid page. */
+
+aside { display: none !important; }
+
+#container {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 100%;
+}
+
+main {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.navSubmenu > a[href*="extras"][href*="artists"] {
+  color: var(--blue) !important;
+}
+
+.mainBodyPadding {
+  padding: 1.25rem !important;
+
+  .alert-info {
+    margin: 0 0 1.25rem !important;
+    padding: 0.75rem 1rem !important;
+    color: var(--text) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--surface1) !important;
+    border-radius: 10px;
+  }
+
+  center > div,
+  ol {
+    max-width: 64rem;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+  }
+
+  ol { padding: 0; list-style-position: inside; }
+  ol > br { display: none; }
+
+  ol > li {
+    margin-top: 1rem;
+    padding: 0.65rem 0.85rem;
+    color: var(--subtext0);
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-radius: 10px 10px 0 0;
+  }
+
+  ol > li + a {
+    display: block;
+    padding: 0.7rem;
+    overflow: hidden;
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+  }
+
+  ol img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+  }
+}
+

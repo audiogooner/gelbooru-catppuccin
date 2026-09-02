@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <!--
-snapshot: wiki
-url: https://gelbooru.com/index.php?page=wiki&s=&s=edit&id=26769
+snapshot: wiki-create
+url: https://gelbooru.com/index.php?page=wiki&s=create&title=ravennvi
 title: | Gelbooru
-captured: 2026-08-30T21:37:57.417Z
+captured: 2026-08-29T16:22:45.778Z
 source: live
 stylesheets: default.css, jquery-ui.css
 -->
 <html>
   <head>
-    <script type="text/javascript" async="" charset="utf-8" crossorigin="anonymous" integrity="sha384-HEUFCmJokjB+CHBYlkcDt4puBwinjtTwjglts96+ZyVMTHTkeKul3/+rAljME2Le" data-snapshot-src="recaptcha__en.js"></script>
-    <meta charset="UTF-8">
-    <title>| Gelbooru</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="default.css?81" title="default">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui.css" title="default">
-    <meta name="rating" content="adult">
-    <script data-snapshot-src="api.js"></script>
     <style data-gelbooru-dev="blackout">
     main img:not(.voteUpComment, .reportComment),
     main video,
@@ -37,6 +30,9 @@ stylesheets: default.css, jquery-ui.css
       background-color: #313244 !important;
     }
   </style>
+  </head>
+  <body class="vc-init">
+    <div id="gelbooru-dev-overlay" data-gelbooru-dev="overlay" style="border-block-style: initial !important; border-inline: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-block-width: initial !important; border-block-color: initial !important; overflow-block: initial !important; overflow-inline: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !importan…"></div>
     <style data-gelbooru-dev="base">/* ----------------------------------------------------
    CONTENT BLOCKING
    ---------------------------------------------------- */
@@ -170,7 +166,7 @@ textarea {
   border-radius: 7px !important;
   background: var(--surface0) !important;
   color: var(--text) !important;
-  transition: background-color 0.1s, color 0.1s;
+  transition: 0.1s;
 }
 .secondary_search:hover,
 .searchList:hover {
@@ -219,76 +215,12 @@ div.submenu {
 
 /* ----------------------------------------------------
    SEARCH AREA
-   The tag search bar of the grid layout (`#container > .searchArea`). Every
-   grid page gets the same height, margins and control sizes from here; page
-   bundles should not redefine its geometry.
    ---------------------------------------------------- */
-:root {
-  --search-area-h: 44px;
-  --search-area-pad-x: 10px;
-  --search-area-gap: 0.5rem;
-  --search-control-h: 32px;
-}
-
 .searchArea {
   background-color: var(--base);
 }
-
-#container > .searchArea {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  height: var(--search-area-h) !important;
-  margin: 0 !important;
-  padding: 0 var(--search-area-pad-x) !important;
-}
-#container > .searchArea > div {
-  width: 100%;
-}
-#container > .searchArea form {
-  display: flex;
-  gap: var(--search-area-gap);
-  align-items: center;
-  width: 100%;
-  margin: 0;
-}
-#container > .searchArea {
-  /* "Save this search" heart */
-}
-#container > .searchArea form > a {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-}
-#container > .searchArea form > a img {
-  margin: 0 !important;
+.searchArea > div:nth-child(1) > form:nth-child(1) > a:nth-child(1) > img:nth-child(1) {
   filter: invert(92%) sepia(43%) saturate(7188%) hue-rotate(178deg) brightness(100%) contrast(92%);
-}
-#container > .searchArea #tags-search {
-  flex: 1 1 auto;
-  box-sizing: border-box;
-  width: auto !important;
-  min-width: 0;
-  height: var(--search-control-h);
-  margin: 0;
-  padding: 0 0.75rem !important;
-  border: solid 1px var(--surface1) !important;
-}
-#container > .searchArea input.searchList {
-  flex: 0 0 auto;
-  box-sizing: border-box;
-  width: auto !important;
-  height: var(--search-control-h);
-  margin: 0;
-  padding: 0 1.25rem !important;
-  color: var(--crust) !important;
-  font-weight: 600;
-  background: var(--blue) !important;
-  border: none !important;
-  cursor: pointer;
-}
-#container > .searchArea input.searchList:hover {
-  background: var(--sapphire) !important;
 }
 
 .sm-hidden {
@@ -299,7 +231,6 @@ div.submenu {
   background-color: var(--surface0) !important;
   border: none !important;
   border-radius: 7px;
-  overflow: hidden;
   color: var(--text) !important;
 }
 .ui-menu.ui-autocomplete .ui-menu-item-wrapper {
@@ -312,30 +243,6 @@ div.submenu {
   background: var(--surface1) !important;
   color: var(--text) !important;
 }
-.ui-menu.ui-autocomplete .ui-menu-item:first-child .ui-menu-item-wrapper {
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-}
-.ui-menu.ui-autocomplete .ui-menu-item:last-child .ui-menu-item-wrapper {
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-}
-
-/* jQuery UI appends the menu to <body> and toggles inline display, so the open
-   state has to be detected from the document root. */
-body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) .ui-menu.ui-autocomplete {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) .ui-menu.ui-autocomplete .ui-menu-item:first-child .ui-menu-item-wrapper {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) input.ui-autocomplete-input:focus,
-body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-autocomplete-input:focus {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
 
 /* ----------------------------------------------------
    HOMEPAGE SPECIFIC
@@ -345,7 +252,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 }
 #static-index > h1:nth-child(1) > a:nth-child(1) {
   color: var(--blue) !important;
-  transition: color 0.5s;
+  transition: 0.5s;
 }
 #static-index > div:nth-child(8) > a:nth-child(1),
 #static-index > small:nth-child(19) a {
@@ -368,7 +275,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 }
 #links > a:nth-child(n) {
   color: var(--subtext1) !important;
-  transition: color 140ms;
+  transition: 140ms;
 }
 #links > a:nth-child(n):hover {
   color: var(--text) !important;
@@ -382,7 +289,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 .tag-type-copyright .sm-hidden a,
 .tag-type-metadata .sm-hidden a,
 .tag-type-general .sm-hidden a {
-  transition: text-shadow 0.1s;
+  transition: 0.1s;
 }
 .tag-type-artist:hover .sm-hidden a,
 .tag-type-character:hover .sm-hidden a,
@@ -397,7 +304,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 .tag-type-metadata > span,
 .tag-type-general > span {
   color: var(--subtext0) !important;
-  transition: text-shadow 0.1s;
+  transition: 0.1s;
 }
 .tag-type-artist:hover > span,
 .tag-type-character:hover > span,
@@ -409,7 +316,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 
 .tag-type-artist > a {
   color: var(--red) !important;
-  transition: text-shadow 0.1s;
+  transition: 0.1s;
 }
 .tag-type-artist:hover > a {
   text-shadow: 0 0 10px var(--red);
@@ -417,7 +324,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 
 .tag-type-character > a {
   color: var(--green) !important;
-  transition: text-shadow 0.1s;
+  transition: 0.1s;
 }
 .tag-type-character:hover > a {
   text-shadow: 0 0 10px var(--green);
@@ -425,7 +332,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 
 .tag-type-copyright > a {
   color: var(--pink) !important;
-  transition: text-shadow 0.1s;
+  transition: 0.1s;
 }
 .tag-type-copyright:hover > a {
   text-shadow: 0 0 10px var(--pink);
@@ -433,7 +340,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 
 .tag-type-metadata > a {
   color: var(--yellow) !important;
-  transition: text-shadow 0.1s;
+  transition: 0.1s;
 }
 .tag-type-metadata:hover > a {
   text-shadow: 0 0 10px var(--yellow);
@@ -441,7 +348,7 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 
 .tag-type-general > a {
   color: var(--blue) !important;
-  transition: text-shadow 0.1s;
+  transition: 0.1s;
 }
 .tag-type-general:hover > a {
   text-shadow: 0 0 10px var(--blue);
@@ -459,63 +366,24 @@ body:has(.ui-menu.ui-autocomplete:not([style*="display: none"])) textarea.ui-aut
 .mainBodyPadding > div:nth-child(n) img,
 article img {
   border-radius: 7px;
-  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
-  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+  box-shadow: 0 0 10px var(--crust);
 }
 .mainBodyPadding > div:nth-child(n) img:hover:not(.voteUpComment):not(.reportComment),
 article img:hover:not(.voteUpComment):not(.reportComment) {
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent), 0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
+  scale: 110%;
+  border-radius: 0;
+  box-shadow: 0 0 30px var(--surface0);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .mainBodyPadding > div:nth-child(n) img,
-  article img {
-    transition: none;
-  }
-}
 .fluid_controls_currentprogress {
   background-color: var(--blue) !important;
 }
 
 img.webm {
-  border: none;
-  box-shadow: 0 0 0 0 transparent, 0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent), 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
-  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
-}
-img.webm:hover:not(.voteUpComment):not(.reportComment) {
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)), 0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
+  border: 3px solid var(--blue);
 }
 
-a:has(> img.webm) {
-  position: relative;
-  display: inline-block;
-}
-a:has(> img.webm)::after {
-  content: "";
-  position: absolute;
-  right: 3px;
-  bottom: 3px;
-  width: 24px;
-  height: 24px;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center/contain no-repeat;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
-  transition: opacity 220ms ease;
-}
-a:has(> img.webm):hover::after {
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  img.webm {
-    transition: none;
-  }
-  a:has(> img.webm)::after {
-    transition: none;
-  }
-}
 /* ----------------------------------------------------
    COMMENTS AND USER CONTENT
    ---------------------------------------------------- */
@@ -552,48 +420,21 @@ div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
 /* ----------------------------------------------------
    PAGINATION AND TABLES
    ---------------------------------------------------- */
-#paginator {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-#paginator > br {
-  display: none;
-}
-#paginator a,
-#paginator b {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-sizing: border-box;
-  width: 42px;
-  height: 40px;
-  margin: 0 !important;
-  padding: 0 !important;
-  color: var(--subtext1) !important;
-  font-weight: 600;
-  line-height: 1 !important;
-  vertical-align: middle;
-  text-align: center;
-  text-decoration: none;
+#paginator a {
+  display: inline-block;
+  margin: 3px !important;
+  padding: 12px 16px !important;
+  border-radius: 10px;
   background-color: var(--surface1);
   border: none !important;
-  border-radius: 10px;
-  transition: color 180ms ease, background-color 180ms ease;
+  transition: 0.1s;
 }
-#paginator a:hover, #paginator a:focus-visible {
-  color: var(--blue) !important;
-  background-color: var(--surface2) !important;
-}
-#paginator a:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
+#paginator a:hover {
+  background-color: var(--blue) !important;
+  color: var(--text) !important;
 }
 #paginator b {
-  color: var(--crust) !important;
-  background-color: var(--blue) !important;
+  background-color: transparent;
 }
 
 table {
@@ -927,7 +768,7 @@ div[style*=f7fbff] {
   border: none !important;
   border-radius: 7px;
   box-shadow: 0 0 10px var(--crust);
-  transition: scale 400ms cubic-bezier(0, 0.55, 0.45, 1), border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1), box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
+  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
 }
 .padding15 .thumbnail-preview span.thumb {
   display: block;
@@ -966,11 +807,15 @@ div[style*=f7fbff] {
   font-size: 1em;
   text-align: right;
 }</style>
+    <meta charset="UTF-8">
+    <title>| Gelbooru</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="default.css?81" title="default">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui.css" title="default">
+    <meta name="rating" content="adult">
+    <script type="text/javascript" async="" charset="utf-8" crossorigin="anonymous" integrity="sha384-HEUFCmJokjB+CHBYlkcDt4puBwinjtTwjglts96+ZyVMTHTkeKul3/+rAljME2Le" data-snapshot-src="recaptcha__en.js"></script>
+    <script data-snapshot-src="api.js"></script>
     <script data-snapshot-src="jquery.min.js"></script>
     <script type="text/javascript" data-snapshot-src="application3.js"></script>
-  </head>
-  <body class="vc-init">
-    <div id="gelbooru-dev-overlay" data-gelbooru-dev="overlay" style="border-block-style: initial !important; border-inline: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-block-width: initial !important; border-block-color: initial !important; overflow-block: initial !important; overflow-inline: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !importan…"></div>
     <div class="header">
       <div class="center">
         <h2 class="siteName">
@@ -1041,7 +886,7 @@ div[style*=f7fbff] {
     </div>
     <br>
     <div id="content">
-      <div style="color: #464646; margin-bottom: 5px; font-size: 11px;">
+      <div id="post-list">
         <div id="post-list">
           <div class="sidebar">
             <div style="padding-right: 15px;">
@@ -1072,42 +917,32 @@ div[style*=f7fbff] {
           </div>
         </div>
         <div class="content">
-          <h3 style="display: inline;">Edit Wiki</h3>
-          <br>
-          <br>
-          <form method="post" action="">
-            Title
-            <br>
-            <input type="text" value="ninomae_ina'nis" style="width: 70%;" disabled="">
-            <br>
-            <br>
-            <input type="hidden" name="title" value="ninomae_ina'nis">
-            Body
-            <br>
-            <textarea name="body" rows="20" cols="10" style="width: 100%;">一伊那尓栖/にのまえいなにす
-
-A petite dark-haired girl with a mass of purple [[tentacles]] sprouting from her back. She has [[pointy_ears]] and bangs that resemble tentacles. Her hairstyle head accessories are arranged in such a way that the top of her head resembles a stylized approximation of Cthulhu's face. She is a [[virtual_youtuber]] who is part of [[Hololive_English]]. She debuted on September 13, 2020. She was designed by [[Kuroboshi_Kouhaku]] who's most known for his contributions to [[Fate/Grand_Order]] and who Ina herself is a fan of.
-
-She is normal human girl who became involved with eldritch abominations when she picked up a book that gave her control over tentacles and all of her current powers. In spite of her sinister background, she is the most mellow member of Hololive English and gets along well with others. She is multilingual, speaking English, Korean, and some Japanese. Like her fellow members, her contents consists of streams: video game playthroughs, free talks, and karaoke. She is notably one of the most artistically inclined members of hololive and has dedicated many of her streams to creating art in front of her audience. Art created by her should be tagged as [[Ninomae_Ina'nis_(artist)]]. She is very fond of puns, particularly those related to her.
-
-Her channel:
-
-https://www.youtube.com/channel/UCMwGHR0BTZuLsmjY_NT5Pwg
-
-Her profile:
-
-https://en.hololive.tv/portfolio/items/584532
-
-Twitter:
-
-https://twitter.com/ninomaeinanis</textarea>
-            <br>
-            <input type="submit" value="Edit Article">
-          </form>
-          <br>
-          <center>
-            Make sure you understand what you are doing before you hit edit. Any poisoning done accidentally or otherwise will result in a permanent ban.
-          </center>
+          <div style="width: 100%;">
+            <div style="color: #464646; margin-bottom: 5px; padding: 0px 10px 10px 10px; font-size: 11px;">
+              <h3>Create new article</h3>
+              <br>
+              Adding a wiki entry is simple and informative for other users who visit the site. All you have to do is add a title to the tag, and the description of the tag a…
+              <br>
+              <br>
+              <br>
+              <center>
+                <div style="color: #464646; margin-bottom: 5px; font-size: 11px; text-align: left;">
+                  <form method="post" action="">
+                    Title:
+                    <br>
+                    <input type="text" size="100" name="title" style="width: 100%;" value="ravennvi" disabled="">
+                    <br>
+                    <br>
+                    Content:
+                    <br>
+                    <textarea cols="10" rows="10" name="body" style="width: 100%;"></textarea>
+                    <br>
+                    <input type="submit" value="Create Wiki">
+                  </form>
+                </div>
+              </center>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
    FORUM LIST (grid layout)
    ---------------------------------------------------- */
@@ -51,7 +53,6 @@ main {
   /* Forum search (tag searchArea is hidden by page CSS) */
   > .searchArea {
     display: flex !important;
-    margin: 0 0 1rem;
     padding: 0;
 
     form {
@@ -312,12 +313,8 @@ main {
   }
 }
 
-#paginator {
-  padding: 0.5rem 0 1.5rem;
-
-  > br {
-    display: none;
-  }
+div#paginator {
+  @include sticky-paginator.bar(0px);
 }
 
 @media only screen and (max-width: 850px) {

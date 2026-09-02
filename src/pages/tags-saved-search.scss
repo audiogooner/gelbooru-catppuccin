@@ -1,3 +1,5 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
    SAVED SEARCHES PAGE
    ---------------------------------------------------- */
@@ -175,6 +177,6 @@ article.thumbnail-preview img {
   object-fit: contain;
 }
 
-#paginator {
-  padding: 0.5rem 1.25rem 1.5rem;
+div#paginator {
+  @include sticky-paginator.bar(1.25rem);
 }

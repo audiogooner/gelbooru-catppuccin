@@ -1,8 +1,8 @@
 {
-  "id": "wiki",
-  "url": "https://gelbooru.com/index.php?page=wiki&s=&s=edit&id=26769",
+  "id": "wiki-create",
+  "url": "https://gelbooru.com/index.php?page=wiki&s=create&title=ravennvi",
   "title": "| Gelbooru",
-  "capturedAt": "2026-08-30T21:37:57.417Z",
+  "capturedAt": "2026-08-29T16:22:45.778Z",
   "source": "live",
   "classes": [
     "center",

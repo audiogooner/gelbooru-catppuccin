@@ -1,3 +1,5 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
    FAVORITES (legacy default.css layout)
    ---------------------------------------------------- */
@@ -152,13 +154,54 @@ div.submenu {
   }
 }
 
+:root {
+  --favorites-pad-x: 1.25rem;
+}
+
+/* Legacy markup has no gallery wrapper; span.thumb siblings share a grid on body. */
+body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  column-gap: 0.8rem;
+  row-gap: 0;
+  align-items: start;
+  padding: 0 var(--favorites-pad-x) 2rem;
+}
+
+.header,
+.submenu,
+#long-notice,
+#notice,
+.success-notice,
+body > br,
+body > script,
+body > div:has(#pi),
+div#paginator {
+  grid-column: 1 / -1;
+}
+
+.header,
+.submenu {
+  margin-left: calc(-1 * var(--favorites-pad-x));
+  margin-right: calc(-1 * var(--favorites-pad-x));
+}
+
+.submenu {
+  margin-bottom: 1rem;
+}
+
+body > br,
+body > script {
+  display: none;
+}
+
 .success-notice {
-  margin: 0.75rem 1.25rem 0 !important;
-  padding: 0.65rem 1rem !important;
-  color: var(--green);
+  margin: 0.75rem 0 1rem !important;
+  padding: 0.7rem 1rem !important;
+  color: var(--green) !important;
   font-size: 0.875em;
-  background: var(--surface0) !important;
-  border: 1px solid var(--green) !important;
+  background: color-mix(in srgb, var(--green) 10%, var(--surface0)) !important;
+  border: 1px solid color-mix(in srgb, var(--green) 55%, var(--surface1)) !important;
   border-radius: 10px;
 
   a {
@@ -168,54 +211,222 @@ div.submenu {
 }
 
 span.thumb {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  position: relative;
+  display: block;
+  overflow: visible;
   float: none !important;
   box-sizing: border-box;
-  width: 195px !important;
+  width: 100% !important;
   height: auto !important;
-  margin: 0.35rem 0.15rem;
-  padding: 0.35rem 0.2rem 0.15rem;
-  vertical-align: top;
-  text-align: center;
+  margin: 0 0 0.8rem;
+  padding: 0;
+  min-width: 0;
 
   > br {
     display: none;
   }
 
-  img {
+  > a:first-of-type {
+    position: relative;
+    display: flex;
     width: 100%;
-    max-width: 175px !important;
-    max-height: 175px !important;
-    height: auto;
-    object-fit: contain;
-    border-radius: 7px;
-    box-shadow: 0 0 10px var(--crust);
-    transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    pointer-events: none;
+  }
 
-    &:hover {
-      scale: 110%;
-      border-radius: 0;
-      box-shadow: 0 0 30px var(--surface0);
+  img {
+    position: relative;
+    anchor-name: --fav-thumb;
+    display: block;
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    height: auto !important;
+    margin: auto;
+    object-fit: contain;
+    pointer-events: auto;
+    border-radius: 7px;
+    box-shadow:
+      0 0 0 0 transparent,
+      0 0 0 0 transparent,
+      0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+    transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+
+    &:hover:not(.voteUpComment):not(.reportComment) {
+      box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent),
+        0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent),
+        0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
+    }
+
+    /* Legacy favorites thumbs never get .webm from list JS; tags live in title. */
+    &[title~="animated"]:not([title~="video"]):not(.webm) {
+      outline: 3px solid var(--blue);
+      outline-offset: -3px;
+    }
+
+    &[title~="video"],
+    &.webm {
+      box-shadow:
+        0 0 0 0 transparent,
+        0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent),
+        0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+
+      &:hover:not(.voteUpComment):not(.reportComment) {
+        box-shadow:
+          0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)),
+          0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent),
+          0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
+      }
+    }
+  }
+
+  &:has(> a:first-of-type > img[title~="video"]),
+  &:has(> a:first-of-type > img.webm) {
+    > a:first-of-type::after {
+      content: "";
+      position: absolute;
+      right: 3px;
+      bottom: 3px;
+      width: 24px;
+      height: 24px;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E")
+        center / contain no-repeat;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 28%);
+      transition: opacity 220ms ease;
+    }
+
+    &:hover > a:first-of-type::after {
+      opacity: 1;
+    }
+
+    @supports (anchor-name: --fav-thumb) {
+      > a:first-of-type::after {
+        right: auto;
+        bottom: auto;
+        position-anchor: --fav-thumb;
+        top: anchor(bottom);
+        left: anchor(right);
+        transform: translate(calc(-100% - 3px), calc(-100% - 3px));
+      }
     }
   }
 
   a[href*="s=delete"] {
-    margin-top: 0.4rem;
-    color: var(--red) !important;
-    font-size: 0.75em;
+    position: absolute;
+    position-anchor: --fav-thumb;
+    top: anchor(top);
+    left: anchor(right);
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin: 0;
+    padding: 0;
+    color: transparent !important;
+    font-size: 0;
+    line-height: 0;
+    text-decoration: none;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    background-color: var(--red);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z' fill='%23fff'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.72rem;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 1px 6px color-mix(in srgb, var(--crust) 70%, transparent);
+    pointer-events: none;
+    transition:
+      opacity 160ms ease,
+      background-color 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
+
+    b {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
     &:hover {
-      color: var(--maroon) !important;
+      background-color: var(--maroon);
+      box-shadow: 0 3px 14px color-mix(in srgb, var(--red) 35%, transparent);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    &:focus-visible {
+      opacity: 1;
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    &:active {
+      background-color: color-mix(in srgb, var(--maroon) 85%, var(--crust));
+      transform: translate(-50%, -50%) scale(0.97);
+    }
+  }
+
+  &:hover a[href*="s=delete"],
+  a[href*="s=delete"]:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Browsers without anchor positioning: shrink-wrap the thumb and pin the
+   button to the image box instead of the square cell. */
+@supports not (anchor-name: --fav-thumb) {
+  span.thumb {
+    display: grid;
+    width: fit-content !important;
+    max-width: 100%;
+    justify-self: center;
+
+    > a:first-of-type {
+      grid-area: 1 / 1;
+      width: fit-content;
+      max-width: 100%;
+      aspect-ratio: unset;
+    }
+
+    a[href*="s=delete"] {
+      position: relative;
+      grid-area: 1 / 1;
+      place-self: start end;
+      top: auto;
+      left: auto;
+      transform: translate(50%, -50%);
+
+      &:hover {
+        transform: translate(50%, -50%) scale(1.05);
+      }
+
+      &:active {
+        transform: translate(50%, -50%) scale(0.97);
+      }
     }
   }
 }
 
 body > div:has(#pi) {
   float: none !important;
-  margin: 0.75rem 1.25rem 0 auto !important;
+  margin: 0.75rem 0 0 auto !important;
   color: var(--subtext0);
   font-size: 0.8em;
   text-align: right;
@@ -229,10 +440,27 @@ body > div:has(#pi) {
   }
 }
 
-#paginator {
-  padding: 0.5rem 1.25rem 1.5rem;
+div#paginator {
+  @include sticky-paginator.bar(var(--favorites-pad-x));
+}
 
-  > br {
-    display: none;
+@media only screen and (max-width: 850px) {
+  :root {
+    --favorites-pad-x: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  span.thumb img {
+    transition: none;
+  }
+
+  span.thumb a[href*="s=delete"] {
+    transition: none;
+  }
+
+  span.thumb:has(> a:first-of-type > img[title~="video"]) > a:first-of-type::after,
+  span.thumb:has(> a:first-of-type > img.webm) > a:first-of-type::after {
+    transition: none;
   }
 }

@@ -260,7 +260,10 @@ a[href*="page=conversation"] .profileOptionSelect {
   vertical-align: top !important;
   border-radius: 7px;
   box-shadow: 0 0 10px var(--crust);
-  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+  transition:
+    scale 400ms cubic-bezier(0, 0.55, 0.45, 1),
+    border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1),
+    box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
 
   img {
     display: block;

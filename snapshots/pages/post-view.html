@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <!--
 snapshot: post-view
-url: https://gelbooru.com/index.php?page=post&s=view&id=14751384
-title: hojo karen, idolmaster, idolmaster cinderella girls, artist request, highres, bdsm, bodysuit, bondage, bound, breasts, femdom, gloved handjob, gloves, handjob, latex, latex bodysuit, latex gloves, licking lips, orange hair, penis in glove, sadism, shimmerhex, tongue, tongue out, yellow eyes - Image View - | Gelbooru - Anime Art & Hentai Gallery - Free to Explore
-captured: 2026-08-22T11:40:59.895Z
+url: https://gelbooru.com/index.php?page=post&s=view&id=13547220&tags=koseki_bijou+rating%3Ag+-video+sort%3Ascore
+title: xaea xp, koseki bijou, hololive, hololive english, commentary, english commentary, highres, 1girl, but you can&#039;t prove it (meme), colored inner hair, english text, flat chest, grey hair, i know what you are (meme), long hair, looking at viewer, meme, multicolored hair, pink hair, print shirt, purple eyes, shirt, solo, two-tone hair, virtual youtuber, white shirt - Image View - | Gelbooru - Anime Art & Hentai Gallery - Free to Explore
+captured: 2026-08-29T19:23:13.308Z
 source: live
 stylesheets: gridStyle.css, noteGrid.css, jquery-ui.css
-note: omitted 17 more li.tag-type-general (20 total)
+note: omitted 16 more li.tag-type-general (19 total)
 -->
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>hojo karen, idolmaster, idolmaster cinderella girls, artist request, highres, bdsm, bodysuit, bondage, bound, breasts, femdom, gloved handjob, gloves, handjob, …</title>
-    <meta name="rating" content="adult">
+    <title>xaea xp, koseki bijou, hololive, hololive english, commentary, english commentary, highres, 1girl, but you can&amp;#039;t prove it (meme), colored inner hair, engli…</title>
+    <meta name="rating" content="general">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gridStyle.css?16h">
     <meta property="og:site_name" content="Gelbooru">
@@ -41,7 +41,6 @@ note: omitted 17 more li.tag-type-general (20 total)
       background-color: #313244 !important;
     }
   </style>
-    <script data-cfasync="false" async="" data-snapshot-src="xaxoc"></script>
     <style data-gelbooru-dev="base">/* ----------------------------------------------------
    CONTENT BLOCKING
    ---------------------------------------------------- */
@@ -55,6 +54,14 @@ note: omitted 17 more li.tag-type-general (20 total)
 /* frontpage Nyudachi promo */
 #static-index > div:has(> a[href*=nyudachi]),
 body > center:has(a[href*=nyudachi]) {
+  display: none !important;
+}
+
+/* Islamorag Twitch / extras/vtuber promo */
+a[href*="twitch.tv/islamorag"][target=_blank]:has(> img),
+a[target=_blank]:has(> img[src*="/extras/vtuber/islamorag/"]),
+#static-index > div:has(> a[href*=islamorag]),
+center:has(> a[href*="twitch.tv/islamorag"]) {
   display: none !important;
 }
 
@@ -144,6 +151,11 @@ input {
   border-radius: 7px;
   color: var(--text);
 }
+textarea:focus,
+input:focus {
+  background-color: var(--surface0) !important;
+  border-color: var(--blue) !important;
+}
 textarea::placeholder,
 input::placeholder {
   color: var(--text) !important;
@@ -162,7 +174,7 @@ textarea {
   border-radius: 7px !important;
   background: var(--surface0) !important;
   color: var(--text) !important;
-  transition: 0.1s;
+  transition: background-color 0.1s, color 0.1s;
 }
 .secondary_search:hover,
 .searchList:hover {
@@ -183,13 +195,15 @@ textarea {
 }
 
 .homeIcon > img:nth-child(1),
-.navbar-brand {
+.navbar-brand,
+h2.siteName a {
   filter: brightness(0) saturate(100%) invert(72%) sepia(53%) saturate(3396%) hue-rotate(192deg) brightness(109%) contrast(96%);
 }
 
 .navSubmenu,
 #navbar2,
-#submenu {
+#submenu,
+div.submenu {
   background-color: var(--surface1);
 }
 
@@ -221,10 +235,21 @@ textarea {
   color: var(--text);
 }
 
-#ui-id-1 {
-  background-color: var(--surface0);
-  border: none;
+.ui-menu.ui-autocomplete {
+  background-color: var(--surface0) !important;
+  border: none !important;
   border-radius: 7px;
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-menu-item-wrapper {
+  color: var(--text) !important;
+}
+.ui-menu.ui-autocomplete .ui-state-active,
+.ui-menu.ui-autocomplete .ui-state-focus {
+  margin: 0;
+  border: none !important;
+  background: var(--surface1) !important;
+  color: var(--text) !important;
 }
 
 /* ----------------------------------------------------
@@ -235,7 +260,7 @@ textarea {
 }
 #static-index > h1:nth-child(1) > a:nth-child(1) {
   color: var(--blue) !important;
-  transition: 0.5s;
+  transition: color 0.5s;
 }
 #static-index > div:nth-child(8) > a:nth-child(1),
 #static-index > small:nth-child(19) a {
@@ -258,7 +283,7 @@ textarea {
 }
 #links > a:nth-child(n) {
   color: var(--subtext1) !important;
-  transition: 140ms;
+  transition: color 140ms;
 }
 #links > a:nth-child(n):hover {
   color: var(--text) !important;
@@ -272,7 +297,7 @@ textarea {
 .tag-type-copyright .sm-hidden a,
 .tag-type-metadata .sm-hidden a,
 .tag-type-general .sm-hidden a {
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-artist:hover .sm-hidden a,
 .tag-type-character:hover .sm-hidden a,
@@ -287,7 +312,7 @@ textarea {
 .tag-type-metadata > span,
 .tag-type-general > span {
   color: var(--subtext0) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-artist:hover > span,
 .tag-type-character:hover > span,
@@ -299,7 +324,7 @@ textarea {
 
 .tag-type-artist > a {
   color: var(--red) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-artist:hover > a {
   text-shadow: 0 0 10px var(--red);
@@ -307,7 +332,7 @@ textarea {
 
 .tag-type-character > a {
   color: var(--green) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-character:hover > a {
   text-shadow: 0 0 10px var(--green);
@@ -315,7 +340,7 @@ textarea {
 
 .tag-type-copyright > a {
   color: var(--pink) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-copyright:hover > a {
   text-shadow: 0 0 10px var(--pink);
@@ -323,7 +348,7 @@ textarea {
 
 .tag-type-metadata > a {
   color: var(--yellow) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-metadata:hover > a {
   text-shadow: 0 0 10px var(--yellow);
@@ -331,7 +356,7 @@ textarea {
 
 .tag-type-general > a {
   color: var(--blue) !important;
-  transition: 0.1s;
+  transition: text-shadow 0.1s;
 }
 .tag-type-general:hover > a {
   text-shadow: 0 0 10px var(--blue);
@@ -349,11 +374,11 @@ textarea {
 .mainBodyPadding > div:nth-child(n) img,
 article img {
   border-radius: 7px;
-  transition: 400ms cubic-bezier(0, 0.55, 0.45, 1) 0s;
+  transition: scale 400ms cubic-bezier(0, 0.55, 0.45, 1), border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1), box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
   box-shadow: 0 0 10px var(--crust);
 }
-.mainBodyPadding > div:nth-child(n) img:hover,
-article img:hover {
+.mainBodyPadding > div:nth-child(n) img:hover:not(.voteUpComment):not(.reportComment),
+article img:hover:not(.voteUpComment):not(.reportComment) {
   scale: 110%;
   border-radius: 0;
   box-shadow: 0 0 30px var(--surface0);
@@ -364,7 +389,7 @@ article img:hover {
 }
 
 img.webm {
-  border: solid 3px;
+  border: 3px solid var(--blue);
 }
 
 /* ----------------------------------------------------
@@ -372,6 +397,9 @@ img.webm {
    ---------------------------------------------------- */
 .commentBody {
   color: var(--text) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface2);
+  border-radius: 10px;
 }
 
 div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
@@ -407,7 +435,7 @@ div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
   border-radius: 10px;
   background-color: var(--surface1);
   border: none !important;
-  transition: 0.1s;
+  transition: background-color 0.1s, color 0.1s;
 }
 #paginator a:hover {
   background-color: var(--blue) !important;
@@ -464,7 +492,654 @@ footer * {
 .mainBodyPadding > div:nth-child(n+18) > div:nth-child(2) > span:nth-child(6) > span:nth-child(2) > a:nth-child(1) {
   color: var(--red) !important;
 }</style>
-    <meta name="google" content="nopagereadaloud">
+    <style data-gelbooru-dev="post-view">@charset "UTF-8";
+/* ----------------------------------------------------
+   POST VIEW (grid layout)
+   Everything fits on the first screen with no scrolling: the media fills the
+   space between the site chrome and the Edit / Comment / Favorite row, which
+   sits just above the bottom edge.
+
+   Auto-scrolling is not used — scroll-initial-target is Chromium-only, so it
+   would give two different layouts. The media height is instead:
+
+     100dvh − (chrome above the media) − (action row) − (bottom margin)
+
+   Rows above and below the media get explicit heights so the subtraction is
+   exact rather than an estimate.
+   ---------------------------------------------------- */
+:root {
+  /* Site chrome above the main column, measured at the top of the page:
+     header (topnav, with #motd hidden by content-blocking) + .navSubmenu. */
+  --post-header-h: 60px;
+  --post-submenu-h: 47px;
+  /* Search bar */
+  --post-search-h: 44px;
+  /* Round Previous / Next buttons pinned to the edges of the main column */
+  --post-nav-size: 2.75rem;
+  --post-nav-icon: 1.5rem;
+  --post-nav-edge: 0.75rem;
+  --post-aside-w: 240px;
+  --post-nav-inset: calc(var(--post-aside-w) + var(--post-nav-edge));
+  /* #scrollebox row (Edit | Leave a Comment | Favorite), including the gap
+     above it, plus breathing room under it at the bottom of the screen. */
+  --post-actions-gap: 0.5rem;
+  --post-actions-h: calc(30px + var(--post-actions-gap));
+  --post-bottom-gap: 0.75rem;
+  /* The fullscreen toggle is pinned to the viewport, so it takes no row here. */
+  --post-above-h: calc(
+    var(--post-header-h) + var(--post-submenu-h) + var(--post-search-h)
+  );
+  /* Fullscreen toggle: clear of the header, submenu and search bar. Shared
+     with the overlay's exit button so the two sit in the same spot. */
+  --post-fs-top: calc(var(--post-above-h) + var(--post-nav-edge));
+  --post-media-max-h: calc(
+    100vh - var(--post-above-h) - var(--post-actions-h) - var(--post-bottom-gap)
+  );
+  --post-media-max-h: calc(
+    100dvh - var(--post-above-h) - var(--post-actions-h) - var(
+        --post-bottom-gap
+      )
+  );
+}
+
+.navSubmenu > a[href*="page=post"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+.navSubmenu > a[href*="page=post"][href*="s=add"] {
+  color: var(--green) !important;
+}
+
+.searchArea {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--post-search-h) !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+}
+.searchArea > div,
+.searchArea form {
+  width: 100%;
+}
+
+main {
+  min-width: 0;
+  max-width: 100%;
+}
+
+main > br {
+  display: none;
+}
+
+.alert-success {
+  margin: 0.75rem 1.25rem 0 !important;
+  padding: 0.65rem 1rem !important;
+  color: var(--green) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--green) !important;
+  border-radius: 10px;
+}
+.alert-success a {
+  color: var(--green) !important;
+  font-weight: 600;
+}
+
+/* ----- Tag sidebar ----- */
+.aside {
+  min-width: 0;
+  border-right: solid 1px var(--surface1);
+}
+
+ul.tag-list {
+  margin: 0 !important;
+  padding: 0.35rem 0.75rem 1.25rem;
+}
+ul.tag-list > br {
+  display: none;
+}
+ul.tag-list {
+  /* Beat gridStyle's `ul.tag-list li { display: inline-block; width: 200px }` */
+}
+ul.tag-list li {
+  display: block !important;
+  width: auto !important;
+  margin: 0.12rem 0 !important;
+  color: var(--subtext0);
+  line-height: 1.45;
+  word-break: break-word;
+}
+ul.tag-list li > br {
+  display: none;
+}
+ul.tag-list h3 {
+  margin: 1rem 0 0.4rem;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 1.05em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+ul.tag-list li:has(> h3) {
+  margin-top: 0.35rem !important;
+}
+ul.tag-list {
+  /* Category labels are <span class="sm-hidden"> wrapping an <li>; the inline
+     span keeps them on the previous tag's line. Inner "?" wiki links use the
+     same class, so only unwrap the ul's own children. */
+}
+ul.tag-list > .sm-hidden {
+  display: block;
+}
+ul.tag-list > .sm-hidden > li {
+  margin-top: 0.85rem !important;
+  color: var(--subtext0);
+}
+ul.tag-list > .sm-hidden > li b {
+  color: var(--subtext1);
+  font-size: 0.85em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+ul.tag-list a[href="//gelbooru.com"],
+ul.tag-list #pfd a {
+  color: var(--red) !important;
+}
+
+/* ----- Main column ----- */
+.mainBodyPadding {
+  min-width: 0;
+  max-width: 100%;
+  padding: 0 1.25rem 1.5rem;
+}
+.mainBodyPadding > br {
+  display: none;
+}
+.mainBodyPadding {
+  /* Empty header-ad slot above the post */
+}
+.mainBodyPadding > div:not([id], [class]):empty,
+.mainBodyPadding > div:not([id], [class])[style*="max-width: 350px"]:not(:has(*)) {
+  display: none !important;
+}
+.mainBodyPadding > h2 {
+  margin: 1.25rem 0 0.75rem;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--text);
+}
+
+/* ----- Fullscreen toggle ----- */
+/* The site's expand chip, turned into a round icon button pinned to the top
+   right corner. base.scss paints `.alert-info *` too, so the inner link has to
+   stay transparent or the button doubles up. */
+#resize-link {
+  position: fixed;
+  z-index: 901;
+  top: var(--post-fs-top);
+  right: var(--post-nav-edge);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: var(--post-nav-size);
+  height: var(--post-nav-size);
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface2) !important;
+  border-radius: 50%;
+  /* Filling the circle from the padding box, rather than sizing the link in
+     flow, keeps the glyph centred whatever padding the site puts on the link. */
+}
+#resize-link a {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0;
+  line-height: 0;
+  color: var(--subtext1) !important;
+  background: transparent !important;
+  border: none !important;
+  transition: color 0.1s;
+}
+#resize-link:hover {
+  background: var(--blue) !important;
+  border-color: var(--blue) !important;
+}
+#resize-link:hover a {
+  color: var(--crust) !important;
+}
+#resize-link {
+  /* Material Symbols Rounded "fullscreen". Drawn as a mask so it inherits
+     currentColor and the hover recolor needs no second icon. It covers the
+     whole link because the label text still occupies a box of its own. */
+}
+#resize-link a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: var(--post-nav-icon) var(--post-nav-icon);
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: var(--post-nav-icon) var(--post-nav-icon);
+}
+
+/* ----- Fullscreen overlay ----- */
+/* Native fullscreen needs JS, so this is a viewport-filling overlay instead.
+   The button's <a> is the only element next to the media that can hold state
+   in pure CSS: clicking it focuses it, and clicking anywhere else blurs it,
+   which is what closes the overlay. Escape does not blur, so it stays open. */
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  margin: 0;
+  background: var(--crust);
+}
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container picture,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container img,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container video,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container canvas,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container .fluid_video_wrapper,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container .fluid_video_wrapper video,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container #gelcomVideoPlayer {
+  width: auto !important;
+  max-width: 100vw !important;
+  height: auto !important;
+  max-height: 100dvh !important;
+}
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+  /* Notes are placed against the inline image's box, so they land in the wrong
+     spot once the media is rescaled. */
+}
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container #notes,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container #note-preview,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container .note-box,
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container .note-body {
+  display: none !important;
+}
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+  /* The button that opened the overlay is buried underneath it, so its round
+     chrome is redrawn here in the same spot. */
+}
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container::before {
+  content: "";
+  position: fixed;
+  top: var(--post-fs-top);
+  right: var(--post-nav-edge);
+  box-sizing: border-box;
+  width: var(--post-nav-size);
+  height: var(--post-nav-size);
+  background: var(--surface0);
+  border: 1px solid var(--surface2);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container {
+  /* Material Symbols Rounded "fullscreen_exit", centred on that circle. Any
+     click closes the overlay — this is an affordance for the blur, not a
+     separate target. */
+}
+.mainBodyPadding:has(#resize-link a:focus) .image-container.note-container::after {
+  content: "";
+  position: fixed;
+  top: calc(var(--post-fs-top) + (var(--post-nav-size) - var(--post-nav-icon)) / 2);
+  right: calc(var(--post-nav-edge) + (var(--post-nav-size) - var(--post-nav-icon)) / 2);
+  width: var(--post-nav-icon);
+  height: var(--post-nav-icon);
+  background: var(--text);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  cursor: pointer;
+}
+
+/* ----- Previous / Next ----- */
+/* Site markup is two bare links in an .alert-info, Next floated right, with no
+   id — tell it apart from #resize-link by the navigate* handlers. The wrapper
+   becomes a transparent overlay so each link can sit at a viewport edge. */
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) {
+  position: fixed;
+  z-index: 900;
+  top: 50%;
+  left: var(--post-nav-inset);
+  right: var(--post-nav-edge);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: transparent !important;
+  border: none !important;
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) a {
+  /* Flex, not grid: the site's "Previous" / "Next" text node is still a box
+     here, and as a grid item it would take its own row and shove the glyph
+     off centre. In a row flex container it collapses to zero width. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  float: none !important;
+  box-sizing: border-box;
+  width: var(--post-nav-size);
+  height: var(--post-nav-size);
+  /* Hides the label; the glyph sets its own size on ::before */
+  font-size: 0;
+  line-height: 0;
+  color: var(--text) !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--surface2) !important;
+  border-radius: 50%;
+  pointer-events: auto;
+  transition: color 0.1s, background-color 0.1s, border-color 0.1s;
+  /* Material Symbols glyph as a mask, so it inherits currentColor and the
+     hover recolor works without shipping a font. */
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) a::before {
+  content: "";
+  display: block;
+  width: var(--post-nav-icon);
+  height: var(--post-nav-icon);
+  background: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) a:hover {
+  color: var(--crust) !important;
+  background: var(--blue) !important;
+  border-color: var(--blue) !important;
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) {
+  /* Material Symbols Rounded "arrow_back" */
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) a[onclick*=navigatePrev]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) {
+  /* Material Symbols Rounded "arrow_forward" */
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) a[onclick*=navigateNext]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) {
+  /* Keep Next on the right when Previous is missing on the first post. */
+}
+.alert-info:not(#resize-link):has(a[onclick*=navigate]) a[onclick*=navigateNext]:first-child {
+  margin-left: auto;
+}
+
+/* ----- Media: leftover viewport below the search bar ----- */
+.image-container.note-container {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  /* Fixed, not max — the media should grow to reach the action row. */
+  height: var(--post-media-max-h);
+  --note-body-background: var(--surface0);
+  --note-body-text-color: var(--text);
+  --note-body-border: 1px solid var(--surface2);
+  --note-box-border: 1px solid var(--blue);
+  --note-box-shadow: 0 0 0 1px var(--crust);
+  --unsaved-note-box-border: 1px solid var(--red);
+  --movable-note-box-border: 1px solid var(--green);
+  --note-preview-border: 1px solid var(--red);
+  --note-preview-background: var(--surface0);
+  --note-highlight-color: var(--blue);
+  --note-tn-color: var(--subtext0);
+}
+
+.image-container picture {
+  display: block;
+  height: 100%;
+  line-height: 0;
+}
+
+#image,
+.image-container img,
+.image-container video,
+.image-container canvas,
+.image-container .fluid_video_wrapper video,
+#gelcomVideoPlayer {
+  display: block;
+  max-width: 100% !important;
+  width: auto !important;
+  height: 100% !important;
+  object-fit: contain;
+  /* A wide image is limited by the column width, so `object-fit` letterboxes it
+     inside a box that stays as tall as the container. base.scss's radius and
+     shadow would then be drawn around those empty strips rather than around the
+     picture, so the media is left flat here. */
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.image-container .fluid_video_wrapper {
+  max-width: 100% !important;
+  height: 100% !important;
+}
+
+#image {
+  margin-top: 0 !important;
+}
+
+.image-container img:hover,
+.image-container video:hover {
+  scale: none;
+}
+
+/* ----- Edit / comment / favorite ----- */
+#scrollebox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  box-sizing: border-box;
+  height: var(--post-actions-h);
+  margin: 0 0 1rem;
+  padding-top: var(--post-actions-gap);
+  font-size: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+#scrollebox a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.75rem;
+  font-size: 12px;
+  font-family: verdana, sans-serif, helvetica;
+  background: var(--surface0);
+  border-radius: 7px;
+}
+#scrollebox a:hover {
+  background: var(--surface1);
+}
+
+table.post-view {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 0 1rem;
+}
+table.post-view th,
+table.post-view td {
+  border: none !important;
+  background: transparent !important;
+  color: var(--text) !important;
+  text-align: left !important;
+  vertical-align: top;
+  font-weight: normal;
+  padding: 0.45rem 0;
+}
+table.post-view h2 {
+  margin: 0 0 0.65rem;
+  font-family: verdana, sans-serif, helvetica;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--text);
+}
+table.post-view b {
+  color: var(--text);
+}
+table.post-view input[type=radio] {
+  margin: 0 0.25rem 0 0.7rem;
+  accent-color: var(--blue);
+}
+table.post-view input[type=radio]:first-of-type {
+  margin-left: 0;
+}
+table.post-view input[type=text],
+table.post-view textarea {
+  width: 100% !important;
+  max-width: 42rem;
+  box-sizing: border-box;
+  margin: 0.35rem 0 0;
+  padding: 0.55rem 0.75rem !important;
+}
+table.post-view textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+table.post-view input.searchList,
+table.post-view input[type=submit] {
+  width: auto !important;
+  margin: 0.35rem 0.5rem 0 0;
+  padding: 0.55rem 1.25rem !important;
+  color: var(--crust) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+}
+table.post-view input.searchList:hover,
+table.post-view input[type=submit]:hover {
+  background: var(--sapphire) !important;
+}
+table.post-view input[type=button] {
+  width: auto !important;
+  margin: 0.35rem 0.5rem 0 0;
+  padding: 0.55rem 1.25rem !important;
+  color: var(--text) !important;
+  font-weight: 600;
+  background: var(--surface1) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+}
+table.post-view input[type=button]:hover {
+  background: var(--surface2) !important;
+}
+
+#comment_form > br,
+.mainBodyPadding > div:has(> form[name=edit_form]) > br {
+  display: none;
+}
+
+/* ----- Related posts ----- */
+.mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem 0.65rem;
+  width: 100% !important;
+  margin: 0 0 0.5rem;
+}
+.mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) > div {
+  flex: 1 0 100%;
+  margin: 0;
+  padding: 0 !important;
+  color: var(--subtext0);
+  font-weight: 600;
+}
+.mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) a {
+  display: block;
+  line-height: 0;
+}
+.mainBodyPadding > div:has(> a[href*="page=post"][href*="s=view"] > img) img {
+  margin: 0 !important;
+  max-height: 120px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* ----- Comments ----- */
+.mainBodyPadding > div:has(> .commentAvatar, > .commentBody) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0 0 0.85rem;
+}
+
+.spoiler {
+  color: var(--text);
+  background: var(--text);
+  border-radius: 3px;
+}
+.spoiler:hover, .spoiler:focus {
+  background: transparent;
+}
+.spoiler a {
+  color: var(--text);
+  background: var(--text);
+}
+.spoiler a:hover, .spoiler a:focus {
+  background: transparent;
+}
+
+#paginator {
+  padding: 0.5rem 0 1.5rem;
+}
+#paginator > br {
+  display: none;
+}
+
+@media only screen and (max-width: 850px) {
+  /* Tag sidebar moves below main, so the left button can use the full edge. */
+  :root {
+    --post-nav-inset: var(--post-nav-edge);
+  }
+  .aside {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    border-right: none;
+  }
+}</style>
+    <script data-cfasync="false" async="" data-snapshot-src="tzaj"></script>
   </head>
   <body class="vc-init">
     <style>
@@ -521,7 +1196,7 @@ footer * {
             <a href="javascript:;">
               <img class="" style="vertical-align: top; margin: 4px 10px 0px 10px; height: 24px; width: 24px; border: 0px !important; opacity: .6;" title="Save this search. Check your account page." data-snapshot-src="heart-fill.svg">
             </a>
-            <input id="tags-search" name="tags" autocomplete="off" style="padding: 7px; width: calc(100% - 180px); border: 1px solid #e0e0e0;" data-autocomplete="tag-query" type="text" value="" placeholder="Search Example: video black_hair rating:sensitive" class="ui-autocomplete-input">
+            <input id="tags-search" name="tags" autocomplete="off" style="padding: 7px; width: calc(100% - 180px); border: 1px solid #e0e0e0;" data-autocomplete="tag-query" type="text" value="koseki_bijou rating:g -video sort:score" placeholder="Search Example: video black_hair rating:sensitive" class="ui-autocomplete-input">
             <input name="commit" type="submit" value="Search" class="searchList">
           </form>
         </div>
@@ -533,15 +1208,27 @@ footer * {
         <ul class="tag-list" id="tag-list" style="margin: 0px 10px 0px 10px;">
           <span class="sm-hidden">
             <li style="margin-top: 10px;">
+              <b>Artist</b>
+            </li>
+          </span>
+          <li class="tag-type-artist">
+            <span class="sm-hidden">
+              <a href="index.php?page=wiki&amp;s=list&amp;search=xaea_xp">?</a>
+            </span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=xaea_xp">xaea xp</a>
+            <span style="color: #a0a0a0;">440</span>
+          </li>
+          <span class="sm-hidden">
+            <li style="margin-top: 10px;">
               <b>Character</b>
             </li>
           </span>
           <li class="tag-type-character">
             <span class="sm-hidden">
-              <a href="index.php?page=wiki&amp;s=list&amp;search=hojo_karen">?</a>
+              <a href="index.php?page=wiki&amp;s=list&amp;search=koseki_bijou">?</a>
             </span>
-            <a href="index.php?page=post&amp;s=list&amp;tags=hojo_karen">hojo karen</a>
-            <span style="color: #a0a0a0;">1511</span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=koseki_bijou">koseki bijou</a>
+            <span style="color: #a0a0a0;">4872</span>
           </li>
           <span class="sm-hidden">
             <li style="margin-top: 10px;">
@@ -550,17 +1237,17 @@ footer * {
           </span>
           <li class="tag-type-copyright">
             <span class="sm-hidden">
-              <a href="index.php?page=wiki&amp;s=list&amp;search=idolmaster">?</a>
+              <a href="index.php?page=wiki&amp;s=list&amp;search=hololive">?</a>
             </span>
-            <a href="index.php?page=post&amp;s=list&amp;tags=idolmaster">idolmaster</a>
-            <span style="color: #a0a0a0;">304555</span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=hololive">hololive</a>
+            <span style="color: #a0a0a0;">329061</span>
           </li>
           <li class="tag-type-copyright">
             <span class="sm-hidden">
-              <a href="index.php?page=wiki&amp;s=list&amp;search=idolmaster_cinderella_girls">?</a>
+              <a href="index.php?page=wiki&amp;s=list&amp;search=hololive_english">?</a>
             </span>
-            <a href="index.php?page=post&amp;s=list&amp;tags=idolmaster_cinderella_girls">idolmaster cinderella girls</a>
-            <span style="color: #a0a0a0;">146963</span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=hololive_english">hololive english</a>
+            <span style="color: #a0a0a0;">113678</span>
           </li>
           <span class="sm-hidden">
             <li style="margin-top: 10px;">
@@ -569,17 +1256,24 @@ footer * {
           </span>
           <li class="tag-type-metadata">
             <span class="sm-hidden">
-              <a href="index.php?page=wiki&amp;s=list&amp;search=artist_request">?</a>
+              <a href="index.php?page=wiki&amp;s=list&amp;search=commentary">?</a>
             </span>
-            <a href="index.php?page=post&amp;s=list&amp;tags=artist_request">artist request</a>
-            <span style="color: #a0a0a0;">296777</span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=commentary">commentary</a>
+            <span style="color: #a0a0a0;">1382554</span>
+          </li>
+          <li class="tag-type-metadata">
+            <span class="sm-hidden">
+              <a href="index.php?page=wiki&amp;s=list&amp;search=english_commentary">?</a>
+            </span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=english_commentary">english commentary</a>
+            <span style="color: #a0a0a0;">566206</span>
           </li>
           <li class="tag-type-metadata">
             <span class="sm-hidden">
               <a href="index.php?page=wiki&amp;s=list&amp;search=highres">?</a>
             </span>
             <a href="index.php?page=post&amp;s=list&amp;tags=highres">highres</a>
-            <span style="color: #a0a0a0;">9103367</span>
+            <span style="color: #a0a0a0;">9140452</span>
           </li>
           <span class="sm-hidden">
             <li style="margin-top: 10px;">
@@ -588,26 +1282,26 @@ footer * {
           </span>
           <li class="tag-type-general">
             <span class="sm-hidden">
-              <a href="index.php?page=wiki&amp;s=list&amp;search=bdsm">?</a>
+              <a href="index.php?page=wiki&amp;s=list&amp;search=1girl">?</a>
             </span>
-            <a href="index.php?page=post&amp;s=list&amp;tags=bdsm">bdsm</a>
-            <span style="color: #a0a0a0;">196360</span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=1girl">1girl</a>
+            <span style="color: #a0a0a0;">9627831</span>
           </li>
           <li class="tag-type-general">
             <span class="sm-hidden">
-              <a href="index.php?page=wiki&amp;s=list&amp;search=bodysuit">?</a>
+              <a href="index.php?page=wiki&amp;s=list&amp;search=but_you_can%27t_prove_it_%28meme%29">?</a>
             </span>
-            <a href="index.php?page=post&amp;s=list&amp;tags=bodysuit">bodysuit</a>
-            <span style="color: #a0a0a0;">220144</span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=but_you_can%27t_prove_it_%28meme%29">but you can't prove it (meme)</a>
+            <span style="color: #a0a0a0;">57</span>
           </li>
           <li class="tag-type-general">
             <span class="sm-hidden">
-              <a href="index.php?page=wiki&amp;s=list&amp;search=bondage">?</a>
+              <a href="index.php?page=wiki&amp;s=list&amp;search=colored_inner_hair">?</a>
             </span>
-            <a href="index.php?page=post&amp;s=list&amp;tags=bondage">bondage</a>
-            <span style="color: #a0a0a0;">156213</span>
+            <a href="index.php?page=post&amp;s=list&amp;tags=colored_inner_hair">colored inner hair</a>
+            <span style="color: #a0a0a0;">140175</span>
           </li>
-          <!-- snapshot: omitted 17 more li.tag-type-general (20 total; nth-child 4–20 not preserved) -->
+          <!-- snapshot: omitted 16 more li.tag-type-general (19 total; nth-child 4–19 not preserved) -->
           <li>
             <br>
           </li>
@@ -615,32 +1309,32 @@ footer * {
             <h3>Statistics</h3>
           </li>
           <li>
-            Id: 14751384
+            Id: 13547220
             <br>
           </li>
           <li>
-            Posted: 2026-08-22 06:31:41
+            Posted: 2026-02-25 02:30:51
             <br>
             Uploader:
             <a href="index.php?page=account&amp;s=profile&amp;id=6498">danbooru</a>
             <br>
           </li>
           <li>
-            Size: 1150x2000
+            Size: 1523x1200
             <br>
           </li>
           <li style="line-break: anywhere;">
             Source:
-            <a href="https://www.pixiv.net/artworks/121128395" rel="nofollow">www.pixiv.net/artworks/121128395</a>
+            <a href="https://x.com/DaraDaraRARE/status/2026562416847503524" rel="nofollow">x.com/DaraDaraRARE/status/2026562416847503524</a>
             <br>
           </li>
           <li>
-            Rating: Explicit
+            Rating: General
             <br>
           </li>
           <li>
             Score:
-            <span id="psc14751384">1</span>
+            <span id="psc13547220">109</span>
             (vote
             <a href="#">Up</a>
             )
@@ -661,7 +1355,7 @@ footer * {
             <br>
           </li>
           <li>
-            <a href="https://img4.gelbooru.com/images/8e/53/8e53f9b22dc071b78397e80fe4374221.jpg" target="_blank" rel="noopener" style="font-weight: bold;">Original image</a>
+            <a href="https://img4.gelbooru.com/images/2f/d1/2fd1b240ece8fa784cb2ee0efc3e8300.jpg" target="_blank" rel="noopener" style="font-weight: bold;">Original image</a>
             <br>
           </li>
           <li>
@@ -687,11 +1381,11 @@ footer * {
             <br>
           </li>
           <li>
-            <a href="./public/lock.php?id=14751384&amp;csrf-token=796254ce19f350dca6a9257896ebefcd06a39846b8aac14b2b8c3ed532a916cc">Lock Image</a>
+            <a href="./public/lock.php?id=13547220&amp;csrf-token=e374ceb3d47fb248e5a7843e22c745eaee41d886b337280b524a91b61f706b7b">Lock Image</a>
             <br>
           </li>
           <li>
-            <a href="index.php?page=tags&amp;s=merge&amp;post_id=14751384">Tag Merge</a>
+            <a href="index.php?page=tags&amp;s=merge&amp;post_id=13547220">Tag Merge</a>
             <br>
           </li>
           <li></li>
@@ -699,11 +1393,11 @@ footer * {
             <h3>History</h3>
           </li>
           <li>
-            <a href="index.php?page=history&amp;type=tag_history&amp;id=14751384">Tags</a>
+            <a href="index.php?page=history&amp;type=tag_history&amp;id=13547220">Tags</a>
             <br>
           </li>
           <li>
-            <a href="index.php?page=history&amp;type=page_notes&amp;id=14751384">Notes</a>
+            <a href="index.php?page=history&amp;type=page_notes&amp;id=13547220">Notes</a>
             <br>
           </li>
           <li></li>
@@ -711,10 +1405,10 @@ footer * {
             <h3>Related Posts</h3>
           </li>
           <li>
-            <a href="//saucenao.com/search.php?db=999&amp;dbmaski=32768&amp;url=https://img4.gelbooru.com/thumbnails//8e/53/thumbnail_8e53f9b22dc071b78397e80fe4374221.jpg" rel="nofollow" target="_blank">SauceNao</a>
+            <a href="//saucenao.com/search.php?db=999&amp;dbmaski=32768&amp;url=https://img4.gelbooru.com/thumbnails//2f/d1/thumbnail_2fd1b240ece8fa784cb2ee0efc3e8300.jpg" rel="nofollow" target="_blank">SauceNao</a>
           </li>
           <li>
-            <a href="//iqdb.org/?url=https://img4.gelbooru.com/thumbnails//8e/53/thumbnail_8e53f9b22dc071b78397e80fe4374221.jpg" rel="nofollow" target="_blank">IQDB</a>
+            <a href="//iqdb.org/?url=https://img4.gelbooru.com/thumbnails//2f/d1/thumbnail_2fd1b240ece8fa784cb2ee0efc3e8300.jpg" rel="nofollow" target="_blank">IQDB</a>
           </li>
           <br>
           <br>
@@ -740,19 +1434,29 @@ footer * {
           <div id="resize-link" class="alert alert-info" style="text-align: left; margin: 10px 0px; padding: 10px;">
             <a href="javascript:;">Click here to expand image.</a>
           </div>
-          <section class="image-container note-container" data-id="14751384" data-has-sound="false" data-pools="" data-rating="explicit" data-large-width="850" data-large-height="850" data-width="1150" data-height="2000" data-flags="" data-has-children="false" data-score="1" data-file-ext=".jpg" data-source="https://i.pximg.net/img-original/img/2024/08/03/04/35/38/121128395_p0.jpg" data-uploader-id="6498" data-normalized-source="https://i.pximg.net/img-original/img/2024/08/03/04/35/38/121128395_p0.jpg" data-md5="8e53f9b22dc071b78397e80fe4374221" data-file-url="" data-large-file-url="" data-preview-file-url="" style="font-size: 100%;">
+          <section class="image-container note-container" data-id="13547220" data-has-sound="false" data-pools="" data-rating="general" data-large-width="850" data-large-height="850" data-width="1523" data-height="1200" data-flags="" data-has-children="false" data-score="109" data-file-ext=".jpg" data-source="https://x.com/DaraDaraRARE/status/2026562416847503524" data-uploader-id="6498" data-normalized-source="https://x.com/DaraDaraRARE/status/2026562416847503524" data-md5="2fd1b240ece8fa784cb2ee0efc3e8300" data-file-url="" data-large-file-url="" data-preview-file-url="" style="font-size: 116%;">
             <picture>
-              <img width="850" height="1478" id="image" class="fit-width" data-snapshot-src="sample_8e53f9b22dc071b78397e80fe4374221.jpg">
+              <img width="1523" height="1200" id="image" class="fit-width" data-snapshot-src="2fd1b240ece8fa784cb2ee0efc3e8300.jpg">
             </picture>
             <div id="note-preview"></div>
           </section>
           <section id="notes" style="display: none;"></section>
+          <div class="alert alert-info" style="text-align: left; margin: 10px 0px; padding: 10px;">
+            <a href="javascript:;">Previous</a>
+            <a href="javascript:;" style="float:right;">Next</a>
+          </div>
           <h4 id="scrollebox">
             <a href="javascript:;" class="showEditBox">Edit</a>
             |
             <a href="javascript:;" id="showCommentBox">Leave a Comment</a>
             |
             <a href="#">Favorite</a>
+            |
+            <span id="pool13547220">
+              <a href="index.php?page=pool&amp;s=post-pool-list&amp;id=13547220">
+                <b>Pool Relationships</b>
+              </a>
+            </span>
           </h4>
           <div style="max-width: 800px;">
             <form method="post" action="./public/edit_post.php" id="edit_form" name="edit_form" style="display:none">
@@ -766,13 +1470,13 @@ footer * {
                       <b>Rating</b>
                       <br>
                       <br>
-                      <input type="radio" name="rating" checked="checked" value="e">
+                      <input type="radio" name="rating" value="e">
                       Explicit
                       <input type="radio" name="rating" value="q">
                       Questionable
                       <input type="radio" name="rating" value="s">
                       Sensitive
-                      <input type="radio" name="rating" value="g">
+                      <input type="radio" name="rating" checked="checked" value="g">
                       General
                     </td>
                   </tr>
@@ -789,7 +1493,7 @@ footer * {
                       <b>Source</b>
                       <br>
                       <br>
-                      <input type="text" name="source" size="40" class="tag-list-search" style="width: 100%;" id="source" value="https://i.pximg.net/img-original/img/2024/08/03/04/35/38/121128395_p0.jpg">
+                      <input type="text" name="source" size="40" class="tag-list-search" style="width: 100%;" id="source" value="https://x.com/DaraDaraRARE/status/2026562416847503524">
                     </td>
                   </tr>
                   <tr>
@@ -797,7 +1501,7 @@ footer * {
                       <b>Tags</b>
                       <br>
                       <br>
-                      <textarea cols="100" id="tags" class="tagBox tag-list-search ui-autocomplete-input" name="tags" rows="8" tabindex="10" style="width: 100%;" data-autocomplete="tag-edit" autocomplete="off">artist_request bdsm bodysuit bondage bound breasts femdom gloved_handjob gloves handjob highres hojo_karen idolmaster idolmaster_cinderella_girls latex latex_bodysuit latex_gloves licking_lips orange_hair penis_in_glove sadism shimmerhex tongue tongue_out yellow_eyes</textarea>
+                      <textarea cols="100" id="tags" class="tagBox tag-list-search ui-autocomplete-input" name="tags" rows="8" tabindex="10" style="width: 100%;" data-autocomplete="tag-edit" autocomplete="off">1girl but_you_can't_prove_it_(meme) colored_inner_hair commentary english_commentary english_text flat_chest grey_hair highres hololive hololive_english i_know_what_you_are_(meme) koseki_bijou long_hair looking_at_viewer meme multicolored_hair pink_hair print_shirt purple_eyes shirt solo two-tone_hair virtual_youtuber white_shirt xaea_xp</textarea>
                     </td>
                   </tr>
                   <tr>
@@ -812,12 +1516,12 @@ footer * {
                   </tr>
                   <tr>
                     <td>
-                      <input type="hidden" name="tagsSearched" value="">
-                      <input type="hidden" name="id" value="14751384">
+                      <input type="hidden" name="tagsSearched" value="koseki_bijou rating:g -video sort:score">
+                      <input type="hidden" name="id" value="13547220">
                       <input type="hidden" name="uid" value="1231719">
                       <input type="hidden" name="uname" value="Nilfluss">
-                      <input type="hidden" name="lupdated" id="lupdated" value="1787398793">
-                      <input type="hidden" name="csrf-token" value="796254ce19f350dca6a9257896ebefcd06a39846b8aac14b2b8c3ed532a916cc">
+                      <input type="hidden" name="lupdated" id="lupdated" value="1786258892">
+                      <input type="hidden" name="csrf-token" value="e374ceb3d47fb248e5a7843e22c745eaee41d886b337280b524a91b61f706b7b">
                       <div class="g-recaptcha" data-sitekey="6Le2_B8TAAAAANkQyx0Lur5a8hob8kx3EYvWn4Ej"></div>
                       <br>
                       <input type="submit" name="submit" value="Save changes" class="searchList" style="width: 100%;">
@@ -829,7 +1533,7 @@ footer * {
               <br>
             </form>
           </div>
-          <form method="post" action="index.php?page=comment&amp;s=list&amp;id=14751384&amp;s=save" name="comment_form" id="comment_form" style="display: none;">
+          <form method="post" action="index.php?page=comment&amp;s=list&amp;id=13547220&amp;s=save" name="comment_form" id="comment_form" style="display: none;">
             <table class="post-view">
               <tbody>
                 <tr>
@@ -850,7 +1554,7 @@ footer * {
                 <tr>
                   <td>
                     <input type="hidden" name="conf" id="conf" value="0">
-                    <input type="hidden" name="csrf-token" value="796254ce19f350dca6a9257896ebefcd06a39846b8aac14b2b8c3ed532a916cc">
+                    <input type="hidden" name="csrf-token" value="e374ceb3d47fb248e5a7843e22c745eaee41d886b337280b524a91b61f706b7b">
                     <div class="g-recaptcha" data-sitekey="6Le2_B8TAAAAANkQyx0Lur5a8hob8kx3EYvWn4Ej"></div>
                     <br>
                     <input type="submit" name="submit" value="Post comment" class="searchList" style="width: 100%;">
@@ -864,46 +1568,96 @@ footer * {
           <br>
           <div style="width: 100%;">
             <div style="padding: 10px; font-weight: bold;">More Like This: (Beta Temporary Feature)</div>
-            <a href="index.php?page=post&amp;s=view&amp;id=7300884">
-              <img width="242" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_6afe28e589892c8116af9657ee5dfab0.jpg">
+            <a href="index.php?page=post&amp;s=view&amp;id=14355283">
+              <img width="350" height="200" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_c13c249298db1f240c7d5dfc30c4a111.jpg">
             </a>
-            <a href="index.php?page=post&amp;s=view&amp;id=5557563">
-              <img width="350" height="262" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_1e553914f3b4ef71d3722e9ae74cbe6b.jpg">
+            <a href="index.php?page=post&amp;s=view&amp;id=12736163">
+              <img width="193" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_87c39b33ffb0877958e9ecd7c9dbee28.jpg">
             </a>
-            <a href="index.php?page=post&amp;s=view&amp;id=9626891">
-              <img width="242" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_fd26b59eeacf9f4679d320f43c5c5373.jpg">
+            <a href="index.php?page=post&amp;s=view&amp;id=13263810">
+              <img width="209" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_208e36b77d33f09b1c6887db8fa64ad5.jpg">
             </a>
-            <a href="index.php?page=post&amp;s=view&amp;id=9641484">
-              <img width="340" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_fcb89e0ba7417014add380e32b0c4c4f.jpg">
+            <a href="index.php?page=post&amp;s=view&amp;id=13176028">
+              <img width="249" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_aa9cae23db2f466d88a3b9e961eea8d6.jpg">
             </a>
-            <a href="index.php?page=post&amp;s=view&amp;id=4091629">
-              <img width="236" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_78098add23144b32dc68b2f22db5f572.jpg">
-            </a>
-            <a href="index.php?page=post&amp;s=view&amp;id=13734455">
-              <img width="350" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_1e5c9866b5701b73757c4b791e4f159b.jpg">
+            <a href="index.php?page=post&amp;s=view&amp;id=13263703">
+              <img width="239" height="350" style="margin: 10px; width: auto; max-height: 100px;" data-snapshot-src="thumbnail_1b66edf2eb2c996b9494cd87d035918c.jpg">
             </a>
           </div>
           <br>
           <br>
           <h2>User Comments:</h2>
           <br>
-          <br>
-          <center>
-            <div style="height: 250px !important; max-width: 960px !important; overflow: hidden;">
-              <div style="display: none; padding: 10px;" id="__clb-spot_2099173_zxf_1">
-                <iframe id="__clb-spot_2099173_zxf_1_container" style="display: inline-block; width: 300px; height: 250px; border: medium; margin: 0px; padding: 0px;" sandbox="allow-same-origin allow-forms allow-scripts allow-top-navigation-to-custom-protocols allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation" scrolling="no"></iframe>
-              </div>
-              <div style="display: none; padding: 10px;" id="__clb-spot_2099169_kas_2">
-                <iframe id="__clb-spot_2099169_kas_2_container" style="display: inline-block; width: 300px; height: 250px; border: medium; margin: 0px; padding: 0px;" sandbox="allow-same-origin allow-forms allow-scripts allow-top-navigation-to-custom-protocols allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation" scrolling="no"></iframe>
-              </div>
-              <div style="display: none; padding: 10px;" id="__clb-spot_2099171_fxb_3">
-                <iframe id="__clb-spot_2099171_fxb_3_container" style="display: inline-block; width: 300px; height: 250px; border: medium; margin: 0px; padding: 0px;" sandbox="allow-same-origin allow-forms allow-scripts allow-top-navigation-to-custom-protocols allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation" scrolling="no"></iframe>
-              </div>
+          <div>
+            <div class="commentAvatar">
+              <div class="profileAvatar" style="background: #fff url('user_avatars/avatar_1701831.jpg') no-repeat center; background-size: 85px auto; "></div>
             </div>
-          </center>
+            <div class="commentBody ">
+              <a href="index.php?page=account&amp;s=profile&amp;id=1701831">
+                <b>hrnyperson95</b>
+              </a>
+              commented at 2026-03-01 00:27:09 » #3030174
+              <br>
+              <br>
+              and what am I~?
+              <br>
+              <br>
+              <span style="font-size: .9em;">
+                <span class="info">
+                  <a href="#">
+                    <img class="voteUpComment" data-snapshot-src="caret-up-fill.svg">
+                  </a>
+                  <span id="sc3030174">5</span>
+                  Points
+                </span>
+                <span class="info">
+                  <a href="#">
+                    <img class="reportComment" title="Flag for Review" data-snapshot-src="flag-fill.svg">
+                    Flag
+                  </a>
+                </span>
+              </span>
+            </div>
+          </div>
+          <div>
+            <div class="commentAvatar">
+              <div class="profileAvatar" style="background: #fff url('user_avatars/avatar_651861.jpg') no-repeat center; background-size: 85px auto; "></div>
+            </div>
+            <div class="commentBody ">
+              <a href="index.php?page=account&amp;s=profile&amp;id=651861">
+                <b>zorothex</b>
+              </a>
+              commented at 2026-07-05 22:18:51 » #3047785
+              <br>
+              <br>
+              Well hrnyperson95,
+              <br>
+              <br>
+              It seems that you are a hrnyperson.
+              <br>
+              <br>
+              <span style="font-size: .9em;">
+                <span class="info">
+                  <a href="#">
+                    <img class="voteUpComment" data-snapshot-src="caret-up-fill.svg">
+                  </a>
+                  <span id="sc3047785">2</span>
+                  Points
+                </span>
+                <span class="info">
+                  <a href="#">
+                    <img class="reportComment" title="Flag for Review" data-snapshot-src="flag-fill.svg">
+                    Flag
+                  </a>
+                </span>
+              </span>
+            </div>
+          </div>
         </div>
         <div id="paginator">
-          <div class="pagination"></div>
+          <div class="pagination">
+            <b>1</b>
+          </div>
         </div>
         <br>
         <br>
@@ -938,20 +1692,14 @@ footer * {
     <script type="text/javascript" data-snapshot-src="notesGrid.js"></script>
     <script type="text/javascript" data-snapshot-src="shortcutsGrid.js"></script>
     <script data-snapshot-src="post-view.js"></script>
+    <script data-snapshot-src="post-view-next-prev.js"></script>
     <script type="text/javascript"></script>
-    <script async="" type="application/javascript" data-snapshot-src="ad-provider.js"></script>
-    <ins class="easa1w3m3e331" data-zoneid="2920"></ins>
-    <script></script>
     <script type="text/javascript"></script>
     <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul>
     <div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
     <ul id="ui-id-2" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul>
     <div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
-    <script type="text/javascript" async="" data-cfasync="false" data-snapshot-src="profile.min.js"></script>
-    <script type="text/javascript" async="" data-cfasync="false" data-snapshot-src="profile.min.js"></script>
-    <script type="text/javascript" async="" data-cfasync="false" data-snapshot-src="profile.min.js"></script>
-    <script type="text/javascript" async="" data-cfasync="false" data-snapshot-src="profile.min.js"></script>
+    <script async="" data-snapshot-src="jserror"></script>
     <div id="gelbooru-dev-overlay" data-gelbooru-dev="overlay" style="border-block-style: initial !important; border-inline: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-block-width: initial !important; border-block-color: initial !important; overflow-block: initial !important; overflow-inline: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !importan…"></div>
-    <script type="text/javascript" async="" data-cfasync="false" data-snapshot-src="402c05c4.js"></script>
   </body>
 </html>

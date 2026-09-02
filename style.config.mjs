@@ -60,6 +60,14 @@ export const bundles = [
     document: 'url-prefix("https://gelbooru.com/index.php?page=wiki&s=history")',
   },
   {
+    file: "src/pages/wiki-create.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=wiki&s=create")',
+  },
+  {
+    file: "src/pages/wiki-edit.scss",
+    document: 'url-prefix("https://gelbooru.com/index.php?page=wiki&s=edit")',
+  },
+  {
     file: "src/pages/tags-list.scss",
     document:
       'url-prefix("https://gelbooru.com/index.php?page=tags&s=list")',
@@ -68,6 +76,11 @@ export const bundles = [
     file: "src/pages/tags-implications.scss",
     document:
       'url-prefix("https://gelbooru.com/index.php?page=tags&s=implications")',
+  },
+  {
+    file: "src/pages/tags-edit.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=tags&s=edit")',
   },
   {
     file: "src/pages/alias-list.scss",
@@ -94,6 +107,40 @@ export const bundles = [
   {
     file: "src/pages/post-add.scss",
     document: 'url("https://gelbooru.com/index.php?page=post&s=add")',
+  },
+  {
+    file: "src/pages/post-view.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=post&s=view")',
+  },
+  {
+    file: "src/pages/post-list.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=post&s=list")',
+  },
+  {
+    file: "src/pages/comment-list.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=comment&s=list")',
+  },
+  {
+    file: "src/pages/extras-artists.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=extras&s=artists")',
+  },
+  {
+    file: "src/pages/dmca.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=dmca&s=index")',
+  },
+  {
+    file: "src/pages/tos.scss",
+    document: 'url("https://gelbooru.com/tos.php")',
+  },
+  {
+    file: "src/pages/extras-patreon.scss",
+    document:
+      'url-prefix("https://gelbooru.com/index.php?page=extras&s=patreon")',
   },
   {
     file: "src/pages/forum-list.scss",
@@ -206,6 +253,11 @@ export const snapshotPages = [
     id: "extras-artists",
     url: "https://gelbooru.com/index.php?page=extras&s=artists",
   },
+  {
+    id: "extras-patreon",
+    url: "https://gelbooru.com/index.php?page=extras&s=patreon",
+  },
+  { id: "dmca", url: "https://gelbooru.com/index.php?page=dmca&s=index" },
   { id: "tracker-list", url: "https://gelbooru.com/index.php?page=tracker&s=list" },
   {
     id: "tracker-view",

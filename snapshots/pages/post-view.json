@@ -1,8 +1,8 @@
 {
   "id": "post-view",
-  "url": "https://gelbooru.com/index.php?page=post&s=view&id=14751384",
-  "title": "hojo karen, idolmaster, idolmaster cinderella girls, artist request, highres, bdsm, bodysuit, bondage, bound, breasts, femdom, gloved handjob, gloves, handjob, latex, latex bodysuit, latex gloves, licking lips, orange hair, penis in glove, sadism, shimmerhex, tongue, tongue out, yellow eyes - Image View - | Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
-  "capturedAt": "2026-08-22T11:40:59.895Z",
+  "url": "https://gelbooru.com/index.php?page=post&s=view&id=13547220&tags=koseki_bijou+rating%3Ag+-video+sort%3Ascore",
+  "title": "xaea xp, koseki bijou, hololive, hololive english, commentary, english commentary, highres, 1girl, but you can&#039;t prove it (meme), colored inner hair, english text, flat chest, grey hair, i know what you are (meme), long hair, looking at viewer, meme, multicolored hair, pink hair, print shirt, purple eyes, shirt, solo, two-tone hair, virtual youtuber, white shirt - Image View - | Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-08-29T19:23:13.308Z",
   "source": "live",
   "classes": [
     "active",
@@ -10,17 +10,21 @@
     "alert-info",
     "alert-success",
     "aside",
-    "easa1w3m3e331",
+    "commentAvatar",
+    "commentBody",
     "fit-width",
     "g-recaptcha",
     "homeIcon",
     "icon",
     "image-container",
+    "info",
     "mainBodyPadding",
     "navSubmenu",
     "note-container",
     "pagination",
     "post-view",
+    "profileAvatar",
+    "reportComment",
     "searchArea",
     "searchList",
     "showEditBox",
@@ -28,6 +32,7 @@
     "sm-hidden",
     "tag-list",
     "tag-list-search",
+    "tag-type-artist",
     "tag-type-character",
     "tag-type-copyright",
     "tag-type-general",
@@ -41,16 +46,11 @@
     "ui-menu",
     "ui-widget",
     "ui-widget-content",
-    "vc-init"
+    "vc-init",
+    "voteUpComment"
   ],
   "ids": [
     {},
-    "__clb-spot_2099169_kas_2",
-    "__clb-spot_2099169_kas_2_container",
-    "__clb-spot_2099171_fxb_3",
-    "__clb-spot_2099171_fxb_3_container",
-    "__clb-spot_2099173_zxf_1",
-    "__clb-spot_2099173_zxf_1_container",
     "comment",
     "comment_form",
     "conf",
@@ -67,8 +67,11 @@
     "notice",
     "paginator",
     "pfd",
-    "psc14751384",
+    "pool13547220",
+    "psc13547220",
     "resize-link",
+    "sc3030174",
+    "sc3047785",
     "scrollebox",
     "showCommentBox",
     "source",
@@ -86,6 +89,6 @@
     "jquery-ui.css"
   ],
   "notes": [
-    "omitted 17 more li.tag-type-general (20 total)"
+    "omitted 16 more li.tag-type-general (19 total)"
   ]
 }
