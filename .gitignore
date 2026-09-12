@@ -2,5 +2,4 @@ node_modules/
 dist/
 *.css.map
 lint-results.json
-snapshots/previews/*
-!snapshots/previews/README.md
+snapshots/
