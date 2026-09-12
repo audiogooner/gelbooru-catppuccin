@@ -6,7 +6,12 @@ import { fileURLToPath } from "node:url";
 import { normalizeDeclarations } from "./lib/css-normalize.mjs";
 import { compileBundleRules, extractStyleRules, queryableSelector } from "./lib/css-rules.mjs";
 import { lintCrossFile } from "./lib/lint-cross-file.mjs";
-import { lintDeadSelectors, loadSnapshotDocument } from "./lib/lint-dead-selectors.mjs";
+import {
+  lintAllDead,
+  lintDeadSelectors,
+  loadSnapshotDocument,
+  snapshotIdForBundle,
+} from "./lib/lint-dead-selectors.mjs";
 import { lintDuplicates } from "./lib/lint-duplicates.mjs";
 import { lintRedundantBase } from "./lib/lint-redundant-base.mjs";
 import { collectFindings, compileLintBundles } from "./lint-styles.mjs";
@@ -169,6 +174,29 @@ describe("dead selectors", () => {
     assert.equal(findings[0].rule, "dead-selector");
     assert.equal(findings[0].severity, "warning");
     assert.match(findings[0].message, /missing-element/);
+  });
+
+  it("ignores mapped snapshots that are not on disk", () => {
+    assert.equal(
+      snapshotIdForBundle(
+        "src/pages/wiki.scss",
+        { snapshotMap: { "src/pages/wiki.scss": "wiki-list" } },
+        () => false,
+      ),
+      null,
+    );
+  });
+
+  it("skips dead-selector lint when the snapshot file is missing", () => {
+    const bundle = compileFixture("dead.scss");
+    bundle.file = "src/pages/wiki.scss";
+    const result = lintAllDead(
+      [bundle],
+      { snapshotMap: { "src/pages/wiki.scss": "wiki-list" } },
+      { snapshotExists: () => false },
+    );
+    assert.equal(result.findings.length, 0);
+    assert.equal(result.skipped[0]?.reason, "no-snapshot");
   });
 
   it("honors dead-selector ignore globs", () => {

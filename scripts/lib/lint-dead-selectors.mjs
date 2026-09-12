@@ -9,12 +9,9 @@ import { pagesDir } from "./snapshot-io.mjs";
 
 export function snapshotIdForBundle(file, config = {}, existsFn) {
   const mapped = config.snapshotMap?.[file];
-  if (mapped) {
-    return mapped;
-  }
-  const id = bundleId(file);
+  const id = mapped || bundleId(file);
   const check = existsFn || ((candidate) => existsSync(join(pagesDir, `${candidate}.html`)));
-  if (check(id)) {
+  if (id && check(id)) {
     return id;
   }
   return null;

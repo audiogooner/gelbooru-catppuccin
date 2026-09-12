@@ -22,10 +22,10 @@ Rules that already live in a shared partial (`src/_*.scss`) are skipped for cros
 
 Dead-selector checks load [`snapshots/pages/<id>.html`](../snapshots/INDEX.md).
 
-1. [`style.lint.config.mjs`](../style.lint.config.mjs) `snapshotMap` override
+1. [`style.lint.config.mjs`](../style.lint.config.mjs) `snapshotMap` override, if that HTML file exists
 2. Else `src/pages/<id>.scss` → `snapshots/pages/<id>.html` when that file exists
 
-Bundles without a snapshot (and `src/base.scss`) are skipped. The summary prints how many were skipped.
+Bundles without a snapshot (and `src/base.scss`) are skipped, including mapped ids whose HTML is missing. The summary prints how many were skipped.
 
 ## False positives
 
