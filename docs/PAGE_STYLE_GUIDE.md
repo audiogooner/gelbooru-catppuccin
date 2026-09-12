@@ -10,7 +10,7 @@ How to add and extend per-page styles in this userstyle. Read this together with
 | Global | `src/base.scss` | Every Gelbooru page: body, links, forms, nav, tags, tables, pagination, comments |
 | Shared chrome | `src/_bootstrap-chrome.scss`, `src/_messages-chrome.scss` | Mixins for bootstrap-layout pages (navbar, mail alerts) and messages.css pages |
 | Page bundle | `src/pages/<name>.scss` | One SCSS file per URL match in `style.config.mjs` |
-| Export | `gelbooru.user.css` | All bundles wrapped in `@-moz-document` rules |
+| Export | `gelbooru.user.css`, `gelbooru.min.user.css` | All bundles wrapped in `@-moz-document` rules (expanded + minified) |
 
 **Rule of thumb:** put cross-page patterns in `base.scss`. Put layout-specific or page-only overrides in `src/pages/`. Do not duplicate what `base.scss` already handles unless the page needs to fight site CSS more aggressively.
 
@@ -24,7 +24,7 @@ How to add and extend per-page styles in this userstyle. Read this together with
    - Add an entry to `bundles` with a matching `@-moz-document` URL.
    - Prefer `url-prefix("…")` whenever pagination or query params appear (`&pid=`, `&id=`, form GET params). Exact `url("…")` only for truly static URLs.
 6. **Develop** with `npm run dev` and the live-inject userscript. Use the dev chip to toggle individual bundles — confirm the new id is checked under **THIS PAGE**.
-7. **Export** with `npm run export` when testing Stylus (not only live inject).
+7. **Export** with `npm run export` when testing Stylus (not only live inject). That writes expanded `gelbooru.user.css` and minified `gelbooru.min.user.css`.
 8. **Optional:** run `npm run preview:install` once, then hover selectors in SCSS to see snapshot screenshots.
 
 ### `@-moz-document` matching

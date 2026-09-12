@@ -395,7 +395,9 @@ a:has(> img.webm) {
   }
 
   &::after {
-    content: "";
+    content: "▶";
+    display: grid;
+    place-items: center;
     position: absolute;
     right: 3px;
     bottom: 3px;
@@ -404,8 +406,13 @@ a:has(> img.webm) {
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center / contain no-repeat;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 28%);
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1;
+    padding-left: 2px;
+    background: color-mix(in srgb, var(--crust) 70%, transparent);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--crust) 28%, transparent);
     transition: opacity 220ms ease;
   }
 
@@ -467,7 +474,7 @@ div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
 
 .profileAvatar {
   border: 2px solid var(--surface2);
-  box-shadow: 0 0 30px rgba(88, 91, 112, 0.27);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--surface2) 27%, transparent);
 }
 
 /* ----------------------------------------------------
@@ -557,7 +564,7 @@ table {
 th {
   background: var(--blue) !important;
   color: var(--base) !important;
-  border: 1px solid white;
+  border: 1px solid var(--base);
   border-radius: 10px;
 }
 
@@ -569,7 +576,7 @@ th {
    MISC ELEMENTS
    ---------------------------------------------------- */
 .aside {
-  border-right: solid 1px var(--overlay1);
+  border-right: solid 1px var(--surface1);
 }
 
 footer {

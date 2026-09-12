@@ -466,7 +466,9 @@
     anchor-name: --thumb-media;
   }
   a:has(> img.webm)::after {
-    content: "";
+    content: "▶";
+    display: grid;
+    place-items: center;
     position: absolute;
     right: 3px;
     bottom: 3px;
@@ -475,8 +477,13 @@
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center/contain no-repeat;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1;
+    padding-left: 2px;
+    background: color-mix(in srgb, var(--crust) 70%, transparent);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--crust) 28%, transparent);
     transition: opacity 220ms ease;
   }
   a:has(> img.webm):hover::after {
@@ -531,7 +538,7 @@
 
   .profileAvatar {
     border: 2px solid var(--surface2);
-    box-shadow: 0 0 30px rgba(88, 91, 112, 0.27);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--surface2) 27%, transparent);
   }
 
   /* ----------------------------------------------------
@@ -615,7 +622,7 @@
   th {
     background: var(--blue) !important;
     color: var(--base) !important;
-    border: 1px solid white;
+    border: 1px solid var(--base);
     border-radius: 10px;
   }
 
@@ -627,7 +634,7 @@
      MISC ELEMENTS
      ---------------------------------------------------- */
   .aside {
-    border-right: solid 1px var(--overlay1);
+    border-right: solid 1px var(--surface1);
   }
 
   footer {
@@ -1890,10 +1897,10 @@
 
   a[href*="page=conversation"] .profileOptionSelect {
     color: var(--crust) !important;
-    background: var(--sapphire) !important;
+    background: var(--blue) !important;
   }
   a[href*="page=conversation"] .profileOptionSelect:hover {
-    background: var(--blue) !important;
+    background: var(--sapphire) !important;
   }
 
   .profileRemoveAvatar {
@@ -4947,51 +4954,151 @@
     accent-color: var(--red);
   }
 
+  /* Match post-list gallery: square reserved cells, media-only hit targets, and
+     the shared blue/red ring hover (pool markup puts `.thumbnail-preview` on the
+     img inside a bare `span`, so base `article img` rules never apply). */
   .thumbnail-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 150px));
+    display: grid !important;
+    /* Cap the track at the thumb’s real max (250) so `1fr` can’t stretch cells on
+       this full-width bootstrap page and squeeze the gutter between image edges
+       down to the raw `gap` alone (post-list’s main column is narrower). */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 250px));
     justify-content: start;
-    gap: 0.6rem;
+    gap: 1.25rem !important;
+    align-items: start;
     margin: 0 0 0.85rem;
     padding: 0.35rem 0 1rem;
     min-width: 0;
   }
   .thumbnail-container > span {
     display: block;
+    box-sizing: border-box;
     min-width: 0;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  .thumbnail-container a {
-    display: block;
+  .thumbnail-container {
+    /* Same footprint trick as post-list: reserve a square before the thumb loads,
+       then hand clicks/hover back to the media (the anchor is larger than the img). */
+  }
+  .thumbnail-container > span > a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    pointer-events: none;
+  }
+  .thumbnail-container > span > a:has(> img.webm) {
+    display: flex !important;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
   }
 
   img.thumbnail-preview {
-    display: block;
-    width: 100% !important;
-    max-width: 175px;
-    max-height: 175px;
+    /* Site `.thumbnail-preview` (on the img here) sets white bg, 5px pad/margin,
+       and mobile `max-*-size: 180px !important` — clear those so the square cell wins. */
+    display: block !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
     height: auto !important;
-    margin: 0 !important;
+    margin: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
     object-fit: contain;
+    pointer-events: auto;
     border-radius: 7px;
-    box-shadow: 0 0 10px var(--crust);
-    transition: scale 400ms cubic-bezier(0, 0.55, 0.45, 1), border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1), box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
+    box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+    transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
   }
   img.thumbnail-preview:hover {
-    scale: 110%;
-    border-radius: 0;
-    box-shadow: 0 0 30px var(--surface0);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent), 0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
   }
-  img.thumbnail-preview[title~=animated], img.thumbnail-preview[alt~=animated], img.thumbnail-preview[alt~=video], img.thumbnail-preview.webm {
+  img.thumbnail-preview {
+    /* Animated stills (gif) — pool thumbs rarely get `.webm` from list JS. */
+  }
+  img.thumbnail-preview[title~=animated]:not([title~=video]):not(.webm), img.thumbnail-preview[alt~=animated]:not([alt~=video]):not(.webm) {
     outline: 3px solid var(--blue);
     outline-offset: -3px;
   }
+  img.thumbnail-preview[title~=video], img.thumbnail-preview[alt~=video], img.thumbnail-preview.webm {
+    outline: none;
+    box-shadow: 0 0 0 0 transparent, 0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent), 0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  }
+  img.thumbnail-preview[title~=video]:hover, img.thumbnail-preview[alt~=video]:hover, img.thumbnail-preview.webm:hover {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)), 0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
+  }
 
+  /* Play badge: base `a:has(> img.webm)` covers `.webm`; pool also tags videos in
+     title/alt without that class. */
+  .thumbnail-container > span > a:has(> img[title~=video]):not(:has(> img.webm)),
+  .thumbnail-container > span > a:has(> img[alt~=video]):not(:has(> img.webm)) {
+    position: relative;
+  }
+  .thumbnail-container > span > a:has(> img[title~=video]):not(:has(> img.webm)) > img,
+  .thumbnail-container > span > a:has(> img[alt~=video]):not(:has(> img.webm)) > img {
+    anchor-name: --thumb-media;
+  }
+  .thumbnail-container > span > a:has(> img[title~=video]):not(:has(> img.webm))::after,
+  .thumbnail-container > span > a:has(> img[alt~=video]):not(:has(> img.webm))::after {
+    content: "▶";
+    display: grid;
+    place-items: center;
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1;
+    padding-left: 2px;
+    background: color-mix(in srgb, var(--crust) 70%, transparent);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--crust) 28%, transparent);
+    transition: opacity 220ms ease;
+  }
+  .thumbnail-container > span > a:has(> img[title~=video]):not(:has(> img.webm)):hover::after,
+  .thumbnail-container > span > a:has(> img[alt~=video]):not(:has(> img.webm)):hover::after {
+    opacity: 1;
+  }
+  @supports (anchor-name: --thumb-media) {
+    .thumbnail-container > span > a:has(> img[title~=video]):not(:has(> img.webm))::after,
+    .thumbnail-container > span > a:has(> img[alt~=video]):not(:has(> img.webm))::after {
+      right: auto;
+      bottom: auto;
+      position-anchor: --thumb-media;
+      top: anchor(bottom);
+      left: anchor(right);
+      transform: translate(calc(-100% - 3px), calc(-100% - 3px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    img.thumbnail-preview {
+      transition: none;
+    }
+    .thumbnail-container > span > a:has(> img[title~=video])::after,
+    .thumbnail-container > span > a:has(> img[alt~=video])::after {
+      transition: none;
+    }
+  }
+  /* `.padding15` is 15px inset; cancel it so the sticky bar spans the column like
+     post-list’s bar cancels `main` padding. */
   div#paginator {
     position: sticky;
     bottom: 0;
     z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0px;
+    margin: 0.75rem calc(-1 * 15px) 0;
+    padding: 0.6rem 15px;
     background: color-mix(in srgb, var(--base) 88%, transparent);
     backdrop-filter: blur(6px);
     border-top: 1px solid var(--surface1);
@@ -8215,7 +8322,9 @@
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)), 0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent), 0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
   }
   span.thumb:has(> a:first-of-type > img[title~=video]) > a:first-of-type::after, span.thumb:has(> a:first-of-type > img.webm) > a:first-of-type::after {
-    content: "";
+    content: "▶";
+    display: grid;
+    place-items: center;
     position: absolute;
     right: 3px;
     bottom: 3px;
@@ -8224,8 +8333,13 @@
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000' fill-opacity='.7'/%3E%3Cpath d='M8 6v12l10-6z' fill='%23fff'/%3E%3C/svg%3E") center/contain no-repeat;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1;
+    padding-left: 2px;
+    background: color-mix(in srgb, var(--crust) 70%, transparent);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--crust) 28%, transparent);
     transition: opacity 220ms ease;
   }
   span.thumb:has(> a:first-of-type > img[title~=video]):hover > a:first-of-type::after, span.thumb:has(> a:first-of-type > img.webm):hover > a:first-of-type::after {
@@ -8262,15 +8376,20 @@
     opacity: 0;
     transform: translate(-50%, -50%);
     background-color: var(--red);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z' fill='%23fff'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 0.72rem;
+    background-image: none;
     border: none;
     border-radius: 50%;
     box-shadow: 0 1px 6px color-mix(in srgb, var(--crust) 70%, transparent);
     pointer-events: none;
     transition: opacity 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+  span.thumb a[href*="s=delete"]::before {
+    content: "";
+    width: 0.72rem;
+    height: 0.72rem;
+    background-color: var(--base);
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
   }
   span.thumb a[href*="s=delete"] b {
     position: absolute;

@@ -93,55 +93,165 @@
   }
 }
 
+/* Match post-list gallery: square reserved cells, media-only hit targets, and
+   the shared blue/red ring hover (pool markup puts `.thumbnail-preview` on the
+   img inside a bare `span`, so base `article img` rules never apply). */
 .thumbnail-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 150px));
+  display: grid !important;
+  /* Cap the track at the thumb’s real max (250) so `1fr` can’t stretch cells on
+     this full-width bootstrap page and squeeze the gutter between image edges
+     down to the raw `gap` alone (post-list’s main column is narrower). */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 250px));
   justify-content: start;
-  gap: 0.6rem;
+  gap: 1.25rem !important;
+  align-items: start;
   margin: 0 0 0.85rem;
   padding: 0.35rem 0 1rem;
   min-width: 0;
 
   > span {
     display: block;
+    box-sizing: border-box;
     min-width: 0;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  a {
-    display: block;
+  /* Same footprint trick as post-list: reserve a square before the thumb loads,
+     then hand clicks/hover back to the media (the anchor is larger than the img). */
+  > span > a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    pointer-events: none;
+  }
+
+  > span > a:has(> img.webm) {
+    display: flex !important;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
   }
 }
 
 img.thumbnail-preview {
-  display: block;
-  width: 100% !important;
-  max-width: 175px;
-  max-height: 175px;
+  /* Site `.thumbnail-preview` (on the img here) sets white bg, 5px pad/margin,
+     and mobile `max-*-size: 180px !important` — clear those so the square cell wins. */
+  display: block !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
   height: auto !important;
-  margin: 0 !important;
+  margin: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
   object-fit: contain;
+  pointer-events: auto;
   border-radius: 7px;
-  box-shadow: 0 0 10px var(--crust);
-  transition:
-    scale 400ms cubic-bezier(0, 0.55, 0.45, 1),
-    border-radius 400ms cubic-bezier(0, 0.55, 0.45, 1),
-    box-shadow 400ms cubic-bezier(0, 0.55, 0.45, 1);
+  box-shadow:
+    0 0 0 0 transparent,
+    0 0 0 0 transparent,
+    0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
 
   &:hover {
-    scale: 110%;
-    border-radius: 0;
-    box-shadow: 0 0 30px var(--surface0);
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--surface1) 72%, transparent),
+      0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent),
+      0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
   }
 
-  &[title~="animated"],
-  &[alt~="animated"],
-  &[alt~="video"],
-  &.webm {
+  /* Animated stills (gif) — pool thumbs rarely get `.webm` from list JS. */
+  &[title~="animated"]:not([title~="video"]):not(.webm),
+  &[alt~="animated"]:not([alt~="video"]):not(.webm) {
     outline: 3px solid var(--blue);
     outline-offset: -3px;
   }
+
+  &[title~="video"],
+  &[alt~="video"],
+  &.webm {
+    outline: none;
+    box-shadow:
+      0 0 0 0 transparent,
+      0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent),
+      0 2px 10px color-mix(in srgb, var(--crust) 55%, transparent);
+
+    &:hover {
+      box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--surface0)),
+        0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent),
+        0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
+    }
+  }
 }
 
+/* Play badge: base `a:has(> img.webm)` covers `.webm`; pool also tags videos in
+   title/alt without that class. */
+.thumbnail-container > span > a:has(> img[title~="video"]):not(:has(> img.webm)),
+.thumbnail-container > span > a:has(> img[alt~="video"]):not(:has(> img.webm)) {
+  position: relative;
+
+  > img {
+    anchor-name: --thumb-media;
+  }
+
+  &::after {
+    content: "▶";
+    display: grid;
+    place-items: center;
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1;
+    padding-left: 2px;
+    background: color-mix(in srgb, var(--crust) 70%, transparent);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--crust) 28%, transparent);
+    transition: opacity 220ms ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  @supports (anchor-name: --thumb-media) {
+    &::after {
+      right: auto;
+      bottom: auto;
+      position-anchor: --thumb-media;
+      top: anchor(bottom);
+      left: anchor(right);
+      transform: translate(calc(-100% - 3px), calc(-100% - 3px));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.thumbnail-preview {
+    transition: none;
+  }
+
+  .thumbnail-container > span > a:has(> img[title~="video"])::after,
+  .thumbnail-container > span > a:has(> img[alt~="video"])::after {
+    transition: none;
+  }
+}
+
+/* `.padding15` is 15px inset; cancel it so the sticky bar spans the column like
+   post-list’s bar cancels `main` padding. */
 div#paginator {
-  @include sticky-paginator.bar(0px);
+  @include sticky-paginator.bar(15px);
 }

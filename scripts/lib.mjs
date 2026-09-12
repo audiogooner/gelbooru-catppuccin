@@ -18,18 +18,18 @@ export function useConfig(config) {
 
 export const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-export function compileFile(file) {
+export function compileFile(file, { style = "expanded" } = {}) {
   return sass.compile(join(root, file), {
-    style: "expanded",
+    style,
     sourceMap: false,
     loadPaths: [join(root, "src")],
   }).css;
 }
 
-export function compileBundles() {
+export function compileBundles({ style = "expanded" } = {}) {
   return bundles.map((bundle) => ({
     ...bundle,
-    css: compileFile(bundle.file).trim(),
+    css: compileFile(bundle.file, { style }).trim(),
   }));
 }
 
@@ -114,11 +114,14 @@ export function indent(css, spaces = 2) {
     .join("\n");
 }
 
-export function assembleUserstyle(compiled) {
-  const sections = compiled.map(
-    (bundle) =>
-      `@-moz-document ${bundle.document} {\n${indent(bundle.css)}\n}`,
-  );
+export function assembleUserstyle(compiled, { compact = false } = {}) {
+  const sections = compiled.map((bundle) => {
+    const css = bundle.css.trim();
+    if (compact) {
+      return `@-moz-document ${bundle.document}{${css}}`;
+    }
+    return `@-moz-document ${bundle.document} {\n${indent(css)}\n}`;
+  });
 
-  return `${userstyleHeader()}\n\n${sections.join("\n\n")}\n`;
+  return `${userstyleHeader()}\n\n${sections.join(compact ? "\n" : "\n\n")}\n`;
 }

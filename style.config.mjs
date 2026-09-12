@@ -254,6 +254,7 @@ export const bundles = [
 ];
 
 export const exportFile = "gelbooru.user.css";
+export const exportMinFile = "gelbooru.min.user.css";
 
 export const snapshotPages = [
   { id: "homepage", url: "https://gelbooru.com/" },

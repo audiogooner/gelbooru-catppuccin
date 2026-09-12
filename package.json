@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "export": "node scripts/export.mjs",
+    "lint:styles": "node scripts/lint-styles.mjs",
+    "test": "node --test scripts/*.test.mjs",
     "snapshot:fetch": "node scripts/fetch-snapshots.mjs",
     "preview:install": "node scripts/install-selector-preview.mjs"
   },

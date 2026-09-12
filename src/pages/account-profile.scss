@@ -200,10 +200,10 @@ a:has(> .profileOptionSelect) {
 
 a[href*="page=conversation"] .profileOptionSelect {
   color: var(--crust) !important;
-  background: var(--sapphire) !important;
+  background: var(--blue) !important;
 
   &:hover {
-    background: var(--blue) !important;
+    background: var(--sapphire) !important;
   }
 }
 

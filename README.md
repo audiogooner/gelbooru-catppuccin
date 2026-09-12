@@ -45,4 +45,12 @@ After that, **Alt+Shift+S** also screenshots matching elements into `snapshots/p
 npm run export
 ```
 
-Writes a Stylus/Violentmonkey-compatible UserStyle to `gelbooru.user.css`.
+Writes an expanded Stylus/Violentmonkey UserStyle to `gelbooru.user.css` (git / review) and a minified install copy to `gelbooru.min.user.css`.
+
+## Lint
+
+```bash
+npm run lint:styles   # duplicate/redundant/dead selector report
+```
+
+Compiles each page bundle and reports duplicate selectors, copied declaration blocks, rules that already live in `base.scss`, and selectors that miss the page snapshot. See [`docs/LINT.md`](docs/LINT.md).

@@ -1,9 +1,5 @@
 html
   head
-    style
-  body.vc-init
-    div#gelbooru-dev-overlay
-    style
     meta
     title
     link
@@ -14,11 +10,16 @@ html
     meta
     meta
     script
+    style
+    style
+    style
     script
     script
     script
     script
     style
+  body.vc-init
+    div#gelbooru-dev-overlay
     div.container-fluid
       nav.navbar.navbar-default
         div.navbar-header
@@ -121,6 +122,134 @@ html
                 td
                 td
                   a
+                td
+                  a
+              tr.rotate_list
+                td
+                td
+                  a
+                td
+                td
+                  a
+                td
+                td
+                  a
+                  span.removed-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.removed-tags
+                    span.tag-type-general
+                      a
+                        span
+                td
+                  a
+              tr.rotate_list
+                td
+                td
+                  a
+                td
+                td
+                  a
+                td
+                td
+                  a
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                td
+                  a
+              tr.rotate_list
+                td
+                td
+                  a
+                td
+                td
+                  a
+                td
+                td
+                  a
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                td
+                  a
+              tr.rotate_list
+                td
+                td
+                  a
+                td
+                td
+                  a
+                td
+                td
+                  a
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                td
+                  a
+              tr.rotate_list
+                td
+                td
+                  a
+                td
+                td
+                  a
+                td
+                td
+                  a
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.removed-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.removed-tags
+                    span.tag-type-general
+                      a
+                        span
+                  span.added-tags
+                    span.tag-type-general
+                      a
+                        span
                   span.added-tags
                     span.tag-type-general
                       a
@@ -141,24 +270,12 @@ html
                     span.tag-type-copyright
                       a
                         span
-                td
-                  a
-              tr.rotate_list
-                td
-                td
-                  a
-                td
-                td
-                  a
-                td
-                td
-                  a
-                  span.removed-tags
-                    span.tag-type-general
+                  span.added-tags
+                    span.tag-type-copyright
                       a
                         span
-                  span.removed-tags
-                    span.tag-type-artist
+                  span.added-tags
+                    span.tag-type-general
                       a
                         span
                 td
@@ -176,16 +293,6 @@ html
                   span.unchanged-tags
                     span.tag-type-general
                       a
-                  span.added-tags
-                    span.tag-type-general
-                      a
-                        span
-                  span.unchanged-tags
-                    span.tag-type-artist
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
                   span.unchanged-tags
                     span.tag-type-general
                       a
@@ -193,6 +300,9 @@ html
                     span.tag-type-general
                       a
                         span
+                  span.unchanged-tags
+                    span.tag-type-general
+                      a
                   span.unchanged-tags
                     span.tag-type-general
                       a
@@ -202,82 +312,12 @@ html
                   span.unchanged-tags
                     span.tag-type-artist
                       a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.added-tags
-                    span.tag-type-general
-                      a
-                        span
                   span.unchanged-tags
                     span.tag-type-character
                       a
                   span.unchanged-tags
                     span.tag-type-general
                       a
-                  span.unchanged-tags
-                    span.tag-type-copyright
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.added-tags
-                    span.tag-type-general
-                      a
-                        span
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.added-tags
-                    span.tag-type-general
-                      a
-                        span
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.unchanged-tags
-                    span.tag-type-general
-                      a
-                  span.added-tags
-                    span.tag-type-general
-                      a
-                        span
                   span.unchanged-tags
                     span.tag-type-general
                       a
