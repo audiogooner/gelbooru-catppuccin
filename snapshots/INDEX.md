@@ -22,7 +22,9 @@ Media `src` values are stripped, script bodies are emptied (tags stay so `nth-ch
 | conversation-create | https://gelbooru.com/index.php?page=conversation&s=create&id=1231719 | [html](pages/conversation-create.html) · [outline](pages/conversation-create.outline.txt) · [meta](pages/conversation-create.json) | 13 | [messages.css](css/messages.css), [jquery-ui.css](css/jquery-ui.css) |
 | conversation-list | https://gelbooru.com/index.php?page=conversation&s=list | [html](pages/conversation-list.html) · [outline](pages/conversation-list.outline.txt) · [meta](pages/conversation-list.json) | 11 | [messages.css](css/messages.css) |
 | conversation-view | https://gelbooru.com/index.php?page=conversation&s=view&id=29710 | [html](pages/conversation-view.html) · [outline](pages/conversation-view.outline.txt) · [meta](pages/conversation-view.json) | 23 | [messages.css](css/messages.css) |
+| dmca | https://gelbooru.com/index.php?page=dmca&s=index | [html](pages/dmca.html) · [outline](pages/dmca.outline.txt) · [meta](pages/dmca.json) | 9 | [gridStyle.css](css/gridStyle.css), [jquery-ui.css](css/jquery-ui.css) |
 | extras-artists | https://gelbooru.com/index.php?page=extras&s=artists | [html](pages/extras-artists.html) · [outline](pages/extras-artists.outline.txt) · [meta](pages/extras-artists.json) | 10 | [gridStyle.css](css/gridStyle.css), [jquery-ui.css](css/jquery-ui.css) |
+| extras-patreon | https://gelbooru.com/index.php?page=extras&s=patreon | [html](pages/extras-patreon.html) · [outline](pages/extras-patreon.outline.txt) · [meta](pages/extras-patreon.json) | 24 | [bootstrap.css](css/bootstrap.css), [responsive.css](css/responsive.css), [jquery-ui.css](css/jquery-ui.css), [jquery-ui.icon-font.min.css](css/jquery-ui.icon-font.min.css) |
 | favorites-view | https://gelbooru.com/index.php?page=favorites&s=view&id=1231719&pid=100 | [html](pages/favorites-view.html) · [outline](pages/favorites-view.outline.txt) · [meta](pages/favorites-view.json) | 11 | [default.css](css/default.css), [jquery-ui.css](css/jquery-ui.css) |
 | forum-add | https://gelbooru.com/index.php?page=forum&s=add | [html](pages/forum-add.html) · [outline](pages/forum-add.outline.txt) · [meta](pages/forum-add.json) | 11 | [default.css](css/default.css), [jquery-ui.css](css/jquery-ui.css) |
 | forum-list | https://gelbooru.com/index.php?page=forum&s=list&pid=2 | [html](pages/forum-list.html) · [outline](pages/forum-list.outline.txt) · [meta](pages/forum-list.json) | 28 | [gridStyle.css](css/gridStyle.css), [jquery-ui.css](css/jquery-ui.css) |
@@ -50,15 +52,10 @@ Media `src` values are stripped, script bodies are emptied (tags stay so `nth-ch
 | tracker-roadmap | https://gelbooru.com/index.php?page=tracker&s=roadmap | [html](pages/tracker-roadmap.html) · [outline](pages/tracker-roadmap.outline.txt) · [meta](pages/tracker-roadmap.json) | 23 | [bootstrap.css](css/bootstrap.css), [responsive.css](css/responsive.css), [jquery-ui.css](css/jquery-ui.css), [jquery-ui.icon-font.min.css](css/jquery-ui.icon-font.min.css) |
 | tracker-view | https://gelbooru.com/index.php?page=tracker&s=view&id=1521 | [html](pages/tracker-view.html) · [outline](pages/tracker-view.outline.txt) · [meta](pages/tracker-view.json) | 11 | [default.css](css/default.css), [jquery-ui.css](css/jquery-ui.css) |
 | wiki-create | https://gelbooru.com/index.php?page=wiki&s=create&title=ravennvi | [html](pages/wiki-create.html) · [outline](pages/wiki-create.outline.txt) · [meta](pages/wiki-create.json) | 12 | [default.css](css/default.css), [jquery-ui.css](css/jquery-ui.css) |
+| wiki-edit | https://gelbooru.com/index.php?page=wiki&s=edit&id=26769 | [html](pages/wiki-edit.html) · [outline](pages/wiki-edit.outline.txt) · [meta](pages/wiki-edit.json) | 12 | [default.css](css/default.css), [jquery-ui.css](css/jquery-ui.css) |
 | wiki-history | https://gelbooru.com/index.php?page=wiki&s=history&id=30344 | [html](pages/wiki-history.html) · [outline](pages/wiki-history.outline.txt) · [meta](pages/wiki-history.json) | 12 | [default.css](css/default.css), [jquery-ui.css](css/jquery-ui.css) |
 | wiki-list | https://gelbooru.com/index.php?page=wiki&s=list | [html](pages/wiki-list.html) · [outline](pages/wiki-list.outline.txt) · [meta](pages/wiki-list.json) | 14 | [gridStyle.css](css/gridStyle.css), [jquery-ui.css](css/jquery-ui.css) |
 | wiki-view | https://gelbooru.com/index.php?page=wiki&s=view&id=7337 | [html](pages/wiki-view.html) · [outline](pages/wiki-view.outline.txt) · [meta](pages/wiki-view.json) | 28 | [bootstrap.css](css/bootstrap.css), [responsive.css](css/responsive.css), [jquery-ui.css](css/jquery-ui.css), [jquery-ui.icon-font.min.css](css/jquery-ui.icon-font.min.css) |
-| wiki | https://gelbooru.com/index.php?page=wiki&s=&s=edit&id=26769 | [html](pages/wiki.html) · [outline](pages/wiki.outline.txt) · [meta](pages/wiki.json) | 12 | [default.css](css/default.css), [jquery-ui.css](css/jquery-ui.css) |
-
-## Not captured yet
-
-- **extras-patreon** — https://gelbooru.com/index.php?page=extras&s=patreon (`npm run snapshot:fetch`)
-- **dmca** — https://gelbooru.com/index.php?page=dmca&s=index (`npm run snapshot:fetch`)
 
 ## Site CSS
 
@@ -73,5 +70,5 @@ Media `src` values are stripped, script bodies are emptied (tags stay so `nth-ch
 
 ## Capture
 
-- Public pages: `npm run snapshot:fetch`
+- Public pages: `npm run snapshot:fetch` (`--only <id>`, `--force` to overwrite a live capture)
 - Any page (logged-in too): with `npm run dev` running, open the page and press **Alt+Shift+S**

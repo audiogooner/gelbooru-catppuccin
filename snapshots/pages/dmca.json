@@ -1,0 +1,31 @@
+{
+  "id": "dmca",
+  "url": "https://gelbooru.com/index.php?page=dmca&s=index",
+  "title": "DMCA Removal Index | Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-09-12T12:57:24.793Z",
+  "source": "fetch",
+  "classes": [
+    "active",
+    "aside",
+    "homeIcon",
+    "icon",
+    "mainBodyPadding",
+    "navSubmenu",
+    "searchArea",
+    "searchList",
+    "topnav"
+  ],
+  "ids": [
+    "container",
+    "long-notice",
+    "motd",
+    "myTopnav",
+    "notice",
+    "tags-search"
+  ],
+  "stylesheets": [
+    "gridStyle.css",
+    "jquery-ui.css"
+  ],
+  "notes": []
+}

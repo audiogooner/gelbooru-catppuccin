@@ -73,6 +73,69 @@ function hrefFrom(url) {
   return url.searchParams.get("href") ?? "";
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function landingPage() {
+  const userscript = `http://${host}:${port}/gelbooru-dev.user.js`;
+  const errorBlock = compileError
+    ? `<pre class="err">${escapeHtml(compileError)}</pre>`
+    : "";
+  return `<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gelbooru userstyle — dev</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0;
+    font: 15px/1.45 ui-sans-serif, system-ui, sans-serif;
+    background: #1e1e2e;
+    color: #cdd6f4;
+  }
+  main { max-width: 40rem; margin: 0 auto; padding: 2.5rem 1.25rem; }
+  h1 { font-size: 1.25rem; font-weight: 650; }
+  a { color: #89b4fa; }
+  ol { padding-left: 1.2rem; }
+  li { margin: 0.4rem 0; }
+  kbd, code, pre {
+    font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  kbd, code {
+    padding: 0.1em 0.35em;
+    background: #313244;
+    border-radius: 6px;
+  }
+  pre {
+    padding: 0.75rem 1rem;
+    overflow: auto;
+    background: #313244;
+    border-radius: 6px;
+  }
+  .err { color: #f38ba8; }
+  .hint { color: #6c7086; font-size: 0.9rem; }
+</style>
+<main>
+  <h1>Gelbooru userstyle — live inject</h1>
+  ${errorBlock}
+  <ol>
+    <li>Install the userscript in Violentmonkey:<br>
+      <a href="${userscript}">${userscript}</a></li>
+    <li>Open <a href="https://gelbooru.com">gelbooru.com</a> — edits under <code>src/</code> reload automatically</li>
+    <li><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> toggles the overlay (theme / page bundles / site CSS)</li>
+    <li><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> captures a snapshot and selector hover previews</li>
+  </ol>
+  <p class="hint">Disable any installed copy of the exported UserStyle while developing.
+  Generation ${generation}${compileError ? " · last good CSS still served" : ""}.</p>
+</main>
+`;
+}
+
 function captureDriver() {
   const slim = readFileSync(slimPath, "utf8").replaceAll(/^export /gm, "");
   const driver = readFileSync(capturePath, "utf8");
@@ -235,12 +298,7 @@ const server = createServer((req, res) => {
   }
 
   if (url.pathname === "/") {
-    send(
-      res,
-      200,
-      `Gelbooru userstyle dev server\n\nUserscript: http://${host}:${port}/gelbooru-dev.user.js\nCSS:        http://${host}:${port}/style.css\nOverlay:    Alt+Shift+D on a Gelbooru page\nSnapshot:   Alt+Shift+S on a Gelbooru page\n`,
-      "text/plain; charset=utf-8",
-    );
+    send(res, 200, landingPage(), "text/html; charset=utf-8");
     return;
   }
 
@@ -252,9 +310,20 @@ const rebuild = debounce(compile, 80);
 watch(join(root, "src"), { recursive: true }, rebuild);
 watch(join(root, "style.config.mjs"), rebuild);
 
+server.on("error", (error) => {
+  if (error.code === "EADDRINUSE") {
+    console.error(
+      `Port ${port} is already in use. Stop the other \`npm run dev\`, or set PORT=…`,
+    );
+    process.exit(1);
+  }
+  throw error;
+});
+
 server.listen(port, host, () => {
   console.log(`
 Gelbooru userstyle — live inject
+  Open  http://${host}:${port}
   1. Install the userscript in Violentmonkey:
        http://${host}:${port}/gelbooru-dev.user.js
   2. Open https://gelbooru.com — source and bundle config edits reload automatically

@@ -51,10 +51,25 @@ export function runLint(options = {}) {
   return summarizeFindings(findings, skippedDead);
 }
 
+function parseArgs(argv) {
+  return {
+    json: !argv.includes("--no-json"),
+    verbose: argv.includes("--verbose") || argv.includes("-v"),
+  };
+}
+
 function main() {
+  const args = parseArgs(process.argv.slice(2));
   const report = runLint();
-  writeReport(report);
-  console.log(formatReport(report));
+  if (args.json) {
+    writeReport(report);
+  }
+  console.log(
+    formatReport(report, {
+      jsonPath: args.json ? "lint-results.json" : undefined,
+      verbose: args.verbose,
+    }),
+  );
   if (report.totals.errors > 0) {
     process.exitCode = 1;
   }

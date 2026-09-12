@@ -87,7 +87,7 @@ export function lintDeadSelectors(bundle, document, snapshotId, config = {}) {
 
     findings.push({
       rule: "dead-selector",
-      severity: "error",
+      severity: "warning",
       message: `${rule.selector} — no match in snapshot ${snapshotId}`,
       locations: [ruleLocation(rule, bundle.file)],
     });

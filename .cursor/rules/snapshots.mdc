@@ -10,5 +10,6 @@ Before changing selectors, open `snapshots/INDEX.md`, then the page’s `outline
 - Match `@-moz-document` in `style.config.mjs` to the page you are styling (`src/base.scss` is global; `src/pages/*` is per-page).
 - Prefer class and id selectors. Keep `:nth-child` only for unique chrome that has no class/id (header/nav is never collapsed in snapshots).
 - Treat `<!-- snapshot: omitted … -->` as a gap: sibling counts after that comment are not the live page’s `:nth-child` indices.
-- Recapture a page with Alt+Shift+S (dev userscript) after Gelbooru markup changes, or run `npm run snapshot:fetch` for public pages.
+- Recapture a page with Alt+Shift+S (dev userscript) after Gelbooru markup changes, or run `npm run snapshot:fetch` for public pages (`--only <id>`, `--force` to overwrite live captures).
+- After adding `src/pages/<id>.scss`, register it in `style.config.mjs` `bundles` and run `npm run doctor`.
 - Selector hover previews come from the same live capture (`snapshots/previews/`). Run `npm run preview:install` once, reload the window, then hover a selector in `src/**/*.scss`.

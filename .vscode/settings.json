@@ -1,0 +1,13 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "gelbooru.user.css": true,
+    "gelbooru.min.user.css": true,
+    "snapshots/css": true,
+    "snapshots/previews": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "snapshots/previews/**": true
+  }
+}

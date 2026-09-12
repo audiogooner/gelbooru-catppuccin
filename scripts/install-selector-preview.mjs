@@ -1,16 +1,17 @@
-import { existsSync, lstatSync, mkdirSync, rmSync, symlinkSync, unlinkSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, symlinkSync, unlinkSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "editor/selector-preview");
+const pkg = JSON.parse(readFileSync(join(src, "package.json"), "utf8"));
 const extDir =
   process.env.CURSOR_EXTENSIONS_DIR || join(homedir(), ".cursor", "extensions");
-const dest = join(extDir, "gelbooru-userstyle.gelbooru-selector-preview-0.1.1");
-const stale = [
-  join(extDir, "gelbooru-userstyle.selector-preview-0.1.0"),
-  join(extDir, "gelbooru-userstyle.gelbooru-selector-preview-0.1.0"),
+const dest = join(extDir, `${pkg.publisher}.${pkg.name}-${pkg.version}`);
+const stalePrefixes = [
+  "gelbooru-userstyle.selector-preview-",
+  "gelbooru-userstyle.gelbooru-selector-preview-",
 ];
 
 function removePath(target) {
@@ -26,11 +27,19 @@ function removePath(target) {
 }
 
 mkdirSync(extDir, { recursive: true });
-for (const old of stale) {
-  removePath(old);
-}
-removePath(dest);
 
+for (const name of readdirSync(extDir)) {
+  const isStalePrefix = stalePrefixes.some((prefix) => name.startsWith(prefix));
+  if (!isStalePrefix) {
+    continue;
+  }
+  const target = join(extDir, name);
+  if (target !== dest) {
+    removePath(target);
+  }
+}
+
+removePath(dest);
 symlinkSync(src, dest);
 console.log(`Linked ${dest}`);
 console.log(`     -> ${src}`);

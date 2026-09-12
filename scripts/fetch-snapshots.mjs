@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { parseHTML } from "linkedom";
 import { snapshotPages } from "../style.config.mjs";
 import {
@@ -9,7 +11,7 @@ import {
   stylesheetHrefs,
   stylesheetName,
 } from "./lib/slim-document.mjs";
-import { writeSnapshot } from "./lib/snapshot-io.mjs";
+import { pagesDir, writeSnapshot } from "./lib/snapshot-io.mjs";
 
 const UA =
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
@@ -128,13 +130,70 @@ async function capturePage(url, forcedId) {
   );
 }
 
+function parseArgs(argv) {
+  const args = { force: false, only: null, help: false };
+  for (let i = 0; i < argv.length; i += 1) {
+    const arg = argv[i];
+    if (arg === "--force") {
+      args.force = true;
+    } else if (arg === "--only") {
+      args.only = argv[++i];
+    } else if (arg.startsWith("--only=")) {
+      args.only = arg.slice("--only=".length);
+    } else if (arg === "--help" || arg === "-h") {
+      args.help = true;
+    } else {
+      throw new Error(`Unknown argument: ${arg}`);
+    }
+  }
+  return args;
+}
+
+function existingSource(id) {
+  const metaPath = join(pagesDir, `${id}.json`);
+  if (!existsSync(metaPath)) {
+    return null;
+  }
+  try {
+    return JSON.parse(readFileSync(metaPath, "utf8")).source || null;
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
+  const args = parseArgs(process.argv.slice(2));
+  if (args.help) {
+    console.log(`Fetch public Gelbooru snapshots.
+
+  npm run snapshot:fetch
+  npm run snapshot:fetch -- --only tags-list
+  npm run snapshot:fetch -- --force
+
+Live (Alt+Shift+S) captures are skipped unless --force is set.
+Logged-in pages stay userscript-only.`);
+    return;
+  }
+
+  let entries = snapshotPages;
+  if (args.only) {
+    entries = snapshotPages.filter((entry) => entry.id === args.only);
+    if (!entries.length) {
+      throw new Error(`Unknown snapshot id: ${args.only}`);
+    }
+  }
+
   console.log("Fetching Gelbooru page snapshots…");
 
-  const skipped = [];
-  for (const entry of snapshotPages) {
+  const skippedLogin = [];
+  const skippedLive = [];
+  for (const entry of entries) {
     if (entry.userscriptOnly) {
-      skipped.push(entry);
+      skippedLogin.push(entry);
+      continue;
+    }
+    if (!args.force && existingSource(entry.id) === "live") {
+      skippedLive.push(entry);
       continue;
     }
     try {
@@ -146,9 +205,17 @@ async function main() {
     await wait(250);
   }
 
-  if (skipped.length) {
+  if (skippedLive.length) {
     console.log(
-      `\nUserscript-only (open the page, Alt+Shift+S):\n${skipped
+      `\nKept live captures (pass --force to overwrite with a public fetch):\n${skippedLive
+        .map((entry) => `  ${entry.id}`)
+        .join("\n")}`,
+    );
+  }
+
+  if (skippedLogin.length) {
+    console.log(
+      `\nUserscript-only (open the page, Alt+Shift+S):\n${skippedLogin
         .map((entry) => `  ${entry.id}  ${entry.url}`)
         .join("\n")}`,
     );

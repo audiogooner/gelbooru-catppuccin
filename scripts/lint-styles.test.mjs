@@ -160,13 +160,14 @@ describe("cross-file lint", () => {
 });
 
 describe("dead selectors", () => {
-  it("errors on selectors that miss the snapshot and skips hover-only extras", () => {
+  it("warns on selectors that miss the snapshot and skips hover-only extras", () => {
     const bundle = compileFixture("dead.scss");
     const html = readFileSync(join(fixtureDir, "dead.html"), "utf8");
     const document = loadSnapshotDocument("dead", html);
     const findings = lintDeadSelectors(bundle, document, "dead");
     assert.equal(findings.length, 1);
     assert.equal(findings[0].rule, "dead-selector");
+    assert.equal(findings[0].severity, "warning");
     assert.match(findings[0].message, /missing-element/);
   });
 

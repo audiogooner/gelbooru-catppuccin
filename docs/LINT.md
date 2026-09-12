@@ -1,6 +1,6 @@
 # Style linter
 
-`npm run lint:styles` compiles every bundle in [`style.config.mjs`](../style.config.mjs) and reports duplicate, redundant, and unused selectors. Findings are printed to the terminal and written to [`audit/lint-results.json`](../audit/lint-results.json).
+`npm run lint:styles` compiles every bundle in [`style.config.mjs`](../style.config.mjs) and reports duplicate, redundant, and unused selectors. Findings are printed to the terminal and written to `lint-results.json` (gitignored). Pass `--no-json` to skip the file. Errors are listed in full; warnings are counted unless you pass `--verbose`.
 
 The linter works on **compiled CSS**, then maps each rule back to SCSS via Sass source maps. That matches the shipped userstyle and treats `@include` expansions as their emitted rules.
 
@@ -12,9 +12,9 @@ The linter works on **compiled CSS**, then maps each rule back to SCSS via Sass 
 | `duplicate-block` | error | Exact same selector **and** declaration block repeated in one bundle. |
 | `duplicate-declarations` | warning | The same declaration block (or a consecutive rule sequence) appears in 2+ page files. Candidate for a mixin — see [Page style guide](PAGE_STYLE_GUIDE.md) (grid collapse, bootstrap chrome). |
 | `redundant-base` | warning | A page rule is identical to a `base.scss` rule (same selector, at-rule, and values). Extra properties or a different `!important` are not flagged. |
-| `dead-selector` | error | After stripping `:hover` / `::before` and similar, the selector matches nothing in the page snapshot. |
+| `dead-selector` | warning | After stripping `:hover` / `::before` and similar, the selector matches nothing in the page snapshot. Often optional UI (pending rows, video, admin chrome) that this snapshot did not include. |
 
-Cross-file `duplicate-declarations` warnings never fail the run. `duplicate-selector`, `duplicate-block`, and `dead-selector` set exit code 1.
+Cross-file `duplicate-declarations`, `redundant-base`, and `dead-selector` warnings never fail the run. `duplicate-selector` and `duplicate-block` set exit code 1.
 
 Rules that already live in a shared partial (`src/_*.scss`) are skipped for cross-file clustering so mixin output is not reported as “extract a mixin.” Sass source maps often point `@include` expansions at the call site, so a mixin that is already extracted can still show up if every caller maps there.
 

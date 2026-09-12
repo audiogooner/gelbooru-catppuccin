@@ -112,10 +112,10 @@ export function writeIndex() {
 
   const missing = pages.length
     ? ""
-    : "_No pages captured yet. Run `npm run snapshot:fetch` or press Alt+Shift+S on a Gelbooru page._\n\n";
+    : "_No pages captured yet. Run `npm run snapshot:fetch` or press Alt+Shift+S on a Gelbooru page._";
 
-  const pendingSection = pending.length
-    ? `## Not captured yet\n\n${pending.join("\n")}\n`
+  const pendingBlock = pending.length
+    ? `\n## Not captured yet\n\n${pending.join("\n")}\n`
     : "";
 
   const body = `# Page snapshots
@@ -128,16 +128,15 @@ Media \`src\` values are stripped, script bodies are emptied (tags stay so \`nth
 
 | Page | URL | Files | Classes | Site CSS |
 |------|-----|-------|---------|----------|
-${rows.join("\n") || "| — | | | | |"}
+${rows.join("\n") || "| — | | | | |"}${missing ? `\n\n${missing}` : ""}${pendingBlock}
 
-${missing}${pendingSection}
 ## Site CSS
 
 ${cssFiles.map((name) => `- [${name}](css/${name})`).join("\n") || "_None yet._"}
 
 ## Capture
 
-- Public pages: \`npm run snapshot:fetch\`
+- Public pages: \`npm run snapshot:fetch\` (\`--only <id>\`, \`--force\` to overwrite a live capture)
 - Any page (logged-in too): with \`npm run dev\` running, open the page and press **Alt+Shift+S**
 `;
 

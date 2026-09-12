@@ -62,7 +62,7 @@ export function pageIdFromUrl(href) {
   try {
     const url = new URL(href);
     const page = url.searchParams.get("page");
-    const s = url.searchParams.get("s");
+    const s = url.searchParams.getAll("s").find(Boolean) || "";
     if (!page) {
       const path = url.pathname.replace(/^\//, "").replace(/\.php$/, "");
       if (!path || path === "index") {
@@ -70,7 +70,7 @@ export function pageIdFromUrl(href) {
       }
       return slugify(path);
     }
-    if (page === "wiki" && url.searchParams.has("search")) {
+    if (page === "wiki" && !s && url.searchParams.has("search")) {
       return "wiki-view";
     }
     return s ? `${page}-${slugify(s)}` : page;

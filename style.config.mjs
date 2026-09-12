@@ -256,6 +256,8 @@ export const bundles = [
 export const exportFile = "gelbooru.user.css";
 export const exportMinFile = "gelbooru.min.user.css";
 
+const live = { userscriptOnly: true };
+
 export const snapshotPages = [
   { id: "homepage", url: "https://gelbooru.com/" },
   {
@@ -266,19 +268,62 @@ export const snapshotPages = [
   {
     id: "post-add",
     url: "https://gelbooru.com/index.php?page=post&s=add",
-    userscriptOnly: true,
+    ...live,
   },
   { id: "comment-list", url: "https://gelbooru.com/index.php?page=comment&s=list" },
   { id: "tags-list", url: "https://gelbooru.com/index.php?page=tags&s=list" },
   {
+    id: "tags-implications",
+    url: "https://gelbooru.com/index.php?page=tags&s=implications",
+  },
+  {
+    id: "tags-edit",
+    url: "https://gelbooru.com/index.php?page=tags&s=edit",
+    ...live,
+  },
+  {
     id: "tags-saved-search",
     url: "https://gelbooru.com/index.php?page=tags&s=saved_search",
-    userscriptOnly: true,
+    ...live,
   },
+  { id: "alias-list", url: "https://gelbooru.com/index.php?page=alias&s=list" },
   { id: "wiki-list", url: "https://gelbooru.com/index.php?page=wiki&s=list" },
   { id: "wiki-view", discover: "wiki-view" },
+  {
+    id: "wiki-create",
+    url: "https://gelbooru.com/index.php?page=wiki&s=create",
+    ...live,
+  },
+  {
+    id: "wiki-edit",
+    url: "https://gelbooru.com/index.php?page=wiki&s=edit",
+    ...live,
+  },
+  {
+    id: "wiki-history",
+    url: "https://gelbooru.com/index.php?page=wiki&s=history",
+    ...live,
+  },
   { id: "pool-list", url: "https://gelbooru.com/index.php?page=pool&s=list" },
+  {
+    id: "pool-show",
+    url: "https://gelbooru.com/index.php?page=pool&s=show&id=73820",
+  },
+  {
+    id: "pool-add",
+    url: "https://gelbooru.com/index.php?page=pool&s=add",
+    ...live,
+  },
   { id: "forum-list", url: "https://gelbooru.com/index.php?page=forum&s=list" },
+  {
+    id: "forum-view",
+    url: "https://gelbooru.com/index.php?page=forum&s=view&id=484",
+  },
+  {
+    id: "forum-add",
+    url: "https://gelbooru.com/index.php?page=forum&s=add",
+    ...live,
+  },
   {
     id: "extras-artists",
     url: "https://gelbooru.com/index.php?page=extras&s=artists",
@@ -291,48 +336,102 @@ export const snapshotPages = [
   { id: "tracker-list", url: "https://gelbooru.com/index.php?page=tracker&s=list" },
   {
     id: "tracker-view",
-    url: "https://gelbooru.com/index.php?page=tracker&s=view&id=1518",
+    url: "https://gelbooru.com/index.php?page=tracker&s=view&id=1521",
+  },
+  {
+    id: "tracker-changelog",
+    url: "https://gelbooru.com/index.php?page=tracker&s=changelog",
+  },
+  {
+    id: "tracker-roadmap",
+    url: "https://gelbooru.com/index.php?page=tracker&s=roadmap",
   },
   {
     id: "tracker-create-ticket",
     url: "https://gelbooru.com/index.php?page=tracker&s=create_ticket",
+    ...live,
   },
   {
     id: "favorites-view",
     url: "https://gelbooru.com/index.php?page=favorites&s=view",
-    userscriptOnly: true,
+    ...live,
   },
-  { id: "account-home", url: "https://gelbooru.com/index.php?page=account&s=home" },
+  {
+    id: "account-home",
+    url: "https://gelbooru.com/index.php?page=account&s=home",
+    ...live,
+  },
   {
     id: "account-options",
     url: "https://gelbooru.com/index.php?page=account&s=options",
+    ...live,
   },
   {
     id: "account-profile",
     url: "https://gelbooru.com/index.php?page=account&s=profile",
-    userscriptOnly: true,
+    ...live,
+  },
+  {
+    id: "account-change-password",
+    url: "https://gelbooru.com/index.php?page=account&s=change_password",
+    ...live,
   },
   {
     id: "account-change-avatar",
     url: "https://gelbooru.com/index.php?page=account&s=change_avatar",
-    userscriptOnly: true,
+    ...live,
+  },
+  {
+    id: "account-report",
+    url: "https://gelbooru.com/index.php?page=account&s=report",
+    ...live,
+  },
+  {
+    id: "account-tag-edits",
+    url: "https://gelbooru.com/index.php?page=account&s=tag_edits",
+    ...live,
+  },
+  {
+    id: "account-view-user-comments",
+    url: "https://gelbooru.com/index.php?page=account&s=view_user_comments",
+    ...live,
   },
   {
     id: "conversation-create",
     url: "https://gelbooru.com/index.php?page=conversation&s=create",
-    userscriptOnly: true,
+    ...live,
   },
   {
     id: "conversation-view",
     url: "https://gelbooru.com/index.php?page=conversation&s=view",
-    userscriptOnly: true,
+    ...live,
   },
   {
     id: "conversation-list",
     url: "https://gelbooru.com/index.php?page=conversation&s=list",
-    userscriptOnly: true,
+    ...live,
+  },
+  {
+    id: "gmail-home",
+    url: "https://gelbooru.com/index.php?page=gmail&s=home",
+    ...live,
+  },
+  {
+    id: "gmail-manage",
+    url: "https://gelbooru.com/index.php?page=gmail&s=manage",
+    ...live,
   },
   { id: "help", url: "https://gelbooru.com/index.php?page=help" },
+  {
+    id: "history",
+    url: "https://gelbooru.com/index.php?page=history",
+    ...live,
+  },
+  {
+    id: "redeemcode",
+    url: "https://gelbooru.com/redeemCode.php",
+    ...live,
+  },
   { id: "tos", url: "https://gelbooru.com/tos.php" },
   { id: "aboutus", url: "https://gelbooru.com/index.php?page=aboutus" },
 ];

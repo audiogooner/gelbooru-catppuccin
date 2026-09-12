@@ -1,0 +1,49 @@
+{
+  "id": "extras-patreon",
+  "url": "https://gelbooru.com/index.php?page=extras&s=patreon",
+  "title": "Patreon Supporters | Gelbooru - Anime Art & Hentai Gallery - Free to Explore",
+  "capturedAt": "2026-09-12T12:57:26.247Z",
+  "source": "fetch",
+  "classes": [
+    "active",
+    "alert",
+    "alert-info",
+    "alert-success",
+    "alert-warning",
+    "collapse",
+    "collapsed",
+    "container-fluid",
+    "icon-bar",
+    "nav",
+    "navbar",
+    "navbar-brand",
+    "navbar-collapse",
+    "navbar-default",
+    "navbar-header",
+    "navbar-nav",
+    "navbar-toggle",
+    "padding15",
+    "row",
+    "small",
+    "sr-only",
+    "strong",
+    "ui-icon",
+    "ui-icon-lightbulb"
+  ],
+  "ids": [
+    "long-notice",
+    "motd",
+    "motdspacer",
+    "navbar",
+    "navbar2",
+    "notice",
+    "submenu"
+  ],
+  "stylesheets": [
+    "bootstrap.css",
+    "responsive.css",
+    "jquery-ui.css",
+    "jquery-ui.icon-font.min.css"
+  ],
+  "notes": []
+}

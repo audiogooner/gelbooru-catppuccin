@@ -524,7 +524,7 @@ Use these as templates when adding similar pages:
 | Conversation view | `conversation-view.scss` | Messages | Thread list, bubbles, reply box, report modal |
 | Conversation list | `conversation-list.scss` | Messages | Two-column shell, shared thread list, rules card |
 
-Pages without a dedicated bundle yet (e.g. post list/view) rely on `base.scss` only — add a page file when global rules are not enough.
+`account-view-user-comments` has a snapshot but no page bundle yet — it still relies on `base.scss`. Add `src/pages/<id>.scss` when global rules are not enough, register it in `style.config.mjs`, then run `npm run doctor`.
 
 ## Checklist before opening a PR
 
@@ -539,4 +539,5 @@ Pages without a dedicated bundle yet (e.g. post list/view) rely on `base.scss` o
 - [ ] Thumbnails and buttons match established hover/radius patterns
 - [ ] `<br>` spacers hidden where layout was reworked
 - [ ] Tested on desktop and narrow viewport if layout uses flex/grid/table conversion
-- [ ] `npm run export` produces valid CSS (CI/export script)
+- [ ] `npm run check` is clean (tests, doctor, style lint)
+- [ ] `npm run export` produces valid CSS

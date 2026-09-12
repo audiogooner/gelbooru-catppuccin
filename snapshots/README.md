@@ -16,9 +16,11 @@ See [INDEX.md](INDEX.md) for captured pages.
 ## Capture
 
 ```bash
-npm run snapshot:fetch    # public pages
+npm run snapshot:fetch                 # public pages
+npm run snapshot:fetch -- --only help  # one page
+npm run snapshot:fetch -- --force      # overwrite live Alt+Shift+S captures
 ```
 
-On any Gelbooru tab with `npm run dev` and the live-inject userscript: **Alt+Shift+S**. Use that for logged-in pages and for JS-injected chrome (ads, MOTD variants) that a plain fetch will miss.
+On any Gelbooru tab with `npm run dev` and the live-inject userscript: **Alt+Shift+S**. Use that for logged-in pages and for JS-injected chrome (ads, MOTD variants) that a plain fetch will miss. A public fetch will not replace those live captures unless you pass `--force`.
 
 Live capture also writes element screenshots to `previews/` for editor hover. Those PNGs stay local (gitignored). Install the hover extension with `npm run preview:install`.
