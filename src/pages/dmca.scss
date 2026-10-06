@@ -1,14 +1,5 @@
 /* DMCA information page. */
 
-aside { display: none !important; }
-
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main { grid-column: 1 / -1; min-width: 0; }
-
 .mainBodyPadding {
   box-sizing: border-box;
   max-width: 64rem;

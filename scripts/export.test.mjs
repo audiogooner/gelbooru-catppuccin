@@ -3,6 +3,7 @@ import { describe, it } from "node:test";
 import {
   assembleUserstyle,
   compileFile,
+  minifyCss,
   parseDocumentRules,
   useConfig,
   userstyleHeader,
@@ -75,5 +76,19 @@ describe("compressed compile", () => {
       extractStyleRules(css).map((rule) => rule.selector);
 
     assert.deepEqual(selectors(expanded), selectors(compressed));
+  });
+});
+
+describe("minifyCss", () => {
+  it("shortens values without dropping modern selectors", () => {
+    const input =
+      ".box:has(> a){margin:0px;background:rgba(0,0,0,0);color:color-mix(in srgb, var(--blue) 50%, transparent)}";
+    const out = minifyCss(input);
+
+    assert.ok(out.includes(":has("));
+    assert.ok(out.includes("color-mix("));
+    assert.ok(!out.includes("0px"));
+    assert.ok(!out.includes("rgba(0,0,0,0)"));
+    assert.ok(out.length < input.length);
   });
 });

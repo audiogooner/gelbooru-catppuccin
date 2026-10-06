@@ -511,16 +511,12 @@ div#paginator {
     align-items: center !important;
     justify-content: center !important;
     box-sizing: border-box;
-    min-width: 42px;
     height: 40px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
     margin: 0 !important;
-    padding: 0 0.7rem !important;
     color: var(--subtext1) !important;
     font-weight: 600;
-    line-height: 1 !important;
-    vertical-align: middle;
-    text-align: center;
-    text-decoration: none;
     background-color: var(--surface1);
     border: none !important;
     border-radius: 10px;

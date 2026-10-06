@@ -8,7 +8,7 @@ How to add and extend per-page styles in this userstyle. Read this together with
 | --- | --- | --- |
 | Palette | `src/_palette.scss` | Catppuccin Mocha CSS variables (`--base`, `--blue`, …) |
 | Global | `src/base.scss` | Every Gelbooru page: body, links, forms, nav, tags, tables, pagination, comments |
-| Shared chrome | `src/_bootstrap-chrome.scss`, `src/_messages-chrome.scss` | Mixins for bootstrap-layout pages (navbar, mail alerts) and messages.css pages |
+| Shared chrome | `src/chrome-*.scss` | One `@-moz-document` each for bootstrap / default / messages / grid-collapse / paginator / highlightable (mixins in `src/_*.scss`) |
 | Page bundle | `src/pages/<name>.scss` | One SCSS file per URL match in `style.config.mjs` |
 | Export | `gelbooru.user.css`, `gelbooru.min.user.css` | All bundles wrapped in `@-moz-document` rules (expanded + minified) |
 
@@ -23,8 +23,9 @@ How to add and extend per-page styles in this userstyle. Read this together with
 5. **Register the bundle** in `style.config.mjs`:
    - Add an entry to `bundles` with a matching `@-moz-document` URL.
    - Prefer `url-prefix("…")` whenever pagination or query params appear (`&pid=`, `&id=`, form GET params). Exact `url("…")` only for truly static URLs.
+   - If the page uses shared chrome (bootstrap / default nav, messages shell, grid collapse, sticky `div#paginator`, highlightable tables), add the page file to the matching `chromeFamilies` list. Do not `@include` those mixins in the page file — that would copy the chrome back into the shipped CSS.
 6. **Develop** with `npm run dev` and the live-inject userscript. Use the dev chip to toggle individual bundles — confirm the new id is checked under **THIS PAGE**.
-7. **Export** with `npm run export` when testing Stylus (not only live inject). That writes expanded `gelbooru.user.css` and minified `gelbooru.min.user.css`.
+7. **Export** with `npm run export` when testing Stylus (not only live inject). That writes expanded `gelbooru.user.css` and minified `gelbooru.min.user.css` (Sass compressed, then Lightning CSS on each `@-moz-document` body).
 8. **Optional:** run `npm run preview:install` once, then hover selectors in SCSS to see snapshot screenshots.
 
 ### `@-moz-document` matching
@@ -68,24 +69,7 @@ Gelbooru uses four distinct chrome stacks. Match the one your snapshot loads.
 }
 ```
 
-Many list pages leave `<section class="aside">` empty. Collapse it the same way as saved searches:
-
-```scss
-.aside {
-  display: none !important;
-}
-
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main {
-  grid-column: 1 / -1;
-  min-width: 0;
-  max-width: 100%;
-}
-```
+Many list pages leave `<section class="aside">` empty. Add the page to `chromeFamilies["grid-collapse"]` so shared `.aside` / `aside` / `#container` / `main` rules apply once. Do not copy that block into the page file.
 
 Global nav/submenu colors already live in `base.scss`. Page files usually only mark the active tab and reshape main content.
 
@@ -95,16 +79,9 @@ Global nav/submenu colors already live in `base.scss`. Page files usually only m
 
 **Examples:** account profile, wiki view, pool show, forum view.
 
-**Start every bootstrap page with:**
+Add the page file to `chromeFamilies.bootstrap` in `style.config.mjs`. Shared navbar / mail-alert CSS is emitted once by `src/chrome-bootstrap.scss`. Page files only mark the active tab and style content.
 
-```scss
-@use "bootstrap-chrome";
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
-```
-
-Then style page content. Submenu active / semantic colors need **at least** this specificity — the chrome mixin sets `#submenu .navbar-nav > li > a { color: var(--text) !important }`:
+Submenu active / semantic colors need **at least** this specificity — the chrome bundle sets `#submenu .navbar-nav > li > a { color: var(--text) !important }`:
 
 ```scss
 #submenu .navbar-nav > li > a[href*="s=add"] {
@@ -112,7 +89,7 @@ Then style page content. Submenu active / semantic colors need **at least** this
 }
 ```
 
-Shared navbar rules live in `_bootstrap-chrome.scss` so bootstrap pages stay aligned with grid-layout nav sizing (46px logo, 20px/16px/23px link padding, surface colors).
+Shared navbar rules live in `_bootstrap-chrome.scss` (compiled by `chrome-bootstrap.scss`) so bootstrap pages stay aligned with grid-layout nav sizing (46px logo, 20px/16px/23px link padding, surface colors).
 
 **Submenu action groups** (pool show Edit → History): keep List/New/Help on the left; pull the rest into a right-aligned `--surface0` chip with flex:
 
@@ -140,7 +117,7 @@ Shared navbar rules live in `_bootstrap-chrome.scss` so bootstrap pages stay ali
 
 **Examples:** favorites, account change avatar, pool add.
 
-There is no shared partial yet — copy chrome from `src/pages/favorites-view.scss` (or `pool-add.scss` / `account-change-avatar.scss`) when adding another default.css page. Keep logo sizing and submenu spacing identical to grid/bootstrap nav for visual consistency.
+Add the page file to `chromeFamilies.default` in `style.config.mjs`. Shared header / submenu / success-notice CSS is emitted once by `src/chrome-default.scss`. Page files only mark the active submenu tab and style content. Keep logo sizing and submenu spacing identical to grid/bootstrap nav for visual consistency.
 
 **Typography trap:** `default.css` forces `font-family: Tahoma` on `h1–h4`. Always reset content titles:
 
@@ -152,7 +129,7 @@ There is no shared partial yet — copy chrome from `src/pages/favorites-view.sc
 }
 ```
 
-Also rename “My Account” → “Settings” via the `::after` trick used on favorites/pool-add so legacy chrome matches grid nav labels.
+“My Account” → “Settings” is already in the shared default chrome bundle.
 
 ### 4. Messages layout (`messages.css`)
 
@@ -160,7 +137,7 @@ Also rename “My Account” → “Settings” via the `::after` trick used on 
 
 **Examples:** conversation create, conversation list, conversation view.
 
-Shared rules live in `src/_messages-chrome.scss` (`@include messages-chrome.shell`); the left thread list is `@include messages-chrome.thread-list`, shared by list and view. Create and list collapse the empty third column; view keeps left thread list, `#rightMenu`, `#replyBox`, and footer. Recolor inline `#333` / `#0773fb` on `.grid-item` / `#createMessage`. Hide form `<br>` spacers and restyle `.usernameInput`, `#textMessageArea`, and `input[type="submit"]` like other forms.
+Add the page file to `chromeFamilies.messages` (and `chromeFamilies["messages-thread"]` for list/view). Shared shell / thread-list CSS is emitted once by `src/chrome-messages.scss` and `src/chrome-messages-thread.scss`. Create and list collapse the empty third column; view keeps left thread list, `#rightMenu`, `#replyBox`, and footer. Recolor inline `#333` / `#0773fb` on `.grid-item` / `#createMessage`. Hide form `<br>` spacers and restyle `.usernameInput`, `#textMessageArea`, and `input[type="submit"]` like other forms.
 
 ## Design tokens
 
@@ -329,28 +306,12 @@ table.form {
 }
 ```
 
-**Rounded data tables** (tags, implications, aliases, pools, forum list) — prefer a single outer border over thick per-cell borders:
+**Rounded data tables** (tags, implications, pools, tag history, wiki history, tracker) — add the page to `chromeFamilies.highlightable`. Shared border / radius / last-row chrome is emitted once. Page files only add columns, hover, status tints, and `th` / `td + td` dividers:
 
 ```scss
 table.highlightable {
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--surface1);
-  border-radius: 10px;
-  overflow: hidden;
-
-  th,
-  td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
-  }
-
-  tr:last-child > td {
-    border-bottom: none !important;
-  }
-
-  td + td,
-  th + th {
+  th + th,
+  td + td {
     border-left: 1px solid var(--surface1) !important;
   }
 }
@@ -427,6 +388,8 @@ a.forum-top-button img {
 
 Same idea as logo / vote filters in `base.scss` — do not invent new hex fills for raster icons.
 
+When the same SVG data URI is used for both `mask` and `-webkit-mask`, put it in a custom property once (`--icon-pencil: url("data:…")`) and reference `var(--icon-pencil)` from both properties.
+
 ### Toggle checkbox
 
 See `src/pages/account-options.scss` — custom pill switch with CSS variables `--toggle-pad`, `--toggle-thumb`, `--toggle-travel`, `--toggle-ease`. Reuse that block for other boolean settings.
@@ -460,9 +423,8 @@ Gelbooru markup relies on `<br>` and table layouts. Common fixes:
    ---------------------------------------------------- */
 ```
 
-- `@use "bootstrap-chrome"` at the top when needed (load path is `src/`).
 - Nest with `&` for hover/focus and BEM-like site classes.
-- Use `@include bootstrap-chrome.navbar` instead of copying navbar rules.
+- Do not `@include` shared chrome mixins in page files; register the page in the matching `chromeFamilies` list instead. For a non-default sticky `div#paginator` inset, only set `--paginator-inset-x` (and `--paginator-pad-x` when it differs). Include `sticky-paginator.bar` only on `.pagination` or another non-`#paginator` wrapper.
 - Local CSS variables (e.g. toggle sizing) are fine inside a component block.
 - Keep units consistent with neighbors: `rem` for spacing in newer pages, `px` where matching Gelbooru’s 12px verdana chrome.
 
@@ -530,10 +492,11 @@ Use these as templates when adding similar pages:
 
 - [ ] Snapshot exists or was recaptured after markup change
 - [ ] Bundle URL matches the styled page(s); prefer `url-prefix` when query params vary
+- [ ] Shared chrome pages are listed in the matching `chromeFamilies` (no per-page chrome `@include`)
 - [ ] Live inject shows the bundle under THIS PAGE (or Stylus export refreshed)
 - [ ] Active nav/submenu tab highlighted in `--blue`; New/Help green; Delete red
 - [ ] No new hardcoded colors outside palette / asset filters
-- [ ] Form tables reset global blue `th`; data tables use 1px + 10px radius pattern
+- [ ] Form tables reset global blue `th`; highlightable tables are in `chromeFamilies.highlightable` plus page-only column/hover rules
 - [ ] Titles use verdana `1.5em` (especially on `default.css` / bootstrap pages)
 - [ ] Empty aside collapsed on grid list pages when unused
 - [ ] Thumbnails and buttons match established hover/radius patterns

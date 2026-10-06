@@ -1,23 +1,6 @@
-@use "sticky-paginator";
-
 /* ----------------------------------------------------
    ALIAS LIST (grid layout)
    ---------------------------------------------------- */
-
-.aside {
-  display: none !important;
-}
-
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main {
-  grid-column: 1 / -1;
-  min-width: 0;
-  max-width: 100%;
-}
 
 .navSubmenu > a[href*="page=alias"][href*="s=list"] {
   color: var(--blue) !important;
@@ -214,9 +197,6 @@ main {
   }
 }
 
-div#paginator {
-  @include sticky-paginator.bar(0px);
-}
 
 @media only screen and (max-width: 600px) {
   #add-box table {

@@ -89,7 +89,7 @@ main {
    fold. Sticking it to the bottom of `main` keeps it reachable while scrolling
    and lets it settle in place once the end of the list is on screen. */
 .pagination {
-  @include sticky-paginator.bar(var(--post-list-pad-x));
+  @include sticky-paginator.bar(var(--post-list-pad-x), $compact: true);
 }
 
 @media only screen and (max-width: 850px) {

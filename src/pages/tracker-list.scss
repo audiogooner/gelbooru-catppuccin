@@ -1,12 +1,6 @@
-@use "bootstrap-chrome";
-@use "sticky-paginator";
-
 /* ----------------------------------------------------
    TRACKER LIST (bootstrap / responsive.css layout)
    ---------------------------------------------------- */
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
 
 #submenu .navbar-nav > li > a[href*="page=tracker"][href*="s=list"] {
   color: var(--blue) !important;
@@ -98,11 +92,6 @@ table.highlightable {
   table-layout: fixed;
   color: var(--text) !important;
   font-size: 12px;
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--surface1);
-  border-radius: 10px;
-  overflow: hidden;
 
   > tbody > tr:hover {
     background: var(--surface0) !important;
@@ -117,8 +106,6 @@ table.highlightable {
   }
 
   td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.65rem 0.85rem !important;
     color: var(--text) !important;
     vertical-align: middle;
@@ -127,10 +114,6 @@ table.highlightable {
     & + td {
       border-left: 1px solid var(--surface1) !important;
     }
-  }
-
-  tr:last-child > td {
-    border-bottom: none !important;
   }
 
   /* Title + metadata */
@@ -195,9 +178,6 @@ table.highlightable {
   }
 }
 
-div#paginator {
-  @include sticky-paginator.bar(0px);
-}
 
 @media only screen and (max-width: 700px) {
   table.highlightable {

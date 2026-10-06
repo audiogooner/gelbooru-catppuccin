@@ -2,11 +2,6 @@
    CONVERSATION LIST (messages.css layout)
    ---------------------------------------------------- */
 
-@use "messages-chrome";
-
-@include messages-chrome.shell;
-@include messages-chrome.thread-list;
-
 /* The right column is empty on this page — drop it and let content fill the row. */
 @media only screen and (min-width: 851px) {
   .grid-container {

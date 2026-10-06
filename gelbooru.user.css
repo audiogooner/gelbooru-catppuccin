@@ -577,16 +577,12 @@
     align-items: center !important;
     justify-content: center !important;
     box-sizing: border-box;
-    min-width: 42px;
     height: 40px;
+    aspect-ratio: 1/1;
+    padding: 0;
     margin: 0 !important;
-    padding: 0 0.7rem !important;
     color: var(--subtext1) !important;
     font-weight: 600;
-    line-height: 1 !important;
-    vertical-align: middle;
-    text-align: center;
-    text-decoration: none;
     background-color: var(--surface1);
     border: none !important;
     border-radius: 10px;
@@ -661,6 +657,486 @@
 
   .mainBodyPadding > div:nth-child(n+18) > div:nth-child(2) > span:nth-child(6) > span:nth-child(2) > a:nth-child(1) {
     color: var(--red) !important;
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=account&s=profile"), url-prefix("https://gelbooru.com/index.php?page=wiki"), url-prefix("https://gelbooru.com/index.php?page=pool&s=show"), url("https://gelbooru.com/tos.php"), url-prefix("https://gelbooru.com/index.php?page=extras&s=patreon"), url-prefix("https://gelbooru.com/index.php?page=forum&s=view"), url-prefix("https://gelbooru.com/index.php?page=history"), url-prefix("https://gelbooru.com/index.php?page=tracker&s=list"), url-prefix("https://gelbooru.com/index.php?page=tracker&s=changelog"), url-prefix("https://gelbooru.com/index.php?page=tracker&s=roadmap") {
+  @charset "UTF-8";
+  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
+     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1.
+     Compiled once by src/chrome-bootstrap.scss — do not @include from page files. */
+  .container-fluid:has(> .navbar) {
+    padding: 0;
+  }
+
+  .navbar,
+  .navbar-default {
+    min-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    background: var(--surface0) !important;
+    border: 0;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  .navbar-header {
+    height: calc(20px + 1.42857143em + 23px);
+  }
+
+  .navbar-brand {
+    float: left;
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px !important;
+    min-width: 0;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    font-size: 12px;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  #navbar.navbar-collapse {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  #navbar .navbar-nav {
+    margin: 0;
+  }
+
+  #navbar .navbar-nav > li > a {
+    padding: 20px 16px 23px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-decoration: none;
+  }
+
+  #navbar .navbar-nav > li > a:hover,
+  #navbar .navbar-nav > li > a:focus {
+    background-color: transparent !important;
+  }
+
+  #navbar .navbar-nav > .active > a,
+  #navbar .navbar-nav > .active > a:hover,
+  #navbar .navbar-nav > .active > a:focus {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+  }
+
+  #navbar a.ui-icon {
+    margin: 0 !important;
+    font-size: 14px !important;
+  }
+
+  .navbar-default .navbar-toggle {
+    border-color: var(--surface1);
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: var(--text);
+  }
+
+  .navbar-header > button:hover,
+  .navbar-header > button:focus,
+  .navbar-header > button:active {
+    background: var(--surface1) !important;
+  }
+
+  #submenu.navbar {
+    min-height: 0;
+    overflow: visible;
+    padding: 10px 15px !important;
+    background: var(--surface1) !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  #submenu.navbar .navbar-nav {
+    float: none;
+    margin: 0;
+  }
+  #submenu.navbar .navbar-nav > li {
+    float: none;
+    display: inline-block;
+  }
+  #submenu.navbar .navbar-nav > li > a {
+    display: inline-block;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    color: var(--text) !important;
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    background: transparent !important;
+  }
+
+  .alert-success {
+    margin: 0.75rem 0 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green) !important;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .alert-success a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=account&s=change_avatar"), url-prefix("https://gelbooru.com/index.php?page=account&s=report"), url-prefix("https://gelbooru.com/index.php?page=account&s=tag_edits"), url-prefix("https://gelbooru.com/index.php?page=wiki&s=history"), url-prefix("https://gelbooru.com/index.php?page=wiki&s=create"), url-prefix("https://gelbooru.com/index.php?page=wiki&s=edit"), url-prefix("https://gelbooru.com/index.php?page=pool&s=add"), url-prefix("https://gelbooru.com/index.php?page=forum&s=add"), url-prefix("https://gelbooru.com/index.php?page=favorites"), url-prefix("https://gelbooru.com/index.php?page=help"), url-prefix("https://gelbooru.com/index.php?page=gmail&s=manage"), url-prefix("https://gelbooru.com/index.php?page=tracker&s=view"), url-prefix("https://gelbooru.com/index.php?page=tracker&s=create_ticket") {
+  @charset "UTF-8";
+  /* Shared chrome for Gelbooru pages that still use default.css.
+     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1.
+     Compiled once by src/chrome-default.scss — do not @include from page files. */
+  body {
+    font-family: verdana, sans-serif, helvetica;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+
+  body > br {
+    display: none;
+  }
+
+  .header {
+    overflow: hidden;
+    background: var(--surface0) !important;
+  }
+  .header .center {
+    margin: 0;
+  }
+  .header a {
+    display: block;
+    padding: 20px 16px 23px;
+    color: var(--text) !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  h2.siteName {
+    display: block;
+    float: left;
+    height: calc(20px + 1.42857143em + 23px);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  h2.siteName a {
+    box-sizing: content-box;
+    width: 46px;
+    height: 46px;
+    padding: 7px 15px 1px 25px !important;
+    margin: 0 !important;
+    overflow: hidden;
+    color: transparent !important;
+    font-size: 0 !important;
+    white-space: nowrap;
+    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
+    background-size: 46px 46px;
+    background-position: 25px 7px;
+  }
+
+  ul.flat-list {
+    display: block;
+    font-size: 12px !important;
+    line-height: 1.42857143;
+  }
+  ul.flat-list li {
+    display: block;
+    float: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.42857143 !important;
+  }
+  ul.flat-list li a {
+    width: auto !important;
+    height: auto !important;
+  }
+  ul.flat-list li.current-page a {
+    background-color: var(--surface2) !important;
+    color: var(--blue) !important;
+    font-weight: bold;
+    padding: 20px 16px 23px !important;
+  }
+  ul.flat-list a[href*="page=help"] {
+    color: var(--green) !important;
+  }
+  ul.flat-list {
+    /* Legacy chrome still says "My Account"; posts nav uses "Settings". */
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"] {
+    font-size: 0 !important;
+  }
+  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
+    content: "Settings";
+    font-size: 12px;
+    font-weight: inherit;
+    font-family: verdana, sans-serif, helvetica;
+    line-height: 1.42857143;
+  }
+
+  /* Match .navSubmenu a spacing (gridStyle.css): margin on the link, not the
+     li wrapper — keeps label flush inside each item. column-gap replaces the
+     ~4px whitespace between direct <a> siblings on account pages. */
+  div.submenu {
+    background: var(--surface1) !important;
+    padding: 10px 15px !important;
+    font-size: 12px;
+    line-height: 1.42857143;
+  }
+  div.submenu .center {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  div.submenu ul.flat-list2 {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li {
+    display: block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+  div.submenu ul.flat-list2 > li > a {
+    display: inline-block !important;
+    float: none !important;
+    color: var(--text) !important;
+    padding: 0 !important;
+    margin: 5px 15px !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    line-height: 1.42857143;
+    font-family: verdana, sans-serif, helvetica;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .success-notice {
+    margin: 0.75rem 1.25rem 0 !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--green);
+    font-size: 0.875em;
+    background: var(--surface0) !important;
+    border: 1px solid var(--green) !important;
+    border-radius: 10px;
+  }
+  .success-notice a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=conversation&s=create"), url-prefix("https://gelbooru.com/index.php?page=conversation&s=list"), url-prefix("https://gelbooru.com/index.php?page=conversation&s=view") {
+  @charset "UTF-8";
+  /* Shared chrome for Gelbooru pages that use messages.css.
+     Compiled once by src/chrome-messages.scss (shell) and
+     src/chrome-messages-thread.scss (thread-list) — do not @include from page files. */
+  /* Conversation thread list in the left column (list + view). */
+  body {
+    font-family: verdana, sans-serif, helvetica;
+  }
+
+  .grid-container {
+    background-color: var(--base) !important;
+    color: var(--text);
+  }
+
+  .grid-item {
+    background-color: var(--mantle) !important;
+    color: var(--text);
+  }
+  .grid-item a {
+    color: var(--text) !important;
+  }
+  .grid-item::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--base);
+  }
+  .grid-item::-webkit-scrollbar-track {
+    background-color: var(--surface0);
+    border-right: 3px solid var(--base);
+  }
+  .grid-item::-webkit-scrollbar-thumb {
+    background-color: var(--surface2);
+    border-right: 3px solid var(--base);
+  }
+
+  #createMessage.messageButton {
+    margin: 0.25rem 0.5rem !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--crust) !important;
+    font-weight: 600;
+    text-align: center;
+    background: var(--blue) !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+  }
+  #createMessage.messageButton:hover {
+    background: var(--sapphire) !important;
+  }
+
+  #messageWindow {
+    background: var(--surface0) !important;
+  }
+
+  @media only screen and (max-width: 850px) {
+    #header {
+      background: var(--surface0);
+    }
+    .menu__btn > span,
+    .menu__btn > span::before,
+    .menu__btn > span::after {
+      background-color: var(--text) !important;
+    }
+    .menu__box {
+      background-color: var(--mantle) !important;
+      box-shadow: 2px 2px 6px var(--crust);
+    }
+    .menu__item {
+      color: var(--text) !important;
+    }
+    .menu__item:hover {
+      background-color: var(--surface1) !important;
+    }
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=conversation&s=list"), url-prefix("https://gelbooru.com/index.php?page=conversation&s=view") {
+  @charset "UTF-8";
+  /* Shared chrome for Gelbooru pages that use messages.css.
+     Compiled once by src/chrome-messages.scss (shell) and
+     src/chrome-messages-thread.scss (thread-list) — do not @include from page files. */
+  /* Conversation thread list in the left column (list + view). */
+  .grid-left-menu-item a {
+    color: var(--subtext0) !important;
+    text-decoration: none;
+  }
+  .grid-left-menu-item a:hover {
+    color: var(--text) !important;
+  }
+  .grid-left-menu-item a[style*="font-weight: bold"] {
+    color: var(--text) !important;
+  }
+  .grid-left-menu-item:has(a[style*="font-weight: bold"]) .grid-item-user-link {
+    background: var(--surface0);
+  }
+
+  .grid-item-user-link {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    margin: 0.35rem 0 !important;
+    border-radius: 7px !important;
+  }
+  .grid-item-user-link:hover {
+    background: var(--surface1) !important;
+  }
+  .grid-item-user-link > div:first-child {
+    background-color: var(--surface0) !important;
+    border-color: var(--surface2) !important;
+  }
+  .grid-item-user-link > div:last-child {
+    display: flex;
+    align-items: center;
+    height: auto !important;
+    line-height: 1.2;
+    color: inherit;
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=tags&s=list"), url-prefix("https://gelbooru.com/index.php?page=tags&s=implications"), url-prefix("https://gelbooru.com/index.php?page=tags&s=edit"), url-prefix("https://gelbooru.com/index.php?page=alias"), url-prefix("https://gelbooru.com/index.php?page=tags&s=saved_search"), url-prefix("https://gelbooru.com/index.php?page=pool&s=list"), url("https://gelbooru.com/index.php?page=post&s=add"), url-prefix("https://gelbooru.com/index.php?page=comment&s=list"), url-prefix("https://gelbooru.com/index.php?page=extras&s=artists"), url-prefix("https://gelbooru.com/index.php?page=dmca&s=index"), url-prefix("https://gelbooru.com/index.php?page=aboutus"), url-prefix("https://gelbooru.com/index.php?page=forum&s=list") {
+  @charset "UTF-8";
+  /* Shared full-width grid: hide empty aside and let main span the row.
+     Compiled once by src/chrome-grid-collapse.scss — do not @include from page files. */
+  .aside,
+  aside {
+    display: none !important;
+  }
+
+  #container {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 100%;
+  }
+
+  main {
+    grid-column: 1/-1;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=wiki&s=list"), url-prefix("https://gelbooru.com/index.php?page=account&s=tag_edits"), url-prefix("https://gelbooru.com/index.php?page=tags&s=list"), url-prefix("https://gelbooru.com/index.php?page=tags&s=implications"), url-prefix("https://gelbooru.com/index.php?page=alias"), url-prefix("https://gelbooru.com/index.php?page=tags&s=saved_search"), url-prefix("https://gelbooru.com/index.php?page=pool&s=list"), url-prefix("https://gelbooru.com/index.php?page=pool&s=show"), url-prefix("https://gelbooru.com/index.php?page=forum&s=list"), url-prefix("https://gelbooru.com/index.php?page=favorites"), url-prefix("https://gelbooru.com/index.php?page=history"), url-prefix("https://gelbooru.com/index.php?page=tracker&s=list") {
+  /* Shared sticky paginator bar.
+     Default `div#paginator` chrome is compiled once by src/chrome-paginator.scss.
+     Pages that need a non-zero inset only set `--paginator-inset-x` (pad follows
+     inset unless `--paginator-pad-x` is set). Include this mixin on `.pagination`
+     (or another wrapper) when the bar is not `div#paginator`.
+
+     `$inset-x` should mirror the parent's horizontal padding when the bar is
+     meant to span the parent's full width; `$pad-x` keeps the links off the
+     bar's edges.
+
+     When including this on the paginator itself, select it as `div#paginator`:
+     the site stylesheets zero its padding at that specificity. */
+  /* Compact variant for gallery and forum lists. Keep the full-size links while
+     limiting the backdrop to the controls; wrap within narrow viewports. */
+  div#paginator {
+    --paginator-inset-x: 0px;
+    --paginator-pad-x: var(--paginator-inset-x);
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    margin: 0.75rem calc(-1 * var(--paginator-inset-x)) 0;
+    padding: 0.6rem var(--paginator-pad-x);
+    background: color-mix(in srgb, var(--base) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--surface1);
+    /* The wrapper is rendered even when the result set fits on one page. */
+  }
+  div#paginator:not(:has(a)) {
+    display: none;
+  }
+  div#paginator > br {
+    display: none;
+  }
+}
+
+@-moz-document url-prefix("https://gelbooru.com/index.php?page=account&s=tag_edits"), url-prefix("https://gelbooru.com/index.php?page=wiki&s=history"), url-prefix("https://gelbooru.com/index.php?page=tags&s=list"), url-prefix("https://gelbooru.com/index.php?page=tags&s=implications"), url-prefix("https://gelbooru.com/index.php?page=pool&s=list"), url-prefix("https://gelbooru.com/index.php?page=tracker&s=list") {
+  @charset "UTF-8";
+  /* Shared highlightable table chrome (border, radius, cell dividers).
+     Compiled once by src/chrome-highlightable.scss — do not @include from page files. */
+  table.highlightable {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--surface1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  table.highlightable td {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+  }
+  table.highlightable tr:last-child > td {
+    border-bottom: none !important;
   }
 }
 
@@ -926,153 +1402,8 @@
   /* ----------------------------------------------------
      ACCOUNT CHANGE AVATAR (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list {
-    /* Legacy chrome still says "My Account"; posts nav uses "Settings". */
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a[href*="s=profile"] {
     color: var(--blue) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   #content {
@@ -1208,149 +1539,6 @@
   /* ----------------------------------------------------
      ACCOUNT REPORT / SCORE (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #content {
     padding: 1.25rem 1.25rem 2rem 30px !important;
     text-align: left;
@@ -1584,135 +1772,9 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=account&s=profile") {
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
   /* ----------------------------------------------------
      ACCOUNT PROFILE (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu a[href*="s=profile"] {
     color: var(--blue) !important;
   }
@@ -1771,9 +1833,10 @@
     width: 1.65rem;
     height: 1.65rem;
     z-index: 1;
+    --icon-pencil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z'/%3E%3C/svg%3E");
     background-color: var(--text);
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z'/%3E%3C/svg%3E") center/contain no-repeat;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: var(--icon-pencil) center/contain no-repeat;
+    -webkit-mask: var(--icon-pencil) center/contain no-repeat;
   }
 
   a[href*="s=change_avatar"]:has(> .profileAvatar):is(:hover, :focus-visible) > .profileAvatar::before {
@@ -2018,165 +2081,12 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=account&s=tag_edits") {
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      ACCOUNT TAG EDIT HISTORY (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-  div.submenu {
-    /* Tag history is reached from the profile */
-  }
+  /* Tag history is reached from the profile */
   div.submenu ul.flat-list2 > li > a[href*="s=profile"] {
     color: var(--blue) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   /* ----- Content ----- */
@@ -2225,29 +2135,23 @@
   /* ----- Tag history table ----- */
   table.highlightable {
     width: 100% !important;
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 1px solid var(--surface1);
-    border-radius: 10px;
-    overflow: hidden;
     color: var(--text) !important;
     font-size: 12px;
   }
   table.highlightable th,
   table.highlightable td {
-    border: none !important;
     border-radius: 0 !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.65rem 0.85rem !important;
     vertical-align: top;
     background: transparent !important;
   }
+  table.highlightable th {
+    border: none !important;
+    border-bottom: 1px solid var(--surface1) !important;
+  }
   table.highlightable th + th,
   table.highlightable td + td {
     border-left: 1px solid var(--surface1) !important;
-  }
-  table.highlightable tr:last-child > td {
-    border-bottom: none !important;
   }
   table.highlightable {
     /* Header row (inline #006ffa) */
@@ -2365,21 +2269,7 @@
 
   /* Match #content horizontal padding so the bar spans edge-to-edge. */
   div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 1.25rem) 0;
-    padding: 0.6rem 1.25rem;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
+    --paginator-inset-x: 1.25rem;
   }
 
   @media only screen and (max-width: 600px) {
@@ -2402,33 +2292,6 @@
   /* ----------------------------------------------------
      WIKI PAGES
      ---------------------------------------------------- */
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
-  div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0px;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
-  }
-
   #container > main > div > div:nth-child(1) > form > table td {
     background: none !important;
   }
@@ -2453,135 +2316,9 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=wiki") {
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
   /* ----------------------------------------------------
      WIKI VIEW (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu a[href*="s=create"] {
     color: var(--green) !important;
   }
@@ -2782,150 +2519,8 @@
   /* ----------------------------------------------------
      WIKI HISTORY (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a[href*="page=wiki"][href*="s=create"] {
     color: var(--green) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   /* ----- Content ----- */
@@ -2958,22 +2553,12 @@
     width: 100%;
     color: var(--text) !important;
     font-size: 12px;
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 1px solid var(--surface1);
-    border-radius: 10px;
-    overflow: hidden;
   }
   table.highlightable td {
     padding: 0.75rem 1rem !important;
     color: var(--text) !important;
     vertical-align: middle;
     word-break: break-word;
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
-  }
-  table.highlightable tr:last-child > td {
-    border-bottom: none !important;
   }
   table.highlightable td + td {
     border-left: 1px solid var(--surface1) !important;
@@ -3049,154 +2634,10 @@
   /* ----------------------------------------------------
      WIKI CREATE (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-  div.submenu {
-    /* Current section — Create is the page we are on */
-  }
+  /* Current section — Create is the page we are on */
   div.submenu ul.flat-list2 > li > a[href*="page=wiki"][href*="s=create"] {
     color: var(--blue) !important;
     font-weight: bold;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   /* ----- Two-column shell: form left, help panel right ----- */
@@ -3357,150 +2798,8 @@
   /* ----------------------------------------------------
      WIKI EDIT (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a[href*="s=create"] {
     color: var(--green) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   /* ----- Two-column shell: form left, help panel right ----- */
@@ -3647,33 +2946,9 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tags&s=list") {
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      TAGS LIST (grid layout)
      ---------------------------------------------------- */
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-    max-width: 100%;
-  }
-
   .navSubmenu > a[href*="page=tags"][href*="s=list"] {
     color: var(--blue) !important;
   }
@@ -3789,13 +3064,6 @@
     background: var(--sapphire) !important;
   }
 
-  table.highlightable {
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 1px solid var(--surface1);
-    border-radius: 10px;
-    overflow: hidden;
-  }
   table.highlightable th {
     border: none !important;
     border-bottom: 1px solid var(--surface1) !important;
@@ -3805,16 +3073,11 @@
     border-left: 1px solid var(--surface1) !important;
   }
   table.highlightable td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.45rem 0.75rem;
     word-break: break-word;
   }
   table.highlightable td + td {
     border-left: 1px solid var(--surface1) !important;
-  }
-  table.highlightable tr:last-child > td {
-    border-bottom: none !important;
   }
   table.highlightable tr.rejected-tag {
     background: color-mix(in srgb, var(--red) 16%, var(--base)) !important;
@@ -3825,24 +3088,6 @@
   table.highlightable .tag-count {
     margin-left: 0.35em;
     color: var(--subtext0);
-  }
-
-  div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0px;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
   }
 
   @media only screen and (max-width: 600px) {
@@ -3880,33 +3125,9 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tags&s=implications") {
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      TAG IMPLICATIONS (grid layout)
      ---------------------------------------------------- */
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-    max-width: 100%;
-  }
-
   .navSubmenu > a[href*="s=implications"] {
     color: var(--blue) !important;
   }
@@ -3978,21 +3199,12 @@
     background: var(--sapphire) !important;
   }
 
-  table.highlightable {
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 1px solid var(--surface1);
-    border-radius: 10px;
-    overflow: hidden;
-  }
   table.highlightable th {
     border: none !important;
     border-bottom: 1px solid var(--surface1) !important;
     border-radius: 0;
   }
   table.highlightable td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.45rem 0.75rem;
     word-break: break-word;
   }
@@ -4001,32 +3213,11 @@
     color: var(--sapphire);
     font-weight: 600;
   }
-  table.highlightable tr:last-child > td {
-    border-bottom: none !important;
-  }
   table.highlightable tr.rejected-tag {
     background: color-mix(in srgb, var(--red) 16%, var(--base)) !important;
   }
   table.highlightable tr.pending-tag {
     background: color-mix(in srgb, var(--blue) 16%, var(--base)) !important;
-  }
-
-  div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0px;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
   }
 
   @media only screen and (max-width: 600px) {
@@ -4048,21 +3239,6 @@
   /* ----------------------------------------------------
      TAG EDIT (grid layout)
      ---------------------------------------------------- */
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-    max-width: 100%;
-  }
-
   .navSubmenu > a[href*="page=tags"][href*="s=list"] {
     color: var(--blue) !important;
   }
@@ -4169,33 +3345,9 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=alias") {
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      ALIAS LIST (grid layout)
      ---------------------------------------------------- */
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-    max-width: 100%;
-  }
-
   .navSubmenu > a[href*="page=alias"][href*="s=list"] {
     color: var(--blue) !important;
   }
@@ -4361,24 +3513,6 @@
     color: var(--subtext0);
   }
 
-  div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0px;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
-  }
-
   @media only screen and (max-width: 600px) {
     #add-box table > tbody > tr {
       display: block;
@@ -4402,15 +3536,6 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tags&s=saved_search") {
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      SAVED SEARCHES PAGE
      ---------------------------------------------------- */
@@ -4422,21 +3547,6 @@
     src: url("data:font/woff;base64,d09GRgABAAAAAAKMAAoAAAAAA0wAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABWAAAADEAAABgRQ1CGGNtYXAAAAGUAAAAMAAAADwA3gA6Z2x5ZgAAAcwAAAABAAAAAQAAAABoZWFkAAAA9AAAADYAAAA2LG3rlGhoZWEAAAEsAAAAFwAAACQDIf86aG10eAAAAYwAAAAIAAAACAAAAABsb2NhAAABxAAAAAgAAAAIAAAAAG1heHAAAAFEAAAAFAAAACAABAACbmFtZQAAAdAAAACnAAABSuUbnVtwb3N0AAACeAAAABMAAAAoAGQAEAABAAAAAQAA75sGBF8PPPUAAwPoAAAAAOar1VoAAAAA5qvVWgAAAAAAAAAAAAAAAwACAAAAAAAAeJxjYGRgYFb4b8GAAIwMqIARACjTAV4AeJxjYGRgYGBmgAEmBjQAAACyAAd4nGNgZmBgnMDAysDCQBgwInPs7e3tGRgYdBlqmBX+WzAwMCswnEBTr8DAAACk7gSpAAAAAAAAAAAAAAB4nCXKuxEAEBQAsPicCQyhsaHWiOZ57qjSBBkFXZGe1UBTJdm0IvjGif0WLpRRCRIAAAAAAAAAAAAAAAB4nIXKOwqDUBCF4d9XYiAP6zS5G9BonwVYpFKwSCd4kQuiothkISmy2qBMGlNkBobvcAbY88JiHgt/ufPYbPHFDgEnsUvARexx4CreLD8OlrvDIuAmtjlyFzsoHmIXxVPsceYt3sw/qal0rvsx0/XUlMM3hqusJBd6GE3XqiSK45gUQ4UmR9MzkqGpmWgoGX7a8E+vVn2BZmDE0NGiSIiI5/0A4p8wzwB4nGNgYsAPmBkYGOIZBAABuAB1AA==") format("woff");
     unicode-range: U+007C, U+002D;
   }
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-    max-width: 100%;
-  }
-
   .navSubmenu > a[href*="s=saved_search"] {
     color: var(--blue) !important;
   }
@@ -4569,52 +3679,14 @@
   }
 
   div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 1.25rem) 0;
-    padding: 0.6rem 1.25rem;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
+    --paginator-inset-x: 1.25rem;
   }
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=pool&s=list") {
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      POOL LIST (grid layout)
      ---------------------------------------------------- */
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-    max-width: 100%;
-  }
-
   .navSubmenu > a[href*="page=pool"][href*="s=list"] {
     color: var(--blue) !important;
   }
@@ -4633,15 +3705,8 @@
     width: 100%;
     color: var(--text) !important;
     font-size: 12px;
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 1px solid var(--surface1);
-    border-radius: 10px;
-    overflow: hidden;
   }
   table.highlightable td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.65rem 0.85rem !important;
     color: var(--text) !important;
     vertical-align: middle;
@@ -4649,9 +3714,6 @@
   }
   table.highlightable td + td {
     border-left: 1px solid var(--surface1) !important;
-  }
-  table.highlightable tr:last-child > td {
-    border-bottom: none !important;
   }
   table.highlightable {
     /* Cover thumb */
@@ -4704,24 +3766,6 @@
     color: var(--text);
   }
 
-  div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0px;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
-  }
-
   @media only screen and (max-width: 850px) {
     table.highlightable td.sm-hidden {
       display: none !important;
@@ -4737,144 +3781,9 @@
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=pool&s=show") {
   @charset "UTF-8";
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      POOL SHOW (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu .navbar-nav > li > a[href*="page=pool"][href*="s=add"],
   #submenu .navbar-nav > li > a[href*="page=help"][href*="topic=pool"] {
     color: var(--green) !important;
@@ -5094,21 +4003,7 @@
   /* `.padding15` is 15px inset; cancel it so the sticky bar spans the column like
      post-list’s bar cancels `main` padding. */
   div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 15px) 0;
-    padding: 0.6rem 15px;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
+    --paginator-inset-x: 15px;
   }
 }
 
@@ -5116,151 +4011,9 @@
   /* ----------------------------------------------------
      POOL ADD (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a[href*="page=pool"][href*="s=add"],
   div.submenu ul.flat-list2 > li > a[href*="page=help"][href*="topic=pool"] {
     color: var(--green) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   #content {
@@ -5424,21 +4177,6 @@
   /* ----------------------------------------------------
      POST ADD / UPLOAD (grid layout)
      ---------------------------------------------------- */
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-    max-width: 100%;
-  }
-
   .navSubmenu > a[href$="s=add"] {
     color: var(--blue) !important;
   }
@@ -5836,9 +4574,10 @@
     content: "";
     position: absolute;
     inset: 0;
+    --icon-fullscreen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
     background: currentColor;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M200-200h80q17 0 28.5 11.5T320-160q0 17-11.5 28.5T280-120H160q-17 0-28.5-11.5T120-160v-120q0-17 11.5-28.5T160-320q17 0 28.5 11.5T200-280v80Zm560 0v-80q0-17 11.5-28.5T800-320q17 0 28.5 11.5T840-280v120q0 17-11.5 28.5T800-120H680q-17 0-28.5-11.5T640-160q0-17 11.5-28.5T680-200h80ZM200-760v80q0 17-11.5 28.5T160-640q-17 0-28.5-11.5T120-680v-120q0-17 11.5-28.5T160-840h120q17 0 28.5 11.5T320-800q0 17-11.5 28.5T280-760h-80Zm560 0h-80q-17 0-28.5-11.5T640-800q0-17 11.5-28.5T680-840h120q17 0 28.5 11.5T840-800v120q0 17-11.5 28.5T800-640q-17 0-28.5-11.5T760-680v-80Z'/%3E%3C/svg%3E");
+    mask-image: var(--icon-fullscreen);
+    -webkit-mask-image: var(--icon-fullscreen);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: var(--post-nav-icon) var(--post-nav-icon);
@@ -5915,9 +4654,10 @@
     right: calc(var(--post-nav-edge) + (var(--post-nav-size) - var(--post-nav-icon)) / 2);
     width: var(--post-nav-icon);
     height: var(--post-nav-icon);
+    --icon-fullscreen-exit: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
     background: var(--text);
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240h-80q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h120q17 0 28.5 11.5T320-280v120q0 17-11.5 28.5T280-120q-17 0-28.5-11.5T240-160v-80Zm480 0v80q0 17-11.5 28.5T680-120q-17 0-28.5-11.5T640-160v-120q0-17 11.5-28.5T680-320h120q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240h-80ZM240-720v-80q0-17 11.5-28.5T280-840q17 0 28.5 11.5T320-800v120q0 17-11.5 28.5T280-640H160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h80Zm480 0h80q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H680q-17 0-28.5-11.5T640-680v-120q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v80Z'/%3E%3C/svg%3E");
+    mask-image: var(--icon-fullscreen-exit);
+    -webkit-mask-image: var(--icon-fullscreen-exit);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
@@ -5995,15 +4735,17 @@
     /* Material Symbols Rounded "arrow_back" */
   }
   .alert-info:not(#resize-link):has(a[onclick*=navigate]) a[onclick*=navigatePrev]::before {
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
+    --icon-prev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z'/%3E%3C/svg%3E");
+    mask-image: var(--icon-prev);
+    -webkit-mask-image: var(--icon-prev);
   }
   .alert-info:not(#resize-link):has(a[onclick*=navigate]) {
     /* Material Symbols Rounded "arrow_forward" */
   }
   .alert-info:not(#resize-link):has(a[onclick*=navigate]) a[onclick*=navigateNext]::before {
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
+    --icon-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z'/%3E%3C/svg%3E");
+    mask-image: var(--icon-next);
+    -webkit-mask-image: var(--icon-next);
   }
   .alert-info:not(#resize-link):has(a[onclick*=navigate]) {
     /* Keep Next on the right when Previous is missing on the first post. */
@@ -6302,14 +5044,19 @@
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=post&s=list") {
   /* Post index: gallery and notices only. Tag-rail spacing stays site-native. */
   /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     Default `div#paginator` chrome is compiled once by src/chrome-paginator.scss.
+     Pages that need a non-zero inset only set `--paginator-inset-x` (pad follows
+     inset unless `--paginator-pad-x` is set). Include this mixin on `.pagination`
+     (or another wrapper) when the bar is not `div#paginator`.
+
+     `$inset-x` should mirror the parent's horizontal padding when the bar is
+     meant to span the parent's full width; `$pad-x` keeps the links off the
      bar's edges.
 
      When including this on the paginator itself, select it as `div#paginator`:
      the site stylesheets zero its padding at that specificity. */
+  /* Compact variant for gallery and forum lists. Keep the full-size links while
+     limiting the backdrop to the controls; wrap within narrow viewports. */
   :root {
     --post-list-pad-x: 1.25rem;
   }
@@ -6394,14 +5141,25 @@
      fold. Sticking it to the bottom of `main` keeps it reachable while scrolling
      and lets it settle in place once the end of the list is on screen. */
   .pagination {
+    --paginator-inset-x: var(--post-list-pad-x);
+    --paginator-pad-x: var(--paginator-inset-x);
     position: sticky;
     bottom: 0;
     z-index: 10;
-    margin: 0.75rem calc(-1 * var(--post-list-pad-x)) 0;
-    padding: 0.6rem var(--post-list-pad-x);
+    margin: 0.75rem calc(-1 * var(--paginator-inset-x)) 0;
+    padding: 0.6rem var(--paginator-pad-x);
     background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(10px);
     border-top: 1px solid var(--surface1);
+    box-sizing: border-box;
+    width: fit-content;
+    max-width: calc(100% - 1rem);
+    margin: 0.75rem auto;
+    padding: 0.4rem;
+    bottom: 0.5rem;
+    border: 1px solid var(--surface1);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
     /* The wrapper is rendered even when the result set fits on one page. */
   }
   .pagination:not(:has(a)) {
@@ -6431,28 +5189,19 @@
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=comment&s=list") {
   /* Comment index: preserve the site's structure and normalize its finish. */
   /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     Default `div#paginator` chrome is compiled once by src/chrome-paginator.scss.
+     Pages that need a non-zero inset only set `--paginator-inset-x` (pad follows
+     inset unless `--paginator-pad-x` is set). Include this mixin on `.pagination`
+     (or another wrapper) when the bar is not `div#paginator`.
+
+     `$inset-x` should mirror the parent's horizontal padding when the bar is
+     meant to span the parent's full width; `$pad-x` keeps the links off the
      bar's edges.
 
      When including this on the paginator itself, select it as `div#paginator`:
      the site stylesheets zero its padding at that specificity. */
-  aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-  }
-
+  /* Compact variant for gallery and forum lists. Keep the full-size links while
+     limiting the backdrop to the controls; wrap within narrow viewports. */
   .navSubmenu > a[href*="page=comment"][href*="s=list"] {
     color: var(--blue) !important;
   }
@@ -6497,13 +5246,15 @@
      parking it at the end gives the sticky bar the whole comment list to slide
      along. */
   .pagination {
+    --paginator-inset-x: 0px;
+    --paginator-pad-x: 1.25rem;
     position: sticky;
     bottom: 0;
     z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 1.25rem;
+    margin: 0.75rem calc(-1 * var(--paginator-inset-x)) 0;
+    padding: 0.6rem var(--paginator-pad-x);
     background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(10px);
     border-top: 1px solid var(--surface1);
     /* The wrapper is rendered even when the result set fits on one page. */
   }
@@ -6533,13 +5284,15 @@
       padding: 0.75rem !important;
     }
     .pagination {
+      --paginator-inset-x: 0px;
+      --paginator-pad-x: 0.75rem;
       position: sticky;
       bottom: 0;
       z-index: 10;
-      margin: 0.75rem calc(-1 * 0px) 0;
-      padding: 0.6rem 0.75rem;
+      margin: 0.75rem calc(-1 * var(--paginator-inset-x)) 0;
+      padding: 0.6rem var(--paginator-pad-x);
       background: color-mix(in srgb, var(--base) 88%, transparent);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(10px);
       border-top: 1px solid var(--surface1);
       /* The wrapper is rendered even when the result set fits on one page. */
     }
@@ -6567,20 +5320,6 @@
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=extras&s=artists") {
   /* Featured artists grid page. */
-  aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-  }
-
   .navSubmenu > a[href*=extras][href*=artists] {
     color: var(--blue) !important;
   }
@@ -6637,20 +5376,6 @@
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=dmca&s=index") {
   /* DMCA information page. */
-  aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-  }
-
   .mainBodyPadding {
     box-sizing: border-box;
     max-width: 64rem;
@@ -6683,132 +5408,6 @@
 }
 
 @-moz-document url("https://gelbooru.com/tos.php") {
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu .navbar-nav > li > a[href*="tos.php"] {
     color: var(--blue) !important;
     font-weight: 600 !important;
@@ -6843,20 +5442,6 @@
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=aboutus") {
   @charset "UTF-8";
   /* About Us — posts chrome (gridStyle) with prose copy. */
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-  }
-
   .mainBodyPadding {
     box-sizing: border-box;
     max-width: 64rem;
@@ -6920,132 +5505,6 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=extras&s=patreon") {
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu .navbar-nav > li > a[href*=extras][href*=patreon] {
     color: var(--blue) !important;
     font-weight: 600 !important;
@@ -7096,31 +5555,33 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=forum&s=list") {
+  /* ----------------------------------------------------
+     FORUM LIST (grid layout)
+     ---------------------------------------------------- */
   /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     Default `div#paginator` chrome is compiled once by src/chrome-paginator.scss.
+     Pages that need a non-zero inset only set `--paginator-inset-x` (pad follows
+     inset unless `--paginator-pad-x` is set). Include this mixin on `.pagination`
+     (or another wrapper) when the bar is not `div#paginator`.
+
+     `$inset-x` should mirror the parent's horizontal padding when the bar is
+     meant to span the parent's full width; `$pad-x` keeps the links off the
      bar's edges.
 
      When including this on the paginator itself, select it as `div#paginator`:
      the site stylesheets zero its padding at that specificity. */
-  /* ----------------------------------------------------
-     FORUM LIST (grid layout)
-     ---------------------------------------------------- */
-  .aside {
-    display: none !important;
-  }
-
-  #container {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-  }
-
-  main {
-    grid-column: 1/-1;
-    min-width: 0;
-    max-width: 100%;
+  /* Compact variant for gallery and forum lists. Keep the full-size links while
+     limiting the backdrop to the controls; wrap within narrow viewports. */
+  div#paginator {
+    box-sizing: border-box;
+    width: fit-content;
+    max-width: calc(100% - 1rem);
+    margin: 0.75rem auto;
+    padding: 0.4rem;
+    bottom: 0.5rem;
+    border: 1px solid var(--surface1);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
   }
 
   .navSubmenu > a#showNewThread {
@@ -7144,7 +5605,11 @@
   }
 
   .mainBodyPadding {
-    font-size: 1em !important;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    font-size: 14px !important;
   }
   .mainBodyPadding > br {
     display: none;
@@ -7301,15 +5766,16 @@
   .mainBodyPadding > table > tbody > tr:first-child,
   .mainBodyPadding > table > tbody > tr[style*="006ffa"],
   .mainBodyPadding > table > tbody > tr[style*=background] {
-    background: var(--blue) !important;
+    background: var(--surface0) !important;
   }
   .mainBodyPadding > table > tbody > tr:first-child th,
   .mainBodyPadding > table > tbody > tr[style*="006ffa"] th,
   .mainBodyPadding > table > tbody > tr[style*=background] th {
-    color: var(--crust) !important;
+    background: var(--surface0) !important;
+    color: var(--subtext1) !important;
     font-weight: 600;
     vertical-align: middle;
-    border-bottom-color: color-mix(in srgb, var(--blue) 70%, var(--crust)) !important;
+    border-bottom-color: var(--surface1) !important;
   }
   .mainBodyPadding > table > tbody > tr:first-child th div,
   .mainBodyPadding > table > tbody > tr[style*="006ffa"] th div,
@@ -7344,11 +5810,13 @@
     color: var(--blue) !important;
   }
   .mainBodyPadding > table td.sm-hidden {
-    white-space: nowrap;
+    min-width: 15rem;
+    white-space: normal;
     color: var(--subtext0) !important;
     font-size: 0.9em;
   }
   .mainBodyPadding > table td.sm-hidden small {
+    font-size: 1em;
     color: var(--subtext0);
     line-height: 1.45;
   }
@@ -7361,6 +5829,12 @@
   .mainBodyPadding > table td.sm-hidden small b {
     color: var(--text);
     font-weight: 600;
+  }
+  .mainBodyPadding > table {
+    /* Tools retain their existing column, without inheriting the metadata width. */
+  }
+  .mainBodyPadding > table td.sm-hidden + td.sm-hidden {
+    min-width: 0;
   }
   .mainBodyPadding > table .forum-topicpin > span > b:first-child {
     margin-right: 0.35em;
@@ -7375,24 +5849,6 @@
     color: var(--red);
     font-size: 0.9em;
     font-weight: 600;
-  }
-
-  div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0px;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
   }
 
   @media only screen and (max-width: 850px) {
@@ -7412,135 +5868,9 @@
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=forum&s=view") {
   @charset "UTF-8";
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
   /* ----------------------------------------------------
      FORUM VIEW (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu .navbar-nav > li > a.showNewReply,
   #submenu .navbar-nav > li > a[href*="page=help"][href*="topic=forum"] {
     color: var(--green) !important;
@@ -7848,151 +6178,9 @@
   /* ----------------------------------------------------
      FORUM ADD — New topic (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a.showNewReply,
   div.submenu ul.flat-list2 > li > a[href*="page=help"][href*="topic=forum"] {
     color: var(--green) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   /* Compose form (body > form — no #content wrapper on this route) */
@@ -8061,152 +6249,23 @@
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=favorites") {
   @charset "UTF-8";
+  /* ----------------------------------------------------
+     FAVORITES (legacy default.css layout)
+     ---------------------------------------------------- */
   /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     Default `div#paginator` chrome is compiled once by src/chrome-paginator.scss.
+     Pages that need a non-zero inset only set `--paginator-inset-x` (pad follows
+     inset unless `--paginator-pad-x` is set). Include this mixin on `.pagination`
+     (or another wrapper) when the bar is not `div#paginator`.
+
+     `$inset-x` should mirror the parent's horizontal padding when the bar is
+     meant to span the parent's full width; `$pad-x` keeps the links off the
      bar's edges.
 
      When including this on the paginator itself, select it as `div#paginator`:
      the site stylesheets zero its padding at that specificity. */
-  /* ----------------------------------------------------
-     FAVORITES (legacy default.css layout)
-     ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list {
-    /* Legacy chrome still says "My Account"; posts nav uses "Settings". */
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  /* Match .navSubmenu a spacing (gridStyle.css): margin on the link, not the
-     li wrapper — keeps label flush inside each item. column-gap replaces the
-     ~4px whitespace between direct <a> siblings on account pages. */
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
+  /* Compact variant for gallery and forum lists. Keep the full-size links while
+     limiting the backdrop to the controls; wrap within narrow viewports. */
   div.submenu ul.flat-list2 > li > a[href*="page=favorites"] {
     color: var(--blue) !important;
   }
@@ -8387,9 +6446,10 @@
     content: "";
     width: 0.72rem;
     height: 0.72rem;
+    --icon-delete: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z' fill='%23000'/%3E%3C/svg%3E");
     background-color: var(--base);
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: var(--icon-delete) center/contain no-repeat;
+    -webkit-mask: var(--icon-delete) center/contain no-repeat;
   }
   span.thumb a[href*="s=delete"] b {
     position: absolute;
@@ -8467,21 +6527,15 @@
   }
 
   div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * var(--favorites-pad-x)) 0;
-    padding: 0.6rem var(--favorites-pad-x);
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
+    box-sizing: border-box;
+    width: fit-content;
+    max-width: calc(100% - 1rem);
+    margin: 0.75rem auto;
+    padding: 0.4rem;
+    bottom: 0.5rem;
+    border: 1px solid var(--surface1);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
   }
 
   @media only screen and (max-width: 850px) {
@@ -8507,75 +6561,6 @@
   /* ----------------------------------------------------
      CONVERSATION CREATE (messages.css layout)
      ---------------------------------------------------- */
-  /* Shared chrome for Gelbooru pages that use messages.css. */
-  /* Conversation thread list in the left column (list + view). */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  .grid-container {
-    background-color: var(--base) !important;
-    color: var(--text);
-  }
-
-  .grid-item {
-    background-color: var(--mantle) !important;
-    color: var(--text);
-  }
-  .grid-item a {
-    color: var(--text) !important;
-  }
-  .grid-item::-webkit-scrollbar {
-    width: 10px;
-    background-color: var(--base);
-  }
-  .grid-item::-webkit-scrollbar-track {
-    background-color: var(--surface0);
-    border-right: 3px solid var(--base);
-  }
-  .grid-item::-webkit-scrollbar-thumb {
-    background-color: var(--surface2);
-    border-right: 3px solid var(--base);
-  }
-
-  #createMessage.messageButton {
-    margin: 0.25rem 0.5rem !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--crust) !important;
-    font-weight: 600;
-    text-align: center;
-    background: var(--blue) !important;
-    border-radius: 7px !important;
-    cursor: pointer;
-  }
-  #createMessage.messageButton:hover {
-    background: var(--sapphire) !important;
-  }
-
-  #messageWindow {
-    background: var(--surface0) !important;
-  }
-
-  @media only screen and (max-width: 850px) {
-    #header {
-      background: var(--surface0);
-    }
-    .menu__btn > span,
-    .menu__btn > span::before,
-    .menu__btn > span::after {
-      background-color: var(--text) !important;
-    }
-    .menu__box {
-      background-color: var(--mantle) !important;
-      box-shadow: 2px 2px 6px var(--crust);
-    }
-    .menu__item {
-      color: var(--text) !important;
-    }
-    .menu__item:hover {
-      background-color: var(--surface1) !important;
-    }
-  }
   @media only screen and (min-width: 851px) {
     .grid-container {
       grid-template-columns: 230px minmax(0, 1fr) !important;
@@ -8645,111 +6630,6 @@
   /* ----------------------------------------------------
      CONVERSATION VIEW (messages.css layout)
      ---------------------------------------------------- */
-  /* Shared chrome for Gelbooru pages that use messages.css. */
-  /* Conversation thread list in the left column (list + view). */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  .grid-container {
-    background-color: var(--base) !important;
-    color: var(--text);
-  }
-
-  .grid-item {
-    background-color: var(--mantle) !important;
-    color: var(--text);
-  }
-  .grid-item a {
-    color: var(--text) !important;
-  }
-  .grid-item::-webkit-scrollbar {
-    width: 10px;
-    background-color: var(--base);
-  }
-  .grid-item::-webkit-scrollbar-track {
-    background-color: var(--surface0);
-    border-right: 3px solid var(--base);
-  }
-  .grid-item::-webkit-scrollbar-thumb {
-    background-color: var(--surface2);
-    border-right: 3px solid var(--base);
-  }
-
-  #createMessage.messageButton {
-    margin: 0.25rem 0.5rem !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--crust) !important;
-    font-weight: 600;
-    text-align: center;
-    background: var(--blue) !important;
-    border-radius: 7px !important;
-    cursor: pointer;
-  }
-  #createMessage.messageButton:hover {
-    background: var(--sapphire) !important;
-  }
-
-  #messageWindow {
-    background: var(--surface0) !important;
-  }
-
-  @media only screen and (max-width: 850px) {
-    #header {
-      background: var(--surface0);
-    }
-    .menu__btn > span,
-    .menu__btn > span::before,
-    .menu__btn > span::after {
-      background-color: var(--text) !important;
-    }
-    .menu__box {
-      background-color: var(--mantle) !important;
-      box-shadow: 2px 2px 6px var(--crust);
-    }
-    .menu__item {
-      color: var(--text) !important;
-    }
-    .menu__item:hover {
-      background-color: var(--surface1) !important;
-    }
-  }
-  .grid-left-menu-item a {
-    color: var(--subtext0) !important;
-    text-decoration: none;
-  }
-  .grid-left-menu-item a:hover {
-    color: var(--text) !important;
-  }
-  .grid-left-menu-item a[style*="font-weight: bold"] {
-    color: var(--text) !important;
-  }
-  .grid-left-menu-item:has(a[style*="font-weight: bold"]) .grid-item-user-link {
-    background: var(--surface0);
-  }
-
-  .grid-item-user-link {
-    display: flex;
-    align-items: center;
-    gap: 0.15rem;
-    margin: 0.35rem 0 !important;
-    border-radius: 7px !important;
-  }
-  .grid-item-user-link:hover {
-    background: var(--surface1) !important;
-  }
-  .grid-item-user-link > div:first-child {
-    background-color: var(--surface0) !important;
-    border-color: var(--surface2) !important;
-  }
-  .grid-item-user-link > div:last-child {
-    display: flex;
-    align-items: center;
-    height: auto !important;
-    line-height: 1.2;
-    color: inherit;
-  }
-
   /* Fold the 300px right column into a header bar so the thread gets full width. */
   @media only screen and (min-width: 851px) {
     .grid-container {
@@ -8968,111 +6848,6 @@
   /* ----------------------------------------------------
      CONVERSATION LIST (messages.css layout)
      ---------------------------------------------------- */
-  /* Shared chrome for Gelbooru pages that use messages.css. */
-  /* Conversation thread list in the left column (list + view). */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  .grid-container {
-    background-color: var(--base) !important;
-    color: var(--text);
-  }
-
-  .grid-item {
-    background-color: var(--mantle) !important;
-    color: var(--text);
-  }
-  .grid-item a {
-    color: var(--text) !important;
-  }
-  .grid-item::-webkit-scrollbar {
-    width: 10px;
-    background-color: var(--base);
-  }
-  .grid-item::-webkit-scrollbar-track {
-    background-color: var(--surface0);
-    border-right: 3px solid var(--base);
-  }
-  .grid-item::-webkit-scrollbar-thumb {
-    background-color: var(--surface2);
-    border-right: 3px solid var(--base);
-  }
-
-  #createMessage.messageButton {
-    margin: 0.25rem 0.5rem !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--crust) !important;
-    font-weight: 600;
-    text-align: center;
-    background: var(--blue) !important;
-    border-radius: 7px !important;
-    cursor: pointer;
-  }
-  #createMessage.messageButton:hover {
-    background: var(--sapphire) !important;
-  }
-
-  #messageWindow {
-    background: var(--surface0) !important;
-  }
-
-  @media only screen and (max-width: 850px) {
-    #header {
-      background: var(--surface0);
-    }
-    .menu__btn > span,
-    .menu__btn > span::before,
-    .menu__btn > span::after {
-      background-color: var(--text) !important;
-    }
-    .menu__box {
-      background-color: var(--mantle) !important;
-      box-shadow: 2px 2px 6px var(--crust);
-    }
-    .menu__item {
-      color: var(--text) !important;
-    }
-    .menu__item:hover {
-      background-color: var(--surface1) !important;
-    }
-  }
-  .grid-left-menu-item a {
-    color: var(--subtext0) !important;
-    text-decoration: none;
-  }
-  .grid-left-menu-item a:hover {
-    color: var(--text) !important;
-  }
-  .grid-left-menu-item a[style*="font-weight: bold"] {
-    color: var(--text) !important;
-  }
-  .grid-left-menu-item:has(a[style*="font-weight: bold"]) .grid-item-user-link {
-    background: var(--surface0);
-  }
-
-  .grid-item-user-link {
-    display: flex;
-    align-items: center;
-    gap: 0.15rem;
-    margin: 0.35rem 0 !important;
-    border-radius: 7px !important;
-  }
-  .grid-item-user-link:hover {
-    background: var(--surface1) !important;
-  }
-  .grid-item-user-link > div:first-child {
-    background-color: var(--surface0) !important;
-    border-color: var(--surface2) !important;
-  }
-  .grid-item-user-link > div:last-child {
-    display: flex;
-    align-items: center;
-    height: auto !important;
-    line-height: 1.2;
-    color: inherit;
-  }
-
   /* The right column is empty on this page — drop it and let content fill the row. */
   @media only screen and (min-width: 851px) {
     .grid-container {
@@ -9150,14 +6925,19 @@
      GMAIL HOME (grid layout)
      ---------------------------------------------------- */
   /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+     Default `div#paginator` chrome is compiled once by src/chrome-paginator.scss.
+     Pages that need a non-zero inset only set `--paginator-inset-x` (pad follows
+     inset unless `--paginator-pad-x` is set). Include this mixin on `.pagination`
+     (or another wrapper) when the bar is not `div#paginator`.
+
+     `$inset-x` should mirror the parent's horizontal padding when the bar is
+     meant to span the parent's full width; `$pad-x` keeps the links off the
      bar's edges.
 
      When including this on the paginator itself, select it as `div#paginator`:
      the site stylesheets zero its padding at that specificity. */
+  /* Compact variant for gallery and forum lists. Keep the full-size links while
+     limiting the backdrop to the controls; wrap within narrow viewports. */
   /* Mail folder nav in the aside (reuses #tag-list markup) */
   #tag-list {
     margin: 0.75rem 0 1.25rem;
@@ -9306,13 +7086,15 @@
     border-radius: 0 0 10px 10px;
   }
   .mainBodyPadding .pagination {
+    --paginator-inset-x: 0px;
+    --paginator-pad-x: 0.75rem;
     position: sticky;
     bottom: 0;
     z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0.75rem;
+    margin: 0.75rem calc(-1 * var(--paginator-inset-x)) 0;
+    padding: 0.6rem var(--paginator-pad-x);
     background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(10px);
     border-top: 1px solid var(--surface1);
     /* The wrapper is rendered even when the result set fits on one page. */
   }
@@ -9349,150 +7131,8 @@
      GMAIL MANAGE / COMPOSE (legacy default.css layout)
      Mail nav patterns mirror gmail-home; chrome mirrors other default.css pages.
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a[href*="page=gmail"] {
     color: var(--blue) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   /* ----- Two-column shell: folder nav + compose ----- */
@@ -9802,157 +7442,11 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=help") {
-  @charset "UTF-8";
   /* ----------------------------------------------------
      HELP (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list {
-    /* Current tab wins over Help’s semantic green (and inline #00ff00). */
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a[href*="page=help"][href*="s=home"] {
     color: var(--blue) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   #content {
@@ -10152,144 +7646,9 @@
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=history") {
   @charset "UTF-8";
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      POST HISTORY — tag / note history (bootstrap layout)
      ---------------------------------------------------- */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu .navbar-nav > li > a[href*="page=post"][href*="s=list"] {
     color: var(--blue) !important;
   }
@@ -10489,21 +7848,7 @@
   }
 
   div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 1rem) 0;
-    padding: 0.6rem 1rem;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
+    --paginator-inset-x: 1rem;
   }
 
   @media only screen and (max-width: 850px) {
@@ -10526,144 +7871,9 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tracker&s=list") {
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
-  /* Shared sticky paginator bar.
-     Include on the paginator wrapper whose parent is the tall page column, so the
-     bar has room to travel; no ancestor between it and the scroller may clip
-     overflow. `$inset-x` should mirror the parent's horizontal padding when the
-     bar is meant to span the parent's full width; `$pad-x` keeps the links off the
-     bar's edges.
-
-     When including this on the paginator itself, select it as `div#paginator`:
-     the site stylesheets zero its padding at that specificity. */
   /* ----------------------------------------------------
      TRACKER LIST (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu .navbar-nav > li > a[href*="page=tracker"][href*="s=list"] {
     color: var(--blue) !important;
   }
@@ -10745,11 +7955,6 @@
     table-layout: fixed;
     color: var(--text) !important;
     font-size: 12px;
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 1px solid var(--surface1);
-    border-radius: 10px;
-    overflow: hidden;
   }
   table.highlightable > tbody > tr:hover {
     background: var(--surface0) !important;
@@ -10761,8 +7966,6 @@
     background: color-mix(in srgb, var(--green) 24%, var(--base)) !important;
   }
   table.highlightable td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.65rem 0.85rem !important;
     color: var(--text) !important;
     vertical-align: middle;
@@ -10770,9 +7973,6 @@
   }
   table.highlightable td + td {
     border-left: 1px solid var(--surface1) !important;
-  }
-  table.highlightable tr:last-child > td {
-    border-bottom: none !important;
   }
   table.highlightable {
     /* Title + metadata */
@@ -10833,24 +8033,6 @@
     line-height: 1.4;
   }
 
-  div#paginator {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    margin: 0.75rem calc(-1 * 0px) 0;
-    padding: 0.6rem 0px;
-    background: color-mix(in srgb, var(--base) 88%, transparent);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--surface1);
-    /* The wrapper is rendered even when the result set fits on one page. */
-  }
-  div#paginator:not(:has(a)) {
-    display: none;
-  }
-  div#paginator > br {
-    display: none;
-  }
-
   @media only screen and (max-width: 700px) {
     table.highlightable td {
       padding: 0.55rem 0.6rem !important;
@@ -10873,150 +8055,8 @@
   /* ----------------------------------------------------
      TRACKER VIEW (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a[href*="s=create_ticket"] {
     color: var(--green) !important;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
-    color: var(--green) !important;
-    font-weight: 600;
   }
 
   #content {
@@ -11353,135 +8393,9 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tracker&s=changelog") {
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
   /* ----------------------------------------------------
      TRACKER CHANGELOG (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu .navbar-nav > li > a[href*="s=changelog"] {
     color: var(--blue) !important;
   }
@@ -11577,135 +8491,9 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=tracker&s=roadmap") {
-  /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-     Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
   /* ----------------------------------------------------
      TRACKER ROADMAP (bootstrap / responsive.css layout)
      ---------------------------------------------------- */
-  .container-fluid:has(> .navbar) {
-    padding: 0;
-  }
-
-  .navbar,
-  .navbar-default {
-    min-height: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    background: var(--surface0) !important;
-    border: 0;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  .navbar-header {
-    height: calc(20px + 1.42857143em + 23px);
-  }
-
-  .navbar-brand {
-    float: left;
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px !important;
-    min-width: 0;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    font-size: 12px;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  #navbar.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-  }
-
-  #navbar .navbar-nav {
-    margin: 0;
-  }
-
-  #navbar .navbar-nav > li > a {
-    padding: 20px 16px 23px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-decoration: none;
-  }
-
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
-  }
-
-  #navbar .navbar-nav > .active > a,
-  #navbar .navbar-nav > .active > a:hover,
-  #navbar .navbar-nav > .active > a:focus {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-  }
-
-  #navbar a.ui-icon {
-    margin: 0 !important;
-    font-size: 14px !important;
-  }
-
-  .navbar-default .navbar-toggle {
-    border-color: var(--surface1);
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--text);
-  }
-
-  .navbar-header > button:hover,
-  .navbar-header > button:focus,
-  .navbar-header > button:active {
-    background: var(--surface1) !important;
-  }
-
-  #submenu.navbar {
-    min-height: 0;
-    overflow: visible;
-    padding: 10px 15px !important;
-    background: var(--surface1) !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  #submenu.navbar .navbar-nav {
-    float: none;
-    margin: 0;
-  }
-  #submenu.navbar .navbar-nav > li {
-    float: none;
-    display: inline-block;
-  }
-  #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    color: var(--text) !important;
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    background: transparent !important;
-  }
-
-  .alert-success {
-    margin: 0.75rem 0 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green) !important;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .alert-success a {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
   #submenu .navbar-nav > li > a[href*="s=roadmap"] {
     color: var(--blue) !important;
   }
@@ -11818,149 +8606,7 @@
   /* ----------------------------------------------------
      TRACKER CREATE TICKET (legacy default.css layout)
      ---------------------------------------------------- */
-  body {
-    font-family: verdana, sans-serif, helvetica;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-
-  body > br {
-    display: none;
-  }
-
-  .header {
-    overflow: hidden;
-    background: var(--surface0) !important;
-  }
-  .header .center {
-    margin: 0;
-  }
-  .header a {
-    display: block;
-    padding: 20px 16px 23px;
-    color: var(--text) !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-  }
-
-  h2.siteName {
-    display: block;
-    float: left;
-    height: calc(20px + 1.42857143em + 23px);
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-  h2.siteName a {
-    box-sizing: content-box;
-    width: 46px;
-    height: 46px;
-    padding: 7px 15px 1px 25px !important;
-    margin: 0 !important;
-    overflow: hidden;
-    color: transparent !important;
-    font-size: 0 !important;
-    white-space: nowrap;
-    background: url("https://gelbooru.com/layout/gelbooru-logo.svg") no-repeat;
-    background-size: 46px 46px;
-    background-position: 25px 7px;
-  }
-
-  ul.flat-list {
-    display: block;
-    font-size: 12px !important;
-    line-height: 1.42857143;
-  }
-  ul.flat-list li {
-    display: block;
-    float: left;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1.42857143 !important;
-  }
-  ul.flat-list li a {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.flat-list li.current-page a {
-    background-color: var(--surface2) !important;
-    color: var(--blue) !important;
-    font-weight: bold;
-    padding: 20px 16px 23px !important;
-  }
-  ul.flat-list a[href*="page=help"] {
-    color: var(--green) !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"] {
-    font-size: 0 !important;
-  }
-  ul.flat-list a[href*="page=account"][href*="s=home"]::after {
-    content: "Settings";
-    font-size: 12px;
-    font-weight: inherit;
-    font-family: verdana, sans-serif, helvetica;
-    line-height: 1.42857143;
-  }
-
-  div.submenu {
-    background: var(--surface1) !important;
-    padding: 10px 15px !important;
-    font-size: 12px;
-    line-height: 1.42857143;
-  }
-  div.submenu .center {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div.submenu ul.flat-list2 {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
-    row-gap: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li {
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
-  }
-  div.submenu ul.flat-list2 > li > a {
-    display: inline-block !important;
-    float: none !important;
-    color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
-    font-size: 12px !important;
-    font-weight: normal;
-    line-height: 1.42857143;
-    font-family: verdana, sans-serif, helvetica;
-    white-space: nowrap;
-    text-decoration: none;
-  }
   div.submenu ul.flat-list2 > li > a[href*="s=create_ticket"] {
-    color: var(--green) !important;
-    font-weight: 600;
-  }
-
-  .success-notice {
-    margin: 0.75rem 1.25rem 0 !important;
-    padding: 0.65rem 1rem !important;
-    color: var(--green);
-    font-size: 0.875em;
-    background: var(--surface0) !important;
-    border: 1px solid var(--green) !important;
-    border-radius: 10px;
-  }
-  .success-notice a {
     color: var(--green) !important;
     font-weight: 600;
   }

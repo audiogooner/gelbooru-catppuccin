@@ -1,0 +1,5 @@
+@use "sticky-paginator";
+
+div#paginator {
+  @include sticky-paginator.bar(0px);
+}

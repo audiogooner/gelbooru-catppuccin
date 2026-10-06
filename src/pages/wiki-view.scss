@@ -1,11 +1,6 @@
-@use "bootstrap-chrome";
-
 /* ----------------------------------------------------
    WIKI VIEW (bootstrap / responsive.css layout)
    ---------------------------------------------------- */
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
 
 #submenu a[href*="s=create"] {
   color: var(--green) !important;

@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "html2canvas": "^1.4.1",
+    "lightningcss": "^1.33.0",
     "linkedom": "^0.18.12",
     "sass": "^1.90.0",
     "source-map-js": "^1.2.1"

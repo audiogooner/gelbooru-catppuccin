@@ -1,22 +1,35 @@
 /* Shared sticky paginator bar.
-   Include on the paginator wrapper whose parent is the tall page column, so the
-   bar has room to travel; no ancestor between it and the scroller may clip
-   overflow. `$inset-x` should mirror the parent's horizontal padding when the
-   bar is meant to span the parent's full width; `$pad-x` keeps the links off the
+   Default `div#paginator` chrome is compiled once by src/chrome-paginator.scss.
+   Pages that need a non-zero inset only set `--paginator-inset-x` (pad follows
+   inset unless `--paginator-pad-x` is set). Include this mixin on `.pagination`
+   (or another wrapper) when the bar is not `div#paginator`.
+
+   `$inset-x` should mirror the parent's horizontal padding when the bar is
+   meant to span the parent's full width; `$pad-x` keeps the links off the
    bar's edges.
 
    When including this on the paginator itself, select it as `div#paginator`:
    the site stylesheets zero its padding at that specificity. */
 
-@mixin bar($inset-x: 0px, $pad-x: $inset-x) {
+@mixin bar($inset-x: 0px, $pad-x: null, $compact: false) {
+  --paginator-inset-x: #{$inset-x};
+  @if $pad-x == null {
+    --paginator-pad-x: var(--paginator-inset-x);
+  } @else {
+    --paginator-pad-x: #{$pad-x};
+  }
   position: sticky;
   bottom: 0;
   z-index: 10;
-  margin: 0.75rem calc(-1 * #{$inset-x}) 0;
-  padding: 0.6rem #{$pad-x};
+  margin: 0.75rem calc(-1 * var(--paginator-inset-x)) 0;
+  padding: 0.6rem var(--paginator-pad-x);
   background: color-mix(in srgb, var(--base) 88%, transparent);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px);
   border-top: 1px solid var(--surface1);
+
+  @if $compact {
+    @include compact;
+  }
 
   /* The wrapper is rendered even when the result set fits on one page. */
   &:not(:has(a)) {
@@ -26,4 +39,18 @@
   > br {
     display: none;
   }
+}
+
+/* Compact variant for gallery and forum lists. Keep the full-size links while
+   limiting the backdrop to the controls; wrap within narrow viewports. */
+@mixin compact {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: calc(100% - 1rem);
+  margin: 0.75rem auto;
+  padding: 0.4rem;
+  bottom: 0.5rem;
+  border: 1px solid var(--surface1);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 18%);
 }

@@ -2,10 +2,6 @@
    CONVERSATION CREATE (messages.css layout)
    ---------------------------------------------------- */
 
-@use "messages-chrome";
-
-@include messages-chrome.shell;
-
 @media only screen and (min-width: 851px) {
   .grid-container {
     grid-template-columns: 230px minmax(0, 1fr) !important;

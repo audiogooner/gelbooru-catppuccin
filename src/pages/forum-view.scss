@@ -1,11 +1,6 @@
-@use "bootstrap-chrome";
-
 /* ----------------------------------------------------
    FORUM VIEW (bootstrap / responsive.css layout)
    ---------------------------------------------------- */
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
 
 #submenu {
   .navbar-nav > li > a.showNewReply,

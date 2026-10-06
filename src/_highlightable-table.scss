@@ -1,0 +1,21 @@
+/* Shared highlightable table chrome (border, radius, cell dividers).
+   Compiled once by src/chrome-highlightable.scss — do not @include from page files. */
+
+@mixin shell {
+  table.highlightable {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--surface1);
+    border-radius: 10px;
+    overflow: hidden;
+
+    td {
+      border: none !important;
+      border-bottom: 1px solid var(--surface1) !important;
+    }
+
+    tr:last-child > td {
+      border-bottom: none !important;
+    }
+  }
+}

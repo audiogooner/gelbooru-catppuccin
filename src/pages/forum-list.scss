@@ -1,22 +1,11 @@
-@use "sticky-paginator";
-
 /* ----------------------------------------------------
    FORUM LIST (grid layout)
    ---------------------------------------------------- */
 
-.aside {
-  display: none !important;
-}
+@use "sticky-paginator";
 
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main {
-  grid-column: 1 / -1;
-  min-width: 0;
-  max-width: 100%;
+div#paginator {
+  @include sticky-paginator.compact;
 }
 
 .navSubmenu {
@@ -44,7 +33,11 @@ main {
 }
 
 .mainBodyPadding {
-  font-size: 1em !important;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  font-size: 14px !important;
 
   > br {
     display: none;
@@ -220,17 +213,14 @@ main {
   > tbody > tr:first-child,
   > tbody > tr[style*="006ffa"],
   > tbody > tr[style*="background"] {
-    background: var(--blue) !important;
+    background: var(--surface0) !important;
 
     th {
-      color: var(--crust) !important;
+      background: var(--surface0) !important;
+      color: var(--subtext1) !important;
       font-weight: 600;
       vertical-align: middle;
-      border-bottom-color: color-mix(
-        in srgb,
-        var(--blue) 70%,
-        var(--crust)
-      ) !important;
+      border-bottom-color: var(--surface1) !important;
 
       div {
         padding: 0 !important;
@@ -270,11 +260,13 @@ main {
   }
 
   td.sm-hidden {
-    white-space: nowrap;
+    min-width: 15rem;
+    white-space: normal;
     color: var(--subtext0) !important;
     font-size: 0.9em;
 
     small {
+      font-size: 1em;
       color: var(--subtext0);
       line-height: 1.45;
 
@@ -291,6 +283,11 @@ main {
         font-weight: 600;
       }
     }
+  }
+
+  /* Tools retain their existing column, without inheriting the metadata width. */
+  td.sm-hidden + td.sm-hidden {
+    min-width: 0;
   }
 
   .forum-topicpin {
@@ -311,10 +308,6 @@ main {
     font-size: 0.9em;
     font-weight: 600;
   }
-}
-
-div#paginator {
-  @include sticky-paginator.bar(0px);
 }
 
 @media only screen and (max-width: 850px) {

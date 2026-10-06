@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseHTML } from "linkedom";
-import { bundleId } from "../lib.mjs";
+import { bundleId, isSharedBundleFile } from "../lib.mjs";
 import { isIgnoredSelector, isPartialSource, matchesIgnore } from "./css-normalize.mjs";
 import { queryableSelector, splitSelectors } from "./css-rules.mjs";
 import { ruleLocation } from "./lint-duplicates.mjs";
@@ -102,8 +102,8 @@ export function lintAllDead(bundles, config = {}, options = {}) {
   const exists = options.snapshotExists;
 
   for (const bundle of bundles) {
-    if (bundle.file.endsWith("base.scss")) {
-      skipped.push({ file: bundle.file, reason: "global-base" });
+    if (isSharedBundleFile(bundle.file)) {
+      skipped.push({ file: bundle.file, reason: "shared-bundle" });
       continue;
     }
     const snapshotId = snapshotIdForBundle(bundle.file, config, exists);

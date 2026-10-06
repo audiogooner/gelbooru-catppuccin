@@ -18,4 +18,4 @@ Gelbooru UserStyle. Edit SCSS under `src/`; `style.config.mjs` registers `@-moz-
 
 Before changing selectors, read `snapshots/INDEX.md`, the page `outline.txt` + `.html`, and site CSS in `snapshots/css/`. Prefer class/id. Treat `<!-- snapshot: omitted … -->` as a gap — `:nth-child` after it is not the live tree.
 
-New page: add `src/pages/<id>.scss`, register it in `bundles`, capture a snapshot (Alt+Shift+S or `snapshot:fetch`), then `npm run doctor`.
+New page: add `src/pages/<id>.scss`, register it in `style.config.mjs` `bundles` (and `chromeFamilies` if it uses shared chrome: bootstrap / default / messages / grid-collapse / paginator / highlightable), capture a snapshot (Alt+Shift+S or `snapshot:fetch`), then `npm run doctor`.

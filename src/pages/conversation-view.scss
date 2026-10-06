@@ -2,11 +2,6 @@
    CONVERSATION VIEW (messages.css layout)
    ---------------------------------------------------- */
 
-@use "messages-chrome";
-
-@include messages-chrome.shell;
-@include messages-chrome.thread-list;
-
 /* Fold the 300px right column into a header bar so the thread gets full width. */
 @media only screen and (min-width: 851px) {
   .grid-container {

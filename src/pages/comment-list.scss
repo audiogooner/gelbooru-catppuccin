@@ -2,18 +2,6 @@
 
 @use "sticky-paginator";
 
-aside { display: none !important; }
-
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main {
-  grid-column: 1 / -1;
-  min-width: 0;
-}
-
 .navSubmenu > a[href*="page=comment"][href*="s=list"] {
   color: var(--blue) !important;
 }

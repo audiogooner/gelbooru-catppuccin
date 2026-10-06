@@ -1,8 +1,3 @@
-@use "bootstrap-chrome";
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
-
 #submenu .navbar-nav > li > a[href*="tos.php"] {
   color: var(--blue) !important;
   font-weight: 600 !important;

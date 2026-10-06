@@ -1,23 +1,6 @@
-@use "sticky-paginator";
-
 /* ----------------------------------------------------
    TAG IMPLICATIONS (grid layout)
    ---------------------------------------------------- */
-
-.aside {
-  display: none !important;
-}
-
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main {
-  grid-column: 1 / -1;
-  min-width: 0;
-  max-width: 100%;
-}
 
 .navSubmenu > a[href*="s=implications"] {
   color: var(--blue) !important;
@@ -104,12 +87,6 @@ table.form {
 }
 
 table.highlightable {
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--surface1);
-  border-radius: 10px;
-  overflow: hidden;
-
   th {
     border: none !important;
     border-bottom: 1px solid var(--surface1) !important;
@@ -117,8 +94,6 @@ table.highlightable {
   }
 
   td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.45rem 0.75rem;
     word-break: break-word;
 
@@ -129,10 +104,6 @@ table.highlightable {
     }
   }
 
-  tr:last-child > td {
-    border-bottom: none !important;
-  }
-
   tr.rejected-tag {
     background: color-mix(in srgb, var(--red) 16%, var(--base)) !important;
   }
@@ -140,10 +111,6 @@ table.highlightable {
   tr.pending-tag {
     background: color-mix(in srgb, var(--blue) 16%, var(--base)) !important;
   }
-}
-
-div#paginator {
-  @include sticky-paginator.bar(0px);
 }
 
 @media only screen and (max-width: 600px) {

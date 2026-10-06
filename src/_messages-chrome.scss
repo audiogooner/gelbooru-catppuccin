@@ -1,4 +1,6 @@
-/* Shared chrome for Gelbooru pages that use messages.css. */
+/* Shared chrome for Gelbooru pages that use messages.css.
+   Compiled once by src/chrome-messages.scss (shell) and
+   src/chrome-messages-thread.scss (thread-list) — do not @include from page files. */
 
 @mixin shell {
   body {

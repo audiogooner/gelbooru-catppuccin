@@ -1,23 +1,6 @@
-@use "sticky-paginator";
-
 /* ----------------------------------------------------
    POOL LIST (grid layout)
    ---------------------------------------------------- */
-
-.aside {
-  display: none !important;
-}
-
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main {
-  grid-column: 1 / -1;
-  min-width: 0;
-  max-width: 100%;
-}
 
 .navSubmenu {
   > a[href*="page=pool"][href*="s=list"] {
@@ -43,15 +26,8 @@ table.highlightable {
   width: 100%;
   color: var(--text) !important;
   font-size: 12px;
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--surface1);
-  border-radius: 10px;
-  overflow: hidden;
 
   td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.65rem 0.85rem !important;
     color: var(--text) !important;
     vertical-align: middle;
@@ -60,10 +36,6 @@ table.highlightable {
     & + td {
       border-left: 1px solid var(--surface1) !important;
     }
-  }
-
-  tr:last-child > td {
-    border-bottom: none !important;
   }
 
   /* Cover thumb */
@@ -123,9 +95,6 @@ table.highlightable {
   }
 }
 
-div#paginator {
-  @include sticky-paginator.bar(0px);
-}
 
 @media only screen and (max-width: 850px) {
   table.highlightable {

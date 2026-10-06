@@ -25,7 +25,7 @@ Dead-selector checks load [`snapshots/pages/<id>.html`](../snapshots/INDEX.md).
 1. [`style.lint.config.mjs`](../style.lint.config.mjs) `snapshotMap` override, if that HTML file exists
 2. Else `src/pages/<id>.scss` → `snapshots/pages/<id>.html` when that file exists
 
-Bundles without a snapshot (and `src/base.scss`) are skipped, including mapped ids whose HTML is missing. The summary prints how many were skipped.
+Bundles without a snapshot, `src/base.scss`, and shared chrome bundles (`src/chrome-*.scss`, including messages / grid-collapse / paginator / highlightable) are skipped, including mapped ids whose HTML is missing. The summary prints how many were skipped.
 
 ## False positives
 

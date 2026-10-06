@@ -2,21 +2,6 @@
    TAG EDIT (grid layout)
    ---------------------------------------------------- */
 
-.aside {
-  display: none !important;
-}
-
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main {
-  grid-column: 1 / -1;
-  min-width: 0;
-  max-width: 100%;
-}
-
 .navSubmenu > a[href*="page=tags"][href*="s=list"] {
   color: var(--blue) !important;
 }

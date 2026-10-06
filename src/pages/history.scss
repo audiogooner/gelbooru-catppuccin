@@ -1,12 +1,6 @@
-@use "bootstrap-chrome";
-@use "sticky-paginator";
-
 /* ----------------------------------------------------
    POST HISTORY — tag / note history (bootstrap layout)
    ---------------------------------------------------- */
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
 
 #submenu .navbar-nav > li > a[href*="page=post"][href*="s=list"] {
   color: var(--blue) !important;
@@ -225,7 +219,7 @@
 }
 
 div#paginator {
-  @include sticky-paginator.bar(1rem);
+  --paginator-inset-x: 1rem;
 }
 
 @media only screen and (max-width: 850px) {

@@ -1,11 +1,6 @@
-@use "bootstrap-chrome";
-
 /* ----------------------------------------------------
    TRACKER CHANGELOG (bootstrap / responsive.css layout)
    ---------------------------------------------------- */
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
 
 #submenu .navbar-nav > li > a[href*="s=changelog"] {
   color: var(--blue) !important;

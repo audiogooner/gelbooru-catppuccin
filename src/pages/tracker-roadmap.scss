@@ -1,11 +1,6 @@
-@use "bootstrap-chrome";
-
 /* ----------------------------------------------------
    TRACKER ROADMAP (bootstrap / responsive.css layout)
    ---------------------------------------------------- */
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
 
 #submenu .navbar-nav > li > a[href*="s=roadmap"] {
   color: var(--blue) !important;

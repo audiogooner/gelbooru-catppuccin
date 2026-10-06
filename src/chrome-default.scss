@@ -1,0 +1,4 @@
+@use "default-chrome";
+
+@include default-chrome.navbar;
+@include default-chrome.success-notice;

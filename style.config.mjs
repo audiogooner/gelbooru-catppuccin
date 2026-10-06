@@ -11,11 +11,96 @@ export const metadata = {
   "run-at": "document-start",
 };
 
-export const bundles = [
-  {
-    file: "src/base.scss",
-    document: 'url-prefix("https://gelbooru.com")',
-  },
+const chromeBootstrapPages = [
+  "src/pages/account-profile.scss",
+  "src/pages/wiki-view.scss",
+  "src/pages/pool-show.scss",
+  "src/pages/tos.scss",
+  "src/pages/extras-patreon.scss",
+  "src/pages/forum-view.scss",
+  "src/pages/history.scss",
+  "src/pages/tracker-list.scss",
+  "src/pages/tracker-changelog.scss",
+  "src/pages/tracker-roadmap.scss",
+];
+
+const chromeDefaultPages = [
+  "src/pages/account-change-avatar.scss",
+  "src/pages/account-report.scss",
+  "src/pages/account-tag-edits.scss",
+  "src/pages/wiki-history.scss",
+  "src/pages/wiki-create.scss",
+  "src/pages/wiki-edit.scss",
+  "src/pages/pool-add.scss",
+  "src/pages/forum-add.scss",
+  "src/pages/favorites-view.scss",
+  "src/pages/help.scss",
+  "src/pages/gmail-manage.scss",
+  "src/pages/tracker-view.scss",
+  "src/pages/tracker-create-ticket.scss",
+];
+
+const chromeMessagesPages = [
+  "src/pages/conversation-create.scss",
+  "src/pages/conversation-list.scss",
+  "src/pages/conversation-view.scss",
+];
+
+const chromeMessagesThreadPages = [
+  "src/pages/conversation-list.scss",
+  "src/pages/conversation-view.scss",
+];
+
+const chromeGridCollapsePages = [
+  "src/pages/tags-list.scss",
+  "src/pages/tags-implications.scss",
+  "src/pages/tags-edit.scss",
+  "src/pages/alias-list.scss",
+  "src/pages/tags-saved-search.scss",
+  "src/pages/pool-list.scss",
+  "src/pages/post-add.scss",
+  "src/pages/comment-list.scss",
+  "src/pages/extras-artists.scss",
+  "src/pages/dmca.scss",
+  "src/pages/aboutus.scss",
+  "src/pages/forum-list.scss",
+];
+
+const chromePaginatorPages = [
+  "src/pages/wiki.scss",
+  "src/pages/account-tag-edits.scss",
+  "src/pages/tags-list.scss",
+  "src/pages/tags-implications.scss",
+  "src/pages/alias-list.scss",
+  "src/pages/tags-saved-search.scss",
+  "src/pages/pool-list.scss",
+  "src/pages/pool-show.scss",
+  "src/pages/forum-list.scss",
+  "src/pages/favorites-view.scss",
+  "src/pages/history.scss",
+  "src/pages/tracker-list.scss",
+];
+
+const chromeHighlightablePages = [
+  "src/pages/account-tag-edits.scss",
+  "src/pages/wiki-history.scss",
+  "src/pages/tags-list.scss",
+  "src/pages/tags-implications.scss",
+  "src/pages/pool-list.scss",
+  "src/pages/tracker-list.scss",
+];
+
+export const chromeFamilies = {
+  bootstrap: chromeBootstrapPages,
+  default: chromeDefaultPages,
+  messages: chromeMessagesPages,
+  "messages-thread": chromeMessagesThreadPages,
+  "grid-collapse": chromeGridCollapsePages,
+  paginator: chromePaginatorPages,
+  highlightable: chromeHighlightablePages,
+};
+
+const pageBundles = [
   {
     file: "src/pages/homepage.scss",
     document:
@@ -251,6 +336,30 @@ export const bundles = [
     document:
       'url-prefix("https://gelbooru.com/index.php?page=tracker&s=create_ticket")',
   },
+];
+
+function documentsFor(files) {
+  const docs = [];
+  for (const file of files) {
+    const bundle = pageBundles.find((entry) => entry.file === file);
+    if (!bundle) {
+      throw new Error(`chrome family lists ${file} but it is not a page bundle`);
+    }
+    docs.push(bundle.document);
+  }
+  return docs.join(", ");
+}
+
+export const bundles = [
+  {
+    file: "src/base.scss",
+    document: 'url-prefix("https://gelbooru.com")',
+  },
+  ...Object.entries(chromeFamilies).map(([id, files]) => ({
+    file: `src/chrome-${id}.scss`,
+    document: documentsFor(files),
+  })),
+  ...pageBundles,
 ];
 
 export const exportFile = "gelbooru.user.css";

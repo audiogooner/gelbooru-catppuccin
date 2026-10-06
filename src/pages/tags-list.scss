@@ -1,23 +1,6 @@
-@use "sticky-paginator";
-
 /* ----------------------------------------------------
    TAGS LIST (grid layout)
    ---------------------------------------------------- */
-
-.aside {
-  display: none !important;
-}
-
-#container {
-  grid-template-columns: minmax(0, 1fr) !important;
-  max-width: 100%;
-}
-
-main {
-  grid-column: 1 / -1;
-  min-width: 0;
-  max-width: 100%;
-}
 
 .navSubmenu > a[href*="page=tags"][href*="s=list"] {
   color: var(--blue) !important;
@@ -154,12 +137,6 @@ table.form {
 }
 
 table.highlightable {
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--surface1);
-  border-radius: 10px;
-  overflow: hidden;
-
   th {
     border: none !important;
     border-bottom: 1px solid var(--surface1) !important;
@@ -171,18 +148,12 @@ table.highlightable {
   }
 
   td {
-    border: none !important;
-    border-bottom: 1px solid var(--surface1) !important;
     padding: 0.45rem 0.75rem;
     word-break: break-word;
 
     & + td {
       border-left: 1px solid var(--surface1) !important;
     }
-  }
-
-  tr:last-child > td {
-    border-bottom: none !important;
   }
 
   tr.rejected-tag {
@@ -197,10 +168,6 @@ table.highlightable {
     margin-left: 0.35em;
     color: var(--subtext0);
   }
-}
-
-div#paginator {
-  @include sticky-paginator.bar(0px);
 }
 
 @media only screen and (max-width: 600px) {

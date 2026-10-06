@@ -1,5 +1,6 @@
 /* Shared chrome for Gelbooru pages that still use bootstrap + responsive.css.
-   Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1. */
+   Matches posts-page .topnav / .navSubmenu (gridStyle.css) 1:1.
+   Compiled once by src/chrome-bootstrap.scss — do not @include from page files. */
 
 @mixin navbar {
   .container-fluid:has(> .navbar) {

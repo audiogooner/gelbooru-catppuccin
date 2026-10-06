@@ -1,9 +1,9 @@
 import { isPartialSource, matchesIgnore, normalizeSelector } from "./css-normalize.mjs";
-import { bundleId } from "../lib.mjs";
+import { bundleId, isSharedBundleFile } from "../lib.mjs";
 import { ruleLocation } from "./lint-duplicates.mjs";
 
 function isPageBundle(bundle) {
-  return !bundle.file.endsWith("base.scss") && !isPartialSource(bundle.file);
+  return !isSharedBundleFile(bundle.file) && !isPartialSource(bundle.file);
 }
 
 function isPageAuthored(rule, bundle) {

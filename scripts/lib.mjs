@@ -1,4 +1,5 @@
 import * as sass from "sass";
+import { transform as lightningcss } from "lightningcss";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -80,6 +81,14 @@ export function bundleId(file) {
   return file.replace(/^src\/(?:pages\/)?/, "").replace(/\.scss$/, "");
 }
 
+export function isSharedBundleFile(file) {
+  const name = String(file || "")
+    .replaceAll("\\", "/")
+    .split("/")
+    .pop();
+  return name === "base.scss" || name.startsWith("chrome-");
+}
+
 export function serializeDevBundles(compiled, href) {
   return compiled.map((bundle) => {
     const matches = matchesDocument(bundle.document, href);
@@ -114,9 +123,24 @@ export function indent(css, spaces = 2) {
     .join("\n");
 }
 
+export function minifyCss(css) {
+  const source = String(css || "").trim();
+  if (!source) {
+    return "";
+  }
+
+  // No browser targets — keep :has(), color-mix(), and other modern syntax.
+  const { code } = lightningcss({
+    filename: "bundle.css",
+    code: Buffer.from(source),
+    minify: true,
+  });
+  return Buffer.from(code).toString("utf8").trim();
+}
+
 export function assembleUserstyle(compiled, { compact = false } = {}) {
   const sections = compiled.map((bundle) => {
-    const css = bundle.css.trim();
+    const css = compact ? minifyCss(bundle.css) : bundle.css.trim();
     if (compact) {
       return `@-moz-document ${bundle.document}{${css}}`;
     }

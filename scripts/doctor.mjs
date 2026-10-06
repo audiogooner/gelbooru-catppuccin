@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { bundles, snapshotPages } from "../style.config.mjs";
 import lintConfig from "../style.lint.config.mjs";
-import { bundleId, parseDocumentRules, root } from "./lib.mjs";
+import { bundleId, isSharedBundleFile, parseDocumentRules, root } from "./lib.mjs";
 import { snapshotIdForBundle } from "./lib/lint-dead-selectors.mjs";
 import { pagesDir } from "./lib/snapshot-io.mjs";
 
@@ -57,7 +57,7 @@ export function inspectProject({
 
   const missingSnapshots = new Set();
   for (const bundle of bundleList) {
-    if (bundle.file.endsWith("base.scss")) {
+    if (isSharedBundleFile(bundle.file)) {
       continue;
     }
     if (!snapshotIdForBundle(bundle.file, config)) {

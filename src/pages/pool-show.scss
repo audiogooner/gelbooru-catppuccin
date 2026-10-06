@@ -1,12 +1,6 @@
-@use "bootstrap-chrome";
-@use "sticky-paginator";
-
 /* ----------------------------------------------------
    POOL SHOW (bootstrap / responsive.css layout)
    ---------------------------------------------------- */
-
-@include bootstrap-chrome.navbar;
-@include bootstrap-chrome.mail-alert;
 
 #submenu {
   .navbar-nav > li > a[href*="page=pool"][href*="s=add"],
@@ -253,5 +247,5 @@ img.thumbnail-preview {
 /* `.padding15` is 15px inset; cancel it so the sticky bar spans the column like
    post-list’s bar cancels `main` padding. */
 div#paginator {
-  @include sticky-paginator.bar(15px);
+  --paginator-inset-x: 15px;
 }
