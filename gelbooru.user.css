@@ -517,6 +517,14 @@
     border: 1px solid var(--surface2);
     border-radius: 10px;
   }
+  .commentBody .quote {
+    border-left: 2px solid var(--blue);
+    background: var(--surface1);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    color: var(--text) !important;
+  }
 
   div.commentThumbnail:nth-child(n) > a:nth-child(1) > img:nth-child(1) {
     border-radius: 10px;
