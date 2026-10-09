@@ -36,7 +36,7 @@ main {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 0.8rem;
-  align-items: start;
+  align-items: center;
 }
 
 .thumbnail-preview {
@@ -45,28 +45,19 @@ main {
   margin: 0 !important;
   padding: 0 !important;
 
-  /* Gelbooru ships thumbnails without width/height attributes, so an image that
-     has not loaded yet collapses to ~0px and the grid reflows on every load.
-     Every cell gets the same footprint anyway, so reserving a square slot up
-     front fixes the full grid height from first paint. Thumbnails are capped at
-     250x250, so they always fit inside it. */
   /* `width` is explicit because the site makes `.thumbnail-preview` a flex
-     container, so the anchor would otherwise be sized by its (empty) content
-     and `aspect-ratio` would resolve to a height of 0. */
+     container, so the anchor would otherwise shrink to its content and
+     `aspect-ratio` would resolve to a height of 0. */
   > a {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
     aspect-ratio: 1;
-
-    /* The anchor is larger than the thumbnail it reserves space for, so clicks
-       and hover are handed back to the media itself. */
     pointer-events: none;
   }
 
-  /* base.scss `a:has(> img.webm)` ties this selector on specificity; keep video
-     thumbs in the same square centered slot as still images. */
+  /* base.scss `a:has(> img.webm)` ties this selector on specificity. */
   > a:has(> img.webm) {
     display: flex !important;
     width: 100%;
@@ -75,12 +66,17 @@ main {
     aspect-ratio: 1;
   }
 
+  /* Fit inside the square without cropping. Width and height stay auto so the
+     img box matches the bitmap: radius and shadow in base.scss would otherwise
+     frame the whole cell, and overflow would clip them. */
   img,
   video {
     display: block;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: fill;
     pointer-events: auto;
   }
 }
