@@ -169,6 +169,17 @@
     color: var(--text) !important;
   }
 
+  .topnav > a,
+  #navbar .navbar-nav > li > a,
+  .navbar-brand,
+  .navSubmenu > a,
+  #submenu .navbar-nav > li > a,
+  div.submenu ul.flat-list2 > li > a,
+  .header ul.flat-list > li > a,
+  h2.siteName a {
+    cursor: pointer;
+  }
+
   .homeIcon > img:nth-child(1),
   .navbar-brand,
   h2.siteName a {
@@ -182,11 +193,35 @@
     background-color: var(--surface1);
   }
 
+  /* Site CSS uses bar padding + link margin, so the hit target is only the
+     text. Collapse bar padding and put the same vertical space on the links
+     so hover/click spans the full submenu height (~47px). */
+  .navSubmenu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    padding: 0 15px !important;
+  }
   .navSubmenu * {
     color: var(--text) !important;
   }
+  .navSubmenu > a {
+    margin: 0 !important;
+    padding: 15px 15px !important;
+  }
   .navSubmenu > a:nth-child(6) * {
     color: var(--green) !important;
+  }
+
+  .topnav > a:not(.active):not(.homeIcon):hover,
+  #navbar .navbar-nav > li:not(.active) > a:hover {
+    background-color: var(--surface1) !important;
+  }
+
+  .navSubmenu > a:hover,
+  #submenu .navbar-nav > li > a:hover,
+  div.submenu ul.flat-list2 > li > a:hover {
+    background-color: var(--surface2) !important;
   }
 
   .active,
@@ -731,9 +766,9 @@
     text-decoration: none;
   }
 
-  #navbar .navbar-nav > li > a:hover,
-  #navbar .navbar-nav > li > a:focus {
-    background-color: transparent !important;
+  #navbar .navbar-nav > li:not(.active) > a:hover,
+  #navbar .navbar-nav > li:not(.active) > a:focus {
+    background-color: var(--surface1) !important;
   }
 
   #navbar .navbar-nav > .active > a,
@@ -765,29 +800,35 @@
   #submenu.navbar {
     min-height: 0;
     overflow: visible;
-    padding: 10px 15px !important;
+    padding: 0 15px !important;
     background: var(--surface1) !important;
     font-size: 12px;
     line-height: 1.42857143;
   }
   #submenu.navbar .navbar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
     float: none;
     margin: 0;
   }
   #submenu.navbar .navbar-nav > li {
     float: none;
-    display: inline-block;
+    display: block;
   }
   #submenu.navbar .navbar-nav > li > a {
-    display: inline-block;
-    padding: 0 !important;
-    margin: 5px 15px !important;
+    display: block;
+    padding: 15px 15px !important;
+    margin: 0 !important;
     color: var(--text) !important;
     font-family: verdana, sans-serif, helvetica;
     font-size: 12px !important;
     font-weight: normal;
     line-height: 1.42857143;
     background: transparent !important;
+  }
+  #submenu.navbar .navbar-nav > li > a:hover {
+    background-color: var(--surface2) !important;
   }
 
   .alert-success {
@@ -876,11 +917,15 @@
     width: auto !important;
     height: auto !important;
   }
-  ul.flat-list li.current-page a {
+  ul.flat-list li.current-page a,
+  ul.flat-list li.current-page a:hover {
     background-color: var(--surface2) !important;
     color: var(--blue) !important;
     font-weight: bold;
     padding: 20px 16px 23px !important;
+  }
+  ul.flat-list li:not(.current-page) > a:hover {
+    background-color: var(--surface1) !important;
   }
   ul.flat-list a[href*="page=help"] {
     color: var(--green) !important;
@@ -899,12 +944,12 @@
     line-height: 1.42857143;
   }
 
-  /* Match .navSubmenu a spacing (gridStyle.css): margin on the link, not the
-     li wrapper — keeps label flush inside each item. column-gap replaces the
-     ~4px whitespace between direct <a> siblings on account pages. */
+  /* Match .navSubmenu: full-height link hit targets. Horizontal gap between
+     items comes from link padding (and a small column-gap for account pages
+     where whitespace between <a> siblings is missing). */
   div.submenu {
     background: var(--surface1) !important;
-    padding: 10px 15px !important;
+    padding: 0 15px !important;
     font-size: 12px;
     line-height: 1.42857143;
   }
@@ -915,8 +960,8 @@
   div.submenu ul.flat-list2 {
     display: flex !important;
     flex-wrap: wrap;
-    align-items: center;
-    column-gap: 4px;
+    align-items: stretch;
+    column-gap: 0;
     row-gap: 0;
     margin: 0 !important;
     padding: 0 !important;
@@ -934,14 +979,17 @@
     display: inline-block !important;
     float: none !important;
     color: var(--text) !important;
-    padding: 0 !important;
-    margin: 5px 15px !important;
+    padding: 15px 15px !important;
+    margin: 0 !important;
     font-size: 12px !important;
     font-weight: normal;
     line-height: 1.42857143;
     font-family: verdana, sans-serif, helvetica;
     white-space: nowrap;
     text-decoration: none;
+  }
+  div.submenu ul.flat-list2 > li > a:hover {
+    background-color: var(--surface2) !important;
   }
 
   .success-notice {

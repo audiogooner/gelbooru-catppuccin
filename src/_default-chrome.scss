@@ -75,11 +75,16 @@
       height: auto !important;
     }
 
-    li.current-page a {
+    li.current-page a,
+    li.current-page a:hover {
       background-color: var(--surface2) !important;
       color: var(--blue) !important;
       font-weight: bold;
       padding: 20px 16px 23px !important;
+    }
+
+    li:not(.current-page) > a:hover {
+      background-color: var(--surface1) !important;
     }
 
     a[href*="page=help"] {
@@ -100,12 +105,12 @@
     }
   }
 
-  /* Match .navSubmenu a spacing (gridStyle.css): margin on the link, not the
-     li wrapper — keeps label flush inside each item. column-gap replaces the
-     ~4px whitespace between direct <a> siblings on account pages. */
+  /* Match .navSubmenu: full-height link hit targets. Horizontal gap between
+     items comes from link padding (and a small column-gap for account pages
+     where whitespace between <a> siblings is missing). */
   div.submenu {
     background: var(--surface1) !important;
-    padding: 10px 15px !important;
+    padding: 0 15px !important;
     font-size: 12px;
     line-height: 1.42857143;
 
@@ -117,8 +122,8 @@
     ul.flat-list2 {
       display: flex !important;
       flex-wrap: wrap;
-      align-items: center;
-      column-gap: 4px;
+      align-items: stretch;
+      column-gap: 0;
       row-gap: 0;
       margin: 0 !important;
       padding: 0 !important;
@@ -138,14 +143,18 @@
       display: inline-block !important;
       float: none !important;
       color: var(--text) !important;
-      padding: 0 !important;
-      margin: 5px 15px !important;
+      padding: 15px 15px !important;
+      margin: 0 !important;
       font-size: 12px !important;
       font-weight: normal;
       line-height: 1.42857143;
       font-family: verdana, sans-serif, helvetica;
       white-space: nowrap;
       text-decoration: none;
+    }
+
+    ul.flat-list2 > li > a:hover {
+      background-color: var(--surface2) !important;
     }
   }
 }

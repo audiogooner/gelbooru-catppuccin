@@ -84,6 +84,17 @@ li:has(> a[onclick*="darkModeToggle"]) {
   color: var(--text) !important;
 }
 
+.topnav > a,
+#navbar .navbar-nav > li > a,
+.navbar-brand,
+.navSubmenu > a,
+#submenu .navbar-nav > li > a,
+div.submenu ul.flat-list2 > li > a,
+.header ul.flat-list > li > a,
+h2.siteName a {
+  cursor: pointer;
+}
+
 .homeIcon > img:nth-child(1),
 .navbar-brand,
 h2.siteName a {
@@ -98,14 +109,38 @@ div.submenu {
   background-color: var(--surface1);
 }
 
+/* Site CSS uses bar padding + link margin, so the hit target is only the
+   text. Collapse bar padding and put the same vertical space on the links
+   so hover/click spans the full submenu height (~47px). */
 .navSubmenu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 0 15px !important;
+
   * {
     color: var(--text) !important;
+  }
+
+  > a {
+    margin: 0 !important;
+    padding: 15px 15px !important;
   }
 
   > a:nth-child(6) * {
     color: var(--green) !important;
   }
+}
+
+.topnav > a:not(.active):not(.homeIcon):hover,
+#navbar .navbar-nav > li:not(.active) > a:hover {
+  background-color: var(--surface1) !important;
+}
+
+.navSubmenu > a:hover,
+#submenu .navbar-nav > li > a:hover,
+div.submenu ul.flat-list2 > li > a:hover {
+  background-color: var(--surface2) !important;
 }
 
 .active,
