@@ -67,6 +67,13 @@ textarea {
 /* ----------------------------------------------------
    NAVIGATION
    ---------------------------------------------------- */
+/* The lightbulb sets the dark_mode cookie. CSS cannot clear that cookie,
+   so hide the control on grid and bootstrap nav. */
+a[onclick*="darkModeToggle"],
+li:has(> a[onclick*="darkModeToggle"]) {
+  display: none !important;
+}
+
 .topnav,
 #navbar {
   background-color: var(--surface0);

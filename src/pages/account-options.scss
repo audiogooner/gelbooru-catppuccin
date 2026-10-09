@@ -149,6 +149,10 @@ tr.accountOptions:has(input[name="safe_only"]) label.block {
   border-radius: 10px;
 }
 
+tr.accountOptions:has(input[name="darkMode"]) {
+  display: none !important;
+}
+
 tr.accountOptions:has(input[name="submit"]) {
   > td:first-child:empty {
     display: none;
