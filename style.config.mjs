@@ -1,13 +1,23 @@
 export const port = Number(process.env.PORT) || 3847;
 export const host = "127.0.0.1";
 
+const githubRepo = "https://github.com/audiogooner/gelbooru-catppuccin";
+const rawInstallCss = `${githubRepo.replace(
+  "https://github.com/",
+  "https://raw.githubusercontent.com/",
+)}/main/gelbooru.min.user.css`;
+
 export const metadata = {
   name: "Gelbooru - Catppuccin Mocha",
-  version: "1.1.0",
+  version: "1.1.1",
   description: "A dark theme for Gelbooru using the Catppuccin Mocha color palette",
   author: "Nanumpf",
   preprocessor: "default",
   namespace: "https://github.com/nils-affentranger",
+  homepageURL: githubRepo,
+  supportURL: `${githubRepo}/issues`,
+  updateURL: rawInstallCss,
+  downloadURL: rawInstallCss,
   "run-at": "document-start",
 };
 
