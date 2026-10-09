@@ -3940,8 +3940,10 @@
     display: grid !important;
     /* Cap the track at the thumb’s real max (250) so `1fr` can’t stretch cells on
        this full-width bootstrap page and squeeze the gutter between image edges
-       down to the raw `gap` alone (post-list’s main column is narrower). */
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 250px));
+       down to the raw `gap` alone (post-list’s main column is narrower).
+       Min tracks the viewport like post-list so phones stay dense. */
+    --thumb-min: clamp(8.5rem, 6.5rem + 8vw, 15.625rem);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--thumb-min)), 250px));
     justify-content: start;
     gap: 1.25rem !important;
     align-items: start;
@@ -5112,6 +5114,7 @@
 }
 
 @-moz-document url-prefix("https://gelbooru.com/index.php?page=post&s=list") {
+  @charset "UTF-8";
   /* Post index: gallery and notices only. Tag-rail spacing stays site-native. */
   /* Shared sticky paginator bar.
      Default `div#paginator` chrome is compiled once by src/chrome-paginator.scss.
@@ -5157,8 +5160,11 @@
   }
 
   .thumbnail-container {
+    /* Small min on phones (~2–3 cols); grows toward the ~250px source thumbs
+       on wide viewports instead of only packing more 180px columns. */
+    --thumb-min: clamp(8.5rem, 6.5rem + 8vw, 15.625rem);
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--thumb-min)), 1fr));
     gap: 0.8rem;
     align-items: center;
   }
@@ -6345,8 +6351,10 @@
 
   /* Legacy markup has no gallery wrapper; span.thumb siblings share a grid on body. */
   body {
+    /* Match post-list: denser on small screens, larger cells toward ~250px thumbs. */
+    --thumb-min: clamp(8.5rem, 6.5rem + 8vw, 15.625rem);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--thumb-min)), 1fr));
     column-gap: 0.8rem;
     row-gap: 0;
     align-items: start;

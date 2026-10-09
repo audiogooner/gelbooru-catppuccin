@@ -33,8 +33,11 @@ main {
 }
 
 .thumbnail-container {
+  /* Small min on phones (~2–3 cols); grows toward the ~250px source thumbs
+     on wide viewports instead of only packing more 180px columns. */
+  --thumb-min: clamp(8.5rem, 6.5rem + 8vw, 15.625rem);
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--thumb-min)), 1fr));
   gap: 0.8rem;
   align-items: center;
 }

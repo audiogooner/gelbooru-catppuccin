@@ -94,8 +94,10 @@
   display: grid !important;
   /* Cap the track at the thumb’s real max (250) so `1fr` can’t stretch cells on
      this full-width bootstrap page and squeeze the gutter between image edges
-     down to the raw `gap` alone (post-list’s main column is narrower). */
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 250px));
+     down to the raw `gap` alone (post-list’s main column is narrower).
+     Min tracks the viewport like post-list so phones stay dense. */
+  --thumb-min: clamp(8.5rem, 6.5rem + 8vw, 15.625rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--thumb-min)), 250px));
   justify-content: start;
   gap: 1.25rem !important;
   align-items: start;
