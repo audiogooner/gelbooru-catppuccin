@@ -387,7 +387,7 @@ export const snapshotPages = [
   },
   {
     id: "tags-edit",
-    url: "https://gelbooru.com/index.php?page=tags&s=edit",
+    discover: "tags-edit",
     ...live,
   },
   {
@@ -405,12 +405,12 @@ export const snapshotPages = [
   },
   {
     id: "wiki-edit",
-    url: "https://gelbooru.com/index.php?page=wiki&s=edit",
+    discover: "wiki-edit",
     ...live,
   },
   {
     id: "wiki-history",
-    url: "https://gelbooru.com/index.php?page=wiki&s=history",
+    discover: "wiki-history",
     ...live,
   },
   { id: "pool-list", url: "https://gelbooru.com/index.php?page=pool&s=list" },
@@ -512,7 +512,7 @@ export const snapshotPages = [
   },
   {
     id: "conversation-view",
-    url: "https://gelbooru.com/index.php?page=conversation&s=view",
+    discover: "conversation-view",
     ...live,
   },
   {

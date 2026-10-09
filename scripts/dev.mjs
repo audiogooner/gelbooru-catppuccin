@@ -11,11 +11,13 @@ import {
 } from "./lib.mjs";
 import { exportFile, host, port } from "../style.config.mjs";
 import { writeSnapshot } from "./lib/snapshot-io.mjs";
+import { seedUrl } from "./lib/snapshot-discover.mjs";
 import { selectorTargetsForHref } from "./lib/selector-targets.mjs";
 import { writeSnapshotPreviews } from "./lib/snapshot-previews.mjs";
 
 const userscriptPath = join(root, "userscript/gelbooru-dev.user.js");
 const slimPath = join(root, "scripts/lib/slim-document.mjs");
+const discoverPath = join(root, "scripts/lib/snapshot-discover.mjs");
 const capturePath = join(root, "scripts/snapshot-capture.js");
 const html2canvasPath = join(root, "node_modules/html2canvas/dist/html2canvas.min.js");
 const MAX_SNAPSHOT_BYTES = 8 * 1024 * 1024;
@@ -25,6 +27,7 @@ let compiled = [];
 let generation = 0;
 let compileError = null;
 let configRevision = 0;
+let snapshotCatalog = [];
 
 async function compile() {
   try {
@@ -36,6 +39,13 @@ async function compile() {
     const nextCompiled = compileBundles();
     writeFileSync(join(root, config.exportFile), assembleUserstyle(nextCompiled));
     compiled = nextCompiled;
+    snapshotCatalog = (config.snapshotPages || []).map((entry) => ({
+      id: entry.id,
+      url: entry.url || null,
+      discover: entry.discover || null,
+      seed: entry.discover ? seedUrl(entry.discover) : null,
+      userscriptOnly: Boolean(entry.userscriptOnly),
+    }));
     compileError = null;
     generation += 1;
     console.log(
@@ -127,8 +137,9 @@ function landingPage() {
     <li>Install the userscript in Violentmonkey:<br>
       <a href="${userscript}">${userscript}</a></li>
     <li>Open <a href="https://gelbooru.com">gelbooru.com</a> — edits under <code>src/</code> reload automatically</li>
-    <li><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> toggles the overlay (theme / page bundles / site CSS)</li>
+    <li><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> toggles the overlay (or restores it if hidden)</li>
     <li><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> captures a snapshot and selector hover previews</li>
+    <li>Overlay <strong>All</strong> walks every catalog page (live queue; discovers ids)</li>
   </ol>
   <p class="hint">Disable any installed copy of the exported UserStyle while developing.
   Generation ${generation}${compileError ? " · last good CSS still served" : ""}.</p>
@@ -236,6 +247,26 @@ const server = createServer((req, res) => {
     return;
   }
 
+  if (url.pathname === "/snapshot-discover.js") {
+    send(
+      res,
+      200,
+      readFileSync(discoverPath, "utf8").replaceAll(/^export /gm, ""),
+      "text/javascript; charset=utf-8",
+    );
+    return;
+  }
+
+  if (url.pathname === "/snapshot-catalog") {
+    send(
+      res,
+      200,
+      JSON.stringify({ pages: snapshotCatalog }),
+      "application/json; charset=utf-8",
+    );
+    return;
+  }
+
   if (url.pathname === "/selector-targets") {
     try {
       const targets = selectorTargetsForHref(hrefFrom(url));
@@ -327,8 +358,9 @@ Gelbooru userstyle — live inject
   1. Install the userscript in Violentmonkey:
        http://${host}:${port}/gelbooru-dev.user.js
   2. Open https://gelbooru.com — source and bundle config edits reload automatically
-  3. Alt+Shift+D toggles the dev overlay (disable theme / page bundles / site CSS)
+  3. Alt+Shift+D toggles the dev overlay (or restores it if hidden)
   4. Alt+Shift+S captures a slimmed DOM snapshot and selector hover previews
-  5. The latest UserStyle is published to ${exportFile} after every successful build
+  5. Overlay All walks every snapshotPages entry (live queue)
+  6. The latest UserStyle is published to ${exportFile} after every successful build
 `);
 });

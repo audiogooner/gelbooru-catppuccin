@@ -105,9 +105,10 @@ export function writeIndex() {
     .filter((page) => !captured.has(page.id))
     .map((page) => {
       const how = page.userscriptOnly
-        ? "open while logged in, then Alt+Shift+S"
+        ? "open while logged in, then Alt+Shift+S or Snapshot all"
         : "`npm run snapshot:fetch`";
-      return `- **${page.id}** — ${page.url} (${how})`;
+      const target = page.url || `discover:${page.discover}`;
+      return `- **${page.id}** — ${target} (${how})`;
     });
 
   const missing = pages.length
@@ -138,6 +139,7 @@ ${cssFiles.map((name) => `- [${name}](css/${name})`).join("\n") || "_None yet._"
 
 - Public pages: \`npm run snapshot:fetch\` (\`--only <id>\`, \`--force\` to overwrite a live capture)
 - Any page (logged-in too): with \`npm run dev\` running, open the page and press **Alt+Shift+S**
+- All catalog pages: overlay **All** (live queue; discovers ids from list pages)
 `;
 
   writeFileSync(join(snapshotsDir, "INDEX.md"), body);

@@ -1,9 +1,10 @@
 /**
  * In-page capture driver. Served by the dev server with html2canvas +
- * slim-document.mjs prepended (exports stripped). Receives `host` and `gmFetch`
- * from the userscript. `html2canvas` is in the surrounding Function scope.
+ * slim-document.mjs prepended (exports stripped). Receives `host`, `gmFetch`,
+ * and optional `captureOptions` from the userscript. `html2canvas` is in the
+ * surrounding Function scope.
  */
-return (async function captureSnapshot(host, gmFetch) {
+return (async function captureSnapshot(host, gmFetch, captureOptions = {}) {
   const pageUrl = location.href;
   const id = pageIdFromUrl(pageUrl);
   const parsed = new DOMParser().parseFromString(
@@ -59,17 +60,19 @@ return (async function captureSnapshot(host, gmFetch) {
   });
 
   let previews = 0;
-  try {
-    previews = await captureSelectorPreviews(host, gmFetch, id, capturedAt);
-    if (previews) {
-      notes.push(`${previews} selector previews`);
+  if (!captureOptions.skipPreviews) {
+    try {
+      previews = await captureSelectorPreviews(host, gmFetch, id, capturedAt);
+      if (previews) {
+        notes.push(`${previews} selector previews`);
+      }
+    } catch (error) {
+      notes.push(`previews: ${error.message}`);
     }
-  } catch (error) {
-    notes.push(`previews: ${error.message}`);
   }
 
   return { id, notes, previews };
-})(host, gmFetch);
+})(host, gmFetch, captureOptions || {});
 
 function previewToast(message) {
   document.dispatchEvent(

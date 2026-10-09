@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Gelbooru Catppuccin — live inject
 // @namespace   https://github.com/nils-affentranger
-// @version     1.5.0
+// @version     1.7.0
 // @description Development injector: live CSS, overlay to toggle bundles, snapshot capture
 // @match       https://gelbooru.com/*
 // @grant       GM_xmlhttpRequest
@@ -15,10 +15,12 @@
   const HOST = "http://127.0.0.1:3847";
   const POLL_MS = 400;
   const STORAGE_KEY = "gelbooru-dev-overlay-v1";
+  const QUEUE_KEY = "gelbooru-dev-snapshot-all-v1";
   const HOST_ID = "gelbooru-dev-overlay";
 
   const defaults = {
     overlayOpen: false,
+    uiHidden: false,
     stylesOn: true,
     siteCss: true,
     blackoutMedia: false,
@@ -63,6 +65,8 @@
   let toastTimer = 0;
   let drag = null;
   let suppressClick = false;
+  let queueRunning = false;
+  let discoverApi = null;
 
   function loadState() {
     try {
@@ -83,6 +87,7 @@
         STORAGE_KEY,
         JSON.stringify({
           overlayOpen: state.overlayOpen,
+          uiHidden: state.uiHidden,
           stylesOn: state.stylesOn,
           siteCss: state.siteCss,
           blackoutMedia: state.blackoutMedia,
@@ -209,24 +214,29 @@
       color: #cdd6f4;
       -webkit-font-smoothing: antialiased;
     }
-    .fab, .panel, .toast {
+    .panel, .toast {
       background: #1e1e2e;
       color: #cdd6f4;
       font: inherit;
       box-shadow: 0 8px 28px rgba(0, 0, 0, .45);
     }
     .fab {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border: 1px solid #45475a;
-      border-radius: 999px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      border: 6px solid transparent;
+      border-radius: 50%;
+      background-color: #89b4fa;
+      background-clip: padding-box;
       cursor: grab;
       touch-action: none;
       user-select: none;
+      opacity: .75;
     }
-    .fab:hover { border-color: #89b4fa; }
+    .fab:hover { opacity: 1; }
+    .fab.warn { background-color: #f9e2af; }
+    .fab.err { background-color: #f38ba8; }
     .panel {
       width: 252px;
       border: 1px solid #45475a;
@@ -300,7 +310,6 @@
       padding: 1px 0;
     }
     .row > .chk { flex: 1; min-width: 0; }
-    .row.dim { color: #6c7086; }
     .row .name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
     .only {
       background: none;
@@ -324,9 +333,9 @@
       white-space: pre-wrap;
       font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
     }
-    .actions { display: flex; gap: 6px; margin-top: 8px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
     .actions button {
-      flex: 1;
+      flex: 1 1 calc(50% - 6px);
       background: #313244;
       border: 1px solid #45475a;
       color: #cdd6f4;
@@ -336,6 +345,7 @@
       font: inherit;
     }
     .actions button:hover { border-color: #89b4fa; }
+    .actions button[hidden] { display: none; }
     .hint { margin-top: 6px; color: #6c7086; font-size: 10px; }
     .toast {
       position: absolute;
@@ -357,22 +367,21 @@
       .replace(/"/g, "&quot;");
   }
 
-  function sortedBundles() {
-    return [...bundles].sort((a, b) => {
-      if (a.matches !== b.matches) {
-        return a.matches ? -1 : 1;
-      }
-      if (a.id === "base") {
-        return -1;
-      }
-      if (b.id === "base") {
-        return 1;
-      }
-      return a.id.localeCompare(b.id);
-    });
+  function pageBundles() {
+    return bundles
+      .filter((bundle) => bundle.matches)
+      .sort((a, b) => {
+        if (a.id === "base") {
+          return -1;
+        }
+        if (b.id === "base") {
+          return 1;
+        }
+        return a.id.localeCompare(b.id);
+      });
   }
 
-  function bundleSection(title, items, showOnly) {
+  function bundleList(items) {
     if (!items.length) {
       return "";
     }
@@ -380,21 +389,17 @@
     const rows = items
       .map((bundle) => {
         const checked = state.disabled[bundle.id] ? "" : " checked";
-        const dim = bundle.matches ? "" : " dim";
-        const only = showOnly
-          ? `<button class="only" type="button" data-solo="${escapeHtml(bundle.id)}">only</button>`
-          : "";
-        return `<div class="row${dim}" title="${escapeHtml(bundle.document)}">
+        return `<div class="row" title="${escapeHtml(bundle.document)}">
           <label class="chk">
             <input type="checkbox" data-bundle="${escapeHtml(bundle.id)}"${checked}>
             <span class="name">${escapeHtml(bundle.id)}</span>
           </label>
-          ${only}
+          <button class="only" type="button" data-solo="${escapeHtml(bundle.id)}">only</button>
         </div>`;
       })
       .join("");
 
-    return `<div class="sec">${title}</div>${rows}`;
+    return `<div class="sec">this page</div>${rows}`;
   }
 
   function $ (sel) {
@@ -504,15 +509,14 @@
       <style>${overlayCss}</style>
       <div class="ui">
         <div class="toast" hidden></div>
-        <button class="fab" type="button" data-act="open" hidden title="Dev overlay (Alt+Shift+D)">
-          <span class="dot"></span>dev
-        </button>
+        <button class="fab" type="button" data-act="open" hidden title="Dev overlay (Alt+Shift+D)" aria-label="Open dev overlay"></button>
         <div class="panel" hidden>
           <header>
             <span class="dot"></span>
             <strong>dev</strong>
             <span class="status grow"></span>
-            <button class="icon" type="button" data-act="collapse" title="Collapse">–</button>
+            <button class="icon" type="button" data-act="collapse" title="Collapse to badge">–</button>
+            <button class="icon" type="button" data-act="hide" title="Hide (Alt+Shift+D)">×</button>
           </header>
           <div class="body">
             <pre class="error" hidden></pre>
@@ -530,9 +534,11 @@
             <div class="bundles"></div>
             <div class="actions">
               <button type="button" data-act="snapshot">Snapshot</button>
+              <button type="button" data-act="snapshot-all" title="Live queue through every catalog page">All</button>
+              <button type="button" data-act="snapshot-stop" hidden title="Cancel snapshot-all queue">Stop</button>
               <button type="button" data-act="reset">Reset</button>
             </div>
-            <div class="hint">Alt+Shift+D overlay · Alt+Shift+S snapshot + previews</div>
+            <div class="hint">All = snapshot catalog · × hides · Alt+Shift+D · Alt+Shift+S</div>
           </div>
         </div>
       </div>
@@ -561,16 +567,31 @@
     }
 
     if (act.dataset.act === "open") {
+      state.uiHidden = false;
       state.overlayOpen = true;
     } else if (act.dataset.act === "collapse") {
       state.overlayOpen = false;
+    } else if (act.dataset.act === "hide") {
+      state.uiHidden = true;
+      state.overlayOpen = false;
     } else if (act.dataset.act === "snapshot") {
+      event.preventDefault();
       snapshot();
+      return;
+    } else if (act.dataset.act === "snapshot-all") {
+      event.preventDefault();
+      startSnapshotAll();
+      return;
+    } else if (act.dataset.act === "snapshot-stop") {
+      event.preventDefault();
+      stopSnapshotAll();
+      return;
     } else if (act.dataset.act === "reset") {
       state.stylesOn = true;
       state.siteCss = true;
       state.blackoutMedia = false;
       state.disabled = {};
+      state.uiHidden = false;
       state.pos = null;
       applyOverlayPosition();
       applySiteCss();
@@ -651,8 +672,10 @@
       dot.className = `dot ${cls}`.trim();
     }
     $(".status").textContent = text;
-    $(".fab").hidden = state.overlayOpen;
-    $(".panel").hidden = !state.overlayOpen;
+    const fab = $(".fab");
+    fab.className = `fab ${cls}`.trim();
+    fab.hidden = state.uiHidden || state.overlayOpen;
+    $(".panel").hidden = state.uiHidden || !state.overlayOpen;
     $("[data-act='styles']").checked = state.stylesOn;
     $("[data-act='site']").checked = state.siteCss;
     $("[data-act='blackout']").checked = state.blackoutMedia;
@@ -671,35 +694,293 @@
       applyOverlayPosition();
     }
 
-    const sorted = sortedBundles();
-    const matching = sorted.filter((bundle) => bundle.matches);
-    const other = sorted.filter((bundle) => !bundle.matches);
-    $(".bundles").innerHTML =
-      bundleSection("this page", matching, true) +
-      bundleSection("other pages", other, false);
+    $(".bundles").innerHTML = bundleList(pageBundles());
+
+    const queue = loadQueue();
+    const allBtn = $("[data-act='snapshot-all']");
+    const stopBtn = $("[data-act='snapshot-stop']");
+    if (allBtn && stopBtn) {
+      allBtn.hidden = Boolean(queue);
+      stopBtn.hidden = !queue;
+    }
   }
 
-  function toast(message) {
+  function toast(message, ms = 4500) {
     mount();
     const el = $(".toast");
     el.textContent = message;
     el.hidden = false;
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      el.hidden = true;
-    }, 4500);
+    if (ms > 0) {
+      toastTimer = setTimeout(() => {
+        el.hidden = true;
+      }, ms);
+    }
   }
 
-  async function snapshot() {
-    toast("Capturing snapshot…");
+  function loadQueue() {
+    try {
+      return JSON.parse(sessionStorage.getItem(QUEUE_KEY) || "null");
+    } catch {
+      return null;
+    }
+  }
+
+  function saveQueue(queue) {
+    sessionStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
+  }
+
+  function clearQueue() {
+    sessionStorage.removeItem(QUEUE_KEY);
+  }
+
+  function urlsMatch(currentHref, targetHref) {
+    try {
+      const current = new URL(currentHref);
+      const target = new URL(targetHref);
+      if (current.origin !== target.origin || current.pathname !== target.pathname) {
+        return false;
+      }
+      for (const [key, value] of target.searchParams) {
+        const all = current.searchParams.getAll(key);
+        if (!all.includes(value)) {
+          return false;
+        }
+      }
+      return true;
+    } catch {
+      return currentHref === targetHref;
+    }
+  }
+
+  async function loadDiscoverApi() {
+    if (discoverApi) {
+      return discoverApi;
+    }
+    const src = await gmFetch(`${HOST}/snapshot-discover.js`);
+    discoverApi = new Function(
+      `${src}\nreturn { seedUrl, discoverUrl, isDiscoverSeed };`,
+    )();
+    return discoverApi;
+  }
+
+  async function snapshot(options = {}) {
+    if (!options.quiet) {
+      toast("Capturing snapshot…");
+    }
     try {
       const src = await gmFetch(`${HOST}/snapshot-capture.js`);
-      const result = await new Function("host", "gmFetch", src)(HOST, gmFetch);
-      const extra = result.notes?.length ? ` (${result.notes.join("; ")})` : "";
-      toast(`Saved snapshots/pages/${result.id}.html${extra}`);
+      const result = await new Function(
+        "host",
+        "gmFetch",
+        "captureOptions",
+        src,
+      )(HOST, gmFetch, {
+        skipPreviews: Boolean(options.skipPreviews),
+      });
+      if (!options.quiet) {
+        const extra = result.notes?.length ? ` (${result.notes.join("; ")})` : "";
+        toast(`Saved snapshots/pages/${result.id}.html${extra}`);
+      }
+      return result;
     } catch (error) {
-      toast(`Snapshot failed: ${error.message}`);
+      if (!options.quiet) {
+        toast(`Snapshot failed: ${error.message}`);
+      }
       console.error("[gelbooru-dev] snapshot", error);
+      throw error;
+    }
+  }
+
+  async function startSnapshotAll() {
+    if (loadQueue()) {
+      toast("Snapshot all already running — press Stop to cancel");
+      return;
+    }
+
+    const ok = confirm(
+      "Snapshot all catalog pages?\n\nThis tab will navigate through each page and capture a live snapshot (no selector previews). Stay logged in for account pages.",
+    );
+    if (!ok) {
+      return;
+    }
+
+    try {
+      const data = JSON.parse(await gmFetch(`${HOST}/snapshot-catalog`));
+      const pages = data.pages || [];
+      if (!pages.length) {
+        toast("Snapshot catalog is empty — is npm run dev up?");
+        return;
+      }
+
+      const steps = pages.map((page) => {
+        if (page.discover) {
+          return {
+            type: "discover",
+            id: page.id,
+            discover: page.discover,
+            seed: page.seed,
+          };
+        }
+        return { type: "capture", id: page.id, url: page.url };
+      });
+
+      saveQueue({
+        steps,
+        index: 0,
+        results: [],
+        startedAt: Date.now(),
+      });
+      renderOverlay();
+      toast(`Snapshot all 1/${steps.length} · ${steps[0].id}`, 0);
+      void runQueueStep();
+    } catch (error) {
+      const hint =
+        /HTTP 404/.test(error.message)
+          ? " — restart `npm run dev` (new /snapshot-catalog route)"
+          : "";
+      toast(`Snapshot all failed: ${error.message}${hint}`);
+      console.error("[gelbooru-dev] snapshot all", error);
+    }
+  }
+
+  function stopSnapshotAll() {
+    clearQueue();
+    queueRunning = false;
+    toast("Snapshot all stopped");
+    renderOverlay();
+  }
+
+  function finishSnapshotAll(queue) {
+    clearQueue();
+    const ok = queue.results.filter((item) => item.ok).length;
+    const fail = queue.results.length - ok;
+    toast(`Snapshot all done: ${ok} ok, ${fail} failed`, 8000);
+    if (fail) {
+      console.warn(
+        "[gelbooru-dev] snapshot all failures",
+        queue.results.filter((item) => !item.ok),
+      );
+    }
+    renderOverlay();
+  }
+
+  function advanceQueue(queue) {
+    queue.index += 1;
+    saveQueue(queue);
+    if (queue.index >= queue.steps.length) {
+      finishSnapshotAll(queue);
+      return;
+    }
+    const next = queue.steps[queue.index];
+    const url = next.type === "discover" ? next.seed : next.url;
+    toast(`Snapshot all ${queue.index + 1}/${queue.steps.length} · ${next.id}`, 0);
+    location.assign(url);
+  }
+
+  async function runQueueStep() {
+    if (queueRunning) {
+      return;
+    }
+    const queue = loadQueue();
+    if (!queue) {
+      return;
+    }
+    if (queue.index >= queue.steps.length) {
+      finishSnapshotAll(queue);
+      return;
+    }
+
+    queueRunning = true;
+    const step = queue.steps[queue.index];
+    const total = queue.steps.length;
+    const label = `Snapshot all ${queue.index + 1}/${total} · ${step.id}`;
+
+    try {
+      if (step.type === "discover") {
+        const api = await loadDiscoverApi();
+        if (!api.isDiscoverSeed(location.href, step.discover) && !step.navigated) {
+          queue.steps[queue.index] = { ...step, navigated: true };
+          saveQueue(queue);
+          toast(label, 0);
+          location.assign(step.seed);
+          return;
+        }
+
+        try {
+          const url = api.discoverUrl(step.discover, document);
+          queue.steps[queue.index] = { type: "capture", id: step.id, url };
+          saveQueue(queue);
+          toast(label, 0);
+          location.assign(url);
+        } catch (error) {
+          queue.results.push({
+            id: step.id,
+            ok: false,
+            error: error.message,
+          });
+          advanceQueue(queue);
+        }
+        return;
+      }
+
+      if (step.type === "capture") {
+        if (!urlsMatch(location.href, step.url) && !step.navigated) {
+          queue.steps[queue.index] = { ...step, navigated: true };
+          saveQueue(queue);
+          toast(label, 0);
+          location.assign(step.url);
+          return;
+        }
+
+        toast(`Capturing ${label}`, 0);
+        let outcome;
+        try {
+          const result = await snapshot({
+            skipPreviews: true,
+            quiet: true,
+          });
+          outcome =
+            result.id !== step.id
+              ? {
+                  id: step.id,
+                  ok: false,
+                  error: `expected ${step.id}, got ${result.id}`,
+                }
+              : { id: step.id, ok: true };
+        } catch (error) {
+          outcome = { id: step.id, ok: false, error: error.message };
+        }
+
+        const latest = loadQueue();
+        if (!latest) {
+          return;
+        }
+        latest.results.push(outcome);
+        advanceQueue(latest);
+      }
+    } finally {
+      queueRunning = false;
+    }
+  }
+
+  function scheduleQueueResume() {
+    if (!loadQueue()) {
+      return;
+    }
+    const start = () => {
+      void runQueueStep();
+    };
+    if (document.readyState === "complete") {
+      setTimeout(start, 500);
+    } else {
+      window.addEventListener(
+        "load",
+        () => {
+          setTimeout(start, 500);
+        },
+        { once: true },
+      );
     }
   }
 
@@ -755,7 +1036,12 @@
       } else if (event.code === "KeyD") {
         event.preventDefault();
         event.stopPropagation();
-        state.overlayOpen = !state.overlayOpen;
+        if (state.uiHidden) {
+          state.uiHidden = false;
+          state.overlayOpen = true;
+        } else {
+          state.overlayOpen = !state.overlayOpen;
+        }
         saveState();
         mount();
         renderOverlay();
@@ -780,6 +1066,7 @@
       toast(String(event.detail));
     }
   });
+  scheduleQueueResume();
   tick();
   setInterval(tick, POLL_MS);
 })();
