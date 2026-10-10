@@ -7,7 +7,7 @@ Gelbooru UserStyle. Edit SCSS under `src/`; `style.config.mjs` registers `@-moz-
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Live-inject server on `:3847` + publish `gelbooru.user.css` |
-| `npm run check` | Tests, catalog doctor, style lint |
+| `npm run check` | Local chrome test, then `userstyle-dev check` (doctor + style lint) |
 | `npm run doctor` | Bundles vs `src/pages` vs snapshots |
 | `npm run lint:styles` | Duplicate / redundant / dead selectors |
 | `npm run export` | Expanded + minified UserStyle |

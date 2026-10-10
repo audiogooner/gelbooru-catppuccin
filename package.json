@@ -7,20 +7,16 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "node scripts/dev.mjs",
-    "export": "node scripts/export.mjs",
-    "lint:styles": "node scripts/lint-styles.mjs",
-    "doctor": "node scripts/doctor.mjs",
-    "test": "node --test scripts/*.test.mjs",
-    "check": "npm test && node scripts/doctor.mjs && node scripts/lint-styles.mjs",
-    "snapshot:fetch": "node scripts/fetch-snapshots.mjs",
-    "preview:install": "node scripts/install-selector-preview.mjs"
+    "dev": "userstyle-dev dev",
+    "export": "userstyle-dev export",
+    "lint:styles": "userstyle-dev lint",
+    "doctor": "userstyle-dev doctor",
+    "test": "node --test test/*.test.mjs",
+    "check": "node --test test/*.test.mjs && userstyle-dev check",
+    "snapshot:fetch": "userstyle-dev snapshot",
+    "preview:install": "userstyle-dev preview:install"
   },
   "devDependencies": {
-    "html2canvas": "^1.4.1",
-    "lightningcss": "^1.33.0",
-    "linkedom": "^0.18.12",
-    "sass": "^1.90.0",
-    "source-map-js": "^1.2.1"
+    "userstyle-dev": "^0.1.0"
   }
 }

@@ -1,5 +1,63 @@
-export const port = Number(process.env.PORT) || 3847;
+export const port = 3847;
 export const host = "127.0.0.1";
+
+export const site = {
+  id: "gelbooru",
+  origin: "https://gelbooru.com",
+  match: ["https://gelbooru.com/*"],
+};
+
+export const blackoutCss = `
+main img:not(.voteUpComment, .reportComment),
+main video,
+main canvas,
+article img,
+#image,
+img.webm,
+.commentThumbnail img,
+.thumbnail-preview img,
+.image-container img,
+.image-container video,
+.image-container canvas,
+.profileAvatar {
+  filter: contrast(0) brightness(0.22) !important;
+}
+
+.profileAvatar {
+  background-image: none !important;
+  background-color: #313244 !important;
+}
+`;
+
+function slugify(value) {
+  return (
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") || "unknown"
+  );
+}
+
+export function pageIdFromUrl(href) {
+  try {
+    const url = new URL(href);
+    const page = url.searchParams.get("page");
+    const s = url.searchParams.getAll("s").find(Boolean) || "";
+    if (!page) {
+      const path = url.pathname.replace(/^\//, "").replace(/\.php$/, "");
+      if (!path || path === "index") {
+        return "homepage";
+      }
+      return slugify(path);
+    }
+    if (page === "wiki" && !s && url.searchParams.has("search")) {
+      return "wiki-view";
+    }
+    return s ? `${page}-${slugify(s)}` : page;
+  } catch {
+    return "unknown";
+  }
+}
 
 const githubRepo = "https://github.com/audiogooner/gelbooru-catppuccin";
 const rawInstallCss = `${githubRepo.replace(
@@ -383,7 +441,18 @@ export const snapshotPages = [
     id: "post-list",
     url: "https://gelbooru.com/index.php?page=post&s=list&tags=all",
   },
-  { id: "post-view", discover: "post-view" },
+  {
+    id: "post-view",
+    explore: {
+      from: "post-list",
+      try: [
+        {
+          href: /page=post&(?:amp;)?s=view&(?:amp;)?id=(\d+)/,
+          url: "https://gelbooru.com/index.php?page=post&s=view&id=$1",
+        },
+      ],
+    },
+  },
   {
     id: "post-add",
     url: "https://gelbooru.com/index.php?page=post&s=add",
@@ -397,7 +466,15 @@ export const snapshotPages = [
   },
   {
     id: "tags-edit",
-    discover: "tags-edit",
+    explore: {
+      from: "tags-list",
+      try: [
+        {
+          href: /page=tags&(?:amp;)?s=edit&(?:amp;)?tag=([^"'&\s<>]+)/,
+          url: "https://gelbooru.com/index.php?page=tags&s=edit&tag=$1",
+        },
+      ],
+    },
     ...live,
   },
   {
@@ -407,7 +484,22 @@ export const snapshotPages = [
   },
   { id: "alias-list", url: "https://gelbooru.com/index.php?page=alias&s=list" },
   { id: "wiki-list", url: "https://gelbooru.com/index.php?page=wiki&s=list" },
-  { id: "wiki-view", discover: "wiki-view" },
+  {
+    id: "wiki-view",
+    explore: {
+      from: "wiki-list",
+      try: [
+        {
+          href: /page=wiki&(?:amp;)?s=view&(?:amp;)?id=(\d+)/,
+          url: "https://gelbooru.com/index.php?page=wiki&s=view&id=$1",
+        },
+        {
+          href: /href="(index\.php\?page=wiki&(?:amp;)?s=(?:view|list)&(?:amp;)?search=[^"]+)"/,
+          url: "https://gelbooru.com/$1",
+        },
+      ],
+    },
+  },
   {
     id: "wiki-create",
     url: "https://gelbooru.com/index.php?page=wiki&s=create",
@@ -415,12 +507,28 @@ export const snapshotPages = [
   },
   {
     id: "wiki-edit",
-    discover: "wiki-edit",
+    explore: {
+      from: "wiki-list",
+      try: [
+        {
+          href: /page=wiki&(?:amp;)?s=(?:view|edit)&(?:amp;)?id=(\d+)/,
+          url: "https://gelbooru.com/index.php?page=wiki&s=edit&id=$1",
+        },
+      ],
+    },
     ...live,
   },
   {
     id: "wiki-history",
-    discover: "wiki-history",
+    explore: {
+      from: "wiki-list",
+      try: [
+        {
+          href: /page=wiki&(?:amp;)?s=(?:view|edit)&(?:amp;)?id=(\d+)/,
+          url: "https://gelbooru.com/index.php?page=wiki&s=history&id=$1",
+        },
+      ],
+    },
     ...live,
   },
   { id: "pool-list", url: "https://gelbooru.com/index.php?page=pool&s=list" },
@@ -522,7 +630,15 @@ export const snapshotPages = [
   },
   {
     id: "conversation-view",
-    discover: "conversation-view",
+    explore: {
+      from: "conversation-list",
+      try: [
+        {
+          href: /page=conversation&(?:amp;)?s=view&(?:amp;)?id=(\d+)/,
+          url: "https://gelbooru.com/index.php?page=conversation&s=view&id=$1",
+        },
+      ],
+    },
     ...live,
   },
   {

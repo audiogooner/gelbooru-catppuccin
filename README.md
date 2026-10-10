@@ -9,14 +9,16 @@ npm install
 npm run dev
 ```
 
-Then open [http://127.0.0.1:3847](http://127.0.0.1:3847) and install the userscript from that page in Violentmonkey. Open [gelbooru.com](https://gelbooru.com) — changes under `src/` and bundle changes in `style.config.mjs` compile and inject automatically. Every successful rebuild also publishes the latest complete UserStyle to `gelbooru.user.css`; a Sass or configuration error leaves the last good bundle in place.
+Then open [http://127.0.0.1:3847](http://127.0.0.1:3847) and install the userscript from that page in Violentmonkey ([http://127.0.0.1:3847/dev.user.js](http://127.0.0.1:3847/dev.user.js)). Open [gelbooru.com](https://gelbooru.com) — changes under `src/` and bundle changes in `style.config.mjs` compile and inject automatically. Every successful rebuild also publishes the latest complete UserStyle to `gelbooru.user.css`; a Sass or configuration error leaves the last good bundle in place.
 
-A small status dot sits in the top-right of Gelbooru pages (**Alt+Shift+D**). From there you can turn the theme off, black out media, disable individual page bundles, or disable Gelbooru’s own CSS, without uninstalling anything. Drag the dot (or the panel header) to move it; **×** hides it until **Alt+Shift+D**; **Reset** restores position. **All** walks every `snapshotPages` entry in this tab (discovers ids from list pages; **Stop** cancels). Reinstall the userscript if it is still below 1.7.0.
+Reinstall the userscript if you still have the old copy. Overlay markers are `data-userstyle-dev`, and the install URL is `/dev.user.js`.
+
+A small status dot sits in the top-right of Gelbooru pages (**Alt+Shift+D**). From there you can turn the theme off, black out media, disable individual page bundles, or disable Gelbooru’s own CSS, without uninstalling anything. Drag the dot (or the panel header) to move it; **×** hides it until **Alt+Shift+D**; **Reset** restores position. **All** walks every `snapshotPages` entry in this tab (explorers read links from seed pages; **Stop** cancels).
 
 Disable any installed copy of the exported UserStyle while developing, or the two will fight.
 
 ```bash
-npm run check    # tests + catalog doctor + style lint
+npm run check    # chrome test + catalog doctor + style lint
 ```
 
 ## Page styles
@@ -33,7 +35,7 @@ npm run snapshot:fetch -- --only help  # one page
 npm run snapshot:fetch -- --force      # overwrite live Alt+Shift+S captures
 ```
 
-On any Gelbooru tab with the dev userscript and server running, **Alt+Shift+S** captures the live DOM (after JS, ads, and login state). Overlay **All** queues every `snapshotPages` entry in the current tab (ids discovered from list pages). Reinstall the userscript if it is still below 1.7.0.
+On any Gelbooru tab with the dev userscript and server running, **Alt+Shift+S** captures the live DOM (after JS, ads, and login state). Overlay **All** queues every `snapshotPages` entry in the current tab (explorers read links from seed pages).
 
 `npm run doctor` reports page files that are not registered, broken `@-moz-document` matchers, and bundles that still need a snapshot.
 
